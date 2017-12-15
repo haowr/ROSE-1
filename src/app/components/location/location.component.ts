@@ -141,6 +141,7 @@ export class LocationComponent implements OnInit {
               if (data.clients[i].subcontractors[j].name == params.location && data.clients[i].name == params.client) {
                 console.log(data.clients[i].subcontractors[j].name)
                 this.subcontractorObject = data.clients[i].subcontractors[j];
+                console.log(this.subcontractorObject);
                 console.log(data.clients[i].subcontractors[j]);
                 this.toplineInventoryArray.push(data.clients[i].subcontractors[j].topline);
                 console.log(this.toplineInventoryArray);
