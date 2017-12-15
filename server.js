@@ -2,6 +2,21 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const routes = require('./routes/routes');
+const mongoose = require('mongoose');
+
+// Connect To Database
+mongoose.connect(config.database);
+
+// On Connection
+mongoose.connection.on('connected', () => {
+  console.log('Connected to database '+config.database);
+});
+
+// On Error
+mongoose.connection.on('error', (err) => {
+  console.log('Database error: '+err);
+});
+
 
 const app = express();
 
