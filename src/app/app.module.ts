@@ -39,7 +39,7 @@ import { EditsinglesubcontractorComponent } from './components/editsinglesubcont
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { ManagementComponent } from './components/management/management.component';
 import { RemoveclientComponent } from './components/removeclient/removeclient.component';
-/*
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'loblaws', component: LoblawsComponent },
@@ -61,7 +61,6 @@ const appRoutes: Routes = [
     { path: 'remove/client', component: RemoveclientComponent}
 
 ]
-*/
 
 @NgModule({
   declarations: [
