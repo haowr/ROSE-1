@@ -1,0 +1,25 @@
+<div class = "container">
+<div class = "row">
+  <br>
+  <br>
+  <br>
+
+  <div class ="col-sm-12" *ngFor="let client of clientArray">
+
+    <div style="text-align:center;"class = "col-sm-12 clientname" >
+      <img src="./assets/img/building.jpg">
+      <a href = "/clients/{{client.name}}"><h1 class="clientnameheader">{{client.name}}</h1></a>
+      <div class ="col-sm-6" *ngFor ="let subcontractor of client.subcontractors">
+      <a href = "/clients/{{client.name}}/{{subcontractor}}"><h2 class="subcontractor">{{subcontractor}}</h2></a>
+      </div>
+      <div class ="col-sm-6" *ngFor ="let location of client.locations">
+     <!--  <a href = "/clients/{{client.name}}/{{subcontractor}}"> <h2 class = "locations">{{location}}</h2></a>-->
+      </div>
+      
+    </div>
+  
+
+    </div>
+  </div>
+</div>
+

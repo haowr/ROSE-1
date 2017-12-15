@@ -1,0 +1,46 @@
+.companyname{
+
+    text-align:center;
+   
+
+}
+.missionstatement{
+
+  border:1px solid black;
+
+}
+#companyhero{
+
+  text-align:center;
+
+}
+#rosejumbotron{
+    display:inline-block;
+  position:absolute;
+  top:50%;
+  left:125px;
+  
+  transition:.6s;
+  border:1px solid black;
+  box-shadow: 2px 2px 2px black;
+}
+#rosejumbotron:hover{
+  position:absolute;
+  top:49%;
+  left:-30px;
+  transition:.3s;
+  box-shadow: 4px 4px 6px rgba(0,0,0,.5);
+
+}
+#rosejumbotron:active{
+  position:absolute;
+  top:50%;
+  left:42%;
+  transition:.3s;
+  box-shadow: 2px 2px 2px black;
+
+}
+.threelaws{
+    position:absolute;
+    top:50;
+}

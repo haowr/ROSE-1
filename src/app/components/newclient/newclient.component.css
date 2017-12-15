@@ -1,0 +1,12 @@
+.buttonstyling{
+
+    font-size:18px;
+    transition:0.2s;
+
+}
+.buttonstyling:active{
+
+    font-size:16px;
+    transition:0.2s;
+
+}

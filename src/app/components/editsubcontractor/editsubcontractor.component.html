@@ -1,0 +1,34 @@
+<div class= "container">
+  <div class ="row">
+        <br>
+        <br>
+    <br>
+    <br>
+    <div class="col-sm-12" style="text-align:center"*ngFor="let client of clientsArray">
+      <form class=" animated fadeIn"(submit)="submitEdit();">
+      <a href = "/edit/subcontractor/{{client.name}}"><h1>{{client.name}}</h1></a>
+      <!--<div *ngFor="let address of subcontractor.storeaddress">
+      <h2>{{address}}</h2>
+      </div>-->
+      <div class = "col-sm-12">
+      <!-- <p> Created at:{{client.created_at |slice:1:10}}</p>-->
+       <!--<input type ="text" class ="form-control" placeholder = "{{subcontractor.created_at|slice:1:10}}">-->
+
+       <p> Contact: {{client.contactname}}</p>
+        <!--<input type ="text" class ="form-control" name = "contactname"[(ngModel)]= "contactname" placeholder = "{{subcontractor.contactname}}">-->
+
+       <p> Contact Phone: {{client.contactphone}}</p>
+         <!--     <input type ="text" class ="form-control"name = "contactphone" [(ngModel)] = "contactphone" placeholder = "{{subcontractor.contactphone}}">-->
+
+       <p> Email: {{client.emailaddress}}</p>
+          <!--     <input type ="text" class ="form-control" name = "emailaddress" [(ngModel)]="emailaddress"placeholder = "{{subcontractor.emailaddress}}">-->
+
+      </div>
+      <div class = "col-sm-6">
+      </div>
+      <!--<input type="submit" class = "btn btn-primary" value="submit">-->
+      </form>
+    </div>
+    
+  </div>
+</div>

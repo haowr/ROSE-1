@@ -1,0 +1,120 @@
+.clientnameheader{
+  font-family:'Anton';
+}
+.subcontractorlabel{
+      font-family: 'Open Sans Condensed', sans-serif;
+
+}
+.openssans{
+
+  font-family:'Open Sans Condensed';
+
+}
+.buttonstyling{
+
+  font-size:18px;
+  transition:0.2s;
+}
+
+.buttonstyling:active{
+
+  font-size:15px;
+  transition:0.2s;
+}
+.modal-backdrop{
+  z-index:-100000 !important;
+   opacity:0.3 !important;
+}
+.getoffscreen{
+	position:absolute;
+	left:-6000px;
+	opacity:0;
+}
+#openModalButton{
+	color:white !important;
+	display:none;
+		opacity:0 !important;
+}
+
+#openModalButton{
+
+  opacity:0 !important;
+}
+.hidebutton{
+  display:none;
+  visibility: hidden;
+    position:absolute;
+  top:-100px;
+  left:-1000px;
+  opacity:0;
+}
+
+/*Loader*/
+@-webkit-keyframes rotating{
+	from {
+		-webkit-transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+	}
+}
+@keyframes rotating{
+	from {
+		transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+	}
+	to {
+		transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+	}
+}
+.rotating {
+	-webkit-animation:rotating 7s linear infinite;
+  -ms-animation:rotating 7s linear infinite;
+  -moz-animation:rotating 7s linear infinite;
+  -o-animation:rotating 7s linear infinite;
+  animation:rotating 7s linear infinite;
+}
+.bigCircle {
+	width:100px;
+	height:100px;
+	background-color:#999;
+	margin:100px auto;
+	position:relative;
+	padding:15px;
+	border-radius:100%;
+	box-shadow:inset 0 0 10px #444;
+}
+.littleCircle {
+	width:100%;
+	height:100%;
+	background-color:#ffffff;
+	border-radius:100%;
+	box-shadow:0 0 5px #444;
+}
+.slice {
+	background-color:#Fff;
+	width:16px;
+	height:16px;
+	position:absolute;
+}
+.slice:first-child {
+	top:0;
+	right:45%;
+}
+.slice:nth-child(2) {
+	right:0;
+	top:45%;
+}
+.slice:nth-child(3) {
+	bottom:0;
+	right:45%;
+}
+.slice:nth-child(4) {
+	left:0;
+	top:45%;
+}

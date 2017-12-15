@@ -1,0 +1,27 @@
+/*.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar {min-height:32px !important}*/
+
+#moveitemleft{
+position:absolute;
+    left:8px;
+
+}
+.pullrightextreme{
+    position:absolute;
+    left:0px;
+}
+.opacitynone{
+    opacity:0;
+}
+.pulllinksright{
+
+    position:absolute;
+    right:0;
+
+}
+
+/*
+.navbar{
+    border: 2px solid black;
+}
+*/
