@@ -3,6 +3,8 @@ const http = require('http');
 const path = require('path');
 const routes = require('./routes/routes');
 const mongoose = require('mongoose');
+const config = require('./config/database');
+
 
 // Connect To Database
 mongoose.connect(config.database);
