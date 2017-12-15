@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';   
 import { ClientsComponent } from './components/components//clients/clients.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/components/home/home.component';
 import { DataService } from './services/data.service';
 import { ValidateService } from './services/validate.service';
 import { ClientService } from './services/client.service';
