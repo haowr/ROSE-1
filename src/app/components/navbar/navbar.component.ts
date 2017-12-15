@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
 
-  constructor( private authservice: AuthService, 
+  constructor( public authservice: AuthService, 
                //private flashmessage: FlashMessagesService,
                private router: Router,
                private dataservice:DataService,
