@@ -68,6 +68,7 @@ const appRoutes: Routes = [
     AppComponent,
     ClientsComponent,
     HomeComponent,
+    HomeComponent2,
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
