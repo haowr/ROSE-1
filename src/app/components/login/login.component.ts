@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
+//import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   successfulLogin: boolean = false;
   unSuccessfulLogin:boolean = false;
 
-  constructor(private authservice: AuthService, private router: Router, private flashmessage: FlashMessagesService) { }
+  constructor(private authservice: AuthService, private router: Router) { }
 
   ngOnInit() {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../services/validate.service';
 import { AuthService } from '../services/auth.service'
-import {FlashMessagesService} from 'angular2-flash-messages';
+//import {FlashMessagesService} from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   password: String;
 
 
-  constructor(private validateservice: ValidateService, private flashmessages: FlashMessagesService,
+  constructor(private validateservice: ValidateService,
               private authservice: AuthService, private router: Router ) { }
 
   ngOnInit() {
@@ -37,13 +37,13 @@ export class RegisterComponent implements OnInit {
 
      // Required Fields
     if(!this.validateservice.validateRegister(user)){
-      this.flashmessages.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
+     // this.flashmessages.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
     // Validate Email
     if(!this.validateservice.validateEmail(user.email)){
-      this.flashmessages.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
+      //this.flashmessages.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
@@ -51,10 +51,10 @@ export class RegisterComponent implements OnInit {
        // Register user
     this.authservice.registerUser(user).subscribe(data => {
       if(data.success){
-        this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
+       // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
         this.router.navigate(['/login']);
       } else {
-        this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+       // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/register']);
       }
     });

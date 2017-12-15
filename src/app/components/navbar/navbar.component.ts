@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FlashMessagesService} from 'angular2-flash-messages';
+//import { FlashMessagesService} from 'angular2-flash-messages';
 import { Routes,Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from "../services/data.service";
 import { ClientService } from "../services/client.service";
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   arrayOfOrderedItems:Number[];
 
   constructor( private authservice: AuthService, 
-               private flashmessage: FlashMessagesService,
+               //private flashmessage: FlashMessagesService,
                private router: Router,
                private dataservice:DataService,
                private clientservice: ClientService,
