@@ -151,6 +151,7 @@ export class LocationComponent implements OnInit {
                 console.log(this.subcontractorObject);
                 console.log(data.clients[i].subcontractors[j]);
                 this.toplineInventoryArray.push(data.clients[i].subcontractors[j].topline);
+                console.log("toplineInventoryArray");
                 console.log(this.toplineInventoryArray);
                 this.wescleanInventoryArray.push(data.clients[i].subcontractors[j].wesclean);
                 console.log(this.wescleanInventoryArray);
