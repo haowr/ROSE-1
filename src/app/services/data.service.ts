@@ -28,7 +28,7 @@ export class DataService {
 
         let headers = new Headers();
         headers.append('Content-type', 'application/json');
-        return this.http.get('http://localhost:3000/routes/locations',{headers:headers})
+        return this.http.get('/routes/locations',{headers:headers})
         .map(res=>{
             res.json();
         })
@@ -38,7 +38,7 @@ export class DataService {
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/pushdateintosubcontractors/',productcode, {headers:headers})
+    return this.http.post('/routes/pushdateintosubcontractors/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -48,7 +48,7 @@ export class DataService {
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/increaseitemintoplineinventory/',productcode, {headers:headers})
+    return this.http.post('/routes/increaseitemintoplineinventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -57,7 +57,7 @@ export class DataService {
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/increaseiteminwescleaninventory/',productcode, {headers:headers})
+    return this.http.post('/routes/increaseiteminwescleaninventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -66,7 +66,7 @@ export class DataService {
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/increaseiteminveritivcanadainventory/',productcode, {headers:headers})
+    return this.http.post('/routes/increaseiteminveritivcanadainventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -77,7 +77,7 @@ export class DataService {
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/increaseitemininventory/',productcode, {headers:headers})
+    return this.http.post('/routes/increaseitemininventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -86,7 +86,7 @@ export class DataService {
 
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/routes/decreaseitemininventory/',productcode, {headers:headers})
+    return this.http.post('/routes/decreaseitemininventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
 
@@ -96,7 +96,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/storenumbers', {headers:headers})
+      return this.http.get('/routes/storenumbers', {headers:headers})
       .map(res=>
 
           res.json());
@@ -107,7 +107,7 @@ export class DataService {
 
           let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/storenumbers', storenumbers,{headers:headers})
+      return this.http.post('/routes/storenumbers', storenumbers,{headers:headers})
       .map(res =>{
         res.json();
       })
@@ -117,7 +117,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/locations', locations,{headers:headers})
+      return this.http.post('/routes/locations', locations,{headers:headers})
       .map(res =>{
         res.json();
       })
@@ -129,7 +129,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/locations', {headers:headers})
+      return this.http.get('/routes/locations', {headers:headers})
       .map(res=>
 
           res.json());
@@ -140,7 +140,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/inventoryfinal', {headers:headers})
+      return this.http.get('/routes/inventoryfinal', {headers:headers})
       .map(res=>
 
           res.json());
@@ -150,7 +150,7 @@ export class DataService {
       console.log("getSubcontractors has run");
       let headers =new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.get('http://localhost:3000/routes/edit/newsubcontractor',{headers:headers})
+      return this.http.get('/routes/edit/newsubcontractor',{headers:headers})
       .map(res=>
       res.json());
 
@@ -161,7 +161,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventory',{headers:headers})
+      return this.http.get('/routes/subcontractorinventory',{headers:headers})
       .map(res =>
         res.json());
       
@@ -171,7 +171,7 @@ export class DataService {
 
             let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/increasesubcontractorinventoryitem/'+productcode,{headers:headers})
+      return this.http.put('/routes/increasesubcontractorinventoryitem/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -181,7 +181,7 @@ export class DataService {
 
             let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryitem/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryitem/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -190,7 +190,7 @@ export class DataService {
 
             let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/inventoryfinaldecrease/'+productcode,{headers:headers})
+      return this.http.put('/routes/inventoryfinaldecrease/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -200,7 +200,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/inventoryfinalincrease/'+productcode,{headers:headers})
+      return this.http.put('/routes/inventoryfinalincrease/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -211,7 +211,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/inventory/'+productcode,{headers:headers})
+      return this.http.put('/routes/inventory/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -221,7 +221,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/inventory', inventory,{headers:headers})
+      return this.http.post('/routes/inventory', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -231,7 +231,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/inventory', {headers:headers})
+      return this.http.get('/routes/inventory', {headers:headers})
       .map(res=>
 
           res.json());
@@ -242,7 +242,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-        return this.http.post('http://localhost:3000/routes/loblaws', loblaws, {headers:headers})
+        return this.http.post('/routes/loblaws', loblaws, {headers:headers})
         .map(function(res){
 
           res.json();
@@ -253,7 +253,7 @@ export class DataService {
     getLoblawsFromDatabase(){
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.get('http://localhost:3000/routes/loblaws',{headers:headers})
+      return this.http.get('/routes/loblaws',{headers:headers})
       .map(res =>
 
         res.json());
@@ -263,7 +263,7 @@ export class DataService {
 
         let headers = new Headers();
         headers.append('Content-Type','application/json');
-        return this.http.get('http://localhost:3000/routes/sobeys',{headers:headers})
+        return this.http.get('/routes/sobeys',{headers:headers})
         .map(res =>
           res.json());
         
@@ -272,7 +272,7 @@ export class DataService {
     getClients(){
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-      return this.http.get('http://localhost:3000/routes/clientso', {headers: headers})
+      return this.http.get('/routes/clientso', {headers: headers})
       .map( res => 
       
       res.json());
@@ -283,7 +283,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/tobasubcontractorinventory', inventory,{headers:headers})
+      return this.http.post('/routes/tobasubcontractorinventory', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -293,7 +293,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorytoba',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorytoba',{headers:headers})
       .map(res =>
         res.json());
       
@@ -303,7 +303,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/tobasubcontractorinventory/'+productcode,{headers:headers})
+      return this.http.put('/routes/tobasubcontractorinventory/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -313,7 +313,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasetobasubcontractorinventory/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasetobasubcontractorinventory/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -323,7 +323,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/supergensubcontractorinventory', inventory,{headers:headers})
+      return this.http.post('/routes/supergensubcontractorinventory', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -333,7 +333,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorysupergen',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorysupergen',{headers:headers})
       .map(res =>
         res.json());
       
@@ -343,7 +343,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorysupergen/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorysupergen/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -353,7 +353,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorysupergen/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorysupergen/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -362,7 +362,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/safebuildingsubcontractorinventory', inventory,{headers:headers})
+      return this.http.post('/routes/safebuildingsubcontractorinventory', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -372,7 +372,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorysafebuilding',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorysafebuilding',{headers:headers})
       .map(res =>
         res.json());
       
@@ -382,7 +382,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorysafebuilding/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorysafebuilding/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -392,7 +392,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesafebuildingsubcontractorinventory/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesafebuildingsubcontractorinventory/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -401,7 +401,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorymexcleaning', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorymexcleaning', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -411,7 +411,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorymexcleaning',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorymexcleaning',{headers:headers})
       .map(res =>
         res.json());
       
@@ -421,7 +421,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorymexcleaning/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorymexcleaning/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -431,7 +431,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorymexcleaning/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorymexcleaning/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -440,7 +440,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/mayamysubcontractorinventory', inventory,{headers:headers})
+      return this.http.post('/routes/mayamysubcontractorinventory', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -450,7 +450,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorymayamy',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorymayamy',{headers:headers})
       .map(res =>
         res.json());
       
@@ -460,7 +460,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorymayamy/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorymayamy/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -470,7 +470,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/idecreasemayamysubcontractorinventory/'+productcode,{headers:headers})
+      return this.http.put('/routes/idecreasemayamysubcontractorinventory/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -479,7 +479,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorymansheel', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorymansheel', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -489,7 +489,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorymansheel',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorymansheel',{headers:headers})
       .map(res =>
         res.json());
       
@@ -499,7 +499,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorymansheel/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorymansheel/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -509,7 +509,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorymansheel/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorymansheel/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -518,7 +518,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryknjanitorial', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryknjanitorial', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -528,7 +528,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryknjanitorial',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryknjanitorial',{headers:headers})
       .map(res =>
         res.json());
       
@@ -538,7 +538,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryknjanitorial/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryknjanitorial/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -548,7 +548,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryjossy/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryjossy/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -557,7 +557,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryjossy', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryjossy', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -567,7 +567,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryjossy',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryjossy',{headers:headers})
       .map(res =>
         res.json());
       
@@ -577,7 +577,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryjossy/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryjossy/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -587,7 +587,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryjossy/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryjossy/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -598,7 +598,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividual1992inventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividual1992inventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -611,7 +611,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividual1799inventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividual1799inventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -624,7 +624,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualjossyinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualjossyinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -637,7 +637,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualdeliinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualdeliinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -650,7 +650,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualgioninventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualgioninventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -663,7 +663,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualknjainventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualknjainventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -676,7 +676,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualantainventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualantainventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -691,7 +691,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualdtesinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualdtesinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -704,7 +704,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualcrysinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualcrysinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -716,7 +716,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualmexinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualmexinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -728,7 +728,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualsafeinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualsafeinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -740,7 +740,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualgwelinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualgwelinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -752,7 +752,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualdmbsinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualdmbsinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -764,7 +764,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualaredieinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualaredieinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -776,7 +776,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualgaiuinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualgaiuinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -788,7 +788,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualdhzeinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualdhzeinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -800,7 +800,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualmayainventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualmayainventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -812,7 +812,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualsupeinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualsupeinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -824,7 +824,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualaakbinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualaakbinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -836,7 +836,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualmansinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualmansinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -848,7 +848,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualtobainventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualtobainventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -861,7 +861,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/getindividualdeliinventoryitem/',productcode,{headers:headers})
+      return this.http.post('/routes/getindividualdeliinventoryitem/',productcode,{headers:headers})
       .map(res=>
 
         res.json()
@@ -874,7 +874,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.post('http://localhost:3000/routes/changeorderpendingstatustotrue',subcontractor,{headers:headers})
+      return this.http.post('/routes/changeorderpendingstatustotrue',subcontractor,{headers:headers})
       .map(res=>
         res.json());
 
@@ -883,7 +883,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.post('http://localhost:3000/routes/changeorderpendingstatustofalse',subcontractor,{headers:headers})
+      return this.http.post('/routes/changeorderpendingstatustofalse',subcontractor,{headers:headers})
       .map(res=>
         res.json());
 
@@ -892,7 +892,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorygwelcome', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorygwelcome', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -902,7 +902,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorygwelcome',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorygwelcome',{headers:headers})
       .map(res =>
         res.json());
       
@@ -912,7 +912,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorygwelcome/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorygwelcome/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -922,7 +922,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorygwelcome/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorygwelcome/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -933,7 +933,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorygion', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorygion', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -943,7 +943,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorygion',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorygion',{headers:headers})
       .map(res =>
         res.json());
       
@@ -953,7 +953,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorygion/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorygion/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -963,7 +963,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorygion/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorygion/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -973,7 +973,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorygaiusleduc', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorygaiusleduc', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -983,7 +983,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorygaiusleduc',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorygaiusleduc',{headers:headers})
       .map(res =>
         res.json());
       
@@ -993,7 +993,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorygaiusleduc/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorygaiusleduc/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1003,7 +1003,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorygaiusleduc/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorygaiusleduc/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1013,7 +1013,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorygaiusrocky', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorygaiusrocky', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1023,7 +1023,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorygaiusrocky',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorygaiusrocky',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1033,7 +1033,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorygaiusrocky/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorygaiusrocky/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1043,7 +1043,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorygaiusrocky/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorygaiusrocky/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1053,7 +1053,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorygaiusspruce', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorygaiusspruce', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1063,7 +1063,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorygaiusspruce',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorygaiusspruce',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1073,7 +1073,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorygaiusspruce/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorygaiusspruce/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1083,7 +1083,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorygaiusspruce/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorygaiusspruce/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1093,7 +1093,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorydtesfame', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorydtesfame', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1103,7 +1103,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorydtesfame',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorydtesfame',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1113,7 +1113,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorydtesfame/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorydtesfame/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1123,7 +1123,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorydtesfame/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorydtesfame/'+productcode,{headers:headers})
       .map(res=>
         res.json());
       
@@ -1133,7 +1133,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorydoubleh', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorydoubleh', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1143,7 +1143,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorydoubleh',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorydoubleh',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1153,7 +1153,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorydoubleh/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorydoubleh/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1163,7 +1163,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorydoubleh/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorydoubleh/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1173,7 +1173,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorydmb', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorydmb', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1183,7 +1183,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorydmb',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorydmb',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1193,7 +1193,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorydmb/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorydmb/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1203,7 +1203,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorydellnagenet/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorydellnagenet/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1213,7 +1213,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorydellnagenet', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorydellnagenet', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1223,7 +1223,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorydellnagenet',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorydellnagenet',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1233,7 +1233,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorydellnagenet/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorydellnagenet/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1243,7 +1243,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorydellnagenet/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorydellnagenet/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1253,7 +1253,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventorycrystal', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventorycrystal', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1263,7 +1263,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventorycrystal',{headers:headers})
+      return this.http.get('/routes/subcontractorinventorycrystal',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1273,7 +1273,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventorycrystal/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventorycrystal/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1283,7 +1283,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventorycrystal/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventorycrystal/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1293,7 +1293,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryaredie', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryaredie', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1303,7 +1303,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryaredie',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryaredie',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1313,7 +1313,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryaredie/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryaredie/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1323,7 +1323,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryaredie/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryaredie/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1333,7 +1333,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryanta', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryanta', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1343,7 +1343,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryanta',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryanta',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1353,7 +1353,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryanta/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryanta/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1363,7 +1363,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryanta/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryanta/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1373,7 +1373,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryaak', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryaak', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1383,7 +1383,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryaak',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryaak',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1393,7 +1393,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryaak/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryaak/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1403,7 +1403,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryaak/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryaak/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1413,7 +1413,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryalbertaltdbonny', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryalbertaltdbonny', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1423,7 +1423,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryalbertaltdbonny',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryalbertaltdbonny',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1433,7 +1433,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryalbertaltdbonny/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryalbertaltdbonny/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1443,7 +1443,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryalbertaltdbonny/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryalbertaltdbonny/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1453,7 +1453,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.post('http://localhost:3000/routes/subcontractorinventoryalbertaltdwhitemud', inventory,{headers:headers})
+      return this.http.post('/routes/subcontractorinventoryalbertaltdwhitemud', inventory,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1463,7 +1463,7 @@ export class DataService {
 
                         let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.get('http://localhost:3000/routes/subcontractorinventoryalbertaltdwhitemud',{headers:headers})
+      return this.http.get('/routes/subcontractorinventoryalbertaltdwhitemud',{headers:headers})
       .map(res =>
         res.json());
       
@@ -1473,7 +1473,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/subcontractorinventoryalbertaltdwhitemud/'+productcode,{headers:headers})
+      return this.http.put('/routes/subcontractorinventoryalbertaltdwhitemud/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
@@ -1483,7 +1483,7 @@ export class DataService {
 
       let headers = new Headers();
       headers.append('Content-type','application/json');
-      return this.http.put('http://localhost:3000/routes/decreasesubcontractorinventoryalbertaltdwhitemud/'+productcode,{headers:headers})
+      return this.http.put('/routes/decreasesubcontractorinventoryalbertaltdwhitemud/'+productcode,{headers:headers})
       .map(function(res){
         res.json();
       })
