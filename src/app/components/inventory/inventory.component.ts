@@ -122,7 +122,7 @@ export class InventoryComponent implements OnInit {
             this.wescleanInventoryArray = data.clients[i].subcontractors[j].wesclean
             this.veritivCanadaInventoryArray = data.clients[i].subcontractors[j].veritivcanada
 
-            if (this.supplier == "topline") {
+            if (this.supplier == "Topline Sanitation Inc.") {
               console.log("this should run..")
               console.log(this.toplineInventoryArray);
               console.log(data.clients[i].subcontractors[j].date);
