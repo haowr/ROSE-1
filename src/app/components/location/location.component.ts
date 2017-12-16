@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 import { Routes, Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpModule, Http, Headers } from '@angular/http';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import { ClientService } from '../services/client.service';
+import { ClientService } from '../../services/client.service';
 
 
 @Component({

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
 import { RouterModule, Routes, ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { ClientService } from '../../services/client.service';
-import { AuthService } from '../../services/auth.service';
+import { ClientService } from '../../../services/client.service';
+import { AuthService } from '../../../services/auth.service';
 //import { trigger, state, style, transition,animate,keyframes, query, stagger } from '@angular/animations';
 
 

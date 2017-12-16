@@ -42,7 +42,7 @@ import { ManagementComponent } from './components/management/management.componen
 import { RemoveclientComponent } from './components/removeclient/removeclient.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent2 },
   { path: 'loblaws', component: LoblawsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

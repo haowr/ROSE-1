@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { ClientService } from '../services/client.service';
+import { DataService } from '../../services/data.service';
+import { ClientService } from '../../services/client.service';
 import { Routes, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-inventory',

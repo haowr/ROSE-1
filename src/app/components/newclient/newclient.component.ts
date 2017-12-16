@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../services/client.service';
-import { DataService } from '../services/data.service';
+import { ClientService } from '../../services/client.service';
+import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-newclient',
   templateUrl: './newclient.component.html',
