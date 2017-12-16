@@ -5,6 +5,7 @@ const cors = require('cors');
 const routes = require('./routes/routes');
 const mongoose = require('mongoose');
 const config = require('./config/database');
+const passport = require('passport');
 
 
 // Connect To Database
@@ -24,6 +25,10 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname,'dist')));
+//PASSPORT MIDDLEWARE
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 //Routes file 
 app.use('/routes',routes);
 app.get('*', (req,res)=>{
