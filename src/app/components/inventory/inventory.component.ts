@@ -169,6 +169,8 @@ export class InventoryComponent implements OnInit {
                   this.costNow = this.toplineInventoryArray[i].ordered * this.toplineInventoryArray[i].price;
                   this.costNow = Number(this.costNow.toFixed(2));
                   this.currentordered = this.toplineInventoryArray[i].ordered;
+                  console.log(this.currentordered)
+                  console.log("this.currentordered");
 
                   
                   this.orderedDec = this.toplineInventoryArray[i].ordereddec;
