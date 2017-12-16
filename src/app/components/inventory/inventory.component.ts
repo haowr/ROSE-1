@@ -20,6 +20,7 @@ export class InventoryComponent implements OnInit {
   cost: number;
   currentordered: number = 0;
   ordered: number=0;
+  orderedJan: number=0;
   orderedFeb: number=0;
   orderedMar: number=0;
   orderedApr: number=0;
@@ -172,12 +173,13 @@ export class InventoryComponent implements OnInit {
                   this.costNow = Number(this.costNow.toFixed(2));
                   this.currentordered = this.toplineInventoryArray[i].ordered;
                   console.log(this.currentordered)
+                  console.log(this.costNow);
                   console.log("this.currentordered");
 
                   
                   this.orderedDec = this.toplineInventoryArray[i].ordereddec;
                   this.currentordered = this.toplineInventoryArray[i].ordered;
-                  this.ordered= this.toplineInventoryArray[i].orderedjan;
+                  this.orderedJan= this.toplineInventoryArray[i].orderedjan;
                   
                   this.orderedFeb= this.toplineInventoryArray[i].orderedfeb;
                   this.orderedMar = this.toplineInventoryArray[i].orderedmar;
