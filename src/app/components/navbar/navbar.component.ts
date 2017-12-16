@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 //import { FlashMessagesService} from 'angular2-flash-messages';
 import { Routes,Router, ActivatedRoute, Params } from '@angular/router';
-import { DataService } from "../services/data.service";
-import { ClientService } from "../services/client.service";
+import { DataService } from "../../services/data.service";
+import { ClientService } from "../../services/client.service";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
