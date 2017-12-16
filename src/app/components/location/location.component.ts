@@ -34,7 +34,14 @@ export class LocationComponent implements OnInit {
 
   storenumberArray: string[];
   subcontractorArray: Object[];
-  subcontractorObject: Object;
+  subcontractorObject={
+
+    name:"",
+    contactname:"",
+    contactphone:"",
+    emailaddress:""
+
+  }
   chartOptions = {
     responsive: true
   };
