@@ -18,6 +18,7 @@ export class InventoryComponent implements OnInit {
   manufacturer: string;
   description: string;
   cost: number;
+  currentordered: number = 0;
   ordered: number=0;
   orderedFeb: number=0;
   orderedMar: number=0;
@@ -41,6 +42,7 @@ export class InventoryComponent implements OnInit {
   costOct:number=0;
   costNov:number=0;
   costDec:number=0;
+  costNow:number = 0;
   date= new Date();
   dateNow = this.date.getDate()
   month = this.date.getMonth()+1;
@@ -164,11 +166,15 @@ export class InventoryComponent implements OnInit {
                   this.costNov = this.toplineInventoryArray[i].orderednov * this.toplineInventoryArray[i].price;
                   this.costNov = Number(this.costNov.toFixed(2));
 
-
+                  this.costNow = this.toplineInventoryArray[i].ordered * this.toplineInventoryArray[i].price;
+                  this.costNow = Number(this.costNow.toFixed(2));
+                  this.currentordered = this.toplineInventoryArray[i].ordered;
 
                   
                   this.orderedDec = this.toplineInventoryArray[i].ordereddec;
+                  this.currentordered = this.toplineInventoryArray[i].ordered;
                   this.ordered= this.toplineInventoryArray[i].orderedjan;
+                  
                   this.orderedFeb= this.toplineInventoryArray[i].orderedfeb;
                   this.orderedMar = this.toplineInventoryArray[i].orderedmar;
                   this.orderedApr = this.toplineInventoryArray[i].orderedapr;
@@ -211,17 +217,17 @@ export class InventoryComponent implements OnInit {
             
                  this.chartData = [
 
-                    { data: [this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
+                    { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
                              this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
                              ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
+                    { data: [this.costNow,this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
                             this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
 
 
                     //{ data: [this.ordered, 0, 0, 0], label: this.location }
                      ];
                   console.log(this.chartData[0]["data"]);
-                  this.chartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                  this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
             }

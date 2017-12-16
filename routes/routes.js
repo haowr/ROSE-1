@@ -1298,6 +1298,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1315,6 +1316,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1331,6 +1333,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "orderspending":false,
 					    "instock" : 50,
 					    "ordered" : 0,
@@ -1349,6 +1352,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "received" : 0,
@@ -1369,6 +1373,7 @@ router.post('/register/newclient', function (req, res) {
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
+                        "supplier": "Veritiv Canada Inc.",
 
 					    "received" : 0,
 					    "requested":0,
@@ -1384,6 +1389,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1401,6 +1407,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "orderspending":false,    
 					    "ordered" : 0,
@@ -1417,6 +1424,7 @@ router.post('/register/newclient', function (req, res) {
 					,
 					{
 					    "name" : "threem",
+                        "supplier": "Veritiv Canada Inc.",
 					    "manufacturer":"3M",
 					    "instock" : 50,
 					    "ordered" : 0,
@@ -1433,6 +1441,7 @@ router.post('/register/newclient', function (req, res) {
 					,
 					{
 					    "name" : "threem",
+                        "supplier": "Veritiv Canada Inc.",
 					    "manufacturer":"3M",
 					    "instock" : 50,
 					    "orderspending":false,
@@ -1449,6 +1458,7 @@ router.post('/register/newclient', function (req, res) {
 					,
 					{
 					    "name" : "threem",
+                        "supplier": "Veritiv Canada Inc.",
 					    "manufacturer":"3M",
 					    "instock" : 50,
 					    "orderspending":false,
@@ -1466,6 +1476,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1484,6 +1495,7 @@ router.post('/register/newclient', function (req, res) {
 					    "name" : "threem",
 					    "manufacturer":"3M",
 					    "instock" : 50,
+                        "supplier": "Veritiv Canada Inc.",
 					    "ordered" : 0,
 					    "orderspending":false,
 					    "received" : 0,
@@ -1500,6 +1512,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1516,6 +1529,7 @@ router.post('/register/newclient', function (req, res) {
 
 					{    "name" : "threem",
 					"manufacturer":"3M",
+                    "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1534,6 +1548,7 @@ router.post('/register/newclient', function (req, res) {
 					    "name" : "threem",
 					    "manufacturer":"3M",
 					    "instock" : 50,
+                        "supplier": "Veritiv Canada Inc.",
 					    "ordered" : 0,
 					    "received" : 0,
 					    "orderspending":false,
@@ -1550,6 +1565,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "received" : 0,
@@ -1567,6 +1583,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "received" : 0,
@@ -1585,6 +1602,7 @@ router.post('/register/newclient', function (req, res) {
 					    "name" : "threem",
 					    "manufacturer":"3M",
 					    "instock" : 50,
+                        "supplier": "Veritiv Canada Inc.",
 					    "ordered" : 0,
 					    "received" : 0,
 					    "orderspending":false,
@@ -1602,6 +1620,7 @@ router.post('/register/newclient', function (req, res) {
 					    "name" : "threem",
 					    "manufacturer":"3M",
 					    "instock" : 50,
+                        "supplier": "Veritiv Canada Inc.",
 					    "ordered" : 0,
 					    "orderspending":false,
 					    "received" : 0,
@@ -1618,6 +1637,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1639,6 +1659,7 @@ router.post('/register/newclient', function (req, res) {
 					    "ordered" : 0,
 					    "orderspending":false,
 					    "received" : 0,
+                        "supplier": "Veritiv Canada Inc.",
 					    "requested":0,
 					    "productcode" : 157012,
 					    "description" : "7000052396 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
@@ -1652,6 +1673,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1668,6 +1690,7 @@ router.post('/register/newclient', function (req, res) {
 
 					{    "name" : "threem",
 					"manufacturer":"3M",
+                    "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1683,6 +1706,7 @@ router.post('/register/newclient', function (req, res) {
 					,
 					{
 					    "name" : "threem",
+                        "supplier": "Veritiv Canada Inc.",
 					    "manufacturer":"3M",
 					    "instock" : 50,
 					    "ordered" : 0,
@@ -1701,6 +1725,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "received" : 0,
@@ -1718,6 +1743,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 					    "name" : "threem",
 					    "manufacturer":"3M",
+                        "supplier": "Veritiv Canada Inc.",
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
@@ -1737,6 +1763,7 @@ router.post('/register/newclient', function (req, res) {
 					    "manufacturer":"3M",
 					    "instock" : 50,
 					    "ordered" : 0,
+                        "supplier": "Veritiv Canada Inc.",
 					    "orderspending":false,
 					    "received" : 0,
 					    "requested":0,
@@ -1753,7 +1780,7 @@ router.post('/register/newclient', function (req, res) {
 					    "name" : "threem",
 					    "manufacturer":"3M",
 					    "instock" : 50,
-					    "ordered" : 0,
+					    "ordered" : 0,"supplier": "Veritiv Canada Inc.",
 					    "orderspending":false,
 					    "received" : 0,
 					    "requested":0,
@@ -1771,6 +1798,7 @@ router.post('/register/newclient', function (req, res) {
 					    "instock" : 50,
 					    "ordered" : 0,
 					    "orderspending":false,
+                        "supplier": "Veritiv Canada Inc.",
 					    "requested":0,
 					    "received" : 0,
 					    "productcode" : 157387,
@@ -2134,6 +2162,7 @@ router.post('/register/newclient', function (req, res) {
                         client.subcontractors[i].topline=[
 					{
 						"manufacturer":"Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc.",
 						"instock": 50,
 						"ordered":0,
 						"orderspending":false,
@@ -2149,6 +2178,7 @@ router.post('/register/newclient', function (req, res) {
 					{
 						"manufacturer":"Topline Sanitation Inc.",
 						"instock": 50,
+                        "supplier": "Topline Sanitation Inc.",
 						"ordered":0,
 						"orderspending":false,
 						"recieved":0,
@@ -2163,6 +2193,7 @@ router.post('/register/newclient', function (req, res) {
 										{
 						"manufacturer":"Topline Sanitation Inc.",
 						"instock": 50,
+                       "supplier": "Topline Sanitation Inc.",
 						"ordered":0,
 						"orderspending":false,
 						"recieved":0,
@@ -2177,6 +2208,7 @@ router.post('/register/newclient', function (req, res) {
 										{
 						"manufacturer":"Topline Sanitation Inc.",
 						"instock": 50,
+                        "supplier": "Topline Sanitation Inc.",
 						"ordered":0,
 						"orderspending":false,
 						"recieved":0,
@@ -2191,6 +2223,7 @@ router.post('/register/newclient', function (req, res) {
 										{
 						"manufacturer":"Topline Sanitation Inc.",
 						"instock": 50,
+                       "supplier": "Topline Sanitation Inc.",
 						"ordered":0,
 						"orderspending":false,
 						"recieved":0,
@@ -2206,6 +2239,7 @@ router.post('/register/newclient', function (req, res) {
 						"supplier": "Topline Sanitation Inc.",
 						"manufacturer":"Pur Value",
 						"instock": 50,
+                        
 						"ordered":0,
 						"orderspending":false,
 						"recieved":0,
