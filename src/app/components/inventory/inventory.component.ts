@@ -73,9 +73,13 @@ export class InventoryComponent implements OnInit {
       console.log(this.dateNow);
       console.log(params.supplier);
       console.log("params.supplier");
+      console.log(params.productcode);
+      console.log("params.productcode");
       this.client = params.client;
+
       this.location = params.location;
       this.productcode = params.productcode;
+      
       this.supplier = params.supplier;
       this.chartData = [
 
