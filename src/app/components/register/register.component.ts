@@ -34,6 +34,17 @@ export class RegisterComponent implements OnInit {
 
     }
         console.log(user);
+            //REGISTER USER
+       // Register user
+    this.authservice.registerUser(user).subscribe(data => {
+      if(data.success){
+       // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
+        this.router.navigate(['/login']);
+      } else {
+       // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+        this.router.navigate(['/register']);
+      }
+    });
 
      // Required Fields
     if(!this.validateservice.validateRegister(user)){
@@ -47,15 +58,5 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    //REGISTER USER
-       // Register user
-    this.authservice.registerUser(user).subscribe(data => {
-      if(data.success){
-       // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
-        this.router.navigate(['/login']);
-      } else {
-       // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['/register']);
-      }
-    });
+
   }}

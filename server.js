@@ -3,6 +3,8 @@ const http = require('http');
 const path = require('path');
 const cors = require('cors');
 const routes = require('./routes/routes');
+const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const passport = require('passport');
@@ -25,6 +27,8 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname,'dist')));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //PASSPORT MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());

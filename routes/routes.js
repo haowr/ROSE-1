@@ -6257,6 +6257,9 @@ router.get('/clientso', function (req, res) {
 
 // Register
 router.post('/register', (req, res, next) => {
+
+    console.log(req.body);
+
     let newUser = new User({
         name: req.body.name,
         email: req.body.email,
