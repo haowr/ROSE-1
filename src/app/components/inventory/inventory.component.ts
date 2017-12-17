@@ -299,7 +299,7 @@ export class InventoryComponent implements OnInit {
                
 
               }
-
+                console.log("update chart data");
                 this.chartData = [
 
                     { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
