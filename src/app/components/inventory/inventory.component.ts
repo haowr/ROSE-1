@@ -246,6 +246,7 @@ export class InventoryComponent implements OnInit {
             else if (this.supplier == "wesclean") {
 
               console.log(this.wescleanInventoryArray);
+              console.log("we're in weslcean")
               for (let i = 0; i < this.wescleanInventoryArray.length; i++) {
 
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
@@ -295,19 +296,6 @@ export class InventoryComponent implements OnInit {
                   console.log(this.description);
                   console.log(this.cost);
                   console.log(this.ordered);
- this.chartData = [
-
-                    { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
-                             this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
-                             ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.costNow,this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
-                            this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
-
-
-                    //{ data: [this.ordered, 0, 0, 0], label: this.location }
-                     ];
-                  console.log(this.chartData[0]["data"]);
-                  this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
                
 
