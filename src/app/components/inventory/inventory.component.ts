@@ -248,6 +248,19 @@ export class InventoryComponent implements OnInit {
               console.log(this.wescleanInventoryArray);
               console.log("we're in weslcean")
               for (let i = 0; i < this.wescleanInventoryArray.length; i++) {
+                  this.wescleanInventoryArray[i].orderedjan = 0
+                 this.wescleanInventoryArray[i].orderedfeb = 0
+                  this.wescleanInventoryArray[i].orderedmar = 0
+                  this.wescleanInventoryArray[i].orderedapr = 0
+                  this.wescleanInventoryArray[i].orderedmay = 0
+                  this.wescleanInventoryArray[i].orderedlove = 0
+                  this.wescleanInventoryArray[i].orderedjul = 0
+                  this.wescleanInventoryArray[i].orderedaug = 0
+                  this.wescleanInventoryArray[i].orderedsept = 0
+                  this.wescleanInventoryArray[i].orderedoct= 0
+                                    this.wescleanInventoryArray[i].orderednov = 0
+                  this.wescleanInventoryArray[i].ordereddec = 0
+
 
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
