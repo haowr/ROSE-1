@@ -133,7 +133,18 @@ export class InventoryComponent implements OnInit {
               console.log(data.clients[i].subcontractors[j].date);
 
               for (let i = 0; i < this.toplineInventoryArray.length; i++) {
-
+                   this.toplineInventoryArray[i].orderedjan = 0
+                 this.toplineInventoryArray[i].orderedfeb = 0
+                  this.toplineInventoryArray[i].orderedmar = 0
+                  this.toplineInventoryArray[i].orderedapr = 0
+                  this.toplineInventoryArray[i].orderedmay = 0
+                  this.toplineInventoryArray[i].orderedlove = 0
+                  this.toplineInventoryArray[i].orderedjul = 0
+                  this.toplineInventoryArray[i].orderedaug = 0
+                  this.toplineInventoryArray[i].orderedsept = 0
+                  this.toplineInventoryArray[i].orderedoct= 0
+                  this.toplineInventoryArray[i].orderednov = 0
+                  this.toplineInventoryArray[i].ordereddec = 0
                 console.log("this should run next");
 
                 if (this.toplineInventoryArray[i].productcode == this.productcode) {
@@ -258,7 +269,7 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderedaug = 0
                   this.wescleanInventoryArray[i].orderedsept = 0
                   this.wescleanInventoryArray[i].orderedoct= 0
-                                    this.wescleanInventoryArray[i].orderednov = 0
+                  this.wescleanInventoryArray[i].orderednov = 0
                   this.wescleanInventoryArray[i].ordereddec = 0
 
 
@@ -348,6 +359,18 @@ export class InventoryComponent implements OnInit {
               console.log(this.veritivCanadaInventoryArray);
               for (let i = 0; i < this.veritivCanadaInventoryArray.length; i++) {
 
+                  this.veritivCanadaInventoryArray[i].orderedjan = 0
+                 this.veritivCanadaInventoryArray[i].orderedfeb = 0
+                  this.veritivCanadaInventoryArray[i].orderedmar = 0
+                  this.veritivCanadaInventoryArray[i].orderedapr = 0
+                  this.veritivCanadaInventoryArray[i].orderedmay = 0
+                  this.veritivCanadaInventoryArray[i].orderedlove = 0
+                  this.veritivCanadaInventoryArray[i].orderedjul = 0
+                  this.veritivCanadaInventoryArray[i].orderedaug = 0
+                  this.veritivCanadaInventoryArray[i].orderedsept = 0
+                  this.veritivCanadaInventoryArray[i].orderedoct= 0
+                  this.veritivCanadaInventoryArray[i].orderednov = 0
+                  this.veritivCanadaInventoryArray[i].ordereddec = 0
                 if (this.veritivCanadaInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.veritivCanadaInventoryArray[i].ordered * this.veritivCanadaInventoryArray[i].price;
