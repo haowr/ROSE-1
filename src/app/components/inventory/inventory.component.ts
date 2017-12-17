@@ -295,10 +295,7 @@ export class InventoryComponent implements OnInit {
                   console.log(this.description);
                   console.log(this.cost);
                   console.log(this.ordered);
-
-               
-   console.log("update chart data");
-                this.chartData = [
+ this.chartData = [
 
                     { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
                              this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
@@ -312,12 +309,10 @@ export class InventoryComponent implements OnInit {
                   console.log(this.chartData[0]["data"]);
                   this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+               
 
-
-
-                }
               }
-                console.log("update chart data");
+                console.log("update chart data")
                 this.chartData = [
 
                     { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
