@@ -255,41 +255,41 @@ export class InventoryComponent implements OnInit {
                   this.ordered = this.wescleanInventoryArray[i].ordered;
                   this.manufacturer = this.wescleanInventoryArray[i].manufacturer;
                   this.description = this.wescleanInventoryArray[i].description;
-                  this.costDec = this.toplineInventoryArray[i].ordereddec * this.toplineInventoryArray[i].price;
+                  this.costDec = this.wescleanInventoryArray[i].ordereddec * this.wescleanInventoryArray[i].price;
                   this.costDec = Number(this.costDec.toFixed(2));
-                  this.cost = this.toplineInventoryArray[i].orderedjan * this.toplineInventoryArray[i].price;
+                  this.cost = this.wescleanInventoryArray[i].orderedjan * this.wescleanInventoryArray[i].price;
                   this.cost = Number(this.cost.toFixed(2));
-                  this.costFeb = this.toplineInventoryArray[i].orderedfeb * this.toplineInventoryArray[i].price;
+                  this.costFeb = this.wescleanInventoryArray[i].orderedfeb * this.wescleanInventoryArray[i].price;
                   this.costFeb = Number(this.costFeb.toFixed(2));
-                  this.costMar = this.toplineInventoryArray[i].orderedmar * this.toplineInventoryArray[i].price;
+                  this.costMar = this.wescleanInventoryArray[i].orderedmar * this.wescleanInventoryArray[i].price;
                   this.costMar = Number(this.costMar.toFixed(2));
 
-                  this.costApr = this.toplineInventoryArray[i].orderedapr * this.toplineInventoryArray[i].price;
+                  this.costApr = this.wescleanInventoryArray[i].orderedapr * this.wescleanInventoryArray[i].price;
                   this.costApr = Number(this.costApr.toFixed(2));
 
-                  this.costMay = this.toplineInventoryArray[i].orderedmay * this.toplineInventoryArray[i].price;
+                  this.costMay = this.wescleanInventoryArray[i].orderedmay * this.wescleanInventoryArray[i].price;
                   this.costMay = Number(this.costMay.toFixed(2));
 
-                  this.costLove = this.toplineInventoryArray[i].orderedlove * this.toplineInventoryArray[i].price;
+                  this.costLove = this.wescleanInventoryArray[i].orderedlove * this.wescleanInventoryArray[i].price;
                   this.costLove = Number(this.costLove.toFixed(2));
 
-                  this.costJuly = this.toplineInventoryArray[i].orderedjul * this.toplineInventoryArray[i].price;
+                  this.costJuly = this.wescleanInventoryArray[i].orderedjul * this.wescleanInventoryArray[i].price;
                   this.costJuly = Number(this.costJuly.toFixed(2));
 
-                  this.costAug = this.toplineInventoryArray[i].orderedaug * this.toplineInventoryArray[i].price;
+                  this.costAug = this.wescleanInventoryArray[i].orderedaug * this.wescleanInventoryArray[i].price;
                   this.costAug = Number(this.costAug.toFixed(2));
 
-                  this.costSept = this.toplineInventoryArray[i].orderedsept * this.toplineInventoryArray[i].price;
+                  this.costSept = this.wescleanInventoryArray[i].orderedsept * this.wescleanInventoryArray[i].price;
                   this.costSept = Number(this.costSept.toFixed(2));
 
-                  this.costOct = this.toplineInventoryArray[i].orderedoct * this.toplineInventoryArray[i].price;
+                  this.costOct = this.wescleanInventoryArray[i].orderedoct * this.wescleanInventoryArray[i].price;
                   this.costOct = Number(this.costOct.toFixed(2));
 
-                  this.costNov = this.toplineInventoryArray[i].orderednov * this.toplineInventoryArray[i].price;
+                  this.costNov = this.wescleanInventoryArray[i].orderednov * this.wescleanInventoryArray[i].price;
                   this.costNov = Number(this.costNov.toFixed(2));
-                  this.costNow = this.toplineInventoryArray[i].ordered * this.toplineInventoryArray[i].price;
-                                    this.currentordered = this.toplineInventoryArray[i].ordered;
-                  this.orderedJan= this.toplineInventoryArray[i].orderedjan;
+                  this.costNow = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
+                                    this.currentordered = this.wescleanInventoryArray[i].ordered;
+                  this.orderedJan= this.wescleanInventoryArray[i].orderedjan;
 
                   console.log(this.manufacturer);
                   console.log(this.description);
