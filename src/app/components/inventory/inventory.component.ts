@@ -287,6 +287,9 @@ export class InventoryComponent implements OnInit {
 
                   this.costNov = this.toplineInventoryArray[i].orderednov * this.toplineInventoryArray[i].price;
                   this.costNov = Number(this.costNov.toFixed(2));
+                  this.costNow = this.toplineInventoryArray[i].ordered * this.toplineInventoryArray[i].price;
+                                    this.currentordered = this.toplineInventoryArray[i].ordered;
+                  this.orderedJan= this.toplineInventoryArray[i].orderedjan;
 
                   console.log(this.manufacturer);
                   console.log(this.description);
@@ -297,19 +300,20 @@ export class InventoryComponent implements OnInit {
 
               }
 
-              this.chartData = [
+                this.chartData = [
 
-                    { data: [this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
+                    { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
                              this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
                              ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
+                    { data: [this.costNow,this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
                             this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
 
 
                     //{ data: [this.ordered, 0, 0, 0], label: this.location }
                      ];
                   console.log(this.chartData[0]["data"]);
-                  this.chartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                  this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 
 
 
