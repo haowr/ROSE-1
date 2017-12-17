@@ -317,6 +317,7 @@ export class InventoryComponent implements OnInit {
                      ];
                   console.log(this.chartData[0]["data"]);
                   console.log(this.chartLabels);
+                  console.log("this.chartData");
                   console.log(this.chartData)
                   this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
