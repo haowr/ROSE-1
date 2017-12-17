@@ -292,6 +292,7 @@ export class InventoryComponent implements OnInit {
                                     this.currentordered = this.wescleanInventoryArray[i].ordered;
                                     console.log("this.costnow");
                                     console.log(this.costNow)
+                                    console.log(this.wescleanInventoryArray[i].price)
                   this.orderedJan= this.wescleanInventoryArray[i].orderedjan;
 
                   console.log(this.manufacturer);
