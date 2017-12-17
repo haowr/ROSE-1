@@ -243,7 +243,7 @@ export class InventoryComponent implements OnInit {
 
 
             }
-            else if (this.supplier == "wesclean") {
+            else if (this.supplier == "Wesclean") {
 
               console.log(this.wescleanInventoryArray);
               console.log("we're in weslcean")
