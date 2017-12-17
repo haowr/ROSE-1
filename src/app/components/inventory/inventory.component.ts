@@ -290,6 +290,8 @@ export class InventoryComponent implements OnInit {
                   this.costNov = Number(this.costNov.toFixed(2));
                   this.costNow = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
                                     this.currentordered = this.wescleanInventoryArray[i].ordered;
+                                    console.log("this.costnow");
+                                    console.log(this.costNow)
                   this.orderedJan= this.wescleanInventoryArray[i].orderedjan;
 
                   console.log(this.manufacturer);
