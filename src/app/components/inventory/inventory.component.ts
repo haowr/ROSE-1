@@ -137,7 +137,9 @@ export class InventoryComponent implements OnInit {
                 console.log("this should run next");
 
                 if (this.toplineInventoryArray[i].productcode == this.productcode) {
-                  console.log(this.toplineInventoryArray);
+                  console.log("productcodes");
+                  console.log(this.toplineInventoryArray[i].productcode);
+                  console.log(this.productcode);
                   console.log(this.toplineInventoryArray[i].ordereddec);
                     console.log("this has runner..")
                   this.costDec = this.toplineInventoryArray[i].ordereddec * this.toplineInventoryArray[i].price;
