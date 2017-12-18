@@ -270,7 +270,7 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderedsept = 0
                   this.wescleanInventoryArray[i].orderedoct= 0
                   this.wescleanInventoryArray[i].orderednov = 0
-                  this.wescleanInventoryArray[i].ordereddec = 0
+                  this.wescleanInventoryArray[i].ordereddec = 12
 
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
