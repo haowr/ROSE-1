@@ -272,7 +272,6 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderednov = 0
                   this.wescleanInventoryArray[i].ordereddec = 0
 
-
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
@@ -353,6 +352,20 @@ export class InventoryComponent implements OnInit {
 
 
                 }
+                  let productToBeModified = {
+
+                    name: this.location,
+                    //productcode: productcode,
+                    client: this.client,
+                    //supplier: supplier,
+                    subcontractorarray: this.wescleanInventoryArray
+
+                  }
+                  this.dataservice.pushDateIntoSubcontractors(productToBeModified).subscribe(data =>{
+                      console.log(data);
+
+                  })
+
             }else(this.supplier == "veritivcanada");{
 
               console.log("I've run");
