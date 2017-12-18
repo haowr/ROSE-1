@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     { path: 'register/newclient', component: NewclientComponent},
     { path: 'edit/newsubcontractor', component: EditsubcontractorComponent},
     { path: 'edit/subcontractor/:subcontractor', component:EditsinglesubcontractorComponent},
-    { path: 'remove/client', component: RemoveclientComponent}
+    { path: 'remove', component: RemoveclientComponent}
 
 ]
 
