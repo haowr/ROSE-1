@@ -135,7 +135,7 @@ export class InventoryComponent implements OnInit {
               console.log(data.clients[i].subcontractors[j].date);
 
               for (let i = 0; i < this.toplineInventoryArray.length; i++) {
-              /*     this.toplineInventoryArray[i].orderedjan = 0
+                 this.toplineInventoryArray[i].orderedjan = 0
                  this.toplineInventoryArray[i].orderedfeb = 0
                   this.toplineInventoryArray[i].orderedmar = 0
                   this.toplineInventoryArray[i].orderedapr = 0
@@ -146,7 +146,7 @@ export class InventoryComponent implements OnInit {
                   this.toplineInventoryArray[i].orderedsept = 0
                   this.toplineInventoryArray[i].orderedoct= 0
                   this.toplineInventoryArray[i].orderednov = 0
-                  this.toplineInventoryArray[i].ordereddec = 0*/
+                  this.toplineInventoryArray[i].ordereddec = 0
                 console.log("this should run next");
 
                 if (this.toplineInventoryArray[i].productcode == this.productcode) {
@@ -234,13 +234,8 @@ export class InventoryComponent implements OnInit {
  
 
 
-                }
-
               }
-
-              
-            
-                 this.chartData = [
+                               this.chartData = [
 
                     { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
                              this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
@@ -254,6 +249,27 @@ export class InventoryComponent implements OnInit {
                   console.log(this.chartData[0]["data"]);
                   this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+
+              }
+
+              
+            
+
+                data.clients[i].subcontractors[j].topline=this.toplineInventoryArray
+                  let productToBeModified = {
+
+                    name: this.location,
+                    //productcode: productcode,
+                    client: this.client,
+                    //supplier: supplier,
+                    subcontractorarray: data.clients[i].subcontractors
+
+                  }
+                  console.log(productToBeModified)
+                  this.dataservice.pushDateIntoSubcontractors(productToBeModified).subscribe(data =>{
+                      console.log(data);
+
+                  })
 
             }
             else if (this.supplier == "Wesclean") {
@@ -376,7 +392,7 @@ export class InventoryComponent implements OnInit {
               console.log("I've run");
               console.log(this.veritivCanadaInventoryArray);
               for (let i = 0; i < this.veritivCanadaInventoryArray.length; i++) {
-/*
+
                   this.veritivCanadaInventoryArray[i].orderedjan = 0
                  this.veritivCanadaInventoryArray[i].orderedfeb = 0
                   this.veritivCanadaInventoryArray[i].orderedmar = 0
@@ -389,7 +405,7 @@ export class InventoryComponent implements OnInit {
                   this.veritivCanadaInventoryArray[i].orderedoct= 0
                   this.veritivCanadaInventoryArray[i].orderednov = 0
                   this.veritivCanadaInventoryArray[i].ordereddec = 0
-                  */
+                  
                 if (this.veritivCanadaInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.veritivCanadaInventoryArray[i].ordered * this.veritivCanadaInventoryArray[i].price;
@@ -434,27 +450,45 @@ export class InventoryComponent implements OnInit {
                   console.log(this.manufacturer);
                   console.log(this.description);
 
-                        this.chartData = [
+         
 
-                    { data: [this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
+
+                }
+
+                this.chartData = [
+
+                    { data: [this.currentordered, this.ordered, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
                              this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
                              ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
+                    { data: [this.costNow,this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
                             this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
 
 
                     //{ data: [this.ordered, 0, 0, 0], label: this.location }
                      ];
                   console.log(this.chartData[0]["data"]);
-                  this.chartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                  console.log(this.chartLabels);
+                  console.log("this.chartData");
+                  console.log(this.chartData)
+                  this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-
-
-
-                }
 
               }
+                 data.clients[i].subcontractors[j].veritivcanada=this.veritivCanadaInventoryArray
+                  let productToBeModified = {
 
+                    name: this.location,
+                    //productcode: productcode,
+                    client: this.client,
+                    //supplier: supplier,
+                    subcontractorarray: data.clients[i].subcontractors
+
+                  }
+                  console.log(productToBeModified)
+                  this.dataservice.pushDateIntoSubcontractors(productToBeModified).subscribe(data =>{
+                      console.log(data);
+
+                  })
             }
           }
 
