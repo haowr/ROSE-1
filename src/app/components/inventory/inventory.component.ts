@@ -135,7 +135,7 @@ export class InventoryComponent implements OnInit {
               console.log(data.clients[i].subcontractors[j].date);
 
               for (let i = 0; i < this.toplineInventoryArray.length; i++) {
-                 this.toplineInventoryArray[i].orderedjan = 0
+             /*    this.toplineInventoryArray[i].orderedjan = 0
                  this.toplineInventoryArray[i].orderedfeb = 0
                   this.toplineInventoryArray[i].orderedmar = 0
                   this.toplineInventoryArray[i].orderedapr = 0
@@ -146,7 +146,7 @@ export class InventoryComponent implements OnInit {
                   this.toplineInventoryArray[i].orderedsept = 0
                   this.toplineInventoryArray[i].orderedoct= 0
                   this.toplineInventoryArray[i].orderednov = 0
-                  this.toplineInventoryArray[i].ordereddec = 0
+                  this.toplineInventoryArray[i].ordereddec = 0*/
                 console.log("this should run next");
 
                 if (this.toplineInventoryArray[i].productcode == this.productcode) {
@@ -277,7 +277,7 @@ export class InventoryComponent implements OnInit {
               console.log(this.wescleanInventoryArray);
               console.log("we're in weslcean")
               for (let i = 0; i < this.wescleanInventoryArray.length; i++) {
-                  this.wescleanInventoryArray[i].orderedjan = 0
+               /*   this.wescleanInventoryArray[i].orderedjan = 0
                  this.wescleanInventoryArray[i].orderedfeb = 0
                   this.wescleanInventoryArray[i].orderedmar = 0
                   this.wescleanInventoryArray[i].orderedapr = 0
@@ -288,7 +288,7 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderedsept = 0
                   this.wescleanInventoryArray[i].orderedoct= 0
                   this.wescleanInventoryArray[i].orderednov = 0
-                  this.wescleanInventoryArray[i].ordereddec = 12
+                  this.wescleanInventoryArray[i].ordereddec = 12*/
                   console.log(this.wescleanInventoryArray);
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
@@ -392,7 +392,7 @@ export class InventoryComponent implements OnInit {
               console.log("I've run");
               console.log(this.veritivCanadaInventoryArray);
               for (let i = 0; i < this.veritivCanadaInventoryArray.length; i++) {
-
+/*
                   this.veritivCanadaInventoryArray[i].orderedjan = 0
                  this.veritivCanadaInventoryArray[i].orderedfeb = 0
                   this.veritivCanadaInventoryArray[i].orderedmar = 0
@@ -404,7 +404,7 @@ export class InventoryComponent implements OnInit {
                   this.veritivCanadaInventoryArray[i].orderedsept = 0
                   this.veritivCanadaInventoryArray[i].orderedoct= 0
                   this.veritivCanadaInventoryArray[i].orderednov = 0
-                  this.veritivCanadaInventoryArray[i].ordereddec = 0
+                  this.veritivCanadaInventoryArray[i].ordereddec = 0*/
                   
                 if (this.veritivCanadaInventoryArray[i].productcode == this.productcode) {
 
