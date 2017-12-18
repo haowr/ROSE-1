@@ -172,9 +172,10 @@ export class InventoryComponent implements OnInit {
 
                   this.costLove = this.toplineInventoryArray[i].orderedlove * this.toplineInventoryArray[i].price;
                   this.costLove = Number(this.costLove.toFixed(2));
-
+                  console.log(this.costLove);
                   this.costJuly = this.toplineInventoryArray[i].orderedjul * this.toplineInventoryArray[i].price;
                   this.costJuly = Number(this.costJuly.toFixed(2));
+                  console.log(this.costJuly);
 
                   this.costAug = this.toplineInventoryArray[i].orderedaug * this.toplineInventoryArray[i].price;
                   this.costAug = Number(this.costAug.toFixed(2));
