@@ -361,6 +361,7 @@ export class InventoryComponent implements OnInit {
                     subcontractorarray: this.wescleanInventoryArray
 
                   }
+                  console.log(productToBeModified)
                   this.dataservice.pushDateIntoSubcontractors(productToBeModified).subscribe(data =>{
                       console.log(data);
 
