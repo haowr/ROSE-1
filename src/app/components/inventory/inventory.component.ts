@@ -120,6 +120,8 @@ export class InventoryComponent implements OnInit {
             console.log(this.client);
             console.log(data.clients[i].name)
             console.log(data.clients[i].subcontractors[j].name);
+            console.log(data.clients[i].subcontractors);
+
           if (data.clients[i].subcontractors[j].name == this.location && data.clients[i].name == this.client) {
             console.log("this should run once...")
             console.log(this.supplier);
@@ -352,13 +354,13 @@ export class InventoryComponent implements OnInit {
 
 
                 }
-                 /* let productToBeModified = {
+                  let productToBeModified = {
 
                     name: this.location,
                     //productcode: productcode,
                     client: this.client,
                     //supplier: supplier,
-                    subcontractorarray: this.wescleanInventoryArray
+                    subcontractorarray: data.clients[i].subcontractors
 
                   }
                   console.log(productToBeModified)
@@ -366,7 +368,7 @@ export class InventoryComponent implements OnInit {
                       console.log(data);
 
                   })
-*/
+
             }else(this.supplier == "veritivcanada");{
 
               console.log("I've run");
