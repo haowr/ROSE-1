@@ -273,7 +273,7 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderedoct= 0
                   this.wescleanInventoryArray[i].orderednov = 0
                   this.wescleanInventoryArray[i].ordereddec = 12
-
+                  console.log(this.wescleanInventoryArray);
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
