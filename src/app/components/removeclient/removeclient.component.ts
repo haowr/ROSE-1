@@ -17,6 +17,8 @@ export class RemoveclientComponent implements OnInit {
   constructor ( private dataservice: DataService ,private clientservice: ClientService) { }
 
   ngOnInit() {
+                      document.getElementById("openModalButton").click();
+
 
     this.clientservice.getClients().subscribe(data=>{
 
