@@ -352,7 +352,7 @@ export class InventoryComponent implements OnInit {
 
 
                 }
-                  let productToBeModified = {
+                 /* let productToBeModified = {
 
                     name: this.location,
                     //productcode: productcode,
@@ -366,7 +366,7 @@ export class InventoryComponent implements OnInit {
                       console.log(data);
 
                   })
-
+*/
             }else(this.supplier == "veritivcanada");{
 
               console.log("I've run");
