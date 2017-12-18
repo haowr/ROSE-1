@@ -354,6 +354,8 @@ export class InventoryComponent implements OnInit {
 
 
                 }
+
+                data.clients[i].subcontractors[j].wesclean=this.wescleanInventoryArray
                   let productToBeModified = {
 
                     name: this.location,
