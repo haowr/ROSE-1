@@ -12,6 +12,7 @@ import { ClientService } from '../../services/client.service';
 export class RemoveclientComponent implements OnInit {
 
   listOfClients: Object[];
+  client:string;
   clientRemovedSuccess:boolean = false;
   clientRemovedSuccessMsg:string=" Client Successfully Removed...";
   constructor ( private dataservice: DataService ,private clientservice: ClientService) { }
@@ -64,6 +65,7 @@ export class RemoveclientComponent implements OnInit {
 
 document.getElementById("openModalButton").click();
     console.log(clientname)
+    this.client = clientname;
     /*this.clientservice.removeClient(clientname).subscribe(data=>{
 
       console.log(data);
