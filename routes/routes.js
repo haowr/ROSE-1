@@ -6634,6 +6634,7 @@ router.post('/sobeys', function (req, res) {
 
     router.put('/removeclient/:clientname', function(req,res){
 
+        console.log(req.params.clientname);
         Client.remove({name:req.params.clientname}, function(err, client){
 
             if(err)throw err;

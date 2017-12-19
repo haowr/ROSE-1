@@ -18,7 +18,10 @@
     <br>
     <h2> Remove Client </h2>
     <div class ="col-sm-12" *ngFor=" let client of listOfClients" >
-        <!-- Modal -->
+
+     
+      <div class = "col-sm-12 text-center">
+                <!-- Modal -->
   <div class="modal animated fadeIn" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -42,8 +45,6 @@
       
     </div>
   </div>
-     
-      <div class = "col-sm-12 text-center">
       <h2>{{client.name}}</h2>
 
       <button class ="btn btn-danger" (click)= "removeClient(client.name);">Remove Client</button>
