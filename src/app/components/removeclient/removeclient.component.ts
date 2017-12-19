@@ -17,7 +17,7 @@ export class RemoveclientComponent implements OnInit {
   constructor ( private dataservice: DataService ,private clientservice: ClientService) { }
 
   ngOnInit() {
-                      document.getElementById("openModalButton").click();
+                      
 
 
     this.clientservice.getClients().subscribe(data=>{
@@ -35,8 +35,11 @@ export class RemoveclientComponent implements OnInit {
   }
   removeClient(clientname){
 
+
+
+document.getElementById("openModalButton").click();
     console.log(clientname)
-    this.clientservice.removeClient(clientname).subscribe(data=>{
+    /*this.clientservice.removeClient(clientname).subscribe(data=>{
 
       console.log(data);
       if(data.success){
@@ -58,6 +61,7 @@ export class RemoveclientComponent implements OnInit {
       this.listOfClients = data.clients;
 
     })
+    */
 
     })
   }
