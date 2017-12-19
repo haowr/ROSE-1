@@ -107,7 +107,7 @@
         <div class="form-group">
           <br>
           <label>Name(Subcontractor)</label>
-          <input type="text" [(ngModel)]="subContractorName" name="subContractorName" class="form-control">
+          <input type="text" placeholder =  "(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName" class="form-control">
           <div *ngIf="addNameSuccess">
             {{addNameSuccessMsg}}
           </div>
