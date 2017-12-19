@@ -95,7 +95,7 @@ export class NewclientComponent implements OnInit {
   addLocationSuccessMsg: string = "Store Location Successfully Loaded";
   addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
   addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
-  addSubcontractorFailedMsg: string = "A Subcontractor Must Be Input...";
+  addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
   addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
   addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
 
@@ -274,6 +274,14 @@ export class NewclientComponent implements OnInit {
       
       this.subContractor.locations.push(this.subCLocations);
       this.subCLocations ="";
+      this.subContractorEmailAddress= "";
+      this.subContractorPhoneNumber = "";
+      this.subContractorContactPhone = "";
+      this.subContractorContactEmail = "";
+      this.subContractorContactName = "";
+      this.subContractorName = "";
+
+
       this.addLocationSuccess = true;
 
       setTimeout(() => {
