@@ -31,6 +31,31 @@ export class RemoveclientComponent implements OnInit {
   removeClientTest(clientname){
 
     console.log(clientname);
+    this.clientservice.removeClient(clientname).subscribe(data=>{
+
+      console.log(data);
+      if(data.success){
+
+        this.clientRemovedSuccess = true;
+        setTimeout(()=>{
+
+          this.clientRemovedSuccess = false;
+
+        },2500);
+
+
+      }else{
+
+      }
+    this.clientservice.getClients().subscribe(data=>{
+
+      console.log(data)
+      this.listOfClients = data.clients;
+
+    })
+    
+
+    })
 
   }
   removeClient(clientname){
