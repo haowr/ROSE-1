@@ -28,6 +28,11 @@ export class RemoveclientComponent implements OnInit {
     })
 
   }
+  removeClientTest(clientname){
+
+    console.log(clientname);
+
+  }
   removeClient(clientname){
 
     console.log(clientname)
