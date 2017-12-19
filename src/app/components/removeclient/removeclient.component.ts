@@ -61,9 +61,9 @@ document.getElementById("openModalButton").click();
       this.listOfClients = data.clients;
 
     })
-    */
+    
 
-    })
+    })*/
   }
 
 
