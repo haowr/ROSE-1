@@ -32,7 +32,7 @@ export class RemoveclientComponent implements OnInit {
   removeClientTest(clientname){
 
     console.log(clientname);
-   /* this.clientservice.removeClient(clientname).subscribe(data=>{
+    this.clientservice.removeClient(this.client).subscribe(data=>{
 
       console.log(data);
       if(data.success){
@@ -56,7 +56,7 @@ export class RemoveclientComponent implements OnInit {
     })
     
 
-    })*/
+    })
 
   }
   removeClient(clientname){
