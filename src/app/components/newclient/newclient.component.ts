@@ -157,6 +157,7 @@ export class NewclientComponent implements OnInit {
     if (this.subContractorName != undefined || "") {
 
       this.subContractor.name = this.subContractorName;
+      this.subContractorName = "";
       console.log(this.subContractor.name);
 
     }

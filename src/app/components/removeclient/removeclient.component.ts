@@ -32,6 +32,7 @@ export class RemoveclientComponent implements OnInit {
   removeClientTest(clientname){
 
     console.log(clientname);
+    document.getElementById("btnclose").click();
     this.clientservice.removeClient(this.client).subscribe(data=>{
 
       console.log(data);
