@@ -163,26 +163,31 @@ export class NewclientComponent implements OnInit {
     if (this.subContractorEmailAddress != undefined || "") {
 
       this.subContractor.emailaddress = this.subContractorEmailAddress;
+      this.subContractorEmailAddress = "";
 
     }
     if (this.subContractorPhoneNumber != undefined || "") {
       this.subContractor.phonenumber = this.subContractorPhoneNumber;
+      this.subContractorPhoneNumber = "";
 
 
     }
     if (this.subContractorContactName != undefined || "") {
 
       this.subContractor.contactname = this.subContractorContactName;
+      this.subContractorContactName = "";
 
     }
     if (this.subContractorContactEmail != undefined || "") {
 
       this.subContractor.contactemail = this.subContractorContactEmail;
+      this.subContractorContactEmail = "";
 
     }
     if (this.subContractorContactPhone != undefined || "") {
 
       this.subContractor.contactphone = this.subContractorContactPhone;
+      this.subContractorContactPhone = "";
 
     }
 
@@ -274,12 +279,7 @@ export class NewclientComponent implements OnInit {
       
       this.subContractor.locations.push(this.subCLocations);
       this.subCLocations ="";
-      this.subContractorEmailAddress= "";
-      this.subContractorPhoneNumber = "";
-      this.subContractorContactPhone = "";
-      this.subContractorContactEmail = "";
-      this.subContractorContactName = "";
-      this.subContractorName = "";
+   
 
 
       this.addLocationSuccess = true;
