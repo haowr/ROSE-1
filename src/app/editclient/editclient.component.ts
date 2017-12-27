@@ -26,6 +26,7 @@ export class EditclientComponent implements OnInit {
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
   openEditSubcontractors: boolean = false;
+  openAddSubcontractors: boolean = false;
 
 
   constructor(private clientservice: ClientService) { }
@@ -134,6 +135,17 @@ export class EditclientComponent implements OnInit {
 
 
     })
+
+  }
+  openAddSubcontractorsFunc(){
+
+    if(!this.openAddSubcontractors){
+
+      this.openAddSubcontractors = true;
+
+    }else{
+      this.openAddSubcontractors = false;
+    }
 
   }
   openEditSubcontractorsFunc() {
