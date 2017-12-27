@@ -330,14 +330,6 @@ export class EditclientComponent implements OnInit {
 
         },2000);
 
-    }else{
-
-                            this.addSubcontractorStoreNumberConditionsMet = true;
-        setTimeout(()=>{
-
-          this.addSubcontractorStoreNumberConditionsMet = false;
-
-        },2000);
     }
     if(this.subcontractorLocations.length<1){
 
@@ -348,13 +340,6 @@ export class EditclientComponent implements OnInit {
 
         },2000);
 
-    }else{
-                            this.addSubcontractorLocationConditionsMet = true;
-        setTimeout(()=>{
-
-          this.addSubcontractorLocationConditionsMet = false;
-
-        },2000);
     }
     if (this.subcontractorPhoneNumber != "" || undefined &&
       this.subcontractorEmailAddress != "" || undefined &&
