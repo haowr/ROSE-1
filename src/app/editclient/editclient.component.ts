@@ -376,7 +376,7 @@ export class EditclientComponent implements OnInit {
 
           this.allSubcontractorConditionsNotMet = false;
 
-        },5000);
+        },2000);
 
     }
 
