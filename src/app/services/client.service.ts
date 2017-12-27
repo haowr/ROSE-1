@@ -20,7 +20,7 @@ export class ClientService {
     let headers = new Headers();
     
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/clients',{headers:headers})
+    return this.http.get('routes/clients',{headers:headers})
     .map(res => res.json());
 
 
@@ -30,7 +30,7 @@ export class ClientService {
     console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient',client,{headers:headers})
+    return this.http.post('routes/editclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
@@ -39,7 +39,7 @@ export class ClientService {
     console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient2',client,{headers:headers})
+    return this.http.post('routes/editclient2',client,{headers:headers})
     .map(res=> res.json());
 
   }
@@ -48,7 +48,7 @@ export class ClientService {
     console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient3',client,{headers:headers})
+    return this.http.post('routes/editclient3',client,{headers:headers})
     .map(res=> res.json());
 
   }
