@@ -23,6 +23,16 @@ export class EditclientComponent implements OnInit {
   subContractorContactName: string = "";
   subContractorContactPhone: string = "";
   subContractorContactEmail: string = "";
+  subcontractorName: string = "";
+  subcontractorPhoneNumber: string = "";
+  subcontractorEmailAddress: string = "";
+  subcontractorContactName: string = "";
+  subcontractorContactPhone: string = "";
+  subcontractorContactEmail: string = "";
+  subcontractorLocation: string = "";
+  subcontractorStoreNumber: string = "";
+  subcontractorLocations: string[] = [];
+  subcontractorStoreNumbers: string[] = [];
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
   openEditSubcontractors: boolean = false;
@@ -107,10 +117,10 @@ export class EditclientComponent implements OnInit {
     }
     this.clientservice.editClient3(clientToBeEdited).subscribe(data => {
 
-      this.clientservice.getClients().subscribe(data=>{
+      this.clientservice.getClients().subscribe(data => {
 
         console.log(data.clients)
-        for(let i =0; i< data.clients.length; i++){
+        for (let i = 0; i < data.clients.length; i++) {
 
           this.subcontractorsArray[i] = data.clients[i].subcontractors;
 
@@ -119,16 +129,16 @@ export class EditclientComponent implements OnInit {
       })
 
       //console.log(data.client);
-         /*   for (let i = 0; i < data.client.length; i++) {
+      /*   for (let i = 0; i < data.client.length; i++) {
 
-        console.log(data.client.subcontractors);
-        
-        this.subcontractorsArray[i] = data.client.subcontractors;
-        console.log(this.subcontractorsArray);
+     console.log(data.client.subcontractors);
+     
+     this.subcontractorsArray[i] = data.client.subcontractors;
+     console.log(this.subcontractorsArray);
 
 
-      }
-      */
+   }
+   */
       //this.subContractorsArray = data.client
       console.log("this.subcontractorsArray");
       console.log(this.subcontractorsArray);
@@ -137,15 +147,72 @@ export class EditclientComponent implements OnInit {
     })
 
   }
-  openAddSubcontractorsFunc(){
+  openAddSubcontractorsFunc() {
 
-    if(!this.openAddSubcontractors){
+    if (!this.openAddSubcontractors) {
 
       this.openAddSubcontractors = true;
 
-    }else{
+    } else {
       this.openAddSubcontractors = false;
     }
+
+  }
+  addLocationToSubcontractorFunc() {
+    //let subcontractorLocation = [];
+    this.subcontractorLocations.push(this.subcontractorLocation);
+    this.subcontractorLocation = "";
+    console.log(this.subcontractorLocation);
+
+  }
+  removeLocationFromSubcontractorFunc() {
+
+    this.subcontractorLocations.splice(0, 1);
+
+  }
+  addStoreNumberToSubcontractorFunc(storenumber) {
+    //this.subcontractorStoreNumbers = [];
+    this.subcontractorStoreNumbers.push(this.subcontractorStoreNumber);
+    this.subcontractorStoreNumber = "";
+    console.log(this.subcontractorStoreNumbers)
+
+  }
+  removeStoreNumberFromSubcontractorFunc() {
+
+    this.subcontractorStoreNumbers.splice(0, 1);
+  }
+  addSubcontractor(client) {
+
+    let subcontractor = {
+      client: client,
+      name: this.subcontractorName,
+      phonenumber: this.subcontractorPhoneNumber,
+      emailaddress: this.subcontractorEmailAddress,
+      contactname: this.subcontractorContactName,
+      contactemail: this.subcontractorContactEmail,
+      contactphone: this.subcontractorContactPhone,
+      storenumbers: this.subcontractorStoreNumbers,
+      locations: this.subcontractorLocations
+
+    }
+    if (this.subcontractorPhoneNumber != "" || undefined &&
+      this.subcontractorEmailAddress != "" || undefined &&
+      this.subcontractorContactName != "" || undefined &&
+      this.subcontractorContactEmail != "" || undefined &&
+      this.subcontractorContactPhone != "" || undefined &&
+      this.subcontractorStoreNumbers.length > 0 &&
+      this.subcontractorLocations.length > 0
+    ) {
+      console.log("allconditionsmet");
+      this.clientservice.editClientAddSubcontractor(subcontractor).subscribe(data => {
+
+        console.log(data)
+
+      })
+    }
+
+    console.log(subcontractor);
+
 
   }
   openEditSubcontractorsFunc() {

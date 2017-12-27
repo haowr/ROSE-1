@@ -47,6 +47,25 @@ router.get('/getclients', passport.authenticate('jwt', {session:false}), (req, r
   res.json({user: req.user});
 });
 
+//EDIT CLIENT/ADD NEW SUBCONTRACTOR
+
+router.post('/editclientaddsubcontractor', function(req,res){
+
+    Client.findOneAndUpdate({name: req.body.client}, {$push:{subcontractors:req.body}},{new:true}, function(err,client){
+
+        if(err) throw err;
+        if(!client){
+
+            res.json({success: false, message: "Client not found..."})
+        }else{
+            res.json({success: true, message:req.body.name+" found, and updated..", client: client});
+        }
+
+    })
+
+
+
+})
 //EDIT CLIENT
 router.post('/editclient2', function(req,res){
 console.log("edit client route");

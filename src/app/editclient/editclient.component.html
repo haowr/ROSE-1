@@ -7,60 +7,65 @@
 <br>
 <br>
 
-  <div class="row">
-    <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
+<div class="row">
+  <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
 
-      <div class="col-sm-3">
-      </div>
-      <div class="col-sm-6">
-        <!--<p>{{client.name}}</p>-->
-        <button (click)="openEditFormFunc();" class="btn btn-primary">Edit {{client.name}}</button>
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+      <!--<p>{{client.name}}</p>-->
+      <button (click)="openEditFormFunc();" class="btn btn-primary">Edit {{client.name}}</button>
 
-        <form class="animated fadeIn" *ngIf="openEditForm">
-          <br>
-          <div class="form-group">
-            
-            <input class = "form-control"placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+      <form class="animated fadeIn" *ngIf="openEditForm">
+        <br>
+        <div class="form-group">
 
-          </div>
-          <div class="form-group">
-            <input class ="form-control"placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+          <input class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
 
-          </div>
-          <div class="form-group">
-            <input class = "form-control" placeholder="{{client.emailaddress}}" name='clientEmailAddress' [(ngModel)]='clientEmailAddress' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
+            type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
 
-          </div>
-          <div class="form-group">
-            <input class = "form-control"placeholder="{{client.contactname}}" name='clientContactName' [(ngModel)]='clientContactName' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="{{client.emailaddress}}" name='clientEmailAddress' [(ngModel)]='clientEmailAddress'
+            type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
 
-          </div>
-          <div class="form-group">
-            <input class = "form-control"placeholder="{{client.contactphone}}" name='clientContactPhone' [(ngModel)]='clientContactPhone' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="{{client.contactname}}" name='clientContactName' [(ngModel)]='clientContactName'
+            type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
 
-          </div>
-          <div class="form-group">
-            <input class ="form-control"placeholder="{{client.contactemail}}" name='clientContactEmail' [(ngModel)]='clientContactEmail' type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="{{client.contactphone}}" name='clientContactPhone' [(ngModel)]='clientContactPhone'
+            type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
 
-          </div>
-          <button class ="btn btn-primary" (click)="openEditSubcontractorsFunc();">Edit Subcontractor</button>
-          <button class ="btn btn-primary" (click)="openAddSubcontractorsFunc();">Add Subcontractor</button>
-          <div *ngIf="openAddSubcontractors">
-            
-          <form (submit)="addSubContractor()">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="{{client.contactemail}}" name='clientContactEmail' [(ngModel)]='clientContactEmail'
+            type="text">
+          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+
+        </div>
+        <button class="btn btn-primary" (click)="openEditSubcontractorsFunc();">Edit Subcontractor</button>
+        <button class="btn btn-primary" (click)="openAddSubcontractorsFunc();">Add Subcontractor</button>
+        <div *ngIf="openAddSubcontractors">
+
+          <form (submit)="addSubcontractor(client.name)">
 
             <div class="form-group">
               <br>
               <label>Name(Subcontractor)</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
+              <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subcontractorName" name="subcontractorName"
                 class="form-control">
-            <!--  <div *ngIf="addNameSuccess">
+              <!--  <div *ngIf="addNameSuccess">
                 {{addNameSuccessMsg}}
               </div>
               <div *ngIf="addNameFailed">
@@ -72,9 +77,9 @@
             <div class="form-group">
 
               <label>Contact Name</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subcontractorContactName" name="subcontractorContactName"
                 class="form-control">
-             <!-- <div *ngIf="addContactNameSuccess">
+              <!-- <div *ngIf="addContactNameSuccess">
                 {{addContactNameSuccessMsg}}
               </div>
               <div *ngIf="addContactNameFailed">
@@ -85,9 +90,9 @@
             <div class="form-group">
 
               <label>Contact Phone Number</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
-                name="subContractorContactPhone" class="form-control">
-        <!--      <div *ngIf="addContactPhoneSuccess">
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subcontractorContactPhone"
+                name="subcontractorContactPhone" class="form-control">
+              <!--      <div *ngIf="addContactPhoneSuccess">
                 {{addContactPhoneSuccessMsg}}
               </div>
               <div *ngIf="addContactPhoneFailed">
@@ -97,9 +102,9 @@
             <div class="form-group">
 
               <label>Contact Email</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subcontractorContactEmail" name="subcontractorContactEmail"
                 class="form-control">
-            <!--  <div *ngIf="addContactEmailAddressSuccess">
+              <!--  <div *ngIf="addContactEmailAddressSuccess">
                 {{addContactEmailSuccessMsg}}
               </div>
               <div *ngIf="addContactEmailAddressFailed">
@@ -109,9 +114,9 @@
             <div class="form-group">
 
               <label>Phone Number</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
+              <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subcontractorPhoneNumber" name="subcontractorPhoneNumber"
                 class="form-control">
-           <!--   <div *ngIf="addPhoneNumberSuccess">
+              <!--   <div *ngIf="addPhoneNumberSuccess">
                 {{addPhoneNumberSuccessMsg}}
               </div>
               <div *ngIf="addPhoneNumberFailed">
@@ -121,9 +126,9 @@
             <div class="form-group">
 
               <label>Email Address</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
+              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subcontractorEmailAddress" name="subcontractorEmailAddress"
                 class="form-control">
-             <!-- <div *ngIf="addEmailAddressSuccess">
+              <!-- <div *ngIf="addEmailAddressSuccess">
                 {{addEmailAddressSuccessMsg}}
               </div>
               <div *ngIf="addEmailAddressFailed">
@@ -133,11 +138,13 @@
             <div class="form-group">
               {{subContactorLocations}}
               <label>Store Numbers(SC)</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subContractorStoreNumbers" placeholder="{{subContractor.storenumbers}}"
-                name="subContractorStoreNumbers" class="form-control">
+              <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subcontractorStoreNumber" placeholder="{{subcontractorStoreNumbers}}"
+                name="subcontractorStoreNumber" class="form-control">
 
-            <button class = "btn btn-default form-control">  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addStoreNumber(); $event.preventDefault();"></i></button>
-             <!-- <div *ngIf="addSubContractorStoreNumbersSuccess">
+              <button class="btn btn-default form-control" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
+              <button class="btn btn-default form-control" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
+
+              <!-- <div *ngIf="addSubContractorStoreNumbersSuccess">
                 {{addSubContractorStoreNumbersSuccessMsg}}
 
               </div>
@@ -149,11 +156,13 @@
             <div class="form-group">
               {{subContactorLocations}}
               <label>Locations(SC)</label>
-              <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subContractor.locations}}"
-                name="subCLocations" class="form-control">
+              <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subcontractorLocation" placeholder="{{subcontractorLocations}}"
+                name="subcontractorLocation" class="form-control">
 
-              <button class = "btn btn-default form-control"><i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addLocation(); $event.preventDefault();"></i></button>
-           <!--   <div *ngIf="addLocationSuccess">
+              <button class="btn btn-default form-control" (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
+              <button class="btn btn-default form-control" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
+
+              <!--   <div *ngIf="addLocationSuccess">
                 {{addLocationSuccessMsg}}
 
               </div>
@@ -175,70 +184,72 @@
             {{addSubcontractorFailedMsg}}
           </div>-->
 
-      <!--  </div>
+          <!--  </div>
 
         <input type="submit" class="btn btn-default" value="submit">
       </form>-->
 
-          </div>
-          <div id="subcontractorborder" *ngIf="openEditSubcontractors">
-            <br>
-             
+        </div>
+        <div id="subcontractorborder" *ngIf="openEditSubcontractors">
+          <br>
+
           <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
             <h4>{{z+1}}|{{subcontractor.name}}</h4>
-          <div class="form-group"  >
-            <input class = "form-control"name='subContractorName' [(ngModel)]='subContractorName'placeholder = "{{subcontractor.name}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default form-control">edit</button>
+            <div class="form-group">
+              <input class="form-control" name='subContractorName' [(ngModel)]='subContractorName' placeholder="{{subcontractor.name}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default form-control">edit</button>
 
-          </div>
-                    <div class="form-group" >
-            <input class = "form-control"name='subContractorContactName' [(ngModel)]='subContractorContactName' placeholder = "{{subcontractor.contactname}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z);" class="btn btn-default form-control">edit</button>
+            </div>
+            <div class="form-group">
+              <input class="form-control" name='subContractorContactName' [(ngModel)]='subContractorContactName' placeholder="{{subcontractor.contactname}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z);" class="btn btn-default form-control">edit</button>
 
-          </div>
-                    <div class="form-group" >
+            </div>
+            <div class="form-group">
 
-            <input class = "form-control"name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone' placeholder ="{{subcontractor.contactphone}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z);" class="btn btn-default form-control">edit</button>
-             
-          </div>
-                    <div class="form-group" >
-      
-            <input class = "form-control" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' placeholder = "{{subcontractor.contactemail}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z);" class="btn btn-default form-control">edit</button>
-            <span *ngIf="loadingEditIcon">LOADING</span>
-          </div>
-                    <div class="form-group" >
-        
-            <input class = "form-control" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber' placeholder ="{{subcontractor.phonenumber}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default form-control">edit</button>
-            <span *ngIf="loadingEditIcon">LOADING</span>
-          </div>
-                    <div class="form-group" >
-         
-            <input class = "form-control"name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress' placeholder ="{{subcontractor.emailaddress}}">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>
+              <input class="form-control" name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone' placeholder="{{subcontractor.contactphone}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z);" class="btn btn-default form-control">edit</button>
 
-          </div>
-                    <div class="form-group" >
-            <input class = "form-control"placeholder="{{subcontractor.locations}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' type="text">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.locations,z);" class="btn btn-default form-control">edit</button>
-            
-          </div>
-                    <div class="form-group" >
-            <input class = "form-control" placeholder="{{subcontractor.storenumbers}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' type="text">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.storenumbers,z);" class="btn btn-default form-control">edit</button>
+            </div>
+            <div class="form-group">
 
-          </div>
-          <div class ="form-group">
-            <button (click)="removeSubcontractor(client.name,z)" class = "btn btn-danger">Remove {{subcontractor.name|slice:0:10}}...</button>
-          </div>
-          </div>
-          </div>
-        </form>
+              <input class="form-control" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' placeholder="{{subcontractor.contactemail}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z);" class="btn btn-default form-control">edit</button>
+              <span *ngIf="loadingEditIcon">LOADING</span>
+            </div>
+            <div class="form-group">
 
-      </div>
-      <div class="col-sm-3">
-      </div>
+              <input class="form-control" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber' placeholder="{{subcontractor.phonenumber}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default form-control">edit</button>
+              <span *ngIf="loadingEditIcon">LOADING</span>
+            </div>
+            <div class="form-group">
+
+              <input class="form-control" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress' placeholder="{{subcontractor.emailaddress}}">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>
+
+            </div>
+            <div class="form-group">
+              <input class="form-control" placeholder="{{subcontractor.locations}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
+                type="text">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.locations,z);" class="btn btn-default form-control">edit</button>
+
+            </div>
+            <div class="form-group">
+              <input class="form-control" placeholder="{{subcontractor.storenumbers}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
+                type="text">
+              <button (click)="editSubContractorFunc(client.name,subcontractor.storenumbers,z);" class="btn btn-default form-control">edit</button>
+
+            </div>
+            <div class="form-group">
+              <button (click)="removeSubcontractor(client.name,z)" class="btn btn-danger">Remove {{subcontractor.name|slice:0:10}}...</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-sm-3">
     </div>
   </div>
+</div>
