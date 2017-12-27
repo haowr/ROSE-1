@@ -182,7 +182,14 @@
 
               <button class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
               <button class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
+            <div class = "placeholderdivsmallwell" *ngIf="!addStoreNumberConditionsNotMet">
+            </div>
+                        <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumberConditionsMet">
+            </div>
+                                      <div class ="well well-sm"*ngIf="addSubcontractorStoreNumberConditionsMet">
+                {{addSucontractorStoreNumberConditionsMetMsg}}
 
+              </div>
                     <div class = "well well-sm"*ngIf="addStoreNumberConditionsNotMet">
 
                 <p><strong>{{addStoreNumberConditionsNotMetMsg}}</strong></p>
@@ -201,8 +208,13 @@
               <button class="btn btn-default " (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
               <button class="btn btn-default" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
               </div>
-                <div *ngIf="addLocationSuccess">
-                {{addLocationSuccessMsg}}
+
+                         <div class = "placeholderdivsmallwell" *ngIf="!addLocationConditionsNotMet">
+            </div>
+                                     <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorLocationConditionsMet">
+            </div>
+                            <div class ="well well-sm"*ngIf="addSubcontractorLocationConditionsMet">
+                {{addSubcontractorLocationConditionsMetMsg}}
 
               </div>
               <div class = "well well-sm"*ngIf="addLocationConditionsNotMet">

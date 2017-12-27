@@ -47,12 +47,18 @@ export class EditclientComponent implements OnInit {
   addSubcontractorContactNameConditionsNotMet:boolean =false;
   addSubcontractorLocationsConditionsNotMet:boolean = false;
   addSubcontractorStoreNumbersConditionsNotMet:boolean = false;
+  addSubcontractorStoreNumberConditionsMet:boolean = false;
+  addSubcontractorLocationConditionsMet:boolean = false;
   addSubcontractorNameConditionsNotMetMsg:string = "A Subcontractor Name Must Be Input...";
   addSubcontractorEmailAddressConditionsNotMetMsg:string ="A Subcontractor Email Address Must Be Input..";
   addSubcontractorPhoneNumberConditionsNotMetMsg:string = "A Subcontractor Phone Number Must Be Input...";
   addSubcontractorContactNameConditionsNotMetMsg:string = "A Subcontractor Contact Name Must Be Input...";
   addSubcontractorContactEmailConditionsNotMetMsg:string = "A Subcontractor Contact Email Must Be Input...";
   addSubcontractorContactPhoneConditionsNotMetMsg:string = "A Subcontractor Contact Phone Must Be Input...";
+  addSubcontractorStoreNumbersConditionsNotMetMsg:string = "A Store Number Must Be Input And Loaded...";
+  addSubcontractorLocationsConditionsNotMetMsg:string ="A Location Must Be Input And Loaded...";
+  addSubcontractorStoreNumberConditionsMetMsg:string="Store Number Successfully Loaded...";
+  addSubcontractorLocationsConditionsMetMsg:string = "Location Successfully Loaded...";
   allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
   allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
 
@@ -279,6 +285,40 @@ export class EditclientComponent implements OnInit {
 
         },2000);
 
+    }
+    if(this.subcontractorStoreNumbers.length<1){
+                      this.addSubcontractorStoreNumbersConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorStoreNumbersConditionsNotMet = false;
+
+        },2000);
+
+    }else{
+
+                            this.addSubcontractorStoreNumberConditionsMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorStoreNumberConditionsMet = false;
+
+        },2000);
+    }
+    if(this.subcontractorLocations.length<1){
+
+                      this.addSubcontractorLocationsConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorLocationsConditionsNotMet = false;
+
+        },2000);
+
+    }else{
+                            this.addSubcontractorLocationConditionsMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorLocationConditionsMet = false;
+
+        },2000);
     }
     if (this.subcontractorPhoneNumber != "" || undefined &&
       this.subcontractorEmailAddress != "" || undefined &&
