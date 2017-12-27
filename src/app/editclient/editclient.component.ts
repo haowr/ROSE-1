@@ -58,7 +58,7 @@ export class EditclientComponent implements OnInit {
   addSubcontractorStoreNumbersConditionsNotMetMsg:string = "A Store Number Must Be Input And Loaded...";
   addSubcontractorLocationsConditionsNotMetMsg:string ="A Location Must Be Input And Loaded...";
   addSubcontractorStoreNumberConditionsMetMsg:string="Store Number Successfully Loaded...";
-  addSubcontractorLocationsConditionsMetMsg:string = "Location Successfully Loaded...";
+  addSubcontractorLocationConditionsMetMsg:string = "Location Successfully Loaded...";
   allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
   allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
 
@@ -186,9 +186,25 @@ export class EditclientComponent implements OnInit {
   }
   addLocationToSubcontractorFunc() {
     //let subcontractorLocation = [];
-    this.subcontractorLocations.push(this.subcontractorLocation);
+   if(this.subcontractorLocation = ""|| undefined){
+
+                      this.addSubcontractorLocationsConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorLocationsConditionsNotMet = false;
+
+        },2000);
+
+    }else{
+          this.subcontractorLocations.push(this.subcontractorStoreNumber);
     this.subcontractorLocation = "";
-    console.log(this.subcontractorLocation);
+                            this.addSubcontractorLocationConditionsMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorLocationConditionsMet = false;
+
+        },2000);
+    }
 
   }
   removeLocationFromSubcontractorFunc() {
@@ -198,8 +214,26 @@ export class EditclientComponent implements OnInit {
   }
   addStoreNumberToSubcontractorFunc(storenumber) {
     //this.subcontractorStoreNumbers = [];
-    this.subcontractorStoreNumbers.push(this.subcontractorStoreNumber);
+        if(this.subcontractorStoreNumber = ""|| undefined){
+
+                      this.addSubcontractorStoreNumbersConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorStoreNumbersConditionsNotMet = false;
+
+        },2000);
+
+    }else{
+          this.subcontractorStoreNumbers.push(this.subcontractorStoreNumber);
     this.subcontractorStoreNumber = "";
+                            this.addSubcontractorStoreNumberConditionsMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorStoreNumberConditionsMet = false;
+
+        },2000);
+    }
+
     console.log(this.subcontractorStoreNumbers)
 
   }
