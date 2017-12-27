@@ -182,7 +182,7 @@
 
               <button class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
               <button class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
-            <div class = "placeholderdivsmallwell" *ngIf="!addStoreNumberConditionsNotMet">
+            <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumbersConditionsNotMet">
             </div>
                         <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumberConditionsMet">
             </div>
@@ -209,7 +209,7 @@
               <button class="btn btn-default" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
               </div>
 
-                         <div class = "placeholderdivsmallwell" *ngIf="!addLocationConditionsNotMet">
+                         <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorLocationsConditionsNotMet">
             </div>
                                      <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorLocationConditionsMet">
             </div>
