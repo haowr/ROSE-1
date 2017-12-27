@@ -71,14 +71,15 @@
                 <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subcontractorName" name="subcontractorName"
                 class="form-control">
-                </div>
-              </div>
-                <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorNameConditionsNotMet">
+                               <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorNameConditionsNotMet">
             </div>
               <div class = "well well-sm"*ngIf="addSubcontractorNameConditionsNotMet">
 
                 <p><strong>{{addSubcontractorNameConditionsNotMetMsg}}</strong></p>
               </div>
+                </div>
+              </div>
+ 
 
             </div>
             <div class="form-group">
@@ -91,13 +92,14 @@
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subcontractorContactName" name="subcontractorContactName"
                 class="form-control">
                 </div>
-              </div>
-                          <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactNameConditionsNotMet">
+                                   <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactNameConditionsNotMet">
             </div>
               <div class = "well well-sm"*ngIf="addSubcontractorContactNameConditionsNotMet">
 
                 <p><strong>{{addSubcontractorContactNameConditionsNotMetMsg}}</strong></p>
               </div>
+              </div>
+       
             </div>
             <div class="form-group">
               <div class = "panel panel-default">
@@ -108,14 +110,15 @@
                 <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subcontractorContactPhone"
                 name="subcontractorContactPhone" class="form-control">
-                </div>
-              </div>
+                              </div>
                           <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactPhoneNumberConditionsNotMet">
             </div>
                  <div class = "well well-sm"*ngIf="addSubcontractorContactPhoneNumberConditionsNotMet">
 
                 <p><strong>{{addSubcontractorContactPhoneNumberConditionsNotMetMsg}}</strong></p>
               </div>
+                </div>
+
             </div>
             <div class="form-group">
               <div class = "panel panel-default">
