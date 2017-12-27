@@ -4,3 +4,17 @@
 
 }
 
+.placeholderdiv{
+    display:block;
+    background:transparent;
+    width:100%;
+    height:80px;
+
+}
+.placeholderdivsmallwell{
+    display:block;
+    background:transparent;
+    width:100%;
+    height:71px;
+
+}

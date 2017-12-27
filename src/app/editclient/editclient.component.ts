@@ -37,6 +37,26 @@ export class EditclientComponent implements OnInit {
   loadingEditIcon: boolean = false;
   openEditSubcontractors: boolean = false;
   openAddSubcontractors: boolean = false;
+  allSubcontractorConditionsNotMet: boolean = false;
+  allSubcontractorConditionsMet: boolean = false;
+  addSubcontractorNameConditionsNotMet:boolean = false;
+  addSubcontractorEmailAddressConditionsNotMet:boolean =false;
+  addSubcontractorPhoneNumberConditionsNotMet:boolean = false;
+  addSubcontractorContactEmailConditionsNotMet:boolean = false;
+  addSubcontractorContactPhoneConditionsNotMet:boolean = false;
+  addSubcontractorContactNameConditionsNotMet:boolean =false;
+  addSubcontractorLocationsConditionsNotMet:boolean = false;
+  addSubcontractorStoreNumbersConditionsNotMet:boolean = false;
+  addSubcontractorNameConditionsNotMetMsg:string = "A Subcontractor Name Must Be Input...";
+  addSubcontractorEmailAddressConditionsNotMetMsg:string ="A Subcontractor Email Address Must Be Input..";
+  addSubcontractorPhoneNumberConditionsNotMetMsg:string = "A Subcontractor Phone Number Must Be Input...";
+  addSubcontractorContactNameConditionsNotMetMsg:string = "A Subcontractor Contact Name Must Be Input...";
+  addSubcontractorContactEmailConditionsNotMetMsg:string = "A Subcontractor Contact Email Must Be Input...";
+  addSubcontractorContactPhoneConditionsNotMetMsg:string = "A Subcontractor Contact Phone Must Be Input...";
+  allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
+  allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
+
+  
 
 
   constructor(private clientservice: ClientService) { }
@@ -195,6 +215,71 @@ export class EditclientComponent implements OnInit {
       locations: this.subcontractorLocations
 
     }
+    if(this.subcontractorPhoneNumber == "" || undefined){
+
+                      this.addSubcontractorPhoneNumberConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorPhoneNumberConditionsNotMet = false;
+
+        },2000);
+
+    }
+    if(this.subcontractorName == "" || undefined){
+
+      
+                      this.addSubcontractorNameConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorNameConditionsNotMet = false;
+
+        },2000);
+
+    }
+    if(this.subcontractorEmailAddress == "" || undefined){
+
+      
+                      this.addSubcontractorEmailAddressConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorEmailAddressConditionsNotMet = false;
+
+        },2000);
+
+    }
+    if(this.subcontractorContactPhone == ""|| undefined){
+
+      
+                      this.addSubcontractorContactPhoneConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorContactPhoneConditionsNotMet = false;
+
+        },2000);
+
+    }
+    if(this.subcontractorContactName == ""|| undefined){
+
+      
+                      this.addSubcontractorContactNameConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorContactNameConditionsNotMet = false;
+
+        },2000);
+
+    }
+    if(this.subcontractorContactEmail == ""|| undefined){
+
+      
+                      this.addSubcontractorContactEmailConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.addSubcontractorContactEmailConditionsNotMet = false;
+
+        },2000);
+
+    }
     if (this.subcontractorPhoneNumber != "" || undefined &&
       this.subcontractorEmailAddress != "" || undefined &&
       this.subcontractorContactName != "" || undefined &&
@@ -207,8 +292,31 @@ export class EditclientComponent implements OnInit {
       this.clientservice.editClientAddSubcontractor(subcontractor).subscribe(data => {
 
         console.log(data)
+        if(data.success){
+
+                  this.allSubcontractorConditionsMet = true;
+        setTimeout(()=>{
+
+          this.allSubcontractorConditionsMet = false;
+
+        },2000);
+
+        }else{
+
+
+
+        }
 
       })
+    }else{
+
+        this.allSubcontractorConditionsNotMet = true;
+        setTimeout(()=>{
+
+          this.allSubcontractorConditionsNotMet = false;
+
+        },5000);
+
     }
 
     console.log(subcontractor);

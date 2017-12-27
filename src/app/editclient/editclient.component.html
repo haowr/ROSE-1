@@ -56,84 +56,120 @@
         </div>
         <button class="btn btn-primary" (click)="openEditSubcontractorsFunc();">Edit Subcontractor</button>
         <button class="btn btn-primary" (click)="openAddSubcontractorsFunc();">Add Subcontractor</button>
+        
         <div *ngIf="openAddSubcontractors">
 
-          <form (submit)="addSubcontractor(client.name)">
+          <form class="animated fadeIn"(submit)="addSubcontractor(client.name)">
 
             <div class="form-group">
               <br>
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
+
               <label>Name(Subcontractor)</label>
+                </div>
+                <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subcontractorName" name="subcontractorName"
                 class="form-control">
-              <!--  <div *ngIf="addNameSuccess">
-                {{addNameSuccessMsg}}
+                </div>
               </div>
-              <div *ngIf="addNameFailed">
-                {{addNameFailedMsg}}
+                <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorNameConditionsNotMet">
+            </div>
+              <div class = "well well-sm"*ngIf="addSubcontractorNameConditionsNotMet">
+
+                <p><strong>{{addSubcontractorNameConditionsNotMetMsg}}</strong></p>
               </div>
--->
 
             </div>
             <div class="form-group">
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
 
               <label>Contact Name</label>
+                </div>
+                <div class ="panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subcontractorContactName" name="subcontractorContactName"
                 class="form-control">
-              <!-- <div *ngIf="addContactNameSuccess">
-                {{addContactNameSuccessMsg}}
+                </div>
               </div>
-              <div *ngIf="addContactNameFailed">
-                {{addContactNameFailedMsg}}
+                          <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactNameConditionsNotMet">
+            </div>
+              <div class = "well well-sm"*ngIf="addSubcontractorContactNameConditionsNotMet">
+
+                <p><strong>{{addSubcontractorContactNameConditionsNotMetMsg}}</strong></p>
               </div>
--->
             </div>
             <div class="form-group">
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
 
               <label>Contact Phone Number</label>
+                </div>
+                <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subcontractorContactPhone"
                 name="subcontractorContactPhone" class="form-control">
-              <!--      <div *ngIf="addContactPhoneSuccess">
-                {{addContactPhoneSuccessMsg}}
+                </div>
               </div>
-              <div *ngIf="addContactPhoneFailed">
-                {{addContactPhoneFailedMsg}}
-              </div>-->
+                          <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactPhoneNumberConditionsNotMet">
+            </div>
+                 <div class = "well well-sm"*ngIf="addSubcontractorContactPhoneNumberConditionsNotMet">
+
+                <p><strong>{{addSubcontractorContactPhoneNumberConditionsNotMetMsg}}</strong></p>
+              </div>
             </div>
             <div class="form-group">
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
 
               <label>Contact Email</label>
+                </div>
+                <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subcontractorContactEmail" name="subcontractorContactEmail"
                 class="form-control">
-              <!--  <div *ngIf="addContactEmailAddressSuccess">
-                {{addContactEmailSuccessMsg}}
+                            <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorContactEmailConditionsNotMet">
+            </div>
+                 <div class = "well well-sm"*ngIf="addSubcontractorContactEmailConditionsNotMet">
+
+                <p><strong>{{addSubcontractorContactEmailConditionsNotMetMsg}}</strong></p>
               </div>
-              <div *ngIf="addContactEmailAddressFailed">
-                {{addContactEmailFailedMsg}}
-              </div>-->
+                </div>
+              </div>
             </div>
             <div class="form-group">
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
 
               <label>Phone Number</label>
+                </div>
+                <div class ="panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subcontractorPhoneNumber" name="subcontractorPhoneNumber"
                 class="form-control">
-              <!--   <div *ngIf="addPhoneNumberSuccess">
-                {{addPhoneNumberSuccessMsg}}
+                            <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorPhoneNumberConditionsNotMet">
+            </div>
+                 <div class = "well well-sm"*ngIf="addSubcontractorPhoneNumberConditionsNotMet">
+
+                <p><strong>{{addSubcontractorPhoneNumberConditionsNotMetMsg}}</strong></p>
               </div>
-              <div *ngIf="addPhoneNumberFailed">
-                {{addPhoneNumberFailedMsg}}
-              </div>-->
+                </div>
+              </div>
+
             </div>
             <div class="form-group">
-
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
               <label>Email Address</label>
+                </div>
+                <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subcontractorEmailAddress" name="subcontractorEmailAddress"
                 class="form-control">
-              <!-- <div *ngIf="addEmailAddressSuccess">
-                {{addEmailAddressSuccessMsg}}
+            <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorEmailAddressConditionsNotMet">
+            </div>
+                    <div class = "well well-sm"*ngIf="addSubcontractorEmailAddressConditionsNotMet">
+
+                <p><strong>{{addSubcontractorEmailAddressConditionsNotMetMsg}}</strong></p>
               </div>
-              <div *ngIf="addEmailAddressFailed">
-                {{addEmailAddressFailedMsg}}
-              </div>-->
+            </div>
+              </div>
             </div>
             <div class="form-group">
               {{subContactorLocations}}
@@ -141,39 +177,51 @@
               <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subcontractorStoreNumber" placeholder="{{subcontractorStoreNumbers}}"
                 name="subcontractorStoreNumber" class="form-control">
 
-              <button class="btn btn-default form-control" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
+              <button class="btn btn-default form-control" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
               <button class="btn btn-default form-control" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
 
-              <!-- <div *ngIf="addSubContractorStoreNumbersSuccess">
-                {{addSubContractorStoreNumbersSuccessMsg}}
+                    <div class = "well well-sm"*ngIf="addStoreNumberConditionsNotMet">
 
+                <p><strong>{{addStoreNumberConditionsNotMetMsg}}</strong></p>
               </div>
-              <div *ngIf="addSubContractorStoreNumbersFailed">
-
-                {{addSubContractorStoreNumbersFailedMsg}}
-              </div>-->
             </div>
+            
             <div class="form-group">
-              {{subContactorLocations}}
+              <div class = "panel panel-default">
+                <div class = "panel panel-heading">
               <label>Locations(SC)</label>
+              </div>
+              <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subcontractorLocation" placeholder="{{subcontractorLocations}}"
                 name="subcontractorLocation" class="form-control">
 
-              <button class="btn btn-default form-control" (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
+              <button class="btn btn-default form-control" (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
               <button class="btn btn-default form-control" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
-
-              <!--   <div *ngIf="addLocationSuccess">
+              </div>
+                <div *ngIf="addLocationSuccess">
                 {{addLocationSuccessMsg}}
 
               </div>
-              <div *ngIf="addLocationFailed">
+              <div class = "well well-sm"*ngIf="addLocationConditionsNotMet">
 
-                {{addLocationFailedMsg}}
-              </div>-->
+                <p><strong>{{addLocationConditionsNotMetMsg}}</strong></p>
+              </div>
+                
+            </div>
             </div>
 
 
-            <input type="submit" class="btn btn-submit" value="Add Subcontractor">
+            <input type="submit" class="btn btn-submit " value="Add Subcontractor">
+            <div class = "placeholderdiv" *ngIf="!allSubcontractorConditionsNotMet">
+            </div>
+            <div class = "placeholderdiv" *ngIf="!allSubcontractorConditionsMet">
+            </div>
+            <div class = "well well-md" *ngIf="allSubcontractorConditionsMet">
+              <h4>{{allSubcontractorConditionsMetMsg}}</h4>
+            </div>
+            <div class = "well well-md " *ngIf="allSubcontractorConditionsNotMet">
+              <h4>{{allSubcontractorConditionsNotMetMsg}}</h4>
+            </div>
           </form>
           <!--<div *ngIf="addSubcontractorSuccess">
             {{addSubcontractorSuccessMsg}}
@@ -251,5 +299,6 @@
     </div>
     <div class="col-sm-3">
     </div>
+    <br><br><br>
   </div>
 </div>
