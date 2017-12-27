@@ -58,6 +58,7 @@ export class EditclientComponent implements OnInit {
   addSubcontractorStoreNumbersConditionsNotMetMsg:string = "A Store Number Must Be Input And Loaded...";
   addSubcontractorLocationsConditionsNotMetMsg:string ="A Location Must Be Input And Loaded...";
   addSubcontractorStoreNumberConditionsMetMsg:string="Store Number Successfully Loaded...";
+  
   addSubcontractorLocationConditionsMetMsg:string = "Location Successfully Loaded...";
   allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
   allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
