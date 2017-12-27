@@ -186,7 +186,7 @@ export class EditclientComponent implements OnInit {
   }
   addLocationToSubcontractorFunc() {
     //let subcontractorLocation = [];
-   if(this.subcontractorLocation = ""|| undefined){
+   if(this.subcontractorLocation == ""|| undefined){
 
                       this.addSubcontractorLocationsConditionsNotMet = true;
         setTimeout(()=>{
@@ -214,7 +214,7 @@ export class EditclientComponent implements OnInit {
   }
   addStoreNumberToSubcontractorFunc(storenumber) {
     //this.subcontractorStoreNumbers = [];
-        if(this.subcontractorStoreNumber = ""|| undefined){
+        if(this.subcontractorStoreNumber == ""|| undefined){
 
                       this.addSubcontractorStoreNumbersConditionsNotMet = true;
         setTimeout(()=>{
