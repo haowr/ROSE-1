@@ -46,12 +46,291 @@ const Sbcntrctr = require('../models/sbcntrctor');
 router.get('/getclients', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+
+//EDIT CLIENT
+router.post('/editclient2', function(req,res){
+console.log("edit client route");
+console.log(req.body.client);
+console.log(req.body.clientname);
+console.log(req.body);
+
+if(req.body.subContractorName == '' || undefined){
+
+
+
+}else{
+    console.log("it doesn't!");
+    Client.find({name: req.body.client}, function(err, client){
+
+        if(err)throw err;
+        if(!client){
+
+            res.json({success: false, message:"Client not found..."})
+        }else{
+            client[0].subcontractors[req.body.index].name=req.body.subContractorName;
+            res.json({success: true, message: "Client found...",client:client})
+        }
+
+    })
+    
+}
+
+if(req.body.subContractorContactName == ''|| undefined){
+
+
+
+}else{
+    console.log("it doesn't!");
+    Client.find({name: req.body.client}, function(err, client){
+
+        if(err)throw err;
+        if(!client){
+
+            res.json({success: false, message:"Client not found..."})
+        }else{
+            client[0].subcontractors[req.body.index].contactname=req.body.subContractorContactName;
+            res.json({success: true, message: "Client found...",client:client})
+        }
+
+    })
+    
+}
+
+if(req.body.subContractorContactPhone == ''|| undefined){
+
+
+
+}else{
+
+    console.log("it doesn't!");
+    Client.find({name: req.body.client}, function(err, client){
+
+        if(err)throw err;
+        if(!client){
+
+            res.json({success: false, message:"Client not found..."})
+        }else{
+            client[0].subcontractors[req.body.index].contactphone=req.body.subContractorContactPhone;
+            
+            res.json({success: true, message: "Client found...",client:client})
+        }
+
+    })
+}
+
+if(req.body.subContractorPhoneNumber == ''|| undefined){
+
+
+
+}else{
+    console.log("it doesn't!");
+    Client.find({name: req.body.client}, function(err, client){
+
+        if(err)throw err;
+        if(!client){
+
+            res.json({success: false, message:"Client not found..."})
+        }else{
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            console.log(client[0].subcontractors[req.body.index]);
+            client[0].subcontractors[req.body.index].phonenumber=req.body.subContractorPhoneNumber;
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+
+                if(err) throw err;
+                if(!client){
+
+                    res.json({success: false, message:"Client not found, so not updated..."});
+
+                }else{
+
+                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+
+                }
+
+            })
+                
+            //res.json({success: true, message: "Client found...",client:client})
+        }
+
+    })
+}
+
+if(req.body.subContractorEmailAddress == ''|| undefined){
+
+
+
+}else{
+
+    console.log("it doesn't!");
+    Client.find({name: req.body.client}, function(err, client){
+
+        if(err)throw err;
+        if(!client){
+
+            res.json({success: false, message:"Client not found..."})
+        }else{
+            client[0].subcontractors[req.body.index].emailaddress=req.body.subContractorEmailAddress;
+            res.json({success: true, message: "Client found...",client:client})
+        }
+
+    })
+
+
+}
+
+})
+//EDIT CLIENT/REMOVE SUBCONTRACTOR
+router.post('/editclient3', function(req,res){
+
+
+    Client.find({name: req.body.client}, function(err,client){
+
+        if(err)throw err;
+        if(!client){
+            res.json({success: false, message:"Client not found..."});
+
+        }else{
+            client[0].subcontractors[req.body.index]
+            client[0].subcontractors.splice(req.body.index,1);
+            //console.log(client[0].subcontractors);
+            Client.findOneAndUpdate({name:req.body.client},{$set:{subcontractors: client[0].subcontractors}}, {new:true}, function(err,client){
+
+                if(err)throw err;
+                if(!client){
+                    res.json({success: false, message:"Client not found so not updated..."})
+                }else{
+                    res.json({success: true, message: "Subcontractor Successfully removed", client:client})
+                }
+
+            })
+           // res.json({success:true, message:"Client found..."})
+        }
+
+
+    })
+
+})
+//EDIT CLIENT
+router.post('/editclient', function(req,res){
+console.log("edit client route");
+console.log(req.body.client);
+console.log(req.body.clientname);
+console.log(req.body);
+
+if(req.body.clientname == '' || undefined){
+
+
+
+}else{
+    console.log("it doesn't!");
+
+Client.findOneAndUpdate({name: req.body.client}, {$set:{name:req.body.clientname}},{new:true}, function(err,client){
+
+    if(err)throw err;
+    if(!client){
+        res.json({success: false, message: "Client not found, and so not updated..."})
+    }else{
+        res.json({success: true, message: req.body.client+" name updated successfully", client:client});
+    }
+
+
+})
+    
+}
+
+if(req.body.clientcontactname == ''|| undefined){
+
+
+
+}else{
+    console.log("it doesn't!");
+
+Client.findOneAndUpdate({name: req.body.client}, {$set:{contactname:req.body.clientcontactname}},{new:true}, function(err,client){
+
+    if(err)throw err;
+    if(!client){
+        res.json({success: false, message: "Client not found, and so not updated..."})
+    }else{
+        res.json({success: true, message: req.body.client+" contact name updated successfully", client:client});
+    }
+
+
+})
+    
+}
+
+if(req.body.clientContactPhone == ''|| undefined){
+
+
+
+}else{
+
+        console.log("it doesn't!");
+
+Client.findOneAndUpdate({name: req.body.client}, {$set:{contactphone:req.body.clientContactPhone}},{new:true}, function(err,client){
+
+    if(err)throw err;
+    if(!client){
+        res.json({success: false, message: "Client not found, and so not updated..."})
+    }else{
+        res.json({success: true, message: req.body.client+" contact phone updated successfully", client:client});
+    }
+
+
+})
+}
+
+if(req.body.clientphonenumber == ''|| undefined){
+
+
+
+}else{
+
+      console.log("it doesn't!");
+
+Client.findOneAndUpdate({name: req.body.client}, {$set:{phonenumber:req.body.clientphonenumber}},{new:true}, function(err,client){
+
+    if(err)throw err;
+    if(!client){
+        res.json({success: false, message: "Client not found, and so not updated..."})
+    }else{
+        res.json({success: true, message: req.body.client+" phone number updated successfully", client:client});
+    }
+
+
+})  
+}
+
+if(req.body.clientemailaddress == ''|| undefined){
+
+
+
+}else{
+
+    console.log("it doesn't!");
+
+Client.findOneAndUpdate({name: req.body.client}, {$set:{emailaddress:req.body.clientemailaddress}},{new:true}, function(err,client){
+
+    if(err)throw err;
+    if(!client){
+        res.json({success: false, message: "Client not found, and so not updated..."})
+    }else{
+        res.json({success: true, message: req.body.client+" email address updated successfully", client:client});
+    }
+
+
+})
+}
+
+})
+
 //GET USER
 
 router.put('/getusername/:shabo', function(req,res){
 console.log(req.params.shabo);
 
-console.log("i ran ya faq");
+console.log("i ran ya faq");  
     //User.find({req.})
 
 

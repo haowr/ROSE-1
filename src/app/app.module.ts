@@ -40,6 +40,8 @@ import { EditsinglesubcontractorComponent } from './components/editsinglesubcont
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { ManagementComponent } from './components/management/management.component';
 import { RemoveclientComponent } from './components/removeclient/removeclient.component';
+import { EditComponent } from './edit/edit.component';
+import { EditclientComponent } from './editclient/editclient.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent2 },
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     { path: 'register/newclient', component: NewclientComponent},
     { path: 'edit/newsubcontractor', component: EditsubcontractorComponent},
     { path: 'edit/subcontractor/:subcontractor', component:EditsinglesubcontractorComponent},
-    { path: 'remove', component: RemoveclientComponent}
+    { path: 'remove', component: RemoveclientComponent},
+    { path: 'edit', component: EditclientComponent}
 
 ]
 
@@ -88,6 +91,8 @@ const appRoutes: Routes = [
     InventoryComponent,
     ManagementComponent,
     RemoveclientComponent,
+    EditComponent,
+    EditclientComponent,
 
 
   ],

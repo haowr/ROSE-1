@@ -1,0 +1,109 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <div class="row">
+    <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
+
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <!--<p>{{client.name}}</p>-->
+        <button (click)="openEditFormFunc();" class="btn btn-primary">Edit {{client.name}}</button>
+
+        <form class="animated fadeIn" *ngIf="openEditForm">
+          <div class="form-group">
+            <p>{{client.name}}</p>
+            <input placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class="form-group">
+            <input placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class="form-group">
+            <input placeholder="{{client.emailaddress}}" name='clientEmailAddress' [(ngModel)]='clientEmailAddress' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class="form-group">
+            <input placeholder="{{client.contactname}}" name='clientContactName' [(ngModel)]='clientContactName' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class="form-group">
+            <input placeholder="{{client.contactphone}}" name='clientContactPhone' [(ngModel)]='clientContactPhone' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class="form-group">
+            <input placeholder="{{client.contactemail}}" name='clientContactEmail' [(ngModel)]='clientContactEmail' type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default">edit</button>
+
+          </div>
+          <button class ="btn btn-primary" (click)="openEditSubcontractorsFunc();">Edit Subcontractors</button>
+          <div *ngIf="openEditSubcontractors">
+          <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
+          <div class="form-group" >
+            <input name='subContractorName' [(ngModel)]='subContractorName'placeholder = "{{subcontractor.name}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default">edit</button>
+
+          </div>
+                    <div class="form-group" >
+            <input name='subContractorContactName' [(ngModel)]='subContractorContactName' placeholder = "{{subcontractor.contactname}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z);" class="btn btn-default">edit!</button>
+
+          </div>
+                    <div class="form-group" >
+
+            <input name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone' placeholder ="{{subcontractor.contactphone}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z);" class="btn btn-default">edit</button>
+             
+          </div>
+                    <div class="form-group" >
+      
+            <input name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' placeholder = "{{subcontractor.contactemail}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z);" class="btn btn-default">edit</button>
+            <span *ngIf="loadingEditIcon">LOADING</span>
+          </div>
+                    <div class="form-group" >
+        
+            <input name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber' placeholder ="{{subcontractor.phonenumber}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default">edit</button>
+            <span *ngIf="loadingEditIcon">LOADING</span>
+          </div>
+                    <div class="form-group" >
+         
+            <input name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress' placeholder ="{{subcontractor.emailaddress}}">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default">ediit</button>
+
+          </div>
+                    <div class="form-group" >
+            <input placeholder="{{subcontractor.locations}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' type="text">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.locations,z);" class="btn btn-default">edit</button>
+            
+          </div>
+                    <div class="form-group" >
+            <input placeholder="{{subcontractor.storenumbers}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail' type="text">
+            <button (click)="editSubContractorFunc(client.name,subcontractor.storenumbers,z);" class="btn btn-default">edit</button>
+
+          </div>
+          <div class ="form-group">
+            <button (click)="removeSubcontractor(client.name,z)" class = "btn btn-danger">Remove {{subcontractor.name|slice:0:10}}...</button>
+          </div>
+          </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
+  </div>
