@@ -180,8 +180,8 @@
               <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subcontractorStoreNumber" placeholder="{{subcontractorStoreNumbers}}"
                 name="subcontractorStoreNumber" class="form-control">
 
-              <button class="btn btn-default form-control" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
-              <button class="btn btn-default form-control" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
+              <button class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
+              <button class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
 
                     <div class = "well well-sm"*ngIf="addStoreNumberConditionsNotMet">
 
@@ -198,8 +198,8 @@
               <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subcontractorLocation" placeholder="{{subcontractorLocations}}"
                 name="subcontractorLocation" class="form-control">
 
-              <button class="btn btn-default form-control" (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
-              <button class="btn btn-default form-control" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
+              <button class="btn btn-default " (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
+              <button class="btn btn-default" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
               </div>
                 <div *ngIf="addLocationSuccess">
                 {{addLocationSuccessMsg}}
