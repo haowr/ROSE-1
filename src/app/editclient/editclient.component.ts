@@ -197,6 +197,7 @@ export class EditclientComponent implements OnInit {
 
     }else{
           this.subcontractorLocations.push(this.subcontractorLocation);
+          console.log(this.subcontractorLocations);
     this.subcontractorLocation = "";
                             this.addSubcontractorLocationConditionsMet = true;
         setTimeout(()=>{

@@ -175,8 +175,12 @@
               </div>
             </div>
             <div class="form-group">
-              {{subContactorLocations}}
+              <div class ="panel panel-default">
+                <div class = "panel panel-heading">
+
               <label>Store Numbers(SC)</label>
+                </div>
+                <div class = "panel-body">
               <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subcontractorStoreNumber" placeholder="{{subcontractorStoreNumbers}}"
                 name="subcontractorStoreNumber" class="form-control">
 
@@ -186,14 +190,16 @@
             </div>
                         <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumberConditionsMet">
             </div>
-                                      <div class ="well well-sm"*ngIf="addSubcontractorStoreNumberConditionsMet">
-                {{addSucontractorStoreNumberConditionsMetMsg}}
+            <div class ="well well-sm"*ngIf="addSubcontractorStoreNumberConditionsMet">
+               <p><strong> {{addSucontractorStoreNumberConditionsMetMsg}}</strong></p>
 
               </div>
                     <div class = "well well-sm"*ngIf="addSubcontractorStoreNumbersConditionsNotMet">
 
                 <p><strong>{{addSubcontractorStoreNumbersConditionsNotMetMsg}}</strong></p>
               </div>
+                </div>
+            </div>
             </div>
             
             <div class="form-group">
@@ -214,7 +220,7 @@
                                      <div class = "placeholderdivsmallwell" *ngIf="!addSubcontractorLocationConditionsMet">
             </div>
                             <div class ="well well-sm"*ngIf="addSubcontractorLocationConditionsMet">
-                {{addSubcontractorLocationConditionsMetMsg}}
+               <p><strong> {{addSubcontractorLocationConditionsMetMsg}}</strong></p>
 
               </div>
               <div class = "well well-sm"*ngIf="addSubcontractorLocationsConditionsNotMet">
