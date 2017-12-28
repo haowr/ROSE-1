@@ -195,7 +195,7 @@ export class LocationComponent implements OnInit {
                 }
                 console.log(this.singleSubContractorsArray[i].date)
                 console.log(this.month);
-                if (this.singleSubContractorsArray[i].date != this.month) {
+                if (this.singleSubContractorsArray[i].date != this.month && this.singleSubContractorsArray[i].name == this.location) {
                   console.log("should");
                   console.log("Time to take inventory out of servie");
                   this.singleSubContractorsArray[i].date = this.month;

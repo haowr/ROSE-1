@@ -129,7 +129,7 @@ export class InventoryComponent implements OnInit {
             this.wescleanInventoryArray = data.clients[i].subcontractors[j].wesclean
             this.veritivCanadaInventoryArray = data.clients[i].subcontractors[j].veritivcanada
 
-            if (this.supplier == "Topline Sanitation Inc.") {
+            if (this.supplier == "topline") {
               console.log("this should run..")
               console.log(this.toplineInventoryArray);
               console.log(data.clients[i].subcontractors[j].date);
@@ -159,6 +159,8 @@ export class InventoryComponent implements OnInit {
                   this.costDec = Number(this.costDec.toFixed(2));
                   this.cost = this.toplineInventoryArray[i].orderedjan * this.toplineInventoryArray[i].price;
                   this.cost = Number(this.cost.toFixed(2));
+                  console.log("this.cost")
+                  console.log(this.cost);
                   this.costFeb = this.toplineInventoryArray[i].orderedfeb * this.toplineInventoryArray[i].price;
                   this.costFeb = Number(this.costFeb.toFixed(2));
                   this.costMar = this.toplineInventoryArray[i].orderedmar * this.toplineInventoryArray[i].price;
@@ -170,9 +172,11 @@ export class InventoryComponent implements OnInit {
                   this.costMay = this.toplineInventoryArray[i].orderedmay * this.toplineInventoryArray[i].price;
                   this.costMay = Number(this.costMay.toFixed(2));
 
-                  this.costLove = this.toplineInventoryArray[i].orderedlove * this.toplineInventoryArray[i].price;
+                  this.costLove = this.toplineInventoryArray[i].orderedjun * this.toplineInventoryArray[i].price;
                   this.costLove = Number(this.costLove.toFixed(2));
+                  console.log("this.costLove");
                   console.log(this.costLove);
+
                   this.costJuly = this.toplineInventoryArray[i].orderedjul * this.toplineInventoryArray[i].price;
                   this.costJuly = Number(this.costJuly.toFixed(2));
                   console.log(this.costJuly);
@@ -206,7 +210,7 @@ export class InventoryComponent implements OnInit {
                   this.orderedApr = this.toplineInventoryArray[i].orderedapr;
                   this.orderedMay = this.toplineInventoryArray[i].orderedmay;
                   this.orderedLove = this.toplineInventoryArray[i].orderedjun;
-                  this.orderedJuly = this.toplineInventoryArray[i].orderedjuly;
+                  this.orderedJuly = this.toplineInventoryArray[i].orderedjul;
                   this.orderedAug = this.toplineInventoryArray[i].orderedaug;
                   this.orderedSept = this.toplineInventoryArray[i].orderedsept;
                   this.orderedOct = this.toplineInventoryArray[i].orderedoct;
@@ -273,7 +277,7 @@ export class InventoryComponent implements OnInit {
                   })
 
             }
-            else if (this.supplier == "Wesclean") {
+            else if (this.supplier == "wesclean") {
 
               console.log(this.wescleanInventoryArray);
               console.log("we're in weslcean")
@@ -295,10 +299,25 @@ export class InventoryComponent implements OnInit {
 
                   //this.cost = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
                   //this.cost = Number(this.cost.toFixed(2));
-                  this.ordered = this.wescleanInventoryArray[i].ordered;
+                  
                   this.manufacturer = this.wescleanInventoryArray[i].manufacturer;
                   this.description = this.wescleanInventoryArray[i].description;
                   console.log(this.wescleanInventoryArray[i].ordered *  this.wescleanInventoryArray[i].price)
+                  
+                  this.orderedDec = this.wescleanInventoryArray[i].ordereddec;
+                  this.currentordered = this.wescleanInventoryArray[i].ordered;
+                  this.orderedJan= this.wescleanInventoryArray[i].orderedjan;
+                  
+                  this.orderedFeb= this.wescleanInventoryArray[i].orderedfeb;
+                  this.orderedMar = this.wescleanInventoryArray[i].orderedmar;
+                  this.orderedApr = this.wescleanInventoryArray[i].orderedapr;
+                  this.orderedMay = this.wescleanInventoryArray[i].orderedmay;
+                  this.orderedLove = this.wescleanInventoryArray[i].orderedjun;
+                  this.orderedJuly = this.wescleanInventoryArray[i].orderedjul;
+                  this.orderedAug = this.wescleanInventoryArray[i].orderedaug;
+                  this.orderedSept = this.wescleanInventoryArray[i].orderedsept;
+                  this.orderedOct = this.wescleanInventoryArray[i].orderedoct;
+                  this.orderedNov = this.wescleanInventoryArray[i].orderednov;
                   this.costDec = this.wescleanInventoryArray[i].ordereddec * this.wescleanInventoryArray[i].price;
                   this.costDec = Number(this.costDec.toFixed(2));
                   this.cost = this.wescleanInventoryArray[i].orderedjan * this.wescleanInventoryArray[i].price;
@@ -314,7 +333,7 @@ export class InventoryComponent implements OnInit {
                   this.costMay = this.wescleanInventoryArray[i].orderedmay * this.wescleanInventoryArray[i].price;
                   this.costMay = Number(this.costMay.toFixed(2));
 
-                  this.costLove = this.wescleanInventoryArray[i].orderedlove * this.wescleanInventoryArray[i].price;
+                  this.costLove = this.wescleanInventoryArray[i].orderedjun * this.wescleanInventoryArray[i].price;
                   this.costLove = Number(this.costLove.toFixed(2));
 
                   this.costJuly = this.wescleanInventoryArray[i].orderedjul * this.wescleanInventoryArray[i].price;
@@ -388,7 +407,7 @@ export class InventoryComponent implements OnInit {
 
                   })
 
-            }else(this.supplier == "veritivcanada");{
+            }else if(this.supplier == "veritivcanada"){
 
               console.log("I've run");
               console.log(this.veritivCanadaInventoryArray);
@@ -411,6 +430,7 @@ export class InventoryComponent implements OnInit {
 
                   //this.cost = this.veritivCanadaInventoryArray[i].ordered * this.veritivCanadaInventoryArray[i].price;
                   //this.cost = Number(this.cost.toFixed(2));
+                  console.log("No, I've Run!!");
                   this.ordered = this.veritivCanadaInventoryArray[i].ordered;
                   this.manufacturer = this.veritivCanadaInventoryArray[i].manufacturer;
                   this.description = this.veritivCanadaInventoryArray[i].description;
@@ -418,6 +438,8 @@ export class InventoryComponent implements OnInit {
                   this.costDec = Number(this.costDec.toFixed(2));
                   this.cost = this.toplineInventoryArray[i].orderedjan * this.toplineInventoryArray[i].price;
                   this.cost = Number(this.cost.toFixed(2));
+                  console.log("this.cost")
+                  console.log(this.cost)
                   this.costFeb = this.toplineInventoryArray[i].orderedfeb * this.toplineInventoryArray[i].price;
                   this.costFeb = Number(this.costFeb.toFixed(2));
                   this.costMar = this.toplineInventoryArray[i].orderedmar * this.toplineInventoryArray[i].price;
@@ -471,6 +493,7 @@ export class InventoryComponent implements OnInit {
                   console.log(this.chartLabels);
                   console.log("this.chartData");
                   console.log(this.chartData)
+                  console.log(this.cost);
                   this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
