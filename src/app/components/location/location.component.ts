@@ -31,6 +31,7 @@ export class LocationComponent implements OnInit {
   ordered: number;
   monthName: string;
   previousMonth: string;
+  totalCostThisMonth:Number;
 
   storenumberArray: string[];
   subcontractorArray: Object[];
@@ -187,8 +188,18 @@ export class LocationComponent implements OnInit {
                   console.log(this.singleSubContractorsArray[i]);
                   console.log(i);
                   console.log("Inventory is still in service")
+                  let totalCostThisMonthArray = [];
+                  for(let z=0; z< this.singleSubContractorsArray[i].wesclean.length; z++){
 
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[i].wesclean[z].ordered * this.singleSubContractorsArray[i].wesclean[z].price);
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[i].topline[z].ordered * this.singleSubContractorsArray[i].topline[z].price);
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[i].veritivcanada[z].ordered * this.singleSubContractorsArray[i].veritivcanada[z].price);
 
+                    let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  }
 
 
 
