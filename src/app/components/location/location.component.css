@@ -48,6 +48,15 @@
   left:-1000px;
   opacity:0;
 }
+.placeholderforexpenditureloadingicon{
+
+display:block;
+background:transparent;
+height:21px;
+width:100%;
+padding:1px;
+
+}
 
 /*Loader*/
 @-webkit-keyframes rotating{

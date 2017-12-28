@@ -19,6 +19,7 @@ export class LocationComponent implements OnInit {
   wescleanInventory2: boolean = false;
   toplineInventory2: boolean = true;
   veritivInventory2: boolean = false;
+  expenditureLoaded:boolean = false;
   url: string;
   locationObject: Object[];
   inventory: Object[];
@@ -570,6 +571,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       subcontractorarray: this.singleSubContractorsArray
 
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -663,6 +665,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   
@@ -681,6 +684,7 @@ console.log(totalCostThisMonthArray);
       subcontractorarray: this.singleSubContractorsArray
 
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -744,6 +748,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   
@@ -771,6 +776,7 @@ console.log(totalCostThisMonthArray);
       subcontractorarray: this.singleSubContractorsArray
 
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -833,6 +839,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   
@@ -859,6 +866,7 @@ console.log(totalCostThisMonthArray);
       subcontractorarray: this.singleSubContractorsArray
 
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -923,6 +931,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   
@@ -952,7 +961,9 @@ console.log(totalCostThisMonthArray);
       supplier: supplier,
       subcontractorarray: this.singleSubContractorsArray
 
+
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1015,6 +1026,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   
@@ -1044,6 +1056,7 @@ console.log(totalCostThisMonthArray);
       subcontractorarray: this.singleSubContractorsArray
 
     }
+    this.expenditureLoaded = true;
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1106,6 +1119,7 @@ console.log(totalCostThisMonthArray);
                   
      let reducer = (accumulator, currentValue)=> accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
                   

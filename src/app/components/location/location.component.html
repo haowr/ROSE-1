@@ -54,6 +54,10 @@
     </div>
         <div class ="panel panel-default">
     <h3 class ="subcontractorlabel animated fadeIn">Expenditures This Month:<h4 class="subcontractorlabel animated fadeIn">{{totalCostThisMonth| currency}}</h4></h3>
+    <div class ="placeholderforexpenditureloadingicon" *ngIf="!expenditureLoaded">
+    </div>
+    <i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoaded"style="font-size:21px;"></i><span *ngIf="expenditureLoaded">CALCULATING</span><i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoaded"style="font-size:21px;"></i>
+    <span class="sr-only">Loading...</span>
     </div>
 
   <br>
