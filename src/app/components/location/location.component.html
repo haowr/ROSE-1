@@ -37,15 +37,21 @@
 
   <!-- <button style="opacity:0;"class = "btn btn-default"(click)="openPopup();">open</button>-->
   <div class="col-sm-12 " style="text-align:center">
+    <br>
+    <br>
+    <div class = "panel panel-default">
 
-    <h2 class ="subcontractorlabel animated fadeIn">Name:</h2>
-    <h2 class="subcontractorlabel animated fadeIn">{{subcontractorObject.name}}</h2>
-    <h2 class ="subcontractorlabel animated fadeIn">Contact Name:</h2>
-    <h3 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactname}}</h3>
-    <h2 class ="subcontractorlabel animated fadeIn">Contact Phone:</h2>
-    <h3 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactphone}}</h3>
-    <h2 class ="subcontractorlabel animated fadeIn">E-mail:</h2>
-    <h3 class="subcontractorlabel animated fadeIn">{{subcontractorObject.emailaddress}}</h3>
+    <h3 class ="subcontractorlabel animated fadeIn">Name:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.name}}</h4></h3>
+    </div>
+    <div class = "panel panel-default">
+    <h3 class ="subcontractorlabel animated fadeIn">Contact Name:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactname}}</h4></h3>
+    </div>
+    <div class = "panel panel-default">
+    <h3 class ="subcontractorlabel animated fadeIn">Contact Phone:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactphone}}</h4></h3>
+    </div>
+    <div class ="panel panel-default">
+    <h3 class ="subcontractorlabel animated fadeIn">E-mail:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.emailaddress}}</h4></h3>
+    </div>
 
   <br>
   <br>
@@ -53,14 +59,14 @@
 
   </div>
 
-  <div class ="col-sm-4 " style="text-align: center">
-    <button (click)= "openVeritivInventory()" class ="btn btn-default animated fadeIn">Open/Close Veritiv Inventory Sheet</button>
+  <div class ="panel panel-default" style="text-align: center">
+    <button (click)= "openVeritivInventory()" class ="btn btn-default form-control animated fadeIn">Open/Close Veritiv Inventory Sheet</button>
   </div>
-  <div class = "col-sm-4" style="text-align: center">
-    <button (click)= "openWescleanInventory()" class ="btn btn-default animated fadeIn">Open/Close Wesclean Inventory Sheet</button>
+  <div class = "panel panel-default" style="text-align: center">
+    <button (click)= "openWescleanInventory()" class ="btn btn-default form-control  animated fadeIn">Open/Close Wesclean Inventory Sheet</button>
   </div>
-  <div class = "col-sm-4" style="text-align: center">
-    <button (click)= "openToplineInventoryok()" class ="btn btn-default animated fadeIn">Open/Close Topline Inventory Sheet</button>
+  <div class = "panel panel-default" style="text-align: center">
+    <button (click)= "openToplineInventoryok()" class ="btn btn-default form-control animated fadeIn">Open/Close Topline Inventory Sheet</button>
   </div>
 
 
