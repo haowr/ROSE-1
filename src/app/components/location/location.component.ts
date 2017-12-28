@@ -626,6 +626,47 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       .subscribe(data => {
         console.log("DATA!");
         console.log(data);
+           let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
       });
 
   }
@@ -666,6 +707,47 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
                 .subscribe(data => {
                   console.log("DATA!");
                   console.log(data);
+                     let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
                 });
             }
 
@@ -714,6 +796,47 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
             .subscribe(data => {
               console.log("DATA!");
               console.log(data);
+                 let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
             });
 
 
@@ -763,6 +886,47 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
                 .subscribe(data => {
                   console.log("DATA!");
                   console.log(data);
+                     let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
                 });
             }
 
@@ -814,6 +978,47 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
               .subscribe(data => {
                 console.log("DATA!");
                 console.log(data);
+                   let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
               });
           }
 
@@ -828,6 +1033,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
   }
 
   increaseVeritivCanadaInventory(supplier, productcode, index) {
+
 
     let productToBeModified = {
 
@@ -862,6 +1068,49 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
               .subscribe(data => {
                 console.log("DATA!");
                 console.log(data);
+                console.log(this.singleSubContractorsArray)
+                 let totalCostThisMonthArray = [];
+               for(let z = 0; z< this.singleSubContractorsArray.length; z++){
+                 console.log(z)
+                             
+                
+                 this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                  if(this.singleSubContractorsArray[z].name == this.location){
+
+                  for(let d=0; d< this.singleSubContractorsArray[z].topline.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+                    
+
+      
+                  }
+                           for(let d=0; d< this.singleSubContractorsArray[z].wesclean.length; d++){
+                    console.log(d)
+                         totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+              
+
+      
+                  }
+                     for(let d=0; d< this.singleSubContractorsArray[z].veritivcanada.length; d++){
+                    console.log(d)
+                    totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+                    
+
+      
+                  }
+console.log(totalCostThisMonthArray);
+                  }
+            
+            
+                  
+     let reducer = (accumulator, currentValue)=> accumulator + currentValue;
+                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                    console.log(this.totalCostThisMonth);
+
+                  
+               }
+  
               });
           }
 

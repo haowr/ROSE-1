@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
-import 'http://localhost:3000/rxjs/add/operator/map';
+import 'rxjs/add/operator/map';
 
 
 
