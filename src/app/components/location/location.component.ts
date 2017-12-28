@@ -65,6 +65,18 @@ export class LocationComponent implements OnInit {
   ngOnInit() {
     console.log(this.ordered);
     console.log(this.month);
+      this.chartData = [
+
+        { data: [10, 0, 0, 0, 0, 0, 0, 0], label: "D" },
+        { data: [8, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+
+
+        //{ data: [this.ordered, 0, 0, 0], label: this.location }
+
+
+      ];
+      console.log(this.chartData[0]["data"]);
+                  this.chartLabels = ['Current','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     this.activatedroute.params.subscribe((params: Params) => {
       console.log(params);

@@ -59,6 +59,13 @@
     <i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoaded"style="font-size:21px;"></i><span *ngIf="expenditureLoaded">CALCULATING</span><i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoaded"style="font-size:21px;"></i>
     <span class="sr-only">Loading...</span>
     </div>
+          <canvas  baseChart
+      [chartType]="'bar'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      ></canvas>
 
   <br>
   <br>
