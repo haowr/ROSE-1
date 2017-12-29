@@ -1111,7 +1111,7 @@ export class LocationComponent implements OnInit {
               
 
           this.curexp=this.totalCostThisMonth;
-           this.expenditureLoaded = false;
+           //this.expenditureLoaded = false;
            console.log("done");
                       this.chartData = [
 
