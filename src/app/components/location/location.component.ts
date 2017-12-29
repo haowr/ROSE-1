@@ -243,6 +243,36 @@ export class LocationComponent implements OnInit {
                   console.log(this.singleSubContractorsArray[i]);
                   console.log(i);
                   console.log("Inventory is still in service")
+              this.expjan = this.singleSubContractorsArray[i].expjan;
+              this.expfeb = this.singleSubContractorsArray[i].expfeb;
+              this.expmar = this.singleSubContractorsArray[i].expmar;
+              this.expapr = this.singleSubContractorsArray[i].expapr;
+              this.expmay = this.singleSubContractorsArray[i].expmay;
+              this.expjun = this.singleSubContractorsArray[i].expjun;
+              this.expjul = this.singleSubContractorsArray[i].expjul;
+              this.expaug = this.singleSubContractorsArray[i].expaug;
+              this.expsept = this.singleSubContractorsArray[i].expsept;
+              this.expoct = this.singleSubContractorsArray[i].expoct;
+              this.expnov = this.singleSubContractorsArray[i].expnov;
+              this.expdec = this.singleSubContractorsArray[i].expdec;
+              //this.expjan = data.clients[i].subcontractors[j].expjan;
+              //  data.clients[i].subcontractors[j].date =1;
+              //console.log(data.clients[i].subcontractors[j].date);
+              //console.log(data.clients[i].subcontractors[j])
+              this.chartData = [
+
+                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
+                { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+
+
+                //{ data: [this.ordered, 0, 0, 0], label: this.location }
+
+
+              ];
+              console.log(this.chartData[0]["data"]);
+              this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
                   let totalCostThisMonthArray = [];
                   for (let z = 0; z < this.singleSubContractorsArray[i].wesclean.length; z++) {
 
