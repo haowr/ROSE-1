@@ -81,8 +81,8 @@ export class LocationComponent implements OnInit {
     console.log(this.month);
     this.chartData = [
 
-      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+      //{ data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
 
 
       //{ data: [this.ordered, 0, 0, 0], label: this.location }
@@ -190,8 +190,8 @@ export class LocationComponent implements OnInit {
               //console.log(data.clients[i].subcontractors[j])
               this.chartData = [
 
-                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+               // { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
 
 
                 //{ data: [this.ordered, 0, 0, 0], label: this.location }
@@ -265,8 +265,7 @@ export class LocationComponent implements OnInit {
               //console.log(data.clients[i].subcontractors[j])
               this.chartData = [
 
-                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
                 //{ data: [this.ordered, 0, 0, 0], label: this.location }
@@ -289,8 +288,7 @@ export class LocationComponent implements OnInit {
                     this.curexp = this.totalCostThisMonth;
                     this.chartData = [
 
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
                     ];
@@ -339,8 +337,7 @@ export class LocationComponent implements OnInit {
 
                     this.chartData = [
 
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
 
@@ -434,8 +431,7 @@ export class LocationComponent implements OnInit {
 
                              this.chartData = [
 
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
 
@@ -696,8 +692,7 @@ export class LocationComponent implements OnInit {
                     this.expdec = data.client.subcontractors[i].expdec
                        this.chartData = [
 
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" 
 
 
 
@@ -765,9 +760,7 @@ export class LocationComponent implements OnInit {
   }
   practiceIncreaseToplineInventory(supplier,price, productcode, index) {
 
-    console.log(price);
-    console.log(Number(price));
-    this.totalCostThisMonth = Number(price)+this.totalCostThisMonth
+   
     let productToBeModified = {
 
       name: this.location,
@@ -778,6 +771,14 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
+           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -874,8 +875,7 @@ export class LocationComponent implements OnInit {
           this.curexp=this.totalCostThisMonth;
                       this.chartData = [
 
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                      { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
                     ];
@@ -887,7 +887,7 @@ export class LocationComponent implements OnInit {
       });
 
   }
-  decreaseVeritivCanadaInventory(supplier, productcode, index) {
+  decreaseVeritivCanadaInventory(supplier,price, productcode, index) {
 
     let productToBeModified = {
 
@@ -898,7 +898,16 @@ export class LocationComponent implements OnInit {
       subcontractorarray: this.singleSubContractorsArray
 
     }
+
     this.expenditureLoaded = true;
+           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -962,6 +971,13 @@ export class LocationComponent implements OnInit {
 
                     let reducer = (accumulator, currentValue) => accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
                     this.expenditureLoaded = false;
                     console.log(this.totalCostThisMonth);
 
@@ -979,7 +995,7 @@ export class LocationComponent implements OnInit {
     }
 
   }
-  decreaseToplineInventory(supplier, productcode, index) {
+  decreaseToplineInventory(supplier, price,productcode, index) {
 
     let productToBeModified = {
 
@@ -991,6 +1007,14 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
+           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1056,6 +1080,14 @@ export class LocationComponent implements OnInit {
                 this.expenditureLoaded = false;
                 console.log(this.totalCostThisMonth);
 
+          this.curexp=this.totalCostThisMonth;
+                      this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
+
 
               }
             });
@@ -1069,7 +1101,7 @@ export class LocationComponent implements OnInit {
     }
 
   }
-  decreaseWescleanInventory(supplier, productcode, index) {
+  decreaseWescleanInventory(supplier,price, productcode, index) {
 
     let productToBeModified = {
 
@@ -1081,6 +1113,14 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
+           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1146,6 +1186,14 @@ export class LocationComponent implements OnInit {
                     let reducer = (accumulator, currentValue) => accumulator + currentValue;
                     this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
                     this.expenditureLoaded = false;
+                    
+          this.curexp=this.totalCostThisMonth;
+                      this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
                     console.log(this.totalCostThisMonth);
 
 
@@ -1165,7 +1213,7 @@ export class LocationComponent implements OnInit {
 
 
   }
-  increaseWescleanInventory(supplier, productcode, index) {
+  increaseWescleanInventory(supplier,price, productcode, index) {
 
     let productToBeModified = {
 
@@ -1178,6 +1226,14 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
+           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1241,6 +1297,14 @@ export class LocationComponent implements OnInit {
                   let reducer = (accumulator, currentValue) => accumulator + currentValue;
                   this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
                   this.expenditureLoaded = false;
+                  
+          this.curexp=this.totalCostThisMonth;
+                      this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
                   console.log(this.totalCostThisMonth);
 
 
@@ -1258,7 +1322,7 @@ export class LocationComponent implements OnInit {
 
   }
 
-  increaseVeritivCanadaInventory(supplier, productcode, index) {
+  increaseVeritivCanadaInventory(supplier,price, productcode, index) {
 
 
     let productToBeModified = {
@@ -1270,7 +1334,17 @@ export class LocationComponent implements OnInit {
       subcontractorarray: this.singleSubContractorsArray
 
     }
+ 
     this.expenditureLoaded = true;
+       this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    this.curexp = this.totalCostThisMonth;
+                this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
+    
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1333,7 +1407,16 @@ export class LocationComponent implements OnInit {
 
                   let reducer = (accumulator, currentValue) => accumulator + currentValue;
                   this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                  
+          this.curexp=this.totalCostThisMonth;
+                      this.chartData = [
+
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                    ];
                   this.expenditureLoaded = false;
+                  
                   console.log(this.totalCostThisMonth);
 
 
