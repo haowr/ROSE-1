@@ -771,7 +771,10 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+
+    setTimeout(()=>{
+
+      this.totalCostThisMonth = Number(price)+this.totalCostThisMonth ;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -779,6 +782,8 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+      this.expenditureLoaded = false;
+    },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -871,7 +876,7 @@ export class LocationComponent implements OnInit {
        if(totalCostThisMonthArray.length>0){
                   let reducer = (accumulator, currentValue) => accumulator + currentValue;
                 this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
-                  this.expenditureLoaded = false;
+                 // this.expenditureLoaded = false;
                 console.log(this.totalCostThisMonth);
 
                 }
@@ -884,7 +889,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
-          this.expenditureLoaded = false;
+         // this.expenditureLoaded = false;
           console.log(this.totalCostThisMonth);
 
 
@@ -905,7 +910,10 @@ export class LocationComponent implements OnInit {
     }
 
     this.expenditureLoaded = true;
-           this.totalCostThisMonth =  this.totalCostThisMonth- Number(price);
+
+    setTimeout(()=>{
+
+      this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -913,6 +921,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+    },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1021,7 +1030,10 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = this.totalCostThisMonth -Number(price);
+
+    setTimeout(()=>{
+
+      this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1029,6 +1041,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+    },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1221,7 +1234,9 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
+    setTimeout(()=>{
+
+      this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1229,6 +1244,8 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+    },2000);
+     
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1341,7 +1358,9 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+     setTimeout(()=>{
+
+      this.totalCostThisMonth = Number(price)+this.totalCostThisMonth ;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1349,6 +1368,8 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+      this.expenditureLoaded = false;
+    },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1421,7 +1442,7 @@ export class LocationComponent implements OnInit {
               
 
           this.curexp=this.totalCostThisMonth;
-           this.expenditureLoaded = false;
+           //this.expenditureLoaded = false;
            console.log("done");
                       this.chartData = [
 
@@ -1460,7 +1481,9 @@ export class LocationComponent implements OnInit {
     }
  
     this.expenditureLoaded = true;
-       this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+    setTimeout(()=>{
+
+      this.totalCostThisMonth = Number(price)+this.totalCostThisMonth ;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1468,7 +1491,8 @@ export class LocationComponent implements OnInit {
 
 
                     ];
-    
+      this.expenditureLoaded = false;
+    },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
     console.log("SINGLESUBCONTRACTORSARRAY");
@@ -1539,7 +1563,7 @@ export class LocationComponent implements OnInit {
               
 
           this.curexp=this.totalCostThisMonth;
-           this.expenditureLoaded = false;
+           //this.expenditureLoaded = false;
            console.log("done");
                       this.chartData = [
 
