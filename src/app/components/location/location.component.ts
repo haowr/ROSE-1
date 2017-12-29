@@ -1031,6 +1031,8 @@ export class LocationComponent implements OnInit {
       if (this.singleSubContractorsArray[0].topline[i].productcode == productcode) {
 
         console.log("TOPLINEITEMPRODUCTCODEMATCH!")
+        console.log(productcode);
+        
         console.log(this.singleSubContractorsArray[0].topline[i]);
         if (this.singleSubContractorsArray[0].topline[i].ordered > 0) {
           this.singleSubContractorsArray[0].topline[i].ordered = this.singleSubContractorsArray[0].topline[i].ordered - 1;
