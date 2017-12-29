@@ -900,7 +900,7 @@ export class LocationComponent implements OnInit {
     }
 
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+           this.totalCostThisMonth = Number(price)- this.totalCostThisMonth;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1007,7 +1007,7 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+           this.totalCostThisMonth = Number(price)- this.totalCostThisMonth;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
@@ -1113,7 +1113,7 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)+ this.totalCostThisMonth;
+           this.totalCostThisMonth = Number(price)- this.totalCostThisMonth;
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
