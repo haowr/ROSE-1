@@ -1082,7 +1082,7 @@ export class LocationComponent implements OnInit {
                 if(totalCostThisMonthArray.length>0){
                   let reducer = (accumulator, currentValue) => accumulator + currentValue;
                 this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
-                  this.expenditureLoaded = false;
+                 
                 console.log(this.totalCostThisMonth);
 
                 }
@@ -1090,6 +1090,8 @@ export class LocationComponent implements OnInit {
               
 
           this.curexp=this.totalCostThisMonth;
+           this.expenditureLoaded = false;
+           console.log("done");
                       this.chartData = [
 
                       { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
