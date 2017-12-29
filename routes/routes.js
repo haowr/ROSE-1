@@ -442,7 +442,7 @@ router.post('/pushdateintosubcontractors', function(req,res){
 
     console.log(req.body.subcontractorarray);
 
-    Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: req.body.subcontractorarray}}, function(err, client){
+    Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: req.body.subcontractorarray}},{new:true}, function(err, client){
 
 
         if(err)throw err;
