@@ -242,6 +242,7 @@ export class LocationComponent implements OnInit {
                   console.log(this.singleSubContractorsArray)
                   console.log(this.singleSubContractorsArray[i]);
                   console.log(i);
+                
                   console.log("Inventory is still in service")
               this.expjan = this.singleSubContractorsArray[i].expjan;
               this.expfeb = this.singleSubContractorsArray[i].expfeb;
@@ -255,6 +256,9 @@ export class LocationComponent implements OnInit {
               this.expoct = this.singleSubContractorsArray[i].expoct;
               this.expnov = this.singleSubContractorsArray[i].expnov;
               this.expdec = this.singleSubContractorsArray[i].expdec;
+                console.log("THIS.EXPJUNE");
+                   console.log(this.expjun);
+             
               //this.expjan = data.clients[i].subcontractors[j].expjan;
               //  data.clients[i].subcontractors[j].date =1;
               //console.log(data.clients[i].subcontractors[j].date);
@@ -759,9 +763,11 @@ export class LocationComponent implements OnInit {
 
 
   }
-  practiceIncreaseToplineInventory(supplier, productcode, index) {
+  practiceIncreaseToplineInventory(supplier,price, productcode, index) {
 
-
+    console.log(price);
+    console.log(Number(price));
+    this.totalCostThisMonth = Number(price)+this.totalCostThisMonth
     let productToBeModified = {
 
       name: this.location,
