@@ -921,6 +921,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+                    this.expenditureLoaded = false;
     },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
@@ -1041,6 +1042,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+                    this.expenditureLoaded = false;
     },2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
@@ -1244,6 +1246,7 @@ export class LocationComponent implements OnInit {
 
 
                     ];
+                    this.expenditureLoaded=false;
     },2000);
      
     console.log("PRODUCTCODE")
