@@ -20,7 +20,7 @@ export class ClientService {
     let headers = new Headers();
     
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/clients',{headers:headers})
+    return this.http.get('routes/clients',{headers:headers})
     .map(res => res.json());
 
 
