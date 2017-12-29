@@ -170,37 +170,7 @@ export class LocationComponent implements OnInit {
             for (let j = 0; j < data.clients[i].subcontractors.length; j++) {
               console.log(data.clients[i].subcontractors[j].name)
 
-              console.log(data.clients[i].subcontractors[j]);
-              console.log("data.clients[i]")
-              this.expjan = data.clients[i].subcontractors[j].expjan;
-              this.expfeb = data.clients[i].subcontractors[j].expfeb;
-              this.expmar = data.clients[i].subcontractors[j].expmar;
-              this.expapr = data.clients[i].subcontractors[j].expapr;
-              this.expmay = data.clients[i].subcontractors[j].expmay;
-              this.expjun = data.clients[i].subcontractors[j].expjun;
-              this.expjul = data.clients[i].subcontractors[j].expjul;
-              this.expaug = data.clients[i].subcontractors[j].expaug;
-              this.expsept = data.clients[i].subcontractors[j].expsept;
-              this.expoct = data.clients[i].subcontractors[j].expoct;
-              this.expnov = data.clients[i].subcontractors[j].expnov;
-              this.expdec = data.clients[i].subcontractors[j].expdec;
-              //this.expjan = data.clients[i].subcontractors[j].expjan;
-              //  data.clients[i].subcontractors[j].date =1;
-              //console.log(data.clients[i].subcontractors[j].date);
-              //console.log(data.clients[i].subcontractors[j])
-              this.chartData = [
-
-                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
-                { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
-
-
-                //{ data: [this.ordered, 0, 0, 0], label: this.location }
-
-
-              ];
-              console.log(this.chartData[0]["data"]);
-              this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+    
               if (data.clients[i].subcontractors[j].name == params.location && data.clients[i].name == params.client) {
                 console.log(data.clients[i].subcontractors[j].name)
                 this.subcontractorObject = data.clients[i].subcontractors[j];
@@ -243,6 +213,37 @@ export class LocationComponent implements OnInit {
                   console.log(this.singleSubContractorsArray[i]);
                   console.log(i);
                   console.log("Inventory is still in service")
+                            console.log(data.clients[i].subcontractors[j]);
+              console.log("data.clients[i]")
+              this.expjan = data.clients[i].subcontractors[j].expjan;
+              this.expfeb = data.clients[i].subcontractors[j].expfeb;
+              this.expmar = data.clients[i].subcontractors[j].expmar;
+              this.expapr = data.clients[i].subcontractors[j].expapr;
+              this.expmay = data.clients[i].subcontractors[j].expmay;
+              this.expjun = data.clients[i].subcontractors[j].expjun;
+              this.expjul = data.clients[i].subcontractors[j].expjul;
+              this.expaug = data.clients[i].subcontractors[j].expaug;
+              this.expsept = data.clients[i].subcontractors[j].expsept;
+              this.expoct = data.clients[i].subcontractors[j].expoct;
+              this.expnov = data.clients[i].subcontractors[j].expnov;
+              this.expdec = data.clients[i].subcontractors[j].expdec;
+              //this.expjan = data.clients[i].subcontractors[j].expjan;
+              //  data.clients[i].subcontractors[j].date =1;
+              //console.log(data.clients[i].subcontractors[j].date);
+              //console.log(data.clients[i].subcontractors[j])
+              this.chartData = [
+
+                { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" },
+                { data: [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: "$" },
+
+
+                //{ data: [this.ordered, 0, 0, 0], label: this.location }
+
+
+              ];
+              console.log(this.chartData[0]["data"]);
+              this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
                   let totalCostThisMonthArray = [];
                   for (let z = 0; z < this.singleSubContractorsArray[i].wesclean.length; z++) {
 
