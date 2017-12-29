@@ -170,7 +170,8 @@ export class LocationComponent implements OnInit {
             for (let j = 0; j < data.clients[i].subcontractors.length; j++) {
               console.log(data.clients[i].subcontractors[j].name)
 
-
+              console.log(data.clients[i].subcontractors[j]);
+              console.log("data.clients[i]")
               this.expjan = data.clients[i].subcontractors[j].expjan;
               this.expfeb = data.clients[i].subcontractors[j].expfeb;
               this.expmar = data.clients[i].subcontractors[j].expmar;
