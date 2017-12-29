@@ -52,7 +52,7 @@
           <ul class="nav navbar-nav navbar-right ">
             <li *ngIf="authservice.isLoggedIn" class = "animated fadeIn"><a href="#" >Welcome, {{username}}.</a></li>
             <li *ngIf="!authservice.isLoggedIn" class = "animated fadeIn"><a [routerLink]="['/login']" >Employee Login</a></li>
-            <li><a [routerLink]="['/register']"class = "animated fadeIn" >Employee Register</a></li>
+            <li><a  [routerLink]="['/register']"class = "animated fadeIn" >Employee Register</a></li>
             <li *ngIf="authservice.isLoggedIn"class = "animated fadeIn"><a href="#"(click)="onLogoutClick();" >Logout</a></li>
   
           </ul>
