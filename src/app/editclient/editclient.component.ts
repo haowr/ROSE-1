@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../services/client.service';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { tokenNotExpired } from 'angular2-jwt';
 
 
 @Component({
