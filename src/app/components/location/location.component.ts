@@ -868,10 +868,15 @@ export class LocationComponent implements OnInit {
             console.log(totalCostThisMonthArray);
           }
 
+       if(totalCostThisMonthArray.length>0){
+                  let reducer = (accumulator, currentValue) => accumulator + currentValue;
+                this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+                  this.expenditureLoaded = false;
+                console.log(this.totalCostThisMonth);
 
+                }
 
-          let reducer = (accumulator, currentValue) => accumulator + currentValue;
-          this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+     
           this.curexp=this.totalCostThisMonth;
                       this.chartData = [
 
@@ -1007,7 +1012,7 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoaded = true;
-           this.totalCostThisMonth = Number(price)- this.totalCostThisMonth;
+           this.totalCostThisMonth = this.totalCostThisMonth -Number(price);
     this.curexp = this.totalCostThisMonth;
                 this.chartData = [
 
