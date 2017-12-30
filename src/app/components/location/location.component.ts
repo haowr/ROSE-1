@@ -966,7 +966,7 @@ let productToBeModified = {
       });
 
   }
-  decreaseVeritivCanadaInventory(supplier, price, productcode, index) {
+  decreaseVeritivCanadaInventory(ordered,supplier, price, productcode, index) {
 
     let productToBeModified = {
 
@@ -981,7 +981,7 @@ let productToBeModified = {
     this.expenditureLoaded = true;
 
     setTimeout(() => {
-      if(this.totalCostThisMonth > 0){
+      if(ordered > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [
@@ -1097,7 +1097,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
     }
 
   }
-  decreaseToplineInventory(supplier, price, productcode, index) {
+  decreaseToplineInventory(ordered,supplier, price, productcode, index) {
 
     console.log("clicked");
     let productToBeModified = {
@@ -1113,7 +1113,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
     setTimeout(() => {
 
-      if(this.totalCostThisMonth > 0){
+      if(ordered > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [
@@ -1310,7 +1310,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       }*/
 
   }
-  decreaseWescleanInventory(supplier, price, productcode, index) {
+  decreaseWescleanInventory(ordered,supplier, price, productcode, index) {
 
     let productToBeModified = {
 
@@ -1324,7 +1324,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
     this.expenditureLoaded = true;
     setTimeout(() => {
 
-      if(this.totalCostThisMonth > 0){
+      if(ordered > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [

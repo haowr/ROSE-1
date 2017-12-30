@@ -137,7 +137,7 @@
               <tr>
               <i class="fa fa-plus-circle buttonstyling"  (click)="increaseVeritivCanadaInventory(item.supplier,item.price,item.productcode,i);" aria-hidden="true"></i>
               <span style="font-size:16px"> {{item.ordered}} </span>
-              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseVeritivCanadaInventory(item.supplier,item.price,item.productcode);"aria-hidden="true"></i>
+              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseVeritivCanadaInventory(item.ordered,item.supplier,item.price,item.productcode);"aria-hidden="true"></i>
               </tr>
             </td>
 
@@ -206,7 +206,7 @@
               <tr>
               <i class="fa fa-plus-circle buttonstyling"  (click)="increaseWescleanInventory(item.supplier,item.price,item.productcode,i);" aria-hidden="true"></i>
               <span style="font-size:16px"> {{item.ordered}} </span>
-              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseWescleanInventory(item.supplier,item.price,item.productcode);"aria-hidden="true"></i>
+              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseWescleanInventory(item.ordered,item.supplier,item.price,item.productcode);"aria-hidden="true"></i>
               </tr>
             </td>
 
@@ -275,7 +275,7 @@
               <tr>
               <i class="fa fa-plus-circle buttonstyling"  (click)="practiceIncreaseToplineInventory(item.supplier,item.price,item.productcode,i);" aria-hidden="true"></i>
               <span style="font-size:16px"> {{item.ordered  }} </span>
-              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseToplineInventory(item.supplier,item.price,item.productcode,i);"aria-hidden="true"></i>
+              <i class="fa fa-minus-circle buttonstyling"  (click)="decreaseToplineInventory(item.ordered,item.supplier,item.price,item.productcode,i);"aria-hidden="true"></i>
               </tr>
             </td>
 
