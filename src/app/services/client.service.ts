@@ -64,7 +64,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put("routes/removeclient/"+clientname,{headers:headers})
+    return this.http.put('routes/removeclient/'+clientname,{headers:headers})
     .map(res=> res.json());
   }
 

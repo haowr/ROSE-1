@@ -10,20 +10,20 @@
 <div class="row">
   <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
     </div>
-    <div class="col-sm-6">
-      <!--<p>{{client.name}}</p>-->
+    <div class="col-sm-8">
+      <h4>{{client.name}}</h4>
      <!-- <button (click)="openEditFormFunc();" class="btn btn-primary">Edit {{client.name}}</button>-->
 <br>
 <br>
-      <ul class="nav nav-tabs">
-  <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Home</a></li>
+      <ul class="nav nav-tabs" >
+  <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Name</a></li>
   <li class=""><a href="#phonenumber" data-toggle="tab" aria-expanded="false">Phone Number</a></li>
     <li class=""><a href="#emailaddress" data-toggle="tab" aria-expanded="false">Email Address</a></li>
-      <li class=""><a href="#contactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
-  <li class="active"><a href="#contactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
-        <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+      <li class=""><a href="#contactname" data-toggle="tab" aria-expanded="false">C.Name</a></li>
+  <li class="active"><a href="#contactphone" data-toggle="tab" aria-expanded="true">C.Phone</a></li>
+        <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">C.Email</a></li>
 
   
 
@@ -346,7 +346,7 @@
       </form>
 
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
     </div>
     <br><br><br>
   </div>
