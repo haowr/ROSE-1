@@ -981,7 +981,7 @@ let productToBeModified = {
     this.expenditureLoaded = true;
 
     setTimeout(() => {
-
+      if(this.totalCostThisMonth > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [
@@ -991,6 +991,9 @@ let productToBeModified = {
 
       ];
       this.expenditureLoaded = false;
+
+      }
+
     }, 2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
@@ -1108,6 +1111,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
     setTimeout(() => {
 
+      if(this.totalCostThisMonth > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [
@@ -1117,6 +1121,8 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
       ];
       this.expenditureLoaded = false;
+
+      }
     }, 2000);
     console.log("PRODUCTCODE")
     console.log(productcode);
@@ -1314,6 +1320,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
     this.expenditureLoaded = true;
     setTimeout(() => {
 
+      if(this.totalCostThisMonth > 0){
       this.totalCostThisMonth = this.totalCostThisMonth - Number(price);
       this.curexp = this.totalCostThisMonth;
       this.chartData = [
@@ -1323,6 +1330,8 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
       ];
       this.expenditureLoaded = false;
+
+      }
     }, 2000);
 
     console.log("PRODUCTCODE")
