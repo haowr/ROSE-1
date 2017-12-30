@@ -992,6 +992,8 @@ let productToBeModified = {
       ];
       this.expenditureLoaded = false;
 
+      }else {
+        this.expenditureLoaded = false;
       }
 
     }, 2000);
@@ -1122,6 +1124,8 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       ];
       this.expenditureLoaded = false;
 
+      }else {
+        this.expenditureLoaded = false;
       }
     }, 2000);
     console.log("PRODUCTCODE")
