@@ -86,8 +86,24 @@ if(req.body.subContractorName == '' || undefined){
 
             res.json({success: false, message:"Client not found..."})
         }else{
+                      console.log(client[0].subcontractors[req.body.index].phonenumber);
+            console.log(client[0].subcontractors[req.body.index]);
             client[0].subcontractors[req.body.index].name=req.body.subContractorName;
-            res.json({success: true, message: "Client found...",client:client})
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+
+                if(err) throw err;
+                if(!client){
+
+                    res.json({success: false, message:"Client not found, so not updated..."});
+
+                }else{
+
+                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+
+                }
+
+            })
         }
 
     })
@@ -107,8 +123,24 @@ if(req.body.subContractorContactName == ''|| undefined){
 
             res.json({success: false, message:"Client not found..."})
         }else{
+                    console.log(client[0].subcontractors[req.body.index].phonenumber);
+            console.log(client[0].subcontractors[req.body.index]);
             client[0].subcontractors[req.body.index].contactname=req.body.subContractorContactName;
-            res.json({success: true, message: "Client found...",client:client})
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+
+                if(err) throw err;
+                if(!client){
+
+                    res.json({success: false, message:"Client not found, so not updated..."});
+
+                }else{
+
+                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+
+                }
+
+            })
         }
 
     })
@@ -129,9 +161,24 @@ if(req.body.subContractorContactPhone == ''|| undefined){
 
             res.json({success: false, message:"Client not found..."})
         }else{
+                       console.log(client[0].subcontractors[req.body.index].phonenumber);
+            console.log(client[0].subcontractors[req.body.index]);
             client[0].subcontractors[req.body.index].contactphone=req.body.subContractorContactPhone;
-            
-            res.json({success: true, message: "Client found...",client:client})
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+
+                if(err) throw err;
+                if(!client){
+
+                    res.json({success: false, message:"Client not found, so not updated..."});
+
+                }else{
+
+                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+
+                }
+
+            })
         }
 
     })
@@ -189,8 +236,24 @@ if(req.body.subContractorEmailAddress == ''|| undefined){
 
             res.json({success: false, message:"Client not found..."})
         }else{
+                       console.log(client[0].subcontractors[req.body.index].phonenumber);
+            console.log(client[0].subcontractors[req.body.index]);
             client[0].subcontractors[req.body.index].emailaddress=req.body.subContractorEmailAddress;
-            res.json({success: true, message: "Client found...",client:client})
+            console.log(client[0].subcontractors[req.body.index].phonenumber);
+            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+
+                if(err) throw err;
+                if(!client){
+
+                    res.json({success: false, message:"Client not found, so not updated..."});
+
+                }else{
+
+                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+
+                }
+
+            })
         }
 
     })
