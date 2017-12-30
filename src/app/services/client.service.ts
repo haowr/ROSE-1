@@ -56,7 +56,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('editclientaddsubcontractor',subcontractor,{headers:headers})
+    return this.http.post('routes/editclientaddsubcontractor',subcontractor,{headers:headers})
     .map(res=> res.json());
 
   }

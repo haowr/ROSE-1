@@ -6,7 +6,9 @@ a{
 .subcontractor{
 font-family: 'Open Sans Condensed', sans-serif;
   opacity:.4;
-  transition:1s
+  transition:1s;
+  border:1px solid black;
+ 
   /* height:0px;
  overflow-y:hidden;*/
 
@@ -48,14 +50,28 @@ opacity:0;
 
 }
 
+
+#pullstorenumbersleft{
+
+  padding-right:70px;
+}
 #pushstorenumberright{
 
   padding-left:55px;
 
+
+}
+#hoverable:hover #tobeuncovered{
+
+opacity:1;
+}
+#tobeuncovered{
+
+  opacity:0;
 }
 .clientname{
   
-  border:1px solid black;
+  
   position:relative;
   overflow-y:scroll;
   height:270px;
@@ -64,6 +80,11 @@ opacity:0;
 .clientnameheader{
   font-family:'Anton';
   text-decoration:underline;
+}
+.subcontractorhref{
+  width:200px;
+  border:1px solid black;
+
 }
 /*
 .clientname:hover .subcontractor{

@@ -31,6 +31,8 @@ export class ClientsComponent implements OnInit {
   clientArray: Object[];
   subConArrayOfObjects:Object[];
   storeNumberArrayOfArrays=[];
+  locationsArrayOfArrays =[];
+  storeNumberNLocationArray =[]
   locationsArray: string[] =[];
   subcontractorsArray:string[]=[];
   subcontractorArrayOfObjects:object[]=[];
@@ -102,15 +104,21 @@ export class ClientsComponent implements OnInit {
       console.log(clients.clients[0])
       console.log(clients.clients[0].subcontractors.length)
       for(let z =0; z<clients.clients.length; z++){
-
+        console.log(z)
+        console.log(clients.clients[z]);
           //if(clients.clients[z].name == this.client ){
                   this.subcontractorArrayOfObjects[z]=clients.clients[z].subcontractors;
               console.log(this.subcontractorArrayOfObjects);
         
-           for(let d = 0; d<clients.clients[z].length;d++){
+           for(let d = 0; d<clients.clients[z].subcontractors.length;d++){
 
             console.log(d);
-            console.log(clients.clients[z].subcontractors[d]);
+            console.log(clients.clients[z].subcontractors[d].storenumbers);
+            this.storeNumberArrayOfArrays.push(clients.clients[z].subcontractors[d].storenumbers)
+            this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].storenumbers)
+            this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].locations);
+            this.locationsArrayOfArrays.push(clients.clients[z].subcontractors[d].locations);
+            console.log(this.storeNumberArrayOfArrays)
             
               }
              // console.log(this.storeNumberArrayOfArrays)
