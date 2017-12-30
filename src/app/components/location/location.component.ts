@@ -1331,6 +1331,8 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       ];
       this.expenditureLoaded = false;
 
+      }else {
+        this.expenditureLoaded = false;
       }
     }, 2000);
 
