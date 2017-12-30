@@ -29,9 +29,12 @@ export class ClientsComponent implements OnInit {
   user: Object;
   clientsArray: string[];
   clientArray: Object[];
+  subConArrayOfObjects:Object[];
+  storeNumberArrayOfArrays=[];
   locationsArray: string[] =[];
   subcontractorsArray:string[]=[];
   subcontractorArrayOfObjects:object[]=[];
+
   clientsArrayOfObjects: Object[];
   locationsArrayOfObjects: Object;
   clientsObject: {
@@ -101,9 +104,19 @@ export class ClientsComponent implements OnInit {
       for(let z =0; z<clients.clients.length; z++){
 
           //if(clients.clients[z].name == this.client ){
+                  this.subcontractorArrayOfObjects[z]=clients.clients[z].subcontractors;
+              console.log(this.subcontractorArrayOfObjects);
+        
+           for(let d = 0; d<clients.clients[z].length;d++){
 
+            console.log(d);
+            console.log(clients.clients[z].subcontractors[d]);
+            
+              }
+             // console.log(this.storeNumberArrayOfArrays)
+/*
             for(let d =0; d>clients.clients[z].length; d++){
-              this.subcontractorArrayOfObjects.push(clients.clients[z].subcontractors[d]);
+        
               this.subcontractorsArray.push(clients.clients[z].subcontractors[d].name)
               
               for(let s =0; s> clients.clients[z].subcontractors[d].length;s++){
@@ -114,10 +127,13 @@ export class ClientsComponent implements OnInit {
               }
 
             }
+            */
 
           
 
       }
+
+         
 
 /*y
       for(let i =0; i<clients.clients[0].subcontractors.length;i++){

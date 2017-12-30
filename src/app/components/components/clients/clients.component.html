@@ -13,50 +13,28 @@
        <img class="buildingstyling animated fadeIn" (click)="showLocationsFunc(i);" src="./assets/img/building.jpg">
        <h2 class ="animated fadeIn">{{client.name}}</h2>
       </div>
-      <div   class="col-sm-9 clientname animated fadeIn">
+      <div   class="col-sm-9 clientname animated fadeIn" >
         <div *ngFor="let subcontractor of clientArray[i].subcontractors; let i = index;">
             <!--<div *ngFor="let location subcontractor.locations">-->
               <div *ngFor="let storenumber of subcontractor.storenumbers">
-            <div class ="col-sm-6">
+            <div id="pushstorenumberright"class ="col-sm-6">
             <a  href ="/clients/{{client.name}}/{{subcontractor.name}}"><h2 class = "subcontractor">{{storenumber}}</h2></a>
 
          
             </div>
-                <div *ngFor="let location of subcontractor.locations; let i = index;">
+           <!--     <div *ngFor="let location of subcontractor.locations; let i = index;">
             <div *ngIf="location !== subcontractor.locations[i - 1]"class ="col-sm-6">
              
             <a href ="/clients/{{client.name}}/{{subcontractor.name}}"><h2 class = "subcontractor">{{location}}</h2></a>
 
          
             </div>
-
+-->
               </div>
-           <!-- </div>-->
-           <!-- <div *ngFor= "let location of subcontractor.location">
-              {{location}}
-            <div class ="col-sm-12">
-            <a href ="/clients/{{client.name}}/{{subcontractor.name}}"><h2 class = "subcontractor">{{location}}</h2></a>
-         
-            </div>-->
+    
             </div>
        
      
-          <!--      <div class ="col-sm-6" *ngIf="i>3 && i<7">
-            <h2 class = "subcontractor">{{location}}</h2>
-        
-            </div>
-          <div class ="col-sm 6" *ngIf="i>6 && i<10">
-            <h2 class = "subcontractor">{{location}}</h2>
-            
-          </div>
-                 <div class ="col-sm 6" *ngIf="i>9 && i<13">
-            <h2 class = "subcontractor">{{location}}</h2>
-           
-          </div>
-                    <div class ="col-sm 6" *ngIf="i>12 && i<16">
-            <h2 class = "subcontractor">{{location}}</h2>
-           
-          </div>-->
         </div>
         
       </div>
@@ -65,25 +43,7 @@
       </div>
       <div class="col-sm-4">
       </div>
-     <!-- <div style="text-align:center;" class="col-sm-12 clientname">
-        
-        
      
-        <div class="col-sm-6" *ngFor="let subcontractor of client.subcontractors">
-          <div class="col-sm-12" *ngFor="let location of subcontractor.locations">
-            <a href="/clients/{{client.name}}/{{subcontractor}}">
-              <h2 class="subcontractor">{{location}}</h2>
-            </a>
-          </div>
-        </div>
-
-
-        <div class="col-sm-6" *ngFor="let location of client.locations">
-          <a href="/clients/{{client.name}}/{{subcontractor}}">
-            <h2 class="locations">{{location}}</h2>
-          </a>-->
-        <!--</div>-->
-
       </div>
     </div>
 

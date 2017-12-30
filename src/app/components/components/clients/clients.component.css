@@ -48,8 +48,14 @@ opacity:0;
 
 }
 
+#pushstorenumberright{
+
+  padding-left:55px;
+
+}
 .clientname{
-  border:none;
+  
+  border:1px solid black;
   position:relative;
   overflow-y:scroll;
   height:270px;
