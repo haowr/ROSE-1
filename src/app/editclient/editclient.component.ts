@@ -106,6 +106,7 @@ export class EditclientComponent implements OnInit {
       this.openEditForm = true;
     } else {
       this.openEditForm = false;
+      this.openEditSubcontractors=false;
     }
   }
   editClientFunc(clientparam) {
@@ -187,6 +188,7 @@ export class EditclientComponent implements OnInit {
   }
   openAddSubcontractorsFunc(index) {
     this.addSubContractorIndexVar = index;
+    console.log(index);
 /*
     if (!this.openAddSubcontractors) {
 
@@ -2829,6 +2831,8 @@ console.log(data);
   openEditSubcontractorsFunc(index) {
 
     this.editSubContractorIndexVar = index;
+    this.indexVar = index
+    console.log(index)
     if(!this.openEditSubcontractors){
 
         this.openEditSubcontractors =true;
