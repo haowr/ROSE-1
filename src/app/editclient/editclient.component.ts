@@ -88,12 +88,19 @@ export class EditclientComponent implements OnInit {
       for (let i = 0; i < data.clients.length; i++) {
 
         this.subcontractorsArray[i] = data.clients[i].subcontractors;
+     
 
 
       }
       console.log("this.subcontractorsArray");
       console.log(this.subcontractorsArray);
+   for(let z =0; z<this.subcontractorsArray.length; z++){
 
+    for(let d=0; d<this.subcontractorsArray[z].length;d++)
+this.subcontractorsArray[z][d][d]=d*34567
+           console.log( this.subcontractorsArray[z])
+         
+        }
     })
 
   }
