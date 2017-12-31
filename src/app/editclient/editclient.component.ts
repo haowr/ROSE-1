@@ -13,7 +13,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class EditclientComponent implements OnInit {
 
   clientsArray: Object[] = [];
-  subcontractorsArray: Object[] = [];
+  subcontractorsArray = [];
   clientName: string = "";
   clientPhoneNumber: string = "";
   clientEmailAddress: string = "";
