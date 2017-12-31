@@ -46,7 +46,75 @@ const Sbcntrctr = require('../models/sbcntrctor');
 router.get('/getclients', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+//EDIT CLIENT/REMOVE STORE NUMBER TO SUBCONTRACTOR
+router.post('/editclientremovestorenumberofsubcontractor', function(req,res){
 
+     Client.findOne({name:req.body.client}, function(err,client){
+
+        if(err) throw err;
+        if(!client){
+            res.json({success: false, message: "Client not found ..."})
+        }else{
+            console.log(client);
+            //console.log(client.subcontractors)
+            console.log(client.subcontractors[req.body.index]);
+            console.log(client.subcontractors[req.body.index].storenumbers)
+
+            client.subcontractors[req.body.index].storenumbers = req.body.storenumbers;
+             console.log(client.subcontractors[req.body.index].storenumbers)
+            // client.subcontractors[req.body.index].storenumbers.splice(client.subcontractors[req.body.index].length-1,1);
+
+           Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors:client.subcontractors}}, {new:true}, function(err,client){
+
+                if(err)throw err;
+                if(!client){
+                    res.json({success: false, message: "Client not found..."})
+
+                }else{
+                    res.json({success: true, message: req.body.client+"'s Storenumbers Array updated..", client:client});
+                }
+
+
+            })
+
+        }
+
+     })
+})
+//EDIT CLIENT/ADD STORE NUMBER TO SUBCONTRACTOR
+router.post('/editclientaddstorenumbertosubcontractor', function(req,res){
+
+     Client.findOne({name:req.body.client}, function(err,client){
+
+        if(err) throw err;
+        if(!client){
+            res.json({success: false, message: "Client not found ..."})
+        }else{
+            console.log(client);
+            //console.log(client.subcontractors)
+            console.log(client.subcontractors[req.body.index]);
+            console.log(client.subcontractors[req.body.index].storenumbers)
+
+            client.subcontractors[req.body.index].storenumbers = req.body.storenumbers;
+             console.log(client.subcontractors[req.body.index].storenumbers)
+
+           Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors:client.subcontractors}}, {new:true}, function(err,client){
+
+                if(err)throw err;
+                if(!client){
+                    res.json({success: false, message: "Client not found..."})
+
+                }else{
+                    res.json({success: true, message: req.body.client+"'s Storenumbers Array updated..", client:client});
+                }
+
+
+            })
+
+        }
+
+     })
+})
 //EDIT CLIENT/ADD NEW SUBCONTRACTOR
 
 router.post('/editclientaddsubcontractor', function(req,res){

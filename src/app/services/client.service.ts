@@ -52,6 +52,22 @@ export class ClientService {
     .map(res=> res.json());
 
   }
+  editClientAddStoreNumberToSubContractor(storenumber){
+
+
+    let headers = new Headers();
+    headers.append('Content-type', 'application/json');
+    return this.http.post('routes/editclientaddstorenumbertosubcontractor', storenumber, {headers: headers})
+    .map(res=> res.json());
+  }
+    editClientRemoveStoreNumberOfSubContractor(storenumber){
+
+
+    let headers = new Headers();
+    headers.append('Content-type', 'application/json');
+    return this.http.post('routes/editclientremovestorenumberofsubcontractor', storenumber, {headers: headers})
+    .map(res=> res.json());
+  }
   editClientAddSubcontractor(subcontractor){
 
     let headers = new Headers();

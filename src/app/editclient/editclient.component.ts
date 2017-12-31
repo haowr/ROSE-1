@@ -36,6 +36,12 @@ export class EditclientComponent implements OnInit {
   subcontractorStoreNumber: string = "";
   subcontractorLocations: string[] = [];
   subcontractorStoreNumbers: string[] = [];
+  indexVar:string = "";
+  editSubContractorIndexVar:string =  "";
+  addSubContractorIndexVar:string = "";
+   date= new Date();
+  dateNow = this.date.getDate()
+  month = this.date.getMonth()+1;
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
   openEditSubcontractors: boolean = false;
@@ -91,14 +97,16 @@ export class EditclientComponent implements OnInit {
     })
 
   }
-  openEditFormFunc() {
+  openEditFormFunc(index) {
+
+    this.indexVar =index;
+   console.log(this.indexVar)
 
     if (!this.openEditForm) {
       this.openEditForm = true;
     } else {
       this.openEditForm = false;
     }
-
   }
   editClientFunc(clientparam) {
     //console.log(client);
@@ -177,8 +185,9 @@ export class EditclientComponent implements OnInit {
     })
 
   }
-  openAddSubcontractorsFunc() {
-
+  openAddSubcontractorsFunc(index) {
+    this.addSubContractorIndexVar = index;
+/*
     if (!this.openAddSubcontractors) {
 
       this.openAddSubcontractors = true;
@@ -186,7 +195,7 @@ export class EditclientComponent implements OnInit {
     } else {
       this.openAddSubcontractors = false;
     }
-
+*/
   }
   addLocationToSubcontractorFunc() {
     //let subcontractorLocation = [];
@@ -217,8 +226,9 @@ export class EditclientComponent implements OnInit {
     this.subcontractorLocations.splice(0, 1);
 
   }
-  addStoreNumberToSubcontractorFunc(storenumber) {
+  addStoreNumberToSubcontractorFunc(client,index,storenumbers) {
     //this.subcontractorStoreNumbers = [];
+    console.log(storenumbers);
         if(this.subcontractorStoreNumber == ""|| undefined){
 
                       this.addSubcontractorStoreNumbersConditionsNotMet = true;
@@ -230,6 +240,24 @@ export class EditclientComponent implements OnInit {
 
     }else{
           this.subcontractorStoreNumbers.push(this.subcontractorStoreNumber);
+          storenumbers.push(this.subcontractorStoreNumber);
+          console.log(storenumbers);
+          let storenumberObject = {
+
+            client: client,
+            index: index,
+            storenumbers: storenumbers
+
+          }
+          this.clientservice.editClientAddStoreNumberToSubContractor(storenumberObject).subscribe(data=>{
+
+console.log(data);
+          })
+
+            
+
+
+          
     this.subcontractorStoreNumber = "";
                             this.addSubcontractorStoreNumberConditionsMet = true;
         setTimeout(()=>{
@@ -242,9 +270,24 @@ export class EditclientComponent implements OnInit {
     console.log(this.subcontractorStoreNumbers)
 
   }
-  removeStoreNumberFromSubcontractorFunc() {
+  removeStoreNumberFromSubcontractorFunc(client,index,storenumbers) {
 
-    this.subcontractorStoreNumbers.splice(0, 1);
+
+   storenumbers.splice(storenumbers.length-1, 1);
+         // storenumbers.push(this.subcontractorStoreNumber);
+          console.log(storenumbers);
+          let storenumberObject = {
+
+            client: client,
+            index: index,
+            storenumbers: storenumbers
+
+          }
+          this.clientservice.editClientAddStoreNumberToSubContractor(storenumberObject).subscribe(data=>{
+
+console.log(data);
+          })
+  
   }
   addSubcontractor(client) {
 
@@ -258,7 +301,7 @@ export class EditclientComponent implements OnInit {
       contactphone: this.subcontractorContactPhone,
       storenumbers: this.subcontractorStoreNumbers,
       locations: this.subcontractorLocations,
-      date: 0,
+      date: this.month,
          expjan:0,
             expfeb:0,
             expmar:0,
@@ -2783,17 +2826,19 @@ export class EditclientComponent implements OnInit {
 
 
   }
-  openEditSubcontractorsFunc() {
+  openEditSubcontractorsFunc(index) {
 
-    if (!this.openEditSubcontractors) {
+    this.editSubContractorIndexVar = index;
+    if(!this.openEditSubcontractors){
 
-      this.openEditSubcontractors = true;
+        this.openEditSubcontractors =true;
 
-    } else {
-
-      this.openEditSubcontractors = false;
-
+    }else{
+        this.openEditSubcontractors = false;
     }
+    console.log(index);
+    console.log(this.editSubContractorIndexVar);
+
 
   }
   editSubContractorFunc(client, item, index) {
