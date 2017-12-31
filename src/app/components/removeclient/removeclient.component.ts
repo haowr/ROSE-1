@@ -33,7 +33,8 @@ export class RemoveclientComponent implements OnInit {
 
     console.log(clientname);
     document.getElementById("btnclose").click();
-    this.clientservice.removeClient(this.client).subscribe(data=>{
+    //document.getElementsByClassName('.close').click();
+  /*  this.clientservice.removeClient(this.client).subscribe(data=>{
 
       console.log(data);
       if(data.success){
@@ -57,7 +58,7 @@ export class RemoveclientComponent implements OnInit {
     })
     
 
-    })
+    })*/
 
   }
   removeClient(clientname){
