@@ -2832,7 +2832,7 @@ console.log(data);
 
     this.editSubContractorIndexVar = index;
     this.indexVar = index
-    console.log(index)
+   
     if(!this.openEditSubcontractors){
 
         this.openEditSubcontractors =true;
@@ -2840,9 +2840,12 @@ console.log(data);
     }else{
         this.openEditSubcontractors = false;
     }
-    console.log(index);
-    console.log(this.editSubContractorIndexVar);
-
+   console.log(index)
+    console.log(this.openEditForm);
+    console.log(this.indexVar);
+    console.log(this.openEditSubcontractors)
+    console.log(this.editSubContractorIndexVar
+    )
 
   }
   editSubContractorFunc(client, item, index) {
