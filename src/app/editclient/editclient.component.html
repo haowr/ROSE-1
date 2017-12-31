@@ -29,7 +29,7 @@
         <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
 
 
-<br>
+
       </ul>
       <div  style="border-bottom:1px dashed gray"id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm">
 
@@ -79,7 +79,7 @@
       
                 <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
                 <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
-        
+        <br>
       </div>
       <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
             <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm">
