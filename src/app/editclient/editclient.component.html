@@ -107,7 +107,6 @@
 
           <div class="tab-pane fade active in" id="{{subcontractor[z]}}">
             <h4>Sub Contractor Name:</h4>
-            {{subcontractor[z]}}
             <input class="form-control" placeholder="{{subcontractor.name}}" name='subContractorName' [(ngModel)]='subContractorName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default form-control">edit</button>
@@ -116,7 +115,6 @@
 
           <div class="tab-pane fade" id="{{subcontractor[z]+1}}">
             <h4>Sub Contractor Phone Number:</h4>
-            {{z*2.56}}
             <input class="form-control" placeholder="{{subcontractor.phonenumber}}" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default form-control">edit</button>
@@ -124,7 +122,7 @@
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+2}}">
             <h4>Sub Contractor Email:</h4>
-            {{z*3.56}}
+         
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>
