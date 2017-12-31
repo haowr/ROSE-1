@@ -19,7 +19,7 @@ import { DataService } from './services/data.service';
 import { ValidateService } from './services/validate.service';
 import { ClientService } from './services/client.service';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes, ActivatedRoute, Params } from '@angular/router';
+import { RouterModule, Routes, ActivatedRoute, Params,PreloadAllModules } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -102,7 +102,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{ preloadingStrategy: PreloadAllModules}),
    
     ChartsModule
     
