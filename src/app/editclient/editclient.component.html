@@ -85,7 +85,7 @@
      
       </div>
       <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
-            <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm">
+            <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && openEditForm">
             
         <br>
         <li class="active"><a href="#name2" data-toggle="tab" aria-expanded="false">Name</a></li>
@@ -103,7 +103,7 @@
            
 
       </ul>
-      <div id="myTabContent" style="border-bottom:1px solid gray"class="tab-content animated fadeIn" *ngIf="editSubContractorIndexVar == i && openEditSubcontractors  && openEditForm">
+      <div id="myTabContent" style="border-bottom:1px solid gray"class="tab-content animated fadeIn" *ngIf="editSubContractorIndexVar == i&&indexVar == i && openEditSubcontractors  && openEditForm">
 
         <div class="tab-pane fade active in" id="name2">
           <h4>Sub Contractor Name:</h4>
