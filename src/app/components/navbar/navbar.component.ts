@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Routes,Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from "../../services/data.service";
 import { ClientService } from "../../services/client.service";
+import { MenuClose } from '../../directives/menuclose';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -69,6 +70,7 @@ export class NavbarComponent implements OnInit {
       }
 
 
+
    
 
     
@@ -87,10 +89,19 @@ export class NavbarComponent implements OnInit {
 
   }
 
+
+    closeNavbar(){
+
+    //document.getElementByClassName("navbar-toggle").click();
+     document.getElementById("navbar-toggle").click();
+
+  
+}
   onLogoutClick(){
 
     this.authservice.logOut();
     this.logOutSuccessful = true;
+    document.getElementById("navbar-toggle").click();
     
     this.username="";
     setTimeout(()=>{
@@ -104,5 +115,8 @@ export class NavbarComponent implements OnInit {
    
 
   }
+
+
+
 
 }
