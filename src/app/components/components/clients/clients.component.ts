@@ -106,6 +106,7 @@ export class ClientsComponent implements OnInit {
       for(let z =0; z<clients.clients.length; z++){
         console.log(z)
         console.log(clients.clients[z]);
+         //this.clientArray[this.clientArray.length-1] = clients.clients[z];
           //if(clients.clients[z].name == this.client ){
                   this.subcontractorArrayOfObjects[z]=clients.clients[z].subcontractors;
               console.log(this.subcontractorArrayOfObjects);

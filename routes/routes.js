@@ -2582,7 +2582,7 @@ router.post('/register/newclient', function (req, res) {
                     "orderspending" : false,
                     "recieved" : 0,
                     "requested" : 0,
-                    "productcode" : "R0301610",
+                    "productcode" : "R03016100",
                     "description" : "25 UHS FINISH",
                     "price" : 74.45,
                     "unit" : "2/CS",
