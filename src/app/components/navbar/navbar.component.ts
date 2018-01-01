@@ -90,10 +90,13 @@ export class NavbarComponent implements OnInit {
 
 
     closeNavbar(){
+      if(document.documentElement.clientWidth < 766){
+document.getElementById("navbar-toggle").click();
 
+      }
     //document.getElementByClassName("navbar-toggle").click();
-     document.getElementById("navbar-toggle").click();
-
+     
+     console.log(document.documentElement.clientWidth)
   
 }
   onLogoutClick(){
