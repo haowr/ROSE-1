@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const passport = require('passport');
-const compression = require('compression');
+//const compression = require('compression');
 
 
 // Connect To Database
@@ -26,7 +26,7 @@ mongoose.connection.on('error', (err) => {
 
 
 const app = express();
-app.user(compression());
+//app.user(compression());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname,'dist')));
