@@ -26,6 +26,10 @@ position:absolute;
     margin: 0;
     padding: 7.5px 15px;
 }
+.montserrat{
+
+    font-family: 'Montserrat'
+}
 
 /*
 .navbar{

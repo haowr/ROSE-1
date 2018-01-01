@@ -9,6 +9,8 @@ import { tokenNotExpired } from 'angular2-jwt';
   selector: 'app-editclient',
   templateUrl: './editclient.component.html',
   styleUrls: ['./editclient.component.css']
+
+  
 })
 export class EditclientComponent implements OnInit {
 
@@ -42,6 +44,13 @@ export class EditclientComponent implements OnInit {
    date= new Date();
   dateNow = this.date.getDate()
   month = this.date.getMonth()+1;
+  clientNameIsEmpty:boolean = false;
+  clientEmailAddressIsEmpty:boolean = false;
+  clientPhoneNumberIsEmpty:boolean = false;
+  clientContactNameIsEmpty:boolean = false;
+  clientContactPhoneIsEmpty:boolean = false;
+  clientContactEmailIsEmpty:boolean = false;
+  editClientLoading:boolean = false;
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
   openEditSubcontractors: boolean = false;
@@ -58,6 +67,12 @@ export class EditclientComponent implements OnInit {
   addSubcontractorStoreNumbersConditionsNotMet:boolean = false;
   addSubcontractorStoreNumberConditionsMet:boolean = false;
   addSubcontractorLocationConditionsMet:boolean = false;
+  clientNameIsEmptyMsg:string = "Field Must Not Be Empty...";
+   clientPhoneNumberIsEmptyMsg:string = "Field Must Not Be Empty...";
+    clientEmailAddressIsEmptyMsg:string = "Field Must Not Be Empty...";
+     clientContactNameIsEmptyMsg:string = "Field Must Not Be Empty...";
+      clientContactPhoneIsEmptyMsg:string = "Field Must Not Be Empty...";
+       clientContactEmailIsEmptyMsg:string = "Field Must Not Be Empty...";
   addSubcontractorNameConditionsNotMetMsg:string = "A Subcontractor Name Must Be Input...";
   addSubcontractorEmailAddressConditionsNotMetMsg:string ="A Subcontractor Email Address Must Be Input..";
   addSubcontractorPhoneNumberConditionsNotMetMsg:string = "A Subcontractor Phone Number Must Be Input...";
@@ -128,10 +143,80 @@ this.subcontractorsArray[z][d][d]=d*34567
       clientContactEmail: this.clientContactEmail
 
     }
+    if(this.clientName == ""||undefined){
+
+        this.clientNameIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientNameIsEmpty = false;
+
+        }, 2000)
+
+    }if(this.clientPhoneNumber == ""||undefined){
+
+
+        this.clientPhoneNumberIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientPhoneNumberIsEmpty = false;
+
+        }, 2000)
+
+    }if(this.clientEmailAddress === ""|| undefined){
+
+
+        this.clientEmailAddressIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientEmailAddressIsEmpty = false;
+
+        }, 2000)
+    }if(this.clientContactName == ""|| undefined){
+
+
+        this.clientContactNameIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientContactNameIsEmpty = false;
+
+        }, 2000)
+    } if(this.clientContactPhone == ""|| undefined){
+
+
+        this.clientContactPhoneIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientContactPhoneIsEmpty = false;
+
+        }, 2000)
+    }if(this.clientContactEmail == ""|| undefined){
+
+
+        this.clientContactEmailIsEmpty = true;
+        setTimeout(()=>{
+
+            this.clientContactEmailIsEmpty = false;
+
+        }, 2000)
+
+    }if(this.clientContactEmail !== ""|| undefined  &&
+         this.clientContactPhone !== ""|| undefined &&
+         this.clientContactName !== ""|| undefined &&
+         this.clientEmailAddress !== ""|| undefined &&
+         this.clientPhoneNumber !== ""||undefined &&
+         this.clientName !== ""||undefined
+         ){
+              this.editClientLoading = true;
+
+
     this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
-      console.log(data);
 
+      console.log(data);
+      if(data.success){
+
+       
+       
       this.clientservice.getClients().subscribe(data => {
 
         console.log(data);
@@ -142,11 +227,18 @@ this.subcontractorsArray[z][d][d]=d*34567
         this.clientContactName = '';
         this.clientContactPhone = '';
         this.clientContactEmail = '';
+        this.editClientLoading = false;
 
 
       })
 
+      }
+
+
     })
+
+    }
+
 
 
   }

@@ -4,10 +4,20 @@
 <br>
 <br>
 <br>
-<br>
-<br>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 
 <div class="row">
+  <div id="editclienttitle" class=" col-sm-12 text-center">
+    <h1 style="text-decoration:underline;" class="osc">Edit Clients</h1>
+    <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Enter New Information In The Appropriate Fields And Click Edit To Modify Client Info!">Tip!</button>
+
+-->
+    <br>
+  </div>
   <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
 
     <div class="col-sm-3">
@@ -15,75 +25,155 @@
     <div class="col-sm-6">
       <!-- <h4>{{client.name}}</h4>-->
       <br>
-      <button (click)="openEditFormFunc(i);" class="btn btn-primary">Edit {{client.name}}</button>
+      <button *ngIf="indexVar == i&& !openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary">Open {{client.name}}</button>
+      <button *ngIf="indexVar == i&& openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary"> Close {{client.name}}</button>
 
-      <ul class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm">
+      <br>
+      <br>
+      <div>
+        <ul class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm">
+
+          <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
+
+          <li class=""><a href="#phonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
+
+          <li class=""><a href="#emailaddress" data-toggle="tab" aria-expanded="false">Email</a></li>
+
+          <li class=""><a href="#contactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
+          <li class=""><a href="#contactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
+          <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+
+
+
+
+        </ul>
+        <!--      <ul class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm">
         <br>
-        <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
-
-        <li class=""><a href="#phonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
-
-        <li class=""><a href="#emailaddress" data-toggle="tab" aria-expanded="false">Email</a></li>
-        <li class=""><a href="#contactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
-        <li class=""><a href="#contactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
-        <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+       
+        <li class="active"><a href="#contactname" data-toggle="tab" aria-expanded="false">C.Name</a></li>
+        <li class=""><a href="#contactphone" data-toggle="tab" aria-expanded="true">C.Phone</a></li>
+        <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">C.Email</a></li>
 
 
 
-      </ul>
-      <div style="border-bottom:1px dashed gray" id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm">
+      </ul>-->
+        <div id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm">
 
-        <div class="tab-pane fade active in" id="name">
-          <h4>Name:</h4>
-          <input class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+          <div class="tab-pane fade active in" id="name">
+            <h4>{{client.name}}</h4>
+            <input class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
+            <button id="showeditclientdialogue" (click)="editClientFunc(client.name);" class="btn btn-default form-control" data-toggle="tooltip"
+              data-placement="right" title="" data-original-title="Tooltip on right">edit<div id="dialogue">hello</div></button>
+            <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
+  <div *ngIf="clientNameIsEmpty">
+              <p>{{clientNameIsEmptyMsg}}</p>
+            </div>
+
+          </div>
+
+          <div class="tab-pane fade" id="phonenumber">
+            <h4>Phone Number:</h4>
+            <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
+              type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+                 <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+            <div *ngIf="clientPhoneNumberIsEmpty">
+              <p>{{clientPhoneNumberIsEmptyMsg}}</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="emailaddress">
+            <h4>Email:</h4>
+            <input class="form-control" placeholder="{{client.emailaddress}}" name='clientEmailAddress' [(ngModel)]='clientEmailAddress'
+              type="email">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+                 <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+              <div *ngIf="clientEmailAddressIsEmpty">
+              <p>{{clientEmailAddressIsEmptyMsg}}</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contactname">
+            <h4>Contact Name:</h4>
+            <input class="form-control" placeholder="{{client.contactname}}" name='clientContactName' [(ngModel)]='clientContactName'
+              type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+  <div *ngIf="clientContactNameIsEmpty">
+              <p>{{clientContactNameIsEmptyMsg}}</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contactphone">
+            <h4>Contact Phone:</h4>
+            <input class="form-control" placeholder="{{client.contactphone}}" name='clientContactPhone' [(ngModel)]='clientContactPhone'
+              type="text">
+   
+            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+  <div *ngIf="clientContactPhoneIsEmpty">
+              <p>{{clientContactPhoneIsEmptyMsg}}</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contactemail">
+            <h4>Contact Email:</h4>
+            <input class="form-control" placeholder="{{client.contactemail}}" name='clientContactEmail' [(ngModel)]='clientContactEmail'
+              type="text">
+            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+        <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
+            </div>
+           
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editClientLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+  <div *ngIf="clientContactEmailIsEmpty">
+              <p>{{clientContactEmailIsEmptyMsg}}</p>
+            </div>
+          </div>
+          <br>
         </div>
-
-        <div class="tab-pane fade" id="phonenumber">
-          <h4>Phone Number:</h4>
-          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
-            type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
-
-        </div>
-        <div class="tab-pane fade" id="emailaddress">
-          <h4>Email:</h4>
-          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
-            type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
-
-        </div>
-        <div class="tab-pane fade" id="contactname">
-          <h4>Contact Name:</h4>
-          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
-            type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
-
-        </div>
-        <div class="tab-pane fade" id="contactphone">
-          <h4>Contact Phone:</h4>
-          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
-            type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
-
-        </div>
-        <div class="tab-pane fade" id="contactemail">
-          <h4>Contact Email:</h4>
-          <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
-            type="text">
-          <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
-
-        </div>
-        <br>
-
-        <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
-        <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
-        <br>
-        <div>
-        </div>
-
       </div>
+      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
+      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
+      <br>
+      <div>
+      </div>
+
+
       <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors ">
 
@@ -122,7 +212,7 @@
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+2}}">
             <h4>Sub Contractor Email:</h4>
-         
+
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>

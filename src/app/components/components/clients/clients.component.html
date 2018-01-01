@@ -9,17 +9,17 @@
     
     <div class = "col-sm-12"*ngFor="let client of clientArray; let i = index">
     <div class="col-sm-12 divwell"style="border-bottom: 1px solid #ddd;" >
-      <div class="col-sm-3 divwellright" style="text-align:center">
-
-       <img class="buildingstyling animated fadeIn" (click)="showLocationsFunc(i);" src="./assets/img/building.jpg">
-       <h2 class ="animated fadeIn">{{client.name}}</h2>
+      <div  class="col-sm-3 divwellright" style="text-align:center">
+<br>
+       <img  class="buildingstyling animated fadeIn" src="./assets/img/building.jpg">
+       <h2 style = "text-decoration:underline;"class ="animated fadeIn osc">{{client.name}}</h2>
       </div>
       <div class="col-sm-9 clientname animated fadeIn" >
         <div *ngFor="let subcontractor of clientArray[i].subcontractors; let i = index;">
             <!--<div *ngFor="let location subcontractor.locations">-->
               <div *ngFor="let storenumber of subcontractor.storenumbers">
             <div   id="pullstorenumbersleft"class ="col-sm-12 text-center" >
-            <a  href ="/clients/{{client.name}}/{{subcontractor.name}}"><h2 class = "subcontractor">{{storenumber}}</h2></a>
+            <a  href ="/clients/{{client.name}}/{{subcontractor.name}}"><h3 class = "  subcontractor">{{storenumber}}</h3></a>
             
          
             </div>

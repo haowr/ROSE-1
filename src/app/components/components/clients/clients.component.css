@@ -7,12 +7,25 @@ a{
 font-family: 'Open Sans Condensed', sans-serif;
   opacity:.4;
   transition:1s;
-  border:1px solid black;
+   border-right: 1px solid gray;
+  border-left: 1px solid gray;
+
  
   /* height:0px;
  overflow-y:hidden;*/
 
 }
+.osc{
+font-family: 'Open Sans Condensed', sans-serif;
+
+
+}
+.montserrat{
+
+    font-family: 'Montserrat'
+}
+
+
 .subcontractor:active{
 
 opacity:1;
@@ -31,7 +44,6 @@ transition:1s;
 
 }
 .buildingstyling{
-
 }
 /*
 .buildingboxshadow{
@@ -80,7 +92,8 @@ opacity:1;
   position:relative;
   overflow-y:scroll;
   height:270px;
-  right:-30px;
+  right:-35px;
+  
 }
 .clientnameheader{
   font-family:'Anton';
@@ -114,6 +127,5 @@ opacity:1;
 
 }
 .divwellright{
-/* border-right: 1px solid #ddd;*/
-  
+ border-right: 1px solid #ddd;
 }

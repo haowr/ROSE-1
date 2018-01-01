@@ -18,3 +18,29 @@
     height:71px;
 
 }
+.osc{
+font-family: 'Open Sans Condensed', sans-serif;
+
+
+}
+.editclientloadingplaceholder{
+
+    height:22px;
+
+}
+#dialogue{
+    position:fixed;
+    right:-20px;
+    opacity:0;
+}
+#showeditclientdialogue:hover #dialogue{
+    opacity:1;
+
+
+
+
+
+}
+#editclienttitle{
+    border:1px solid #ddd;
+}
