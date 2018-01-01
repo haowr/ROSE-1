@@ -43,7 +43,6 @@ import { ManagementComponent } from './components/management/management.componen
 import { RemoveclientComponent } from './components/removeclient/removeclient.component';
 import { EditComponent } from './edit/edit.component';
 import { EditclientComponent } from './editclient/editclient.component';
-import { MenuClose } from './directives/menuclose';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent2 },
@@ -95,7 +94,7 @@ const appRoutes: Routes = [
     RemoveclientComponent,
     EditComponent,
     EditclientComponent,
-    MenuClose
+    
 
 
   ],
