@@ -19,12 +19,12 @@
               <a class="dropdown-toggle " data-toggle="dropdown" href="#" id="themes">Menu <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
                 <li><a href="#"></a></li>
-                <li class="divider"></li>
-                <li class ="animated fadeIn" ><a   (click)="closeNavbar()"  
+                <li class="divider"></li><!--(click)="closeNavbar()" -->
+                <li  class ="animated fadeIn" ><a   
                    [routerLink]="['/clients']" >Client List</a></li>
-                <li class ="animated fadeIn"><a (click)="closeNavbar()"  [routerLink]="['register', 'newclient']" >Add Client</a></li>
-                <li class ="animated fadeIn" ><a (click)="closeNavbar()"  [routerLink]="['/edit']" >Edit Client</a></li>
-                <li class ="animated fadeIn" ><a (click)="closeNavbar()"  [routerLink]="['/remove']" >Remove Client</a></li>
+                <li class ="animated fadeIn"><a  [routerLink]="['register', 'newclient']" >Add Client</a></li>
+                <li class ="animated fadeIn" ><a  [routerLink]="['/edit']" >Edit Client</a></li>
+                <li class ="animated fadeIn" ><a   [routerLink]="['/remove']" >Remove Client</a></li>
 
                
               </ul>
