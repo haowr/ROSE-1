@@ -38,40 +38,459 @@ const AlbertaLtdWhiteMud = require('../models/1799307albertaltd');
 const SubContractorInventory = require('../models/subcontractor');
 const SuperGen = require('../models/supergeneratorltd');
 const Sbcntrctr = require('../models/sbcntrctor');
+const SubCon = require('../models/newsubcontractor');
 
 
+//UPDATE SUBCONTRACTOR TOTAL EPENDITURES
+
+router.post('/updatesubcontractortotalexpenditures', (req,res)=>{
+
+
+    SubCon.findOneAndUpdate({name: req.body.name}, {$set: {totalexpenditures: req.body.totalexpenditures}},{new:true}, (err, subcontractor)=>{
+
+        if(!subcontractor){
+
+            res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+        }else{
+
+            res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+        }
+
+
+
+    })
+
+
+})
+
+//UPDATE SUBCONTRACTOR INVENTORY
+router.post('/updatesubcontractorinventory', (req,res)=>{
+
+    if(req.body.inventory == "topline"){
+
+        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ topline: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found.."})
+
+           } else{
+                
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            }
+
+        } )
+
+    }
+        if(req.body.inventory == "wesclean"){
+
+        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ wesclean: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found.."})
+
+           } else{
+                
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            }
+
+        } )
+
+    }
+        if(req.body.inventory == "veritivcanada"){
+
+        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ veritivcanada: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found.."})
+
+           } else{
+                
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            }
+
+        } )
+
+    }
+
+
+})
+//UPDATE SUBCONTRACTOR
+
+router.post('/updatesubcontractor', (req, res) => {
+
+    if (req.body.date == 1) {
+
+//console.log(req.body)
+console.log("i'm here")
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expdec:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 2) {
+console.log("i'm here")
+
+console.log(req.body)
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjan:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 3) {
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expfeb:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 4) {
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmar:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 5) {
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expapr:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 6) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmay:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 7) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjun:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 8) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjul:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 9) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expaug:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 10) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expsep:req.body.oldordered, date:req.body.date,topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 11) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expoct:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+    if (req.body.date == 12) {
+
+
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expnov:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+
+
+            if (err) throw err;
+            if (!subcontractor) {
+                res.json({ success: false, message: "Subcontractor not found.." })
+            } else {
+
+                res.json({ success: true, message: "Subcontractor Found And Updated...", subcontractor: subcontractor })
+
+            }
+
+
+        })
+
+
+    }
+
+
+})
+//GET SUBCONTRACTOR
+
+router.put('/getsubcontractors/:name', (req, res) => {
+
+
+    SubCon.findOne({ name: req.params.name }, (err, subcontractor) => {
+
+
+        if (err) throw err;
+        if (!subcontractor) {
+            res.json({ success: false, message: "subcontractor not found..." })
+        } else {
+            res.json({ success: true, message: "subcontractor found..", subcontractor: subcontractor })
+        }
+
+    })
+
+
+})
+
+router.post('/addsubcontractor', function (req, res) {
+
+    //console.log(req.)
+    const newsubcontractor = new SubCon({
+
+        name: req.body.name,
+        emailaddress: req.body.emailaddresss,
+        phonenumber: req.body.phonenumber,
+        contactphone: req.body.contactphone,
+        contactemail: req.body.contactemail,
+        contactname: req.body.contactname,
+        date: req.body.date,
+        expcur: req.body.expcur,
+        expjan: req.body.expjan,
+        expfeb: req.body.expfeb,
+        expmar: req.body.expmar,
+        expapr: req.body.expapr,
+        expmay: req.body.expmay,
+        expjun: req.body.expjun,
+        expjul: req.body.expjul,
+        expaug: req.body.expaug,
+        expsep: req.body.expsep,
+        expoct: req.body.expoct,
+        expnov: req.body.expnov,
+        expdec: req.body.expdec,
+        veritivcanada: req.body.veritivcanada,
+        wesclean: req.body.wesclean,
+        topline: req.body.topline,
+        storenumbers: req.body.storenumbers,
+        locations: req.body.locations,
+        client: req.body.client
+
+
+
+
+
+
+
+    });
+    console.log("HEY!")
+    //console.log(newsubcontractor)
+    SubCon.findOne({ name: req.body.name }, function (err, subcontractor) {
+
+
+        if (err) throw err;
+        if (!subcontractor) {
+
+            newsubcontractor.save((err, subcontractor) => {
+
+                if (err) {
+                    res.json({ success: false, message: "Save Failed...", err: err })
+                } else {
+                    res.json({ success: true, message: "Save successful..", subcontractor: subcontractor })
+
+                }
+
+            })
+
+        }
+
+
+    })
+
+
+
+
+
+})
 
 //GET CLIENTS
 
-router.get('/getclients', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+router.get('/getclients', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    res.json({ user: req.user });
 });
 //EDIT CLIENT/REMOVE STORE NUMBER TO SUBCONTRACTOR
-router.post('/editclientremovestorenumberofsubcontractor', function(req,res){
+router.post('/editclientremovestorenumberofsubcontractor', function (req, res) {
 
-     Client.findOne({name:req.body.client}, function(err,client){
+    Client.findOne({ name: req.body.client }, function (err, client) {
 
-        if(err) throw err;
-        if(!client){
-            res.json({success: false, message: "Client not found ..."})
-        }else{
+        if (err) throw err;
+        if (!client) {
+            res.json({ success: false, message: "Client not found ..." })
+        } else {
             console.log(client);
             //console.log(client.subcontractors)
             console.log(client.subcontractors[req.body.index]);
             console.log(client.subcontractors[req.body.index].storenumbers)
 
             client.subcontractors[req.body.index].storenumbers = req.body.storenumbers;
-             console.log(client.subcontractors[req.body.index].storenumbers)
+            console.log(client.subcontractors[req.body.index].storenumbers)
             // client.subcontractors[req.body.index].storenumbers.splice(client.subcontractors[req.body.index].length-1,1);
 
-           Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors:client.subcontractors}}, {new:true}, function(err,client){
+            Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, function (err, client) {
 
-                if(err)throw err;
-                if(!client){
-                    res.json({success: false, message: "Client not found..."})
+                if (err) throw err;
+                if (!client) {
+                    res.json({ success: false, message: "Client not found..." })
 
-                }else{
-                    res.json({success: true, message: req.body.client+"'s Storenumbers Array updated..", client:client});
+                } else {
+                    res.json({ success: true, message: req.body.client + "'s Storenumbers Array updated..", client: client });
                 }
 
 
@@ -79,33 +498,33 @@ router.post('/editclientremovestorenumberofsubcontractor', function(req,res){
 
         }
 
-     })
+    })
 })
 //EDIT CLIENT/ADD STORE NUMBER TO SUBCONTRACTOR
-router.post('/editclientaddstorenumbertosubcontractor', function(req,res){
+router.post('/editclientaddstorenumbertosubcontractor', function (req, res) {
 
-     Client.findOne({name:req.body.client}, function(err,client){
+    Client.findOne({ name: req.body.client }, function (err, client) {
 
-        if(err) throw err;
-        if(!client){
-            res.json({success: false, message: "Client not found ..."})
-        }else{
+        if (err) throw err;
+        if (!client) {
+            res.json({ success: false, message: "Client not found ..." })
+        } else {
             console.log(client);
             //console.log(client.subcontractors)
             console.log(client.subcontractors[req.body.index]);
             console.log(client.subcontractors[req.body.index].storenumbers)
 
             client.subcontractors[req.body.index].storenumbers = req.body.storenumbers;
-             console.log(client.subcontractors[req.body.index].storenumbers)
+            console.log(client.subcontractors[req.body.index].storenumbers)
 
-           Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors:client.subcontractors}}, {new:true}, function(err,client){
+            Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, function (err, client) {
 
-                if(err)throw err;
-                if(!client){
-                    res.json({success: false, message: "Client not found..."})
+                if (err) throw err;
+                if (!client) {
+                    res.json({ success: false, message: "Client not found..." })
 
-                }else{
-                    res.json({success: true, message: req.body.client+"'s Storenumbers Array updated..", client:client});
+                } else {
+                    res.json({ success: true, message: req.body.client + "'s Storenumbers Array updated..", client: client });
                 }
 
 
@@ -113,21 +532,21 @@ router.post('/editclientaddstorenumbertosubcontractor', function(req,res){
 
         }
 
-     })
+    })
 })
 //EDIT CLIENT/ADD NEW SUBCONTRACTOR
 
-router.post('/editclientaddsubcontractor', function(req,res){
+router.post('/editclientaddsubcontractor', function (req, res) {
     console.log(req.body);
 
-    Client.findOneAndUpdate({name: req.body.client}, {$push:{subcontractors:req.body}},{new:true}, function(err,client){
+    Client.findOneAndUpdate({ name: req.body.client }, { $push: { subcontractors: req.body } }, { new: true }, function (err, client) {
 
-        if(err) throw err;
-        if(!client){
+        if (err) throw err;
+        if (!client) {
 
-            res.json({success: false, message: "Client not found..."})
-        }else{
-            res.json({success: true, message:req.body.name+" found, and updated..", client: client});
+            res.json({ success: false, message: "Client not found..." })
+        } else {
+            res.json({ success: true, message: req.body.name + " found, and updated..", client: client });
         }
 
     })
@@ -136,226 +555,226 @@ router.post('/editclientaddsubcontractor', function(req,res){
 
 })
 //EDIT CLIENT
-router.post('/editclient2', function(req,res){
-console.log("edit client route");
-console.log(req.body.client);
-console.log(req.body.clientname);
-console.log(req.body);
+router.post('/editclient2', function (req, res) {
+    console.log("edit client route");
+    console.log(req.body.client);
+    console.log(req.body.clientname);
+    console.log(req.body);
 
-if(req.body.subContractorName == '' || undefined){
+    if (req.body.subContractorName == '' || undefined) {
 
 
 
-}else{
-    console.log("it doesn't!");
-    Client.find({name: req.body.client}, function(err, client){
+    } else {
+        console.log("it doesn't!");
+        Client.find({ name: req.body.client }, function (err, client) {
 
-        if(err)throw err;
-        if(!client){
+            if (err) throw err;
+            if (!client) {
 
-            res.json({success: false, message:"Client not found..."})
-        }else{
-                      console.log(client[0].subcontractors[req.body.index].phonenumber);
-            console.log(client[0].subcontractors[req.body.index]);
-            client[0].subcontractors[req.body.index].name=req.body.subContractorName;
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+                res.json({ success: false, message: "Client not found..." })
+            } else {
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                console.log(client[0].subcontractors[req.body.index]);
+                client[0].subcontractors[req.body.index].name = req.body.subContractorName;
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, (err, client) => {
 
-                if(err) throw err;
-                if(!client){
+                    if (err) throw err;
+                    if (!client) {
 
-                    res.json({success: false, message:"Client not found, so not updated..."});
+                        res.json({ success: false, message: "Client not found, so not updated..." });
 
-                }else{
+                    } else {
 
-                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+                        res.json({ success: true, message: "Subcontractor has been updated... ", client: client });
 
-                }
+                    }
 
-            })
-        }
+                })
+            }
 
-    })
-    
-}
+        })
 
-if(req.body.subContractorContactName == ''|| undefined){
+    }
 
+    if (req.body.subContractorContactName == '' || undefined) {
 
 
-}else{
-    console.log("it doesn't!");
-    Client.find({name: req.body.client}, function(err, client){
 
-        if(err)throw err;
-        if(!client){
+    } else {
+        console.log("it doesn't!");
+        Client.find({ name: req.body.client }, function (err, client) {
 
-            res.json({success: false, message:"Client not found..."})
-        }else{
-                    console.log(client[0].subcontractors[req.body.index].phonenumber);
-            console.log(client[0].subcontractors[req.body.index]);
-            client[0].subcontractors[req.body.index].contactname=req.body.subContractorContactName;
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+            if (err) throw err;
+            if (!client) {
 
-                if(err) throw err;
-                if(!client){
+                res.json({ success: false, message: "Client not found..." })
+            } else {
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                console.log(client[0].subcontractors[req.body.index]);
+                client[0].subcontractors[req.body.index].contactname = req.body.subContractorContactName;
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, (err, client) => {
 
-                    res.json({success: false, message:"Client not found, so not updated..."});
+                    if (err) throw err;
+                    if (!client) {
 
-                }else{
+                        res.json({ success: false, message: "Client not found, so not updated..." });
 
-                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+                    } else {
 
-                }
+                        res.json({ success: true, message: "Subcontractor has been updated... ", client: client });
 
-            })
-        }
+                    }
 
-    })
-    
-}
+                })
+            }
 
-if(req.body.subContractorContactPhone == ''|| undefined){
+        })
 
+    }
 
+    if (req.body.subContractorContactPhone == '' || undefined) {
 
-}else{
 
-    console.log("it doesn't!");
-    Client.find({name: req.body.client}, function(err, client){
 
-        if(err)throw err;
-        if(!client){
+    } else {
 
-            res.json({success: false, message:"Client not found..."})
-        }else{
-                       console.log(client[0].subcontractors[req.body.index].phonenumber);
-            console.log(client[0].subcontractors[req.body.index]);
-            client[0].subcontractors[req.body.index].contactphone=req.body.subContractorContactPhone;
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+        console.log("it doesn't!");
+        Client.find({ name: req.body.client }, function (err, client) {
 
-                if(err) throw err;
-                if(!client){
+            if (err) throw err;
+            if (!client) {
 
-                    res.json({success: false, message:"Client not found, so not updated..."});
+                res.json({ success: false, message: "Client not found..." })
+            } else {
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                console.log(client[0].subcontractors[req.body.index]);
+                client[0].subcontractors[req.body.index].contactphone = req.body.subContractorContactPhone;
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, (err, client) => {
 
-                }else{
+                    if (err) throw err;
+                    if (!client) {
 
-                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+                        res.json({ success: false, message: "Client not found, so not updated..." });
 
-                }
+                    } else {
 
-            })
-        }
+                        res.json({ success: true, message: "Subcontractor has been updated... ", client: client });
 
-    })
-}
+                    }
 
-if(req.body.subContractorPhoneNumber == ''|| undefined){
+                })
+            }
 
+        })
+    }
 
+    if (req.body.subContractorPhoneNumber == '' || undefined) {
 
-}else{
-    console.log("it doesn't!");
-    Client.find({name: req.body.client}, function(err, client){
 
-        if(err)throw err;
-        if(!client){
 
-            res.json({success: false, message:"Client not found..."})
-        }else{
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            console.log(client[0].subcontractors[req.body.index]);
-            client[0].subcontractors[req.body.index].phonenumber=req.body.subContractorPhoneNumber;
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+    } else {
+        console.log("it doesn't!");
+        Client.find({ name: req.body.client }, function (err, client) {
 
-                if(err) throw err;
-                if(!client){
+            if (err) throw err;
+            if (!client) {
 
-                    res.json({success: false, message:"Client not found, so not updated..."});
+                res.json({ success: false, message: "Client not found..." })
+            } else {
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                console.log(client[0].subcontractors[req.body.index]);
+                client[0].subcontractors[req.body.index].phonenumber = req.body.subContractorPhoneNumber;
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, (err, client) => {
 
-                }else{
+                    if (err) throw err;
+                    if (!client) {
 
-                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+                        res.json({ success: false, message: "Client not found, so not updated..." });
 
-                }
+                    } else {
 
-            })
-                
-            //res.json({success: true, message: "Client found...",client:client})
-        }
+                        res.json({ success: true, message: "Subcontractor has been updated... ", client: client });
 
-    })
-}
+                    }
 
-if(req.body.subContractorEmailAddress == ''|| undefined){
+                })
 
+                //res.json({success: true, message: "Client found...",client:client})
+            }
 
+        })
+    }
 
-}else{
+    if (req.body.subContractorEmailAddress == '' || undefined) {
 
-    console.log("it doesn't!");
-    Client.find({name: req.body.client}, function(err, client){
 
-        if(err)throw err;
-        if(!client){
 
-            res.json({success: false, message:"Client not found..."})
-        }else{
-                       console.log(client[0].subcontractors[req.body.index].phonenumber);
-            console.log(client[0].subcontractors[req.body.index]);
-            client[0].subcontractors[req.body.index].emailaddress=req.body.subContractorEmailAddress;
-            console.log(client[0].subcontractors[req.body.index].phonenumber);
-            Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: client[0].subcontractors }}, {new:true}, (err,client)=>{
+    } else {
 
-                if(err) throw err;
-                if(!client){
+        console.log("it doesn't!");
+        Client.find({ name: req.body.client }, function (err, client) {
 
-                    res.json({success: false, message:"Client not found, so not updated..."});
+            if (err) throw err;
+            if (!client) {
 
-                }else{
+                res.json({ success: false, message: "Client not found..." })
+            } else {
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                console.log(client[0].subcontractors[req.body.index]);
+                client[0].subcontractors[req.body.index].emailaddress = req.body.subContractorEmailAddress;
+                console.log(client[0].subcontractors[req.body.index].phonenumber);
+                Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, (err, client) => {
 
-                    res.json({success: true, message: "Subcontractor has been updated... ", client:client});
+                    if (err) throw err;
+                    if (!client) {
 
-                }
+                        res.json({ success: false, message: "Client not found, so not updated..." });
 
-            })
-        }
+                    } else {
 
-    })
+                        res.json({ success: true, message: "Subcontractor has been updated... ", client: client });
 
+                    }
 
-}
+                })
+            }
+
+        })
+
+
+    }
 
 })
 //EDIT CLIENT/REMOVE SUBCONTRACTOR
-router.post('/editclient3', function(req,res){
+router.post('/editclient3', function (req, res) {
 
 
-    Client.find({name: req.body.client}, function(err,client){
+    Client.find({ name: req.body.client }, function (err, client) {
 
-        if(err)throw err;
-        if(!client){
-            res.json({success: false, message:"Client not found..."});
+        if (err) throw err;
+        if (!client) {
+            res.json({ success: false, message: "Client not found..." });
 
-        }else{
+        } else {
             client[0].subcontractors[req.body.index]
-            client[0].subcontractors.splice(req.body.index,1);
+            client[0].subcontractors.splice(req.body.index, 1);
             //console.log(client[0].subcontractors);
-            Client.findOneAndUpdate({name:req.body.client},{$set:{subcontractors: client[0].subcontractors}}, {new:true}, function(err,client){
+            Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client[0].subcontractors } }, { new: true }, function (err, client) {
 
-                if(err)throw err;
-                if(!client){
-                    res.json({success: false, message:"Client not found so not updated..."})
-                }else{
-                    res.json({success: true, message: "Subcontractor Successfully removed", client:client})
+                if (err) throw err;
+                if (!client) {
+                    res.json({ success: false, message: "Client not found so not updated..." })
+                } else {
+                    res.json({ success: true, message: "Subcontractor Successfully removed", client: client })
                 }
 
             })
-           // res.json({success:true, message:"Client found..."})
+            // res.json({success:true, message:"Client found..."})
         }
 
 
@@ -363,125 +782,125 @@ router.post('/editclient3', function(req,res){
 
 })
 //EDIT CLIENT
-router.post('/editclient', function(req,res){
-console.log("edit client route");
-console.log(req.body.client);
-console.log(req.body.clientname);
-console.log(req.body);
+router.post('/editclient', function (req, res) {
+    console.log("edit client route");
+    console.log(req.body.client);
+    console.log(req.body.clientname);
+    console.log(req.body);
 
-if(req.body.clientname == '' || undefined && req.body.name =="name"){
+    if (req.body.clientname == '' || undefined && req.body.name == "name") {
 
 
 
-}else{
-    console.log("it doesn't!");
+    } else {
+        console.log("it doesn't!");
 
-Client.findOneAndUpdate({name: req.body.client}, {$set:{name:req.body.clientname}},{new:true}, function(err,client){
+        Client.findOneAndUpdate({ name: req.body.client }, { $set: { name: req.body.clientname } }, { new: true }, function (err, client) {
 
-    if(err)throw err;
-    if(!client){
-        res.json({success: false, message: "Client not found, and so not updated..."})
-    }else{
-        res.json({success: true, message: req.body.client+" name updated successfully", client:client});
+            if (err) throw err;
+            if (!client) {
+                res.json({ success: false, message: "Client not found, and so not updated..." })
+            } else {
+                res.json({ success: true, message: req.body.client + " name updated successfully", client: client });
+            }
+
+
+        })
+
     }
 
-
-})
-    
-}
-
-if(req.body.clientcontactname == ''|| undefined && req.body.name == "contactname"){
+    if (req.body.clientcontactname == '' || undefined && req.body.name == "contactname") {
 
 
 
-}else{
-    console.log("it doesn't!");
+    } else {
+        console.log("it doesn't!");
 
-Client.findOneAndUpdate({name: req.body.client}, {$set:{contactname:req.body.clientcontactname}},{new:true}, function(err,client){
+        Client.findOneAndUpdate({ name: req.body.client }, { $set: { contactname: req.body.clientcontactname } }, { new: true }, function (err, client) {
 
-    if(err)throw err;
-    if(!client){
-        res.json({success: false, message: "Client not found, and so not updated..."})
-    }else{
-        res.json({success: true, message: req.body.client+" contact name updated successfully", client:client});
+            if (err) throw err;
+            if (!client) {
+                res.json({ success: false, message: "Client not found, and so not updated..." })
+            } else {
+                res.json({ success: true, message: req.body.client + " contact name updated successfully", client: client });
+            }
+
+
+        })
+
     }
 
-
-})
-    
-}
-
-if(req.body.clientContactPhone == ''|| undefined && req.body.name == "contactphone"){
+    if (req.body.clientContactPhone == '' || undefined && req.body.name == "contactphone") {
 
 
 
-}else{
+    } else {
 
         console.log("it doesn't!");
 
-Client.findOneAndUpdate({name: req.body.client}, {$set:{contactphone:req.body.clientContactPhone}},{new:true}, function(err,client){
+        Client.findOneAndUpdate({ name: req.body.client }, { $set: { contactphone: req.body.clientContactPhone } }, { new: true }, function (err, client) {
 
-    if(err)throw err;
-    if(!client){
-        res.json({success: false, message: "Client not found, and so not updated..."})
-    }else{
-        res.json({success: true, message: req.body.client+" contact phone updated successfully", client:client});
+            if (err) throw err;
+            if (!client) {
+                res.json({ success: false, message: "Client not found, and so not updated..." })
+            } else {
+                res.json({ success: true, message: req.body.client + " contact phone updated successfully", client: client });
+            }
+
+
+        })
     }
 
-
-})
-}
-
-if(req.body.clientphonenumber == ''|| undefined && req.body.name == "phonenumber"){
+    if (req.body.clientphonenumber == '' || undefined && req.body.name == "phonenumber") {
 
 
 
-}else{
+    } else {
 
-      console.log("it doesn't!");
+        console.log("it doesn't!");
 
-Client.findOneAndUpdate({name: req.body.client}, {$set:{phonenumber:req.body.clientphonenumber}},{new:true}, function(err,client){
+        Client.findOneAndUpdate({ name: req.body.client }, { $set: { phonenumber: req.body.clientphonenumber } }, { new: true }, function (err, client) {
 
-    if(err)throw err;
-    if(!client){
-        res.json({success: false, message: "Client not found, and so not updated..."})
-    }else{
-        res.json({success: true, message: req.body.client+" phone number updated successfully", client:client});
+            if (err) throw err;
+            if (!client) {
+                res.json({ success: false, message: "Client not found, and so not updated..." })
+            } else {
+                res.json({ success: true, message: req.body.client + " phone number updated successfully", client: client });
+            }
+
+
+        })
     }
 
-
-})  
-}
-
-if(req.body.clientemailaddress == ''|| undefined && req.body.name == "emailaddress"){
+    if (req.body.clientemailaddress == '' || undefined && req.body.name == "emailaddress") {
 
 
 
-}else{
+    } else {
 
-    console.log("it doesn't!");
+        console.log("it doesn't!");
 
-Client.findOneAndUpdate({name: req.body.client}, {$set:{emailaddress:req.body.clientemailaddress}},{new:true}, function(err,client){
+        Client.findOneAndUpdate({ name: req.body.client }, { $set: { emailaddress: req.body.clientemailaddress } }, { new: true }, function (err, client) {
 
-    if(err)throw err;
-    if(!client){
-        res.json({success: false, message: "Client not found, and so not updated..."})
-    }else{
-        res.json({success: true, message: req.body.client+" email address updated successfully", client:client});
+            if (err) throw err;
+            if (!client) {
+                res.json({ success: false, message: "Client not found, and so not updated..." })
+            } else {
+                res.json({ success: true, message: req.body.client + " email address updated successfully", client: client });
+            }
+
+
+        })
     }
-
-
-})
-}
 
 })
 
 //GET USER
 
-router.put('/getusername/:shabo', function(req,res){
-console.log(req.params.shabo);
+router.put('/getusername/:shabo', function (req, res) {
+    console.log(req.params.shabo);
 
-console.log("i ran ya faq");  
+    console.log("i ran ya faq");
     //User.find({req.})
 
 
@@ -570,19 +989,19 @@ router.post('/decreaseitemininventory', function (req, res) {
 })
 
 //PUSH DATE INTO SUBCONTRACTOR ARRAY
-router.post('/pushdateintosubcontractors', function(req,res){
+router.post('/pushdateintosubcontractors', function (req, res) {
 
     console.log(req.body.subcontractorarray);
 
-    Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: req.body.subcontractorarray}},{new:true}, function(err, client){
+    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractorarray } }, { new: true }, function (err, client) {
 
 
-        if(err)throw err;
-        if(!client){
+        if (err) throw err;
+        if (!client) {
 
-            res.json({success: false, message: "Client Not Found..."});
-        }else{
-            res.json({success: true, message: "Date added to Subcontractors Array...", client: client});
+            res.json({ success: false, message: "Client Not Found..." });
+        } else {
+            res.json({ success: true, message: "Date added to Subcontractors Array...", client: client });
         }
 
 
@@ -592,19 +1011,19 @@ router.post('/pushdateintosubcontractors', function(req,res){
 })
 //INCREASE ITEM IN VERITIVCANADA INVENTORY
 
-router.post('/increaseiteminveritivcanadainventory', function(req,res){
+router.post('/increaseiteminveritivcanadainventory', function (req, res) {
 
     console.log(req.body.subcontractorarray);
 
-    Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: req.body.subcontractorarray}}, function(err, client){
+    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractorarray } }, function (err, client) {
 
 
-        if(err)throw err;
-        if(!client){
+        if (err) throw err;
+        if (!client) {
 
-            res.json({success: false, message: "Client Not Found..."});
-        }else{
-            res.json({success: true, message: "Client found and "+req.body.supplier+" updated...", client: client});
+            res.json({ success: false, message: "Client Not Found..." });
+        } else {
+            res.json({ success: true, message: "Client found and " + req.body.supplier + " updated...", client: client });
         }
 
 
@@ -614,19 +1033,19 @@ router.post('/increaseiteminveritivcanadainventory', function(req,res){
 })
 //INCREASE ITEM IN WESCLEAN INVENTORY
 
-router.post('/increaseiteminwescleaninventory', function(req,res){
+router.post('/increaseiteminwescleaninventory', function (req, res) {
 
     console.log(req.body.subcontractorarray);
 
-    Client.findOneAndUpdate({name: req.body.client}, {$set:{subcontractors: req.body.subcontractorarray}}, function(err, client){
+    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractorarray } }, function (err, client) {
 
 
-        if(err)throw err;
-        if(!client){
+        if (err) throw err;
+        if (!client) {
 
-            res.json({success: false, message: "Client Not Found..."});
-        }else{
-            res.json({success: true, message: "Client found and "+req.body.supplier+" updated...", client: client});
+            res.json({ success: false, message: "Client Not Found..." });
+        } else {
+            res.json({ success: true, message: "Client found and " + req.body.supplier + " updated...", client: client });
         }
 
 
@@ -636,19 +1055,19 @@ router.post('/increaseiteminwescleaninventory', function(req,res){
 })
 //INCREASE ITEM IN TOPLINE INVENTORY
 
-router.post('/increaseitemintoplineinventory', function(req,res){
+router.post('/increaseitemintoplineinventory', function (req, res) {
 
     console.log(req.body.subcontractorarray);
 
-    Client.findOneAndUpdate({name: req.body.client}, {subcontractors: req.body.subcontractorarray}, function(err, client){
+    Client.findOneAndUpdate({ name: req.body.client }, { subcontractors: req.body.subcontractorarray }, function (err, client) {
 
 
-        if(err)throw err;
-        if(!client){
+        if (err) throw err;
+        if (!client) {
 
-            res.json({success: false, message: "Client Not Found..."});
-        }else{
-            res.json({success: true, message: "Client found and "+req.body.supplier+" updated...", client: client});
+            res.json({ success: false, message: "Client Not Found..." });
+        } else {
+            res.json({ success: true, message: "Client found and " + req.body.supplier + " updated...", client: client });
         }
 
 
@@ -659,63 +1078,63 @@ router.post('/increaseitemintoplineinventory', function(req,res){
 //GENERAL INCREASE ITEM IN INVENTORY
 
 router.post('/increaseitemininventory', function (req, res) {
-   /* if(req.body.supplier == "Wesclean"){
-
-
-
-    }
-    if(req.body.supplier == "Topline Sanitation Inc."){
-
-
-
-    }*/
+    /* if(req.body.supplier == "Wesclean"){
+ 
+ 
+ 
+     }
+     if(req.body.supplier == "Topline Sanitation Inc."){
+ 
+ 
+ 
+     }*/
 
     console.log(req.body);
-    Client.find({name: req.body.client}, function(err, client2){
+    Client.find({ name: req.body.client }, function (err, client2) {
 
-        if(err) throw err;
-        if(!client2){
-            res.json({success: false, message:"Client not found..."});
-        }else{
+        if (err) throw err;
+        if (!client2) {
+            res.json({ success: false, message: "Client not found..." });
+        } else {
             console.log(client2[0]);
             //console.log(client[0].subcontractors[0].name)
-            for(let i =0; i<client2[0].subcontractors.length; i++){
+            for (let i = 0; i < client2[0].subcontractors.length; i++) {
 
-              // console.log(client[0].subcontractors[i].name);
-               if(client2[0].subcontractors[i].name == req.body.name){
+                // console.log(client[0].subcontractors[i].name);
+                if (client2[0].subcontractors[i].name == req.body.name) {
 
                     //console.log(client[0].subcontractors[i]);
                     console.log(req.body.supplier);
-                   // console.log(client[0].subcontractors[i])
+                    // console.log(client[0].subcontractors[i])
 
-                   //console.log(client[0].subcontractors[i][req.body.supplier][]);
-                   for(let j = 0; j<client2[0].subcontractors[i][req.body.supplier].length;j++){
+                    //console.log(client[0].subcontractors[i][req.body.supplier][]);
+                    for (let j = 0; j < client2[0].subcontractors[i][req.body.supplier].length; j++) {
 
-                    if(client2[0].subcontractors[i][req.body.supplier][j].productcode == req.body.productcode){
-
-
-                        console.log(client2[0].subcontractors[i][req.body.supplier][j])
-                        client2[0].subcontractors[i][req.body.supplier][j].ordered = client2[0].subcontractors[i][req.body.supplier][j].ordered + 1;
-                       
-                       console.log(req.body.name)
-                        Client.findOneAndUpdate({name: req.body.client},{subcontractors:client2[0].subcontractors},{new:true}, function(err,client){
+                        if (client2[0].subcontractors[i][req.body.supplier][j].productcode == req.body.productcode) {
 
 
-                            if(err) throw err;
-                            if(!client){
-                                res.json({success: false, message:"Client not found...",})
-                            }else{
-                                res.json({success: true, message:"Client Found And "+req.body.supplier+" inventory updated...", client:client})
-                            }
+                            console.log(client2[0].subcontractors[i][req.body.supplier][j])
+                            client2[0].subcontractors[i][req.body.supplier][j].ordered = client2[0].subcontractors[i][req.body.supplier][j].ordered + 1;
+
+                            console.log(req.body.name)
+                            Client.findOneAndUpdate({ name: req.body.client }, { subcontractors: client2[0].subcontractors }, { new: true }, function (err, client) {
 
 
-                        })
+                                if (err) throw err;
+                                if (!client) {
+                                    res.json({ success: false, message: "Client not found...", })
+                                } else {
+                                    res.json({ success: true, message: "Client Found And " + req.body.supplier + " inventory updated...", client: client })
+                                }
+
+
+                            })
+                        }
+
+
                     }
 
-
-                   }
-
-               }
+                }
 
             }
         }
@@ -1170,820 +1589,820 @@ router.post('/register/newsubcontractor', function (req, res) {
                 storenumbers: req.body.storenumbers,
                 storeaddress: req.body.storeaddress,
                 buildingimage: "./assets/img/building.jpg",
-                veritivcanada: [ 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "supplier" : "veritivcanada",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
-                    "productcode" : 154126,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 2,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "veritivcanada",
-                    "unit" : "CS",
-                    "price" : 35.24,
-                    "size" : "21in",
-                    "color" : "N/A",
-                    "description" : "7000127868 SKYBLUE HI-PERFORMANCE BURN PAD (5/CS)",
-                    "productcode" : 154200,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "supplier" : "veritivcanada",
-                    "price" : 29.39,
-                    "size" : "17in",
-                    "color" : "Beige",
-                    "description" : "7000045999 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-                    "productcode" : 154341,
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "orderspending" : false,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000028442 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 154453,
-                    "supplier" : "veritivcanada",
-                    "orderspending" : false,
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "supplier" : "veritivcanada",
-                    "description" : "7000045997 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-                    "productcode" : 154456,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "supplier" : "veritivcanada",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000120631 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 154459,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000120629 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 154768,
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "supplier" : "veritivcanada",
-                    "color" : "Beige",
-                    "description" : "7000000675 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-                    "productcode" : 154821,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000045882 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 154827,
-                    "supplier" : "veritivcanada",
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000000678 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-                    "productcode" : 154839,
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000000673 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-                    "productcode" : 154842,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "supplier" : "veritivcanada",
-                    "description" : "7000000679 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-                    "productcode" : 154843,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "supplier" : "veritivcanada",
-                    "color" : "Beige",
-                    "description" : "7000000674 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-                    "productcode" : 154855,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000045896 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 154989,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000000681 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-                    "productcode" : 155278,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "supplier" : "veritivcanada",
-                    "description" : "7000120627 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 155320,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000046001 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-                    "productcode" : 156065,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "supplier" : "veritivcanada",
-                    "description" : "7000136427 3M HI PROFILE DOODLEBUG PAD (10/PKG 20/CS)",
-                    "productcode" : 156104,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000045865 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
-                    "productcode" : 156272,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "supplier" : "veritivcanada",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000000714 3M F-3300 NATURAL BLEND FLOOR PAD (5/CS)",
-                    "productcode" : 156278,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000052396 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 157012,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000052406 NIAGARA F-5100 BUFFING FLOOR PAD (5/CS)",
-                    "productcode" : 157019,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "supplier" : "veritivcanada",
-                    "color" : "Beige",
-                    "description" : "7000126177 3M ULTRA HIGH SPEED BUFFER FLOOR PAD (5/CS)",
-                    "productcode" : 157030,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000029763 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
-                    "productcode" : 157037,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000126611 NIAGARA F-3100 BURNISHING FLOOR PAD (5/CS)",
-                    "productcode" : 157103,
-                    "orderspending" : false,
-                    "requested" : 0,
-                    "received" : 0,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000045998 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-                    "productcode" : 157167,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "supplier" : "veritivcanada",
-                    "color" : "Beige",
-                    "description" : "7000045868 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
-                    "productcode" : 157190,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "size" : "21in",
-                    "supplier" : "veritivcanada",
-                    "color" : "Beige",
-                    "description" : "7000046002 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-                    "productcode" : 157310,
-                    "requested" : 0,
-                    "received" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "unit" : "CS",
-                    "price" : 45.27,
-                    "supplier" : "veritivcanada",
-                    "size" : "21in",
-                    "color" : "Beige",
-                    "description" : "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
-                    "productcode" : 157387,
-                    "received" : 0,
-                    "requested" : 0,
-                    "orderspending" : false,
-                    "ordered" : 0,
-                    "instock" : 50,
-                    "manufacturer" : "3M",
-                    "name" : "threem"
-                }
-            ]
+                veritivcanada: [
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "supplier": "veritivcanada",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
+                        "productcode": 154126,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 2,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "veritivcanada",
+                        "unit": "CS",
+                        "price": 35.24,
+                        "size": "21in",
+                        "color": "N/A",
+                        "description": "7000127868 SKYBLUE HI-PERFORMANCE BURN PAD (5/CS)",
+                        "productcode": 154200,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "supplier": "veritivcanada",
+                        "price": 29.39,
+                        "size": "17in",
+                        "color": "Beige",
+                        "description": "7000045999 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "productcode": 154341,
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "orderspending": false,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000028442 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 154453,
+                        "supplier": "veritivcanada",
+                        "orderspending": false,
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "supplier": "veritivcanada",
+                        "description": "7000045997 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "productcode": 154456,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "supplier": "veritivcanada",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000120631 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 154459,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000120629 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 154768,
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "supplier": "veritivcanada",
+                        "color": "Beige",
+                        "description": "7000000675 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "productcode": 154821,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000045882 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 154827,
+                        "supplier": "veritivcanada",
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000000678 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "productcode": 154839,
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000000673 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "productcode": 154842,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "supplier": "veritivcanada",
+                        "description": "7000000679 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "productcode": 154843,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "supplier": "veritivcanada",
+                        "color": "Beige",
+                        "description": "7000000674 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "productcode": 154855,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000045896 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 154989,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000000681 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "productcode": 155278,
+                        "requested": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "supplier": "veritivcanada",
+                        "description": "7000120627 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 155320,
+                        "requested": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000046001 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "productcode": 156065,
+                        "requested": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "supplier": "veritivcanada",
+                        "description": "7000136427 3M HI PROFILE DOODLEBUG PAD (10/PKG 20/CS)",
+                        "productcode": 156104,
+                        "requested": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000045865 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
+                        "productcode": 156272,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "supplier": "veritivcanada",
+                        "price": 45.27,
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000000714 3M F-3300 NATURAL BLEND FLOOR PAD (5/CS)",
+                        "productcode": 156278,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000052396 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 157012,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000052406 NIAGARA F-5100 BUFFING FLOOR PAD (5/CS)",
+                        "productcode": 157019,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "supplier": "veritivcanada",
+                        "color": "Beige",
+                        "description": "7000126177 3M ULTRA HIGH SPEED BUFFER FLOOR PAD (5/CS)",
+                        "productcode": 157030,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000029763 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "productcode": 157037,
+                        "requested": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000126611 NIAGARA F-3100 BURNISHING FLOOR PAD (5/CS)",
+                        "productcode": 157103,
+                        "orderspending": false,
+                        "requested": 0,
+                        "received": 0,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000045998 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "productcode": 157167,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "supplier": "veritivcanada",
+                        "color": "Beige",
+                        "description": "7000045868 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
+                        "productcode": 157190,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "size": "21in",
+                        "supplier": "veritivcanada",
+                        "color": "Beige",
+                        "description": "7000046002 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "productcode": 157310,
+                        "requested": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "unit": "CS",
+                        "price": 45.27,
+                        "supplier": "veritivcanada",
+                        "size": "21in",
+                        "color": "Beige",
+                        "description": "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
+                        "productcode": 157387,
+                        "received": 0,
+                        "requested": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "3M",
+                        "name": "threem"
+                    }
+                ]
 
 
             })
@@ -2026,7 +2445,7 @@ router.post('/register/newclient', function (req, res) {
 
         } else {
             let client = new Client({
-                createdAt:Date.now(),
+                createdAt: Date.now(),
                 name: req.body.name,
                 phonenumber: req.body.phonenumber,
                 emailaddress: req.body.emailaddress,
@@ -2040,2097 +2459,2099 @@ router.post('/register/newclient', function (req, res) {
 
 
             })
-            for(let i=0; i<client.subcontractors.length;i++){
+            for (let i = 0; i < client.subcontractors.length; i++) {
 
-                    client.subcontractors[i].veritivcanada=[
-    
-    
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-                        "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154126,
-					    "description" : "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                client.subcontractors[i].veritivcanada = [
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-                        "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154200,
-					    "description" : "7000127868 SKYBLUE HI-PERFORMANCE BURN PAD (5/CS)",
-					    "color" : "N/A",
-					    "size" : "21in",
-					    "price" : 35.24,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-                        "supplier": "Veritiv Canada Inc.",
-					    "orderspending":false,
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154341,
-					    "description" : "7000045999 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-					    "color" : "Beige",
-					    "size" : "17in",
-					    "price" : 29.39,
-					    "unit" : "CS"
 
-					}
-					,
-
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "orderspending":false,
-					    "productcode" : 154453,
-					    "description" : "7000028442 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154126,
+                        "description": "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "supplier": "Veritiv Canada Inc.",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154200,
+                        "description": "7000127868 SKYBLUE HI-PERFORMANCE BURN PAD (5/CS)",
+                        "color": "N/A",
+                        "size": "21in",
+                        "price": 35.24,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "supplier": "Veritiv Canada Inc.",
+                        "orderspending": false,
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154341,
+                        "description": "7000045999 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "color": "Beige",
+                        "size": "17in",
+                        "price": 29.39,
+                        "unit": "CS"
+
+                    }
+                    ,
+
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "supplier": "Veritiv Canada Inc.",
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "orderspending": false,
+                        "productcode": 154453,
+                        "description": "7000028442 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
                         "supplier": "Veritiv Canada Inc.",
 
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154456,
-					    "description" : "7000045997 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154456,
+                        "description": "7000045997 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154459,
-					    "description" : "7000120631 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154459,
+                        "description": "7000120631 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "orderspending":false,    
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154768,
-					    "description" : "7000120629 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "instock": 50,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154768,
+                        "description": "7000120629 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
 
-					,
-					{
-					    "name" : "threem",
+                    ,
+                    {
+                        "name": "threem",
                         "supplier": "Veritiv Canada Inc.",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154821,
-					    "description" : "7000000675 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154821,
+                        "description": "7000000675 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
                         "supplier": "Veritiv Canada Inc.",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "orderspending":false,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154827,
-					    "description" : "7000045882 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154827,
+                        "description": "7000045882 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
                         "supplier": "Veritiv Canada Inc.",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "orderspending":false,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154839,
-					    "description" : "7000000678 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154839,
+                        "description": "7000000678 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154842,
-					    "description" : "7000000673 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154842,
+                        "description": "7000000673 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
                         "supplier": "Veritiv Canada Inc.",
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154843,
-					    "description" : "7000000679 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154843,
+                        "description": "7000000679 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
 
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154855,
-					    "description" : "7000000674 3M F-5300 CLEANER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154855,
+                        "description": "7000000674 3M F-5300 CLEANER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{    "name" : "threem",
-					"manufacturer":"3M",
-                    "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 154989,
-					    "description" : "7000045896 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "ordered" : 0,
-					    "received" : 0,
-					    "orderspending":false,
-					    "requested":0,
-					    "productcode" : 155278,
-					    "description" : "7000000681 3M F-5100 BUFFER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 154989,
+                        "description": "7000045896 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "orderspending":false,
-					    "requested":0,
-					    "productcode" : 155320,
-					    "description" : "7000120627 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "ordered": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "requested": 0,
+                        "productcode": 155278,
+                        "description": "7000000681 3M F-5100 BUFFER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "orderspending":false,
-					    "requested":0,
-					    "productcode" : 156065,
-					    "description" : "7000046001 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "requested": 0,
+                        "productcode": 155320,
+                        "description": "7000120627 3M F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
 
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "ordered" : 0,
-					    "received" : 0,
-					    "orderspending":false,
-					    "requested":0,
-					    "productcode" : 156104,
-					    "description" : "7000136427 3M HI PROFILE DOODLEBUG PAD (10/PKG 20/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "requested": 0,
+                        "productcode": 156065,
+                        "description": "7000046001 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
                         "supplier": "Veritiv Canada Inc.",
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 156272,
-					    "description" : "7000045865 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "ordered": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "requested": 0,
+                        "productcode": 156104,
+                        "description": "7000136427 3M HI PROFILE DOODLEBUG PAD (10/PKG 20/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 156278,
-					    "description" : "7000000714 3M F-3300 NATURAL BLEND FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 156272,
+                        "description": "7000045865 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "requested":0,
-					    "productcode" : 157012,
-					    "description" : "7000052396 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 156278,
+                        "description": "7000000714 3M F-3300 NATURAL BLEND FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 157019,
-					    "description" : "7000052406 NIAGARA F-5100 BUFFING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "requested": 0,
+                        "productcode": 157012,
+                        "description": "7000052396 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{    "name" : "threem",
-					"manufacturer":"3M",
-                    "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 157030,
-					    "description" : "7000126177 3M ULTRA HIGH SPEED BUFFER FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "orderspending":false,
-					    "requested":0,
-					    "productcode" : 157037,
-					    "description" : "7000029763 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 157019,
+                        "description": "7000052406 NIAGARA F-5100 BUFFING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "received" : 0,
-					    "requested":0,
-					    "orderspending":false,
-					    "productcode" : 157103,
-					    "description" : "7000126611 NIAGARA F-3100 BURNISHING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 157030,
+                        "description": "7000126177 3M ULTRA HIGH SPEED BUFFER FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
                         "supplier": "Veritiv Canada Inc.",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 157167,
-					    "description" : "7000045998 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "orderspending": false,
+                        "requested": 0,
+                        "productcode": 157037,
+                        "description": "7000029763 NIAGARA F-7200 STRIPPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 157190,
-					    "description" : "7000045868 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
+                        "instock": 50,
+                        "ordered": 0,
+                        "received": 0,
+                        "requested": 0,
+                        "orderspending": false,
+                        "productcode": 157103,
+                        "description": "7000126611 NIAGARA F-3100 BURNISHING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,"supplier": "Veritiv Canada Inc.",
-					    "orderspending":false,
-					    "received" : 0,
-					    "requested":0,
-					    "productcode" : 157310,
-					    "description" : "7000046002 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
-					,
-					{
-					    "name" : "threem",
-					    "manufacturer":"3M",
-					    "instock" : 50,
-					    "ordered" : 0,
-					    "orderspending":false,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
                         "supplier": "Veritiv Canada Inc.",
-					    "requested":0,
-					    "received" : 0,
-					    "productcode" : 157387,
-					    "description" : "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
-					    "color" : "Beige",
-					    "size" : "21in",
-					    "price" : 45.27,
-					    "unit" : "CS"
-					}
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 157167,
+                        "description": "7000045998 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
 
-					    
-					    
-					    ]
-                        client.subcontractors[i].wesclean=[ 
-                {
-                    "ordereddec" : 1,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : "R03016100",
-                    "description" : "25 UHS FINISH",
-                    "price" : 74.45,
-                    "unit" : "2/CS",
-                    "color" : "N/A",
-                    "size" : "10L"
-                }, 
-                {
-                    "ordereddec" : 5,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 30902,
-                    "description" : "Burnisher Pad Assist 20\" 34V Batteries, Obc Dust Control",
-                    "price" : 4515.8,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "20\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 1410070,
-                    "description" : "Blades Razor SNGL Edge 12120.012IN Single Edge For RS-100/300",
-                    "price" : 26.19,
-                    "unit" : "100/PKG",
-                    "color" : "N/A",
-                    "size" : "10L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 1410050,
-                    "description" : "Scraper Razor W/ Plastic Body, Retractable/ w/Single Edge Blade/ Replacement Blade 1212",
-                    "price" : 2.92,
-                    "unit" : "2/CS",
-                    "color" : "N/A",
-                    "size" : "N/A"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620711,
-                    "description" : "16\" HI PRO PAD 3M 5/CS",
-                    "price" : 48.35,
-                    "unit" : "5/CS",
-                    "color" : "N/A",
-                    "size" : "28\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 9890213,
-                    "description" : "UHS BLUE BLEND PAD 5/CS",
-                    "price" : 74.45,
-                    "unit" : "5/CS",
-                    "color" : "BLUE",
-                    "size" : "28\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 170032,
-                    "description" : "GP FORWARD GENERAL PURPPOSE CLEANER 18.9L",
-                    "price" : 90.87,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "18.9L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 6210100,
-                    "description" : "CARPET AIR BLOWER 3 SPEED",
-                    "price" : 349,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "10L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : "R0301610",
-                    "description" : "25 UHS FINISH",
-                    "price" : 74.45,
-                    "unit" : "2/CS",
-                    "color" : "N/A",
-                    "size" : "10L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : "NIL56315268",
-                    "description" : "VAC HOSE 1.5",
-                    "price" : 53.86,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "N/A"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620057,
-                    "description" : "17IN RED PAD 3M 5/CS",
-                    "price" : 30.18,
-                    "unit" : "5/CS",
-                    "color" : "N/A",
-                    "size" : "17\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620712,
-                    "description" : "17IN HI PRO PAD 3M 5/CS",
-                    "price" : 53.16,
-                    "unit" : "2/CS",
-                    "color" : "N/A",
-                    "size" : "17\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 9620451,
-                    "description" : "HANDLE BROOM WOOD 60INX15/16 IN THREADED TIP",
-                    "price" : 3.04,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "60\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 1410191,
-                    "description" : "BLADES SUPER SCRAPER IN 10/PK FOR 37500",
-                    "price" : 23.07,
-                    "unit" : "10/PK",
-                    "color" : "N/A",
-                    "size" : "4\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 1410261,
-                    "description" : "SCRAPER 4\" WITH 5.5\" PLASTIC HANDLE",
-                    "price" : 11.93,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "4\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620057,
-                    "description" : "17\" RED PAD 3M",
-                    "price" : 30.18,
-                    "unit" : "5/CS",
-                    "color" : "RED",
-                    "size" : "17\""
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "DURATHON",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 530035,
-                    "description" : "DURATHON FLOOR FINISH 9.5L 2/CS",
-                    "price" : 74.45,
-                    "unit" : "2/CS",
-                    "color" : "N/A",
-                    "size" : "9.5"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620257,
-                    "description" : "GP FORWARD GENERAL PURPOSE CLEANER 18.9L",
-                    "price" : 90.87,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "18.9L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "STRIDE",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 170055,
-                    "description" : "STRIDE FLORAL NEUTRAL ALL PURPOSE CLEANER 18.9L",
-                    "price" : 35.06,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "10L"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "Infinity",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 9610059,
-                    "description" : "WAX MOP SILKY NYLON LOOPED END MEDIUM 20OZ",
-                    "price" : 14.77,
-                    "unit" : "EA",
-                    "color" : "N/A",
-                    "size" : "200OZ"
-                }, 
-                {
-                    "ordereddec" : 0,
-                    "orderednov" : 0,
-                    "orderedoct" : 0,
-                    "orderedsept" : 0,
-                    "orderedaug" : 0,
-                    "orderedjul" : 0,
-                    "orderedjun" : 0,
-                    "orderedmay" : 0,
-                    "orderedapr" : 0,
-                    "orderedmar" : 0,
-                    "orderedfeb" : 0,
-                    "orderedjan" : 0,
-                    "supplier" : "wesclean",
-                    "manufacturer" : "UHS",
-                    "instock" : 50,
-                    "ordered" : 0,
-                    "orderspending" : false,
-                    "recieved" : 0,
-                    "requested" : 0,
-                    "productcode" : 620657,
-                    "description" : "28\" UHS AQUA PAD 3M",
-                    "price" : 30.18,
-                    "unit" : "5/CS",
-                    "color" : "AQUA",
-                    "size" : "10L"
-                }
-            ]
-                        
-                        client.subcontractors[i].topline=             [
-                {
-                    "orderednov": 1,
-                    "orderedoct": 2,
-                    "orderedsept": 3,
-                    "orderedaug": 4,
-                    "orderedjul": 5,
-                    "orderedlove": 6,
-                    "orderedmay": 7,
-                    "orderedapr": 8,
-                    "orderedmar": 9,
-                    "orderedfeb": 10,
-                    "orderedjan": 11,
-                    "ordereddec": 12,
-                    "size": "20\"",
-                    "color": "Red",
-                    "unit": "Ea",
-                    "price": 8.96,
-                    "description": "Niagara Floor Pad, 20\", Red Buffer",
-                    "productcode": 154126,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline Sanitation Inc.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Large",
-                    "color": "Blue",
-                    "unit": "Bx",
-                    "price": 9.95,
-                    "description": "Safety Zone Powder Free Synthetic Gloves",
-                    "productcode": 154127,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline Sanitation Inc.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "3.6L",
-                    "color": "N/A",
-                    "unit": "Bx",
-                    "price": 4.95,
-                    "description": "Goldex Bleach (6%)",
-                    "productcode": 154128,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline Sanitation Inc.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Large",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 6.56,
-                    "description": "Rayon Narrow Band Cut-End Wet Mop Head",
-                    "productcode": 154129,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline Sanitation Inc.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "L",
-                    "price": 6.56,
-                    "description": "Topline Neutra Klean Neutral Floor Soap",
-                    "productcode": 154130,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline Sanitation Inc.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Large",
-                    "color": "Brown",
-                    "unit": "CS",
-                    "price": 29.95,
-                    "description": "Single Fold Hand Towels.",
-                    "productcode": 154131,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Pur Value",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "22\"X24\"",
-                    "color": "Black",
-                    "unit": "500/CS",
-                    "price": 18.95,
-                    "description": "Garbage Bags, Regular",
-                    "productcode": 154132,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Pur Value.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "16\"",
-                    "color": "Red",
-                    "unit": "EA",
-                    "price": 5.45,
-                    "description": "Norton Red Buffer Floor Pad",
-                    "productcode": 154133,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Norton.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "250g",
-                    "color": "N/A",
-                    "unit": "Bx",
-                    "price": 4.65,
-                    "description": "Air Effects Air Freshener, Spring & Renewal",
-                    "productcode": 154134,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Febreeze.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "20L",
-                    "color": "Blue",
-                    "unit": "EA",
-                    "price": 99.95,
-                    "description": "UHS Burnishing Floor Finish(20% solids)",
-                    "productcode": 154135,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "TopVac Plus Illuminate",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Hard Floor Neurtralizer Acidic Rinse & Residue Remover 4L",
-                    "productcode": 154136,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "UltraChemLabs",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "24\"",
-                    "color": "Light Blue",
-                    "unit": "EA",
-                    "price": 10.5,
-                    "description": "UHS Burnishing Floor Pad",
-                    "productcode": 154137,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Norton.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "8\"X800ft",
-                    "color": "White",
-                    "unit": "6/CS",
-                    "price": 34.95,
-                    "description": "Deluxe Hardwound Roll Towel",
-                    "productcode": 154138,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Classique",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "750ft",
-                    "color": "N/A",
-                    "unit": "12/CS",
-                    "price": 49.95,
-                    "description": "Minimax Mini JRT Jumbo Bath Tissue, 2Ply",
-                    "productcode": 154139,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Classique",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "35\"X50\"",
-                    "color": "Black",
-                    "unit": "100/CS",
-                    "price": 24.95,
-                    "description": "Garbage Bags, Extra Strong",
-                    "productcode": 154140,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Pur Value",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Large",
-                    "color": "Black",
-                    "unit": "100CS",
-                    "price": 24.95,
-                    "description": "Powder Free Synthetic Gloves",
-                    "productcode": 154141,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Safety Zone.",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Medium",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Rayon Narrow Band Cut-End Wet Mop Head(bagged)",
-                    "productcode": 154142,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "AGF 4020",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Special Degreaser",
-                    "productcode": 154143,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "RS",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "909ML",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 4.95,
-                    "description": "Top Bowl 23% Acid Toilet Bowl Cleaner",
-                    "productcode": 154144,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "1.5M",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Aluminum Mop Handle w/ Quick-Clip Head",
-                    "productcode": 154145,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "UltraChemLabs",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 19.95,
-                    "description": "Heavy Duty Degreaser",
-                    "productcode": 154146,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "TopVac",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "27\"",
-                    "color": "Aqua",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Floor Pad (Burnish)",
-                    "productcode": 154147,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Niagara",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "13\"",
-                    "color": "Red",
-                    "unit": "EA",
-                    "price": 4.65,
-                    "description": "Floor Pad (Buffer)",
-                    "productcode": 154148,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Niagara",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 6.99,
-                    "description": "Glass Glo RTU Glass Cleaner",
-                    "productcode": 154149,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "Pink/Cherry",
-                    "unit": "EA",
-                    "price": 8.95,
-                    "description": "Neutra Klean Neutral Floor Soap",
-                    "productcode": 154150,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4L",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "Hard Floor Neurtralizer Acidic Rinse & Residue Remover 4L",
-                    "productcode": 154151,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "N/A",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 12.95,
-                    "description": "Lobby Dustpan w/ Long Handle & Clip (NO BROOM)",
-                    "productcode": 154152,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Lobby",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "Large",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 6.34,
-                    "description": "Industrial Curved Block Magnetic Broom",
-                    "productcode": 154153,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Vileda Professional",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "36\"",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 36.84,
-                    "description": "Slip-On Cut-End Dust Mop Head",
-                    "productcode": 154154,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Astrolene",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "36\"",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 4.95,
-                    "description": "Breakaway Dust Mop Frame Only",
-                    "productcode": 154155,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Breakaway",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "3.5\"",
-                    "color": "N/A",
-                    "unit": "12/CS",
-                    "price": 18.75,
-                    "description": "Universal JRT Jumbo Bath Tissue 2 Ply",
-                    "productcode": 154156,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Tork",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "N/A",
-                    "color": "Clear",
-                    "unit": "EA",
-                    "price": 3.75,
-                    "description": "Green Certified Mild Foam Hand Cleaner",
-                    "productcode": 154157,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Gojo",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "26\"X36\"",
-                    "color": "Black",
-                    "unit": "250/CS",
-                    "description": "Garbage Bags Regular",
-                    "productcode": 154158,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Pur Value",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4\"",
-                    "color": "Red & Grey",
-                    "unit": "EA",
-                    "price": 18.75,
-                    "description": "4\" Floor & Window Scraper",
-                    "productcode": 154159,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "4\"",
-                    "color": "N/A",
-                    "unit": "10/PKG",
-                    "description": "Super Scraper 4\" Replacement Blades",
-                    "productcode": 154160,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Topline",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "16\"",
-                    "color": "Red",
-                    "unit": "EA",
-                    "price": 8.25,
-                    "description": "Floor Pad (Buffer)",
-                    "productcode": 154161,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Niagara",
-                    "supplier": "Topline Sanitation Inc."
-                },
-                {
-                    "orderednov": 0,
-                    "orderedoct": 0,
-                    "orderedsept": 0,
-                    "orderedaug": 0,
-                    "orderedjul": 0,
-                    "orderedlove": 0,
-                    "orderedmay": 0,
-                    "orderedapr": 0,
-                    "orderedmar": 0,
-                    "orderedfeb": 0,
-                    "orderedjan": 0,
-                    "ordereddec": 0,
-                    "size": "19\"",
-                    "color": "N/A",
-                    "unit": "EA",
-                    "price": 8.25,
-                    "description": "Floor Pad (Buffer)",
-                    "productcode": 154162,
-                    "requested": 0,
-                    "recieved": 0,
-                    "orderspending": false,
-                    "ordered": 0,
-                    "instock": 50,
-                    "manufacturer": "Niagara",
-                    "supplier": "Topline Sanitation Inc."
-                }
-            ]
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "supplier": "Veritiv Canada Inc.",
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 157190,
+                        "description": "7000045868 3M F-7300 HIGH PRODUCTIVITY STRIPING FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0, "supplier": "Veritiv Canada Inc.",
+                        "orderspending": false,
+                        "received": 0,
+                        "requested": 0,
+                        "productcode": 157310,
+                        "description": "7000046002 3M F-5000 PREBURNISHING FLOOR PAD TOPLINE (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+                    ,
+                    {
+                        "name": "threem",
+                        "manufacturer": "3M",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "supplier": "Veritiv Canada Inc.",
+                        "requested": 0,
+                        "received": 0,
+                        "productcode": 157387,
+                        "description": "7000046005 3M F-3200 SPEED BURNISHING TOP LINE FLOOR PAD (5/CS)",
+                        "color": "Beige",
+                        "size": "21in",
+                        "price": 45.27,
+                        "unit": "CS"
+                    }
+
+
+
+                ]
+                client.subcontractors[i].wesclean = [
+                    {
+                        "ordereddec": 1,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": "R03016100",
+                        "description": "25 UHS FINISH",
+                        "price": 74.45,
+                        "unit": "2/CS",
+                        "color": "N/A",
+                        "size": "10L"
+                    },
+                    {
+                        "ordereddec": 5,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 30902,
+                        "description": "Burnisher Pad Assist 20\" 34V Batteries, Obc Dust Control",
+                        "price": 4515.8,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "20\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 1410070,
+                        "description": "Blades Razor SNGL Edge 12120.012IN Single Edge For RS-100/300",
+                        "price": 26.19,
+                        "unit": "100/PKG",
+                        "color": "N/A",
+                        "size": "10L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 1410050,
+                        "description": "Scraper Razor W/ Plastic Body, Retractable/ w/Single Edge Blade/ Replacement Blade 1212",
+                        "price": 2.92,
+                        "unit": "2/CS",
+                        "color": "N/A",
+                        "size": "N/A"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620711,
+                        "description": "16\" HI PRO PAD 3M 5/CS",
+                        "price": 48.35,
+                        "unit": "5/CS",
+                        "color": "N/A",
+                        "size": "28\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 9890213,
+                        "description": "UHS BLUE BLEND PAD 5/CS",
+                        "price": 74.45,
+                        "unit": "5/CS",
+                        "color": "BLUE",
+                        "size": "28\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 170032,
+                        "description": "GP FORWARD GENERAL PURPPOSE CLEANER 18.9L",
+                        "price": 90.87,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "18.9L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 6210100,
+                        "description": "CARPET AIR BLOWER 3 SPEED",
+                        "price": 349,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "10L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": "R0301610",
+                        "description": "25 UHS FINISH",
+                        "price": 74.45,
+                        "unit": "2/CS",
+                        "color": "N/A",
+                        "size": "10L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": "NIL56315268",
+                        "description": "VAC HOSE 1.5",
+                        "price": 53.86,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "N/A"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620057,
+                        "description": "17IN RED PAD 3M 5/CS",
+                        "price": 30.18,
+                        "unit": "5/CS",
+                        "color": "N/A",
+                        "size": "17\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620712,
+                        "description": "17IN HI PRO PAD 3M 5/CS",
+                        "price": 53.16,
+                        "unit": "2/CS",
+                        "color": "N/A",
+                        "size": "17\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 9620451,
+                        "description": "HANDLE BROOM WOOD 60INX15/16 IN THREADED TIP",
+                        "price": 3.04,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "60\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 1410191,
+                        "description": "BLADES SUPER SCRAPER IN 10/PK FOR 37500",
+                        "price": 23.07,
+                        "unit": "10/PK",
+                        "color": "N/A",
+                        "size": "4\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 1410261,
+                        "description": "SCRAPER 4\" WITH 5.5\" PLASTIC HANDLE",
+                        "price": 11.93,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "4\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620057,
+                        "description": "17\" RED PAD 3M",
+                        "price": 30.18,
+                        "unit": "5/CS",
+                        "color": "RED",
+                        "size": "17\""
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "DURATHON",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 530035,
+                        "description": "DURATHON FLOOR FINISH 9.5L 2/CS",
+                        "price": 74.45,
+                        "unit": "2/CS",
+                        "color": "N/A",
+                        "size": "9.5"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620257,
+                        "description": "GP FORWARD GENERAL PURPOSE CLEANER 18.9L",
+                        "price": 90.87,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "18.9L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "STRIDE",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 170055,
+                        "description": "STRIDE FLORAL NEUTRAL ALL PURPOSE CLEANER 18.9L",
+                        "price": 35.06,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "10L"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "Infinity",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 9610059,
+                        "description": "WAX MOP SILKY NYLON LOOPED END MEDIUM 20OZ",
+                        "price": 14.77,
+                        "unit": "EA",
+                        "color": "N/A",
+                        "size": "200OZ"
+                    },
+                    {
+                        "ordereddec": 0,
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedjun": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "supplier": "wesclean",
+                        "manufacturer": "UHS",
+                        "instock": 50,
+                        "ordered": 0,
+                        "orderspending": false,
+                        "recieved": 0,
+                        "requested": 0,
+                        "productcode": 620657,
+                        "description": "28\" UHS AQUA PAD 3M",
+                        "price": 30.18,
+                        "unit": "5/CS",
+                        "color": "AQUA",
+                        "size": "10L"
+                    }
+                ]
+
+                client.subcontractors[i].topline = [
+                    {
+                        "orderednov": 1,
+                        "orderedoct": 2,
+                        "orderedsept": 3,
+                        "orderedaug": 4,
+                        "orderedjul": 5,
+                        "orderedlove": 6,
+                        "orderedmay": 7,
+                        "orderedapr": 8,
+                        "orderedmar": 9,
+                        "orderedfeb": 10,
+                        "orderedjan": 11,
+                        "ordereddec": 12,
+                        "size": "20\"",
+                        "color": "Red",
+                        "unit": "Ea",
+                        "price": 8.96,
+                        "description": "Niagara Floor Pad, 20\", Red Buffer",
+                        "productcode": 154126,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Large",
+                        "color": "Blue",
+                        "unit": "Bx",
+                        "price": 9.95,
+                        "description": "Safety Zone Powder Free Synthetic Gloves",
+                        "productcode": 154127,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "3.6L",
+                        "color": "N/A",
+                        "unit": "Bx",
+                        "price": 4.95,
+                        "description": "Goldex Bleach (6%)",
+                        "productcode": 154128,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Large",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 6.56,
+                        "description": "Rayon Narrow Band Cut-End Wet Mop Head",
+                        "productcode": 154129,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "L",
+                        "price": 6.56,
+                        "description": "Topline Neutra Klean Neutral Floor Soap",
+                        "productcode": 154130,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline Sanitation Inc.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Large",
+                        "color": "Brown",
+                        "unit": "CS",
+                        "price": 29.95,
+                        "description": "Single Fold Hand Towels.",
+                        "productcode": 154131,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Pur Value",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "22\"X24\"",
+                        "color": "Black",
+                        "unit": "500/CS",
+                        "price": 18.95,
+                        "description": "Garbage Bags, Regular",
+                        "productcode": 154132,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Pur Value.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "16\"",
+                        "color": "Red",
+                        "unit": "EA",
+                        "price": 5.45,
+                        "description": "Norton Red Buffer Floor Pad",
+                        "productcode": 154133,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Norton.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "250g",
+                        "color": "N/A",
+                        "unit": "Bx",
+                        "price": 4.65,
+                        "description": "Air Effects Air Freshener, Spring & Renewal",
+                        "productcode": 154134,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Febreeze.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "20L",
+                        "color": "Blue",
+                        "unit": "EA",
+                        "price": 99.95,
+                        "description": "UHS Burnishing Floor Finish(20% solids)",
+                        "productcode": 154135,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "TopVac Plus Illuminate",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Hard Floor Neurtralizer Acidic Rinse & Residue Remover 4L",
+                        "productcode": 154136,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "UltraChemLabs",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "24\"",
+                        "color": "Light Blue",
+                        "unit": "EA",
+                        "price": 10.5,
+                        "description": "UHS Burnishing Floor Pad",
+                        "productcode": 154137,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Norton.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "8\"X800ft",
+                        "color": "White",
+                        "unit": "6/CS",
+                        "price": 34.95,
+                        "description": "Deluxe Hardwound Roll Towel",
+                        "productcode": 154138,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Classique",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "750ft",
+                        "color": "N/A",
+                        "unit": "12/CS",
+                        "price": 49.95,
+                        "description": "Minimax Mini JRT Jumbo Bath Tissue, 2Ply",
+                        "productcode": 154139,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Classique",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "35\"X50\"",
+                        "color": "Black",
+                        "unit": "100/CS",
+                        "price": 24.95,
+                        "description": "Garbage Bags, Extra Strong",
+                        "productcode": 154140,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Pur Value",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Large",
+                        "color": "Black",
+                        "unit": "100CS",
+                        "price": 24.95,
+                        "description": "Powder Free Synthetic Gloves",
+                        "productcode": 154141,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Safety Zone.",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Medium",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Rayon Narrow Band Cut-End Wet Mop Head(bagged)",
+                        "productcode": 154142,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "AGF 4020",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Special Degreaser",
+                        "productcode": 154143,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "RS",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "909ML",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 4.95,
+                        "description": "Top Bowl 23% Acid Toilet Bowl Cleaner",
+                        "productcode": 154144,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "1.5M",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Aluminum Mop Handle w/ Quick-Clip Head",
+                        "productcode": 154145,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "UltraChemLabs",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 19.95,
+                        "description": "Heavy Duty Degreaser",
+                        "productcode": 154146,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "TopVac",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "27\"",
+                        "color": "Aqua",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Floor Pad (Burnish)",
+                        "productcode": 154147,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Niagara",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "13\"",
+                        "color": "Red",
+                        "unit": "EA",
+                        "price": 4.65,
+                        "description": "Floor Pad (Buffer)",
+                        "productcode": 154148,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Niagara",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 6.99,
+                        "description": "Glass Glo RTU Glass Cleaner",
+                        "productcode": 154149,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "Pink/Cherry",
+                        "unit": "EA",
+                        "price": 8.95,
+                        "description": "Neutra Klean Neutral Floor Soap",
+                        "productcode": 154150,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4L",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "Hard Floor Neurtralizer Acidic Rinse & Residue Remover 4L",
+                        "productcode": 154151,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "N/A",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 12.95,
+                        "description": "Lobby Dustpan w/ Long Handle & Clip (NO BROOM)",
+                        "productcode": 154152,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Lobby",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "Large",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 6.34,
+                        "description": "Industrial Curved Block Magnetic Broom",
+                        "productcode": 154153,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Vileda Professional",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "36\"",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 36.84,
+                        "description": "Slip-On Cut-End Dust Mop Head",
+                        "productcode": 154154,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Astrolene",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "36\"",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 4.95,
+                        "description": "Breakaway Dust Mop Frame Only",
+                        "productcode": 154155,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Breakaway",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "3.5\"",
+                        "color": "N/A",
+                        "unit": "12/CS",
+                        "price": 18.75,
+                        "description": "Universal JRT Jumbo Bath Tissue 2 Ply",
+                        "productcode": 154156,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Tork",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "N/A",
+                        "color": "Clear",
+                        "unit": "EA",
+                        "price": 3.75,
+                        "description": "Green Certified Mild Foam Hand Cleaner",
+                        "productcode": 154157,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Gojo",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "26\"X36\"",
+                        "color": "Black",
+                        "unit": "250/CS",
+                        "description": "Garbage Bags Regular",
+                        "productcode": 154158,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Pur Value",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4\"",
+                        "color": "Red & Grey",
+                        "unit": "EA",
+                        "price": 18.75,
+                        "description": "4\" Floor & Window Scraper",
+                        "productcode": 154159,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "4\"",
+                        "color": "N/A",
+                        "unit": "10/PKG",
+                        "description": "Super Scraper 4\" Replacement Blades",
+                        "productcode": 154160,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Topline",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "16\"",
+                        "color": "Red",
+                        "unit": "EA",
+                        "price": 8.25,
+                        "description": "Floor Pad (Buffer)",
+                        "productcode": 154161,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Niagara",
+                        "supplier": "Topline Sanitation Inc."
+                    },
+                    {
+                        "orderednov": 0,
+                        "orderedoct": 0,
+                        "orderedsept": 0,
+                        "orderedaug": 0,
+                        "orderedjul": 0,
+                        "orderedlove": 0,
+                        "orderedmay": 0,
+                        "orderedapr": 0,
+                        "orderedmar": 0,
+                        "orderedfeb": 0,
+                        "orderedjan": 0,
+                        "ordereddec": 0,
+                        "size": "19\"",
+                        "color": "N/A",
+                        "unit": "EA",
+                        "price": 8.25,
+                        "description": "Floor Pad (Buffer)",
+                        "productcode": 154162,
+                        "requested": 0,
+                        "recieved": 0,
+                        "orderspending": false,
+                        "ordered": 0,
+                        "instock": 50,
+                        "manufacturer": "Niagara",
+                        "supplier": "Topline Sanitation Inc."
+                    }
+                ]
 
             }
 
@@ -4144,7 +4565,7 @@ router.post('/register/newclient', function (req, res) {
                     res.json({ success: true, message: "Client Created...", client: client })
 
                 }
-//
+                //
             });
 
         }
@@ -4594,30 +5015,30 @@ router.post('/sobeys', function (req, res) {
 //REMOVE CLIENTS
 
 
-    router.put('/removeclient/:clientname', function(req,res){
+router.put('/removeclient/:clientname', function (req, res) {
 
-        console.log(req.params.clientname);
-        Client.remove({name:req.params.clientname}, function(err, client){
+    console.log(req.params.clientname);
+    Client.remove({ name: req.params.clientname }, function (err, client) {
 
-            if(err)throw err;
-            if(!client){
-                res.json({success: false, message:"Client not found.."});
-            }else{
-                res.json({success: true, message: "Client Successfully Removed...", client: client})
-            }
-
-
-        })
+        if (err) throw err;
+        if (!client) {
+            res.json({ success: false, message: "Client not found.." });
+        } else {
+            res.json({ success: true, message: "Client Successfully Removed...", client: client })
+        }
 
 
     })
+
+
+})
 
 //GET CLIENTS
 
 router.get('/clients', function (req, res) {
 
 
-    Client.find({}).sort({createdAt:'ascending'}).exec((err, clients)=> {
+    Client.find({}).sort({ createdAt: 'ascending' }).exec((err, clients) => {
 
         if (err) throw err;
         if (!clients) {

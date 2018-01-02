@@ -43,6 +43,29 @@ export class ClientService {
       .map(res => res.json());
 
   }
+  
+  updateSubContractorInventory(subcontractor){
+    console.log(subcontractor)
+
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/routes/register/updatesubcontractorinventory', subcontractor, { headers: headers })
+      .map(res => res.json());
+
+
+
+  }
+  updateSubContractor(subcontractor){
+    console.log(subcontractor)
+
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/routes/register/updatesubcontractor', subcontractor, { headers: headers })
+      .map(res => res.json());
+
+  }
   addSubcontractor(subcontractor) {
 
     let headers = new Headers();

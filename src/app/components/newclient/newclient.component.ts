@@ -1474,6 +1474,7 @@ console.log("should be here");
                     "recieved" : 0,
                     "requested" : 0,
                     "productcode" : 32,
+                    "price": 8.99,
                     "description" : "Garbage Bags Regular",
                     "unit" : "250/CS",
                     "color" : "Black",
@@ -1527,6 +1528,7 @@ console.log("should be here");
                     "recieved" : 0,
                     "requested" : 0,
                     "productcode" : 34,
+                    "price":9.99,
                     "description" : "Super Scraper 4\" Replacement Blades",
                     "unit" : "10/PKG",
                     "color" : "N/A",
@@ -2180,7 +2182,7 @@ console.log("should be here");
                     "requested" : 0,
                     "received" : 0,
                     "orderspending" : false,
-                    "ordered" : 2,
+                    "ordered" : 0,
                     "instock" : 50,
                     "manufacturer" : "3M",
                     "name" : "threem"
@@ -3460,7 +3462,16 @@ if(this.name != "" &&
         
         console.log(data);
         if (data.success) {
+            for(let i =0;i<this.client.subcontractors.length; i++){
+                this.client.subcontractors[i].client = this.client.name
 
+                this.clientservice.addSubContractor(this.client.subcontractors[i]).subscribe(data=>{
+
+                    console.log(data);
+                })
+
+            }
+          
         this.addClientSuccess = true;
         this.addClientLoading = false;
         this.turnOnInstructions = false;

@@ -90,7 +90,7 @@ export class ClientsComponent implements OnInit {
   
     console.log(this.router.url);
  
-
+  
     this.clientservice.getClients().subscribe(clients =>{
 
       console.log(clients);

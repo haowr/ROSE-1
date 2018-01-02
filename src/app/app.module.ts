@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 //import { AlertModule } from 'ngx-bootstrap';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';   
-import { ClientsComponent } from './components/components//clients/clients.component';
+import { ClientsComponent } from './components/components/clients/clients.component';
 import { HomeComponent } from './components/home/home.component';
 import { HomeComponent2 } from './components/components/home2/home2.component';
 import { DataService } from './services/data.service';
@@ -49,7 +49,12 @@ const appRoutes: Routes = [
   { path: 'loblaws', component: LoblawsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'clients', component: ClientsComponent ,canActivate:[AuthGuard]},
+  { path: 'clients',component:ClientsComponent,
+    canActivate: [AuthGuard],
+    data: { preload: true }
+    
+    
+  },
   { path: 'profile', component: ProfileComponent,canActivate:[AuthGuard] },
   { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard] },
   { path: 'clients/:client', component: EachClientComponent,canActivate:[AuthGuard] },
@@ -103,7 +108,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes,{ preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(appRoutes),
    
     ChartsModule
     
