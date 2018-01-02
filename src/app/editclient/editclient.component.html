@@ -25,8 +25,8 @@
     <div class="col-sm-6">
       <!-- <h4>{{client.name}}</h4>-->
       <br>
-      <button *ngIf="indexVar == i&& !openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary">Open {{client.name}}</button>
-      <button *ngIf="indexVar == i&& openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary"> Close {{client.name}}</button>
+      <button *ngIf="indexVar == i&& !openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary animated fadeIn">Open {{client.name}}</button>
+      <button *ngIf="indexVar == i&& openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary animated fadeIn"> Close {{client.name}}</button>
 
       <br>
       <br>
@@ -167,15 +167,19 @@
           <br>
         </div>
       </div>
-      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
-      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
+      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary animated fadeIn" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
+      <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary animated fadeIn" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
       <br>
       <div>
       </div>
 
 
-      <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index;">
-        <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors ">
+      <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
+        <br>
+<!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
+        <button *ngIf="openEditSubcontractors && openEditForm   " (click)="openIndividualSubContractor(z);"type="button" class = "btn btn-primary form-control">Open/Close {{subcontractor.name}}.</button>
+
+        <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
 
           <br>
           <li class="active"><a href="#{{subcontractor[z]}}" data-toggle="tab" aria-expanded="false">Name</a></li>
@@ -193,7 +197,7 @@
 
 
         </ul>
-        <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" editSubContractorIndexVar == i&&indexVar == i && openEditSubcontractors && openEditForm">
+        <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" editSubContractorIndexVar == i&&indexVar == i && openEditSubcontractors && openEditForm && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean ">
 
           <div class="tab-pane fade active in" id="{{subcontractor[z]}}">
             <h4>{{subcontractor.name}}:</h4>

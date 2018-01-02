@@ -13,6 +13,7 @@ import { tokenNotExpired } from 'angular2-jwt';
   
 })
 export class EditclientComponent implements OnInit {
+   trackByIndex(index: number, obj: any): any { return index; }
 
   clientsArray: Object[] = [];
   subcontractorsArray = [];
@@ -22,6 +23,7 @@ export class EditclientComponent implements OnInit {
   clientContactName: string = "";
   clientContactPhone: string = "";
   clientContactEmail: string = "";
+  subContractorName2= [{value:""} ];
   subContractorName: string = "";
   subContractorPhoneNumber: string = "";
   subContractorEmailAddress: string = "";
@@ -38,6 +40,7 @@ export class EditclientComponent implements OnInit {
   subcontractorStoreNumber: string = "";
   subcontractorLocations: string[] = [];
   subcontractorStoreNumbers: string[] = [];
+  individualSubContractorIndexVar:string = "";
   indexVar:string = "";
   editSubContractorIndexVar:string =  "";
   addSubContractorIndexVar:string = "";
@@ -53,6 +56,8 @@ export class EditclientComponent implements OnInit {
   editClientLoading:boolean = false;
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
+  openIndividualSubContractorToggle:string  = "";
+  openIndividualSubContractorBoolean:boolean = false;
   openEditSubcontractors: boolean = false;
   openAddSubcontractors: boolean = false;
   allSubcontractorConditionsNotMet: boolean = false;
@@ -95,7 +100,8 @@ export class EditclientComponent implements OnInit {
   ngOnInit() {
 
     console.log("getClients");
-
+    
+//this.openIndividualSubContractor(index);
     this.clientservice.getClients().subscribe(data => {
 
       console.log(data);
@@ -2935,9 +2941,11 @@ console.log(data);
     if(!this.openEditSubcontractors){
 
         this.openEditSubcontractors =true;
+        //this.openIndividualSubContractorBoolean = true;
 
     }else{
         this.openEditSubcontractors = false;
+        //this.openIndividualSubContractorBoolean = false;
     }
    console.log(index)
     console.log(this.openEditForm);
@@ -2948,6 +2956,7 @@ console.log(data);
 
   }
   editSubContractorFunc(client, item, index) {
+      console.log(this.subContractorName2);
 
     this.loadingEditIcon = true;
     let clientToBeEdited2 = {
@@ -2999,6 +3008,25 @@ console.log(data);
       }
 
     })
+
+  }
+  openIndividualSubContractor(index){
+
+    console.log(index);
+    this.individualSubContractorIndexVar=index;
+    
+    if(!this.openIndividualSubContractorBoolean  ){
+            this.openIndividualSubContractorBoolean = true
+            this.openIndividualSubContractorToggle = index;
+
+    }else if(this.openIndividualSubContractorBoolean && this.openIndividualSubContractorToggle == index){
+            this.openIndividualSubContractorBoolean = false
+
+    }else{
+        this.openIndividualSubContractorBoolean = false;
+        this.openIndividualSubContractorBoolean = true;
+        this.openIndividualSubContractorToggle = index;
+    }
 
   }
 }
