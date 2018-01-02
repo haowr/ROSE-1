@@ -118,6 +118,7 @@ router.post('/editclientaddstorenumbertosubcontractor', function(req,res){
 //EDIT CLIENT/ADD NEW SUBCONTRACTOR
 
 router.post('/editclientaddsubcontractor', function(req,res){
+    console.log(req.body);
 
     Client.findOneAndUpdate({name: req.body.client}, {$push:{subcontractors:req.body}},{new:true}, function(err,client){
 

@@ -41,6 +41,10 @@ export class EditclientComponent implements OnInit {
   subcontractorLocations: string[] = [];
   subcontractorStoreNumbers: string[] = [];
   individualSubContractorIndexVar:string = "";
+  individualAddSubContractorIndexVar:string = "";
+  subCLocations:string = "";
+  subCStoreNumbers:string = "";
+  subContractorStoreNumbers:string ="";
   indexVar:string = "";
   editSubContractorIndexVar:string =  "";
   addSubContractorIndexVar:string = "";
@@ -56,6 +60,9 @@ export class EditclientComponent implements OnInit {
   editClientLoading:boolean = false;
   openEditForm: boolean = false;
   loadingEditIcon: boolean = false;
+  openAddSubContractor:boolean = false;
+  openIndividualAddSubContractorBoolean: boolean = false;
+  openIndividualAddSubContractorToggle:string = "";
   openIndividualSubContractorToggle:string  = "";
   openIndividualSubContractorBoolean:boolean = false;
   openEditSubcontractors: boolean = false;
@@ -72,6 +79,47 @@ export class EditclientComponent implements OnInit {
   addSubcontractorStoreNumbersConditionsNotMet:boolean = false;
   addSubcontractorStoreNumberConditionsMet:boolean = false;
   addSubcontractorLocationConditionsMet:boolean = false;
+
+  addNewSubContractor: boolean = false;
+  addNameSuccess: boolean = false;
+  addNameFailed: boolean = false;
+  addContactNameSuccess: boolean = false;
+  addContactNameFailed: boolean = false;
+  addContactPhoneSuccess: boolean = false;
+  addContactPhoneFailed: boolean = false;
+  addContactEmailAddressSuccess: boolean = false;
+  addContactEmailAddressFailed: boolean = false;
+  addEmailAddressSuccess: boolean = false;
+  addEmailAddressFailed: boolean = false;
+  addPhoneNumberSuccess: boolean = false;
+  addPhoneNumberFailed: boolean = false;
+  addLocationSuccess: boolean = false;
+  addLocationFailed: boolean = false;
+  addSubcontractorSuccess: boolean = false;
+  addSubcontractorFailed: boolean = false;
+  addSubContractorStoreNumbersFailed: boolean = false;
+  addSubContractorStoreNumbersSuccess: boolean = false;
+  
+  addNameSuccessMsg: string = "Name Successfully Added To the Database";
+  addNameFailedMsg: string = "Name Field Must Not Be Empty...";
+  addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
+  addContactNameFailedMsg: string = "ContactName Field Must Not Be Empty...";
+  addContactPhoneSuccessMsg: string = "Contact Phone Successfully Added To the Database";
+  addContactPhoneFailedMsg: string = "ContactPhone Field Must Not Be Empty...";
+  addContactEmailSuccessMsg: string = "Contact Email Successfully Added To the Database";
+  addContactEmailFailedMsg: string = "Contact Email Field Must Not Be Empty...";
+  addEmailAddressSuccessMsg: string = "Email Address Successfully Added To the Database";
+  addEmailAddressFailedMsg: string = "Email Address Field Must Not Be Empty...";
+  addPhoneNumberSuccessMsg: string = "Phone Number Successfully Added To the Database";
+  addPhoneNumberFailedMsg: string = "Phone Number Field Must Not Be Empty...";
+  addLocationSuccessMsg: string = "Store Location Successfully Loaded";
+  addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
+  addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
+  addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
+  addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
+  addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
+
+
   clientNameIsEmptyMsg:string = "Field Must Not Be Empty...";
    clientPhoneNumberIsEmptyMsg:string = "Field Must Not Be Empty...";
     clientEmailAddressIsEmptyMsg:string = "Field Must Not Be Empty...";
@@ -92,7 +140,19 @@ export class EditclientComponent implements OnInit {
   allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
   allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
 
-  
+    subContractor = {
+
+    name: "",
+    contactname: "",
+    contactphone: 0,
+    contactemail: "",
+    emailaddress: "",
+    phonenumber: 0,
+    storeaddresses: [],
+    storenumbers: [],
+    locations: []
+
+  };
 
 
   constructor(private clientservice: ClientService) { }
@@ -291,19 +351,7 @@ this.subcontractorsArray[z][d][d]=d*34567
     })
 
   }
-  openAddSubcontractorsFunc(index) {
-    this.addSubContractorIndexVar = index;
-    console.log(index);
-/*
-    if (!this.openAddSubcontractors) {
-
-      this.openAddSubcontractors = true;
-
-    } else {
-      this.openAddSubcontractors = false;
-    }
-*/
-  }
+ 
   addLocationToSubcontractorFunc() {
     //let subcontractorLocation = [];
    if(this.subcontractorLocation == ""|| undefined){
@@ -396,16 +444,80 @@ console.log(data);
           })
   
   }
+   addLocation() {
+    
+console.log(this.subCLocations)
+    if (this.subCLocations !=  "") {
+console.log(this.subCLocations)
+      
+      this.subContractor.locations.push(this.subCLocations);
+      this.subcontractorLocations.push(this.subCLocations);
+      this.subCLocations ="";
+   
+
+
+     this.addLocationSuccess = true;
+
+      setTimeout(() => {
+
+       this.addLocationSuccess = false;
+
+      }, 3000);
+
+    } else {
+
+
+      this.addLocationFailed = true;
+
+      setTimeout(() => {
+
+        this.addLocationFailed = false;
+
+      }, 3000);
+
+    }
+    
+  }
+  addStoreNumber() {
+   // this.subContractor.storenumbers = [];
+
+    if (this.subContractorStoreNumbers !=  "") {
+
+      this.subContractor.storenumbers.push(this.subContractorStoreNumbers);
+      this.subcontractorStoreNumbers.push(this.subContractorStoreNumbers);
+      console.log(this.subContractor.storenumbers);
+     this.addSubContractorStoreNumbersSuccess = true;
+     this.subContractorStoreNumbers = "";
+
+      setTimeout(() => {
+
+     this.addSubContractorStoreNumbersSuccess = false;
+
+      }, 3000);
+
+    } else {
+
+      this.addSubContractorStoreNumbersFailed = true;
+
+      setTimeout(() => {
+
+        this.addSubContractorStoreNumbersFailed = false;
+
+      }, 3000);
+
+    }
+
+  }
   addSubcontractor(client) {
 
     let subcontractor = {
       client: client,
-      name: this.subcontractorName,
-      phonenumber: this.subcontractorPhoneNumber,
-      emailaddress: this.subcontractorEmailAddress,
-      contactname: this.subcontractorContactName,
-      contactemail: this.subcontractorContactEmail,
-      contactphone: this.subcontractorContactPhone,
+      name: this.subContractorName,
+      phonenumber: this.subContractorPhoneNumber,
+      emailaddress: this.subContractorEmailAddress,
+      contactname: this.subContractorContactName,
+      contactemail: this.subContractorContactEmail,
+      contactphone: this.subContractorContactPhone,
       storenumbers: this.subcontractorStoreNumbers,
       locations: this.subcontractorLocations,
       date: this.month,
@@ -2806,7 +2918,7 @@ console.log(data);
             ]
 
     }
-    if(this.subcontractorPhoneNumber == "" || undefined){
+    if(this.subContractorPhoneNumber == "" || undefined){
 
                       this.addSubcontractorPhoneNumberConditionsNotMet = true;
         setTimeout(()=>{
@@ -2816,7 +2928,7 @@ console.log(data);
         },2000);
 
     }
-    if(this.subcontractorName == "" || undefined){
+    if(this.subContractorName == "" || undefined){
 
       
                       this.addSubcontractorNameConditionsNotMet = true;
@@ -2827,7 +2939,7 @@ console.log(data);
         },2000);
 
     }
-    if(this.subcontractorEmailAddress == "" || undefined){
+    if(this.subContractorEmailAddress == "" || undefined){
 
       
                       this.addSubcontractorEmailAddressConditionsNotMet = true;
@@ -2838,7 +2950,7 @@ console.log(data);
         },2000);
 
     }
-    if(this.subcontractorContactPhone == ""|| undefined){
+    if(this.subContractorContactPhone == ""|| undefined){
 
       
                       this.addSubcontractorContactPhoneConditionsNotMet = true;
@@ -2849,7 +2961,7 @@ console.log(data);
         },2000);
 
     }
-    if(this.subcontractorContactName == ""|| undefined){
+    if(this.subContractorContactName == ""|| undefined){
 
       
                       this.addSubcontractorContactNameConditionsNotMet = true;
@@ -2860,7 +2972,7 @@ console.log(data);
         },2000);
 
     }
-    if(this.subcontractorContactEmail == ""|| undefined){
+    if(this.subContractorContactEmail == ""|| undefined){
 
       
                       this.addSubcontractorContactEmailConditionsNotMet = true;
@@ -2890,7 +3002,7 @@ console.log(data);
         },2000);
 
     }
-    if (this.subcontractorPhoneNumber != "" || undefined &&
+    if (this.subContractorPhoneNumber != "" || undefined &&
       this.subcontractorEmailAddress != "" || undefined &&
       this.subcontractorContactName != "" || undefined &&
       this.subcontractorContactEmail != "" || undefined &&
@@ -2903,6 +3015,12 @@ console.log(data);
 
         console.log(data)
         if(data.success){
+            this.subcontractorEmailAddress = "";
+            this.subcontractorContactName = "";
+            this.subcontractorContactEmail = "";
+            this.subcontractorContactPhone = "";
+            this.subcontractorStoreNumbers = [];
+            this.subcontractorLocations = [];
 
                   this.allSubcontractorConditionsMet = true;
         setTimeout(()=>{
@@ -2919,7 +3037,7 @@ console.log(data);
 
       })
     }else{
-
+        console.log("addSubContractorWorking");
         this.allSubcontractorConditionsNotMet = true;
         setTimeout(()=>{
 
@@ -2933,19 +3051,56 @@ console.log(data);
 
 
   }
+   openAddSubcontractorsFunc(index) {
+    this.addSubContractorIndexVar = index;
+    console.log(index);
+    console.log(this.openAddSubContractor)
+
+    if (!this.openAddSubContractor) {
+
+        if(!this.openAddSubContractor && this.openEditSubcontractors){
+             this.openEditSubcontractors = false;
+        this.openAddSubContractor = true;
+        this.openIndividualAddSubContractorBoolean = true;
+
+        }
+      this.openAddSubContractor = true;
+      this.openIndividualAddSubContractorBoolean = true;
+
+
+    }else if(!this.openAddSubContractor && this.openEditSubcontractors) {
+  
+
+    }
+    else {
+      this.openAddSubContractor = false;
+      this.openIndividualAddSubContractorBoolean = false
+    }
+    console.log(this.openAddSubContractor)
+
+  }
   openEditSubcontractorsFunc(index) {
 
     this.editSubContractorIndexVar = index;
     this.indexVar = index
    
-    if(!this.openEditSubcontractors){
+    if(!this.openEditSubcontractors ){
+        if(!this.openEditSubcontractors && this.openAddSubContractor){
 
+                this.openEditSubcontractors = true;
+        this.openAddSubContractor = false;
+        this.openIndividualAddSubContractorBoolean = false;
+        }
         this.openEditSubcontractors =true;
+        
         //this.openIndividualSubContractorBoolean = true;
 
+    }else if(!this.openEditSubcontractors && this.openAddSubContractor){
+    
+        //this.openIndividualSubContractorBoolean = false;
     }else{
         this.openEditSubcontractors = false;
-        //this.openIndividualSubContractorBoolean = false;
+        this.openIndividualAddSubContractorBoolean = false;
     }
    console.log(index)
     console.log(this.openEditForm);
@@ -3010,10 +3165,31 @@ console.log(data);
     })
 
   }
+  openIndividualAddSubContractor(index){
+
+    this.individualAddSubContractorIndexVar = index;
+    this.openIndividualAddSubContractorBoolean = false;
+    if(!this.openIndividualAddSubContractorBoolean){
+
+        this.openIndividualAddSubContractorBoolean = true;
+        this.openIndividualAddSubContractorToggle = index;
+        this.individualAddSubContractorIndexVar = index;
+    }else if(this.openIndividualAddSubContractorBoolean && this.individualAddSubContractorIndexVar ==index){
+
+        this.openIndividualAddSubContractorBoolean = false;
+    }else{
+        this.openIndividualAddSubContractorBoolean = false;
+        this.openIndividualAddSubContractorBoolean = true;
+       this.openIndividualSubContractorToggle = index;
+       this.individualAddSubContractorIndexVar = index;
+    }
+
+  }
   openIndividualSubContractor(index){
 
     console.log(index);
     this.individualSubContractorIndexVar=index;
+    this.openIndividualSubContractorBoolean = false;
     
     if(!this.openIndividualSubContractorBoolean  ){
             this.openIndividualSubContractorBoolean = true

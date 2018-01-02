@@ -172,12 +172,200 @@
       <br>
       <div>
       </div>
+      <div>
+        <br>
+  <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
+<!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
+
+      <form class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
 
+        <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
+
+          <br>
+          <li class="active"><a href="#name2" data-toggle="tab" aria-expanded="false">Name</a></li>
+
+          <li class=""><a href="#phonenumber2" data-toggle="tab" aria-expanded="false">Phone</a></li>
+
+          <li class=""><a href="#emailaddress2" data-toggle="tab" aria-expanded="false">Email</a></li>
+          <li class=""><a href="#contactname2" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
+          <li class=""><a href="#contactphone2" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
+          <li class=""><a href="#contactemail2" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+          <li class=""><a href="#locations2" data-toggle="tab" aria-expanded="false">Locations</a></li>
+          <li class=""><a href="#storenumbers2" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+
+
+
+
+        </ul>
+        <div id="myTabContent" style="border-bottom:1px solid #ddd" class="tab-content animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
+
+          <div class="tab-pane fade active in" id="name2">
+   <br>
+              <label>Name(Subcontractor2)</label>
+              
+              <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
+                class="form-control">
+              <div *ngIf="addNameSuccess">
+                {{addNameSuccessMsg}}
+              </div>
+              <div *ngIf="addNameFailed">
+                {{addNameFailedMsg}}
+              </div>
+
+          </div>
+          
+        
+          <div class="tab-pane fade" id="emailaddress2">
+             <label>Email Address</label>
+              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
+                class="form-control">
+              <div *ngIf="addEmailAddressSuccess">
+                {{addEmailAddressSuccessMsg}}
+              </div>
+              <div *ngIf="addEmailAddressFailed">
+                {{addEmailAddressFailedMsg}}
+              </div>
+          </div>
+          <div class="tab-pane fade" id="phonenumber2">
+       <label>Phone Number</label>
+              <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
+                class="form-control">
+              <div *ngIf="addPhoneNumberSuccess">
+                {{addPhoneNumberSuccessMsg}}
+              </div>
+              <div *ngIf="addPhoneNumberFailed">
+                {{addPhoneNumberFailedMsg}}
+              </div>
+          </div>
+          <div class="tab-pane fade" id="contactname2">
+           <label>Contact Name</label>
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
+                class="form-control">
+              <div *ngIf="addContactNameSuccess">
+                {{addContactNameSuccessMsg}}
+              </div>
+              <div *ngIf="addContactNameFailed">
+                {{addContactNameFailedMsg}}
+              </div>
+
+          </div>
+
+
+          <div class="tab-pane fade" id="contactphone2">
+               <label>Contact Phone Number</label>
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
+                name="subContractorContactPhone" class="form-control">
+              <div *ngIf="addContactPhoneSuccess">
+                {{addContactPhoneSuccessMsg}}
+              </div>
+              <div *ngIf="addContactPhoneFailed">
+                {{addContactPhoneFailedMsg}}
+              </div>
+          </div>
+          <div class="tab-pane fade" id="contactemail2">
+             <label>Contact Email</label>
+              <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
+                class="form-control">
+              <div *ngIf="addContactEmailAddressSuccess">
+                {{addContactEmailSuccessMsg}}
+              </div>
+              <div *ngIf="addContactEmailAddressFailed">
+                {{addContactEmailFailedMsg}}
+              </div>
+          </div>
+
+
+          <div class="tab-pane fade" id="locations2">
+
+            <div class="panel panel-default">
+              <div class="panel panel-heading">
+                <label>Locations(SC)</label>
+              </div>
+              <div class="panel-body">
+                 <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subcontractorLocations}}"
+                name="subCLocations" class="form-control">
+
+              <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addLocation(); $event.preventDefault();"></i>
+              <div *ngIf="addLocationSuccess">
+                {{addLocationSuccessMsg}}
+
+              </div>
+              <div *ngIf="addLocationFailed">
+
+                {{addLocationFailedMsg}}
+              </div>      
+              </div>
+
+          
+              <div class="well well-sm" *ngIf="addSubcontractorLocationConditionsMet">
+                <p><strong> {{addSubcontractorLocationConditionsMetMsg}}</strong></p>
+
+              </div>
+              <div class="well well-sm" *ngIf="addSubcontractorLocationsConditionsNotMet">
+
+                <p><strong>{{addSubcontractorLocationsConditionsNotMetMsg}}</strong></p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="tab-pane fade" id="storenumbers2">
+
+
+            <div class="panel panel-default">
+              <div class="panel panel-heading">
+
+                <label>Store Numbers(SC)</label>
+              </div>
+              <div class="panel-body">
+                     <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subContractorStoreNumbers" placeholder="{{subContractor.storenumbers}}"
+                name="subContractorStoreNumbers" class="form-control">
+
+              <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addStoreNumber(); $event.preventDefault();"></i>
+              <div *ngIf="addSubContractorStoreNumbersSuccess">
+                {{addSubContractorStoreNumbersSuccessMsg}}
+
+              </div>
+              <div *ngIf="addSubContractorStoreNumbersFailed">
+
+                {{addSubContractorStoreNumbersFailedMsg}}
+              </div>
+              </div>
+            </div>
+
+
+            <br>
+          </div>
+          <!-- <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
+                <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
+         -->
+          
+          
+                      <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control" value="Add Subcontractor">
+
+        </div>
+        
+          </form>
+          <div *ngIf="allSubContractorConditionsMet">
+
+            {{allSubContractorConditionsMetMsg}}
+          </div>
+                <div *ngIf="!allSubContractorConditionsMet">
+
+            {{allSubContractorConditionsMetMsg}}
+          </div>
+</div>
       <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
         <br>
+
+      
+
+        <br>
 <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
-        <button *ngIf="openEditSubcontractors && openEditForm   " (click)="openIndividualSubContractor(z);"type="button" class = "btn btn-primary form-control">Open/Close {{subcontractor.name}}.</button>
+        <button *ngIf="openEditSubcontractors && openEditForm   " (click)="openIndividualSubContractor(z);"type="button" class = "btn btn-primary form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
 
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
 
@@ -307,8 +495,9 @@
           <br>
           <br>
         </div>
-      </div>
-
+        
+      
+</div>
 
 
     </div>
