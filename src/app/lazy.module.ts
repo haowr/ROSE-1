@@ -1,15 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClientsComponent } from './components/components/clients/clients.component';
 import { Routes,RouterModule } from '@angular/router';
 
 const routes: Routes=[
 
-{
-  path: '',
-  component: ClientsComponent
-
-}
 
 ]
 
@@ -20,7 +14,6 @@ const routes: Routes=[
   ],
   exports: [RouterModule],
   declarations: [
-    ClientsComponent
   ]
 })
 export class LazyModule { }
