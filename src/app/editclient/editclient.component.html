@@ -201,11 +201,12 @@
         <div id="myTabContent" style="border-bottom:1px solid #ddd" class="tab-content animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
 
           <div class="tab-pane fade active in" id="name2">
-   <br>
-              <label>Name(Subcontractor2)</label>
+   
+              <h4>Name</h4>
               
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
                 class="form-control">
+
               <div *ngIf="addNameSuccess">
                 {{addNameSuccessMsg}}
               </div>
@@ -217,7 +218,7 @@
           
         
           <div class="tab-pane fade" id="emailaddress2">
-             <label>Email Address</label>
+             <h4>Email Address</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                 class="form-control">
               <div *ngIf="addEmailAddressSuccess">
@@ -228,7 +229,7 @@
               </div>
           </div>
           <div class="tab-pane fade" id="phonenumber2">
-       <label>Phone Number</label>
+       <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
               <div *ngIf="addPhoneNumberSuccess">
@@ -239,7 +240,7 @@
               </div>
           </div>
           <div class="tab-pane fade" id="contactname2">
-           <label>Contact Name</label>
+           <h4>Contact Name</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                 class="form-control">
               <div *ngIf="addContactNameSuccess">
@@ -253,7 +254,7 @@
 
 
           <div class="tab-pane fade" id="contactphone2">
-               <label>Contact Phone Number</label>
+               <h4>Contact Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                 name="subContractorContactPhone" class="form-control">
               <div *ngIf="addContactPhoneSuccess">
@@ -264,7 +265,7 @@
               </div>
           </div>
           <div class="tab-pane fade" id="contactemail2">
-             <label>Contact Email</label>
+             <h4>Contact Email</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                 class="form-control">
               <div *ngIf="addContactEmailAddressSuccess">
@@ -280,7 +281,7 @@
 
             <div class="panel panel-default">
               <div class="panel panel-heading">
-                <label>Locations(SC)</label>
+                <h4>Locations</h4>
               </div>
               <div class="panel-body">
                  <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subcontractorLocations}}"
@@ -318,7 +319,7 @@
             <div class="panel panel-default">
               <div class="panel panel-heading">
 
-                <label>Store Numbers(SC)</label>
+                <h4>Store Numbers</h4>
               </div>
               <div class="panel-body">
                      <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subContractorStoreNumbers" placeholder="{{subContractor.storenumbers}}"
@@ -369,7 +370,7 @@
 
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
 
-          <br>
+          
           <li class="active"><a href="#{{subcontractor[z]}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
           <li class=""><a href="#{{subcontractor[z]+1}}" data-toggle="tab" aria-expanded="false">Phone</a></li>
@@ -392,6 +393,10 @@
             <input class="form-control" placeholder="{{subcontractor.name}}" name='subContractorName' [(ngModel)]='subContractorName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default form-control">edit</button>
+          <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
 
@@ -400,6 +405,10 @@
             <input class="form-control" placeholder="{{subcontractor.phonenumber}}" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default form-control">edit</button>
+                     <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+2}}">
@@ -408,6 +417,10 @@
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>
+         <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+3}}">
@@ -415,6 +428,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactname}}" name='subContractorContactName' [(ngModel)]='subContractorContactName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z);" class="btn btn-default form-control">edit</button>
+         <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+4}}">
@@ -422,6 +439,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactphone}}" name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z);" class="btn btn-default form-control">edit</button>
+         <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+5}}">
@@ -429,6 +450,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactemail}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z);" class="btn btn-default form-control">edit</button>
+         <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+6}}">
@@ -443,6 +468,11 @@
 
                 <button class="btn btn-default " (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
                 <button class="btn btn-default" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
+                       <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
               </div>
 
               <div class="placeholderdivsmallwell" *ngIf="!addSubcontractorLocationsConditionsNotMet">
@@ -473,6 +503,11 @@
 
                 <button class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc(client.name,z,subcontractor.storenumbers); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                 <button class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc(client.name,z,subcontractor.storenumbers); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
+                         <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+            <span *ngIf="editSubContractorLoading">LOADING</span>
+            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
                 <div class="placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumbersConditionsNotMet">
                 </div>
                 <div class="placeholderdivsmallwell" *ngIf="!addSubcontractorStoreNumberConditionsMet">

@@ -51,6 +51,7 @@ export class EditclientComponent implements OnInit {
    date= new Date();
   dateNow = this.date.getDate()
   month = this.date.getMonth()+1;
+  editSubContractorLoading = false;
   clientNameIsEmpty:boolean = false;
   clientEmailAddressIsEmpty:boolean = false;
   clientPhoneNumberIsEmpty:boolean = false;
@@ -3113,6 +3114,7 @@ console.log(this.subCLocations)
   editSubContractorFunc(client, item, index) {
       console.log(this.subContractorName2);
 
+      this.editSubContractorLoading = true;
     this.loadingEditIcon = true;
     let clientToBeEdited2 = {
 
@@ -3135,7 +3137,7 @@ console.log(this.subCLocations)
     this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
 
       if (data.success) {
-
+        this.editSubContractorLoading = false;
         this.loadingEditIcon = false;
         this.clientservice.getClients().subscribe(data => {
 
