@@ -25,6 +25,7 @@ export class LocationComponent implements OnInit {
   toplineInventory2: boolean = true;
   veritivInventory2: boolean = false;
   expenditureLoaded: boolean = false;
+  expenditureLoading:boolean = false;
 
   //STRING VARIABLES
 
@@ -587,6 +588,7 @@ export class LocationComponent implements OnInit {
 
     }
     
+    this.expenditureLoading = true;
 
         for(let z =0; z< this.toplineInventoryArray.length; z++){
 
@@ -611,6 +613,7 @@ export class LocationComponent implements OnInit {
             this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
 
               console.log(data)
+              this.expenditureLoading = false;
               this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
             })
@@ -903,7 +906,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
       subcontractorarray: this.singleSubContractorsArray
 
     }
-    this.expenditureLoaded = true;
+    this.expenditureLoading = true;
 
     setTimeout(() => {
 
@@ -1247,6 +1250,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
 
     }
+    this.expenditureLoading = true;
         for(let z =0; z< this.wescleanInventoryArray.length; z++){
 
 
@@ -1270,6 +1274,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
             this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
 
               console.log(data)
+              this.expenditureLoading = false;
               this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
             })
@@ -1415,6 +1420,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
 
     }
     console.log(productcode)
+    this.expenditureLoading = true;
     for(let z =0; z< this.inventory.length; z++){
 
 
@@ -1439,6 +1445,7 @@ this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
             this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
 
               console.log(data)
+              this.expenditureLoading = false;
               this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
             })
