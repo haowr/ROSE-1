@@ -123,6 +123,7 @@ export class EditclientComponent implements OnInit {
     addSubContractorLocationsEmpty: boolean = false;
     addSubContractorStoreNumbersEmpty: boolean = false;
     addSubContractorLoading: boolean = false;
+    editSubContractorSuccess:boolean = false;
     editSubContractorFieldEmptyMsg: string = "Field Cannot Be Empty...";
     areYouSure: boolean = false;
 
@@ -3472,6 +3473,11 @@ export class EditclientComponent implements OnInit {
     this.subcontractorsArray[z][d][d] = d * 34567
                             console.log(this.subcontractorsArray[z])
                             this.loadingClients = false;
+                            this.editSubContractorSuccess = true;
+                            setTimeout(()=>{
+
+                                this.editSubContractorSuccess = false;
+                            },2000);
                             
                             
 
@@ -3533,7 +3539,12 @@ export class EditclientComponent implements OnInit {
                     this.clientservice.getClients().subscribe(data => {
 
                         console.log(data);
-                        this.clientsArray = data.clients;
+                        this.editSubContractorSuccess=true;
+                        this.editSubContractorLoading = false;
+                    this.loadingEditIcon = false;
+                        setTimeout(()=>{
+
+           this.clientsArray = data.clients;
                         this.subContractorName = "";
                         this.subContractorEmailAddress = "";
                         this.subContractorPhoneNumber = "";
@@ -3557,9 +3568,13 @@ export class EditclientComponent implements OnInit {
                             console.log(this.subcontractorsArray[z])
 
                         }
+                                                this.editSubContractorSuccess=false;
+
+                        },1500);
+             
                     })
-                    this.editSubContractorLoading = false;
-                    this.loadingEditIcon = false;
+                    
+                    
 
                 }
 

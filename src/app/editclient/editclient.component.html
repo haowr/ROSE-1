@@ -212,16 +212,16 @@
         </div>
                 <div *ngIf="indexVar == i && openEditForm" class="panel panel-primary animated fadeIn">
   <div class="panel-heading">
-    <h3 *ngIf="!editClientSuccess" class="panel-title">Edit Client Instructions</h3>
-    <h3 *ngIf="editClientSuccess" class="panel-title">Edit Successful!</h3>
+    <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Client Instructions</h3>
+    <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
 
   </div>
   <div class="panel-body">
 
-   <p *ngIf="!editClientSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-   <p *ngIf="!editClientSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
-   <p  *ngIf="!editClientSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
-   <h3 class = "animated flash" *ngIf="editClientSuccess">Client Successfully Edited!</h3>
+   <p *ngIf="!editSubContractorSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+   <p *ngIf="!editSubContractorSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
+   <p  *ngIf="!editSubContractorSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
+   <h3 class = "animated flash" *ngIf="editSubContractorSuccess">Client Successfully Edited!</h3>
   </div>
 </div>
       </div>
@@ -234,6 +234,7 @@
         <br>
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
+
           <i  *ngIf="loadingClients" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
               <span *ngIf="loadingClients">LOADING</span>
               <i style="font-size:20px;" *ngIf="loadingClients " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
@@ -486,7 +487,18 @@
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
             <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+  <div class="panel-heading">
+    <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Client Instructions</h3>
+    <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
 
+  </div>
+  <div class="panel-body">
+
+   <p *ngIf="!editSubContractorSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+   <p *ngIf="!editSubContractorSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
+   <p  *ngIf="!editSubContractorSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
+   <h3 class = "animated flash" *ngIf="editSubContractorSuccess">Client Successfully Edited!</h3>
+  </div>
           </div>
 
           <div class="tab-pane fade" id="{{subcontractor[z]+1}}">
