@@ -10,49 +10,49 @@
   });
 
 </script>
-     <button id="openModalButton"class="hidebutton " hidden="true" backdrop ="false"data-toggle="modal" data-target="#myModal">Open Modal</button>
-      <button  class="hidebutton" hidden = "true"id="btnclose" data-toggle="modal" data-dismiss="modal" data-target="#myModal">Close</button>
+<button id="openModalButton" class="hidebutton " hidden="true" backdrop="false" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button class="hidebutton" hidden="true" id="btnclose" data-toggle="modal" data-dismiss="modal" data-target="#myModal">Close</button>
 
-  <!-- Trigger the modal with a button -->
+<!-- Trigger the modal with a button -->
 
-                  <!-- Modal -->
-  <div class="modal animated fadeIn" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title openssans">ROSE</h2>
-          
-        </div>
-        <div class="modal-body text-center">
-          <!--<div class="bigCircle rotating"><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="littleCircle"></div></div>-->
-          <h3 class = "openssans text-center animated flash text-danger" *ngIf="areYouSure">Are you sure?</h3>
-          <i style="font-size:30px;" *ngIf="areYouSure" class="fa fa-exclamation-triangle text-center animated flash" aria-hidden="true"></i>
-          <p  *ngIf="areYouSure" class = "text-center">(This Action Cannot Be Undone)</p>
-         
-         <h3 *ngIf = "removalComplete" class = "text-center animated flash text-success"> {{subContractorVar}} Successfully Removed!</h3>
-          <i *ngIf = "removalComplete"class="fa fa-check animated flash  text-center" style="font-size:40px;"aria-hidden="true"></i>
-          <h3 class = "modal-title text-center animated flash text-danger" *ngIf="removingSubContractor">Removing {{subContractorVar}}</h3>
-          
-            <i style="font-size:20px;" *ngIf="removingSubContractor" class="fa fa-cog fa-spin fa-3x fa-fw">
-</i>
-            <span *ngIf="removingSubContractor">LOADING</span>
-            <i style="font-size:20px;" *ngIf="removingSubContractor" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+<!-- Modal -->
+<div class="modal animated fadeIn" id="myModal" role="dialog">
+  <div class="modal-dialog">
 
-        
-         <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger"  (click)= "removeSubContractor();">Yes</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title openssans">ROSE</h2>
 
-        </div>
       </div>
-      
+      <div class="modal-body text-center">
+        <!--<div class="bigCircle rotating"><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="littleCircle"></div></div>-->
+        <h3 class="openssans text-center animated flash text-danger" *ngIf="areYouSure">Are you sure?</h3>
+        <i style="font-size:30px;" *ngIf="areYouSure" class="fa fa-exclamation-triangle text-center animated flash" aria-hidden="true"></i>
+        <p *ngIf="areYouSure" class="text-center">(This Action Cannot Be Undone)</p>
+
+        <h3 *ngIf="removalComplete" class="text-center animated flash text-success"> {{subContractorVar}} Successfully Removed!</h3>
+        <i *ngIf="removalComplete" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
+        <h3 class="modal-title text-center animated flash text-danger" *ngIf="removingSubContractor">Removing {{subContractorVar}}</h3>
+
+        <i style="font-size:20px;" *ngIf="removingSubContractor" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+        <span *ngIf="removingSubContractor">LOADING</span>
+        <i style="font-size:20px;" *ngIf="removingSubContractor" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+
+        <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="removeSubContractor();">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+
+      </div>
     </div>
+
   </div>
+</div>
 
 <div class="row">
   <div id="editclienttitle" class=" col-sm-12 text-center">
@@ -220,8 +220,11 @@
         <br>
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
+          <i  *ngIf="loadingClients" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="loadingClients">LOADING</span>
+              <i style="font-size:20px;" *ngIf="loadingClients " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-        <form class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
+        <form *ngIf="!loadingClients"class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
 
           <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
@@ -251,12 +254,14 @@
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
                 class="form-control">
 
-              <div *ngIf="addNameSuccess">
-                {{addNameSuccessMsg}}
+              <div *ngIf="addSubContractorNameEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addNameFailed">
-                {{addNameFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
 
             </div>
 
@@ -265,34 +270,40 @@
               <h4>Email Address</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                 class="form-control">
-              <div *ngIf="addEmailAddressSuccess">
-                {{addEmailAddressSuccessMsg}}
+              <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addEmailAddressFailed">
-                {{addEmailAddressFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
             </div>
             <div class="tab-pane fade" id="phonenumber2">
               <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
-              <div *ngIf="addPhoneNumberSuccess">
-                {{addPhoneNumberSuccessMsg}}
+              <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addPhoneNumberFailed">
-                {{addPhoneNumberFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
             </div>
             <div class="tab-pane fade" id="contactname2">
               <h4>Contact Name</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                 class="form-control">
-              <div *ngIf="addContactNameSuccess">
-                {{addContactNameSuccessMsg}}
+              <div *ngIf="addSubContractorContactNameEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addContactNameFailed">
-                {{addContactNameFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
 
             </div>
 
@@ -301,23 +312,27 @@
               <h4>Contact Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                 name="subContractorContactPhone" class="form-control">
-              <div *ngIf="addContactPhoneSuccess">
-                {{addContactPhoneSuccessMsg}}
+              <div *ngIf="addSubContractorContactPhoneEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addContactPhoneFailed">
-                {{addContactPhoneFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
             </div>
             <div class="tab-pane fade" id="contactemail2">
               <h4>Contact Email</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                 class="form-control">
-              <div *ngIf="addContactEmailAddressSuccess">
-                {{addContactEmailSuccessMsg}}
+              <div *ngIf="addSubContractorContactEmailEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
               </div>
-              <div *ngIf="addContactEmailAddressFailed">
-                {{addContactEmailFailedMsg}}
-              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
             </div>
 
 
@@ -332,25 +347,18 @@
                     name="subCLocations" class="form-control">
 
                   <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addLocation(); $event.preventDefault();"></i>
-                  <div *ngIf="addLocationSuccess">
-                    {{addLocationSuccessMsg}}
+                  <div *ngIf="addSubContractorLocationsEmpty" class=" well well-sm">
+
+                    {{editSubContractorFieldEmptyMsg}}
 
                   </div>
-                  <div *ngIf="addLocationFailed">
-
-                    {{addLocationFailedMsg}}
-                  </div>
-                </div>
-
-
-                <div class="well well-sm" *ngIf="addSubcontractorLocationConditionsMet">
-                  <p><strong> {{addSubcontractorLocationConditionsMetMsg}}</strong></p>
+                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                  <span *ngIf="addSubContractorLoading">LOADING</span>
+                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
                 </div>
-                <div class="well well-sm" *ngIf="addSubcontractorLocationsConditionsNotMet">
 
-                  <p><strong>{{addSubcontractorLocationsConditionsNotMetMsg}}</strong></p>
-                </div>
+
 
               </div>
 
@@ -370,14 +378,16 @@
                     name="subContractorStoreNumbers" class="form-control">
 
                   <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addStoreNumber(); $event.preventDefault();"></i>
-                  <div *ngIf="addSubContractorStoreNumbersSuccess">
-                    {{addSubContractorStoreNumbersSuccessMsg}}
+
+                  <div *ngIf="addSubContractorStoreNumbersEmpty" class=" well well-sm">
+
+                    {{editSubContractorFieldEmptyMsg}}
 
                   </div>
-                  <div *ngIf="addSubContractorStoreNumbersFailed">
+                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                  <span *ngIf="addSubContractorLoading">LOADING</span>
+                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-                    {{addSubContractorStoreNumbersFailedMsg}}
-                  </div>
                 </div>
               </div>
 
@@ -410,10 +420,10 @@
 
         <br>
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
-        <button *ngIf="openEditSubcontractors && openEditForm   " (click)="openIndividualSubContractor(z);" type="button" class="btn btn-primary form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
+        <button *ngIf="openEditSubcontractors && openEditForm &&!loadingClients  " (click)="openIndividualSubContractor(z);" type="button" class="btn btn-primary form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
         <br>
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
-<br>
+          <br>
 
           <li class="active"><a href="#{{subcontractor[z]}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
@@ -439,7 +449,7 @@
             <button (click)="editSubContractorFunc(client.name,subcontractor.name,z,'name');" class="btn btn-default form-control">edit</button>
             <button (click)="openRemoveSubContractorModal(client.name,z,subcontractor.name);" class="btn btn-danger form-control">Remove {{subcontractor.name}}</button>
 
-          <div class="well well-sm" *ngIf="subContractorNameEmpty">
+            <div class="well well-sm" *ngIf="subContractorNameEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
             <br>
@@ -455,10 +465,10 @@
             <input class="form-control" placeholder="{{subcontractor.phonenumber}}" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z,'phonenumber');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="subContractorPhoneNumberEmpty">
+            <div class="well well-sm" *ngIf="subContractorPhoneNumberEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
-                        <br>
+            <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -472,10 +482,10 @@
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z,'emailaddress');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="subContractorEmailAddressEmpty">
+            <div class="well well-sm" *ngIf="subContractorEmailAddressEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
-                        <br>
+            <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -488,10 +498,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactname}}" name='subContractorContactName' [(ngModel)]='subContractorContactName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z,'contactname');" class="btn btn-default form-control">edit</button>
-                     <div class="well well-sm" *ngIf="subContractorContactNameEmpty">
+            <div class="well well-sm" *ngIf="subContractorContactNameEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
-                       <br>
+            <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -504,10 +514,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactphone}}" name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z,'contactphone');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="subContractorContactPhoneEmpty">
+            <div class="well well-sm" *ngIf="subContractorContactPhoneEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
-                        <br>
+            <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -520,10 +530,10 @@
             <input class="form-control" placeholder="{{subcontractor.contactemail}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z,'contactemail');" class="btn btn-default form-control">edit</button>
-            <div  class="well well-sm" *ngIf="subContractorContactEmailEmpty">
+            <div class="well well-sm" *ngIf="subContractorContactEmailEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
-                        <br>
+            <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -542,8 +552,8 @@
 
                 <button class="btn btn-default " (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
                 <button class="btn btn-default" (click)="removeLocationFromSubcontractorFunc(); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true"></i></button>
-               
-                           <br>
+
+                <br>
                 <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
                 <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -580,8 +590,8 @@
 
                 <button class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc(client.name,z,subcontractor.storenumbers); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                 <button class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc(client.name,z,subcontractor.storenumbers); $event.preventDefault();">Remove  <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
-                
-                            <br>
+
+                <br>
                 <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
                 <span *ngIf="editSubContractorLoading">LOADING</span>
