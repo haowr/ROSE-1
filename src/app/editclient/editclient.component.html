@@ -45,8 +45,8 @@
         <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="removeSubContractor();">Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button  *ngIf="areYouSure"type="button" class="btn btn-danger" (click)="removeSubContractor();">Yes</button>
+        <button  *ngIf="areYouSure"type="button" class="btn btn-default" data-dismiss="modal">No</button>
 
       </div>
     </div>
@@ -210,6 +210,20 @@
           </div>
           <br>
         </div>
+                <div *ngIf="indexVar == i && openEditForm" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 *ngIf="!addClientSuccess" class="panel-title">Edit Client Instructions</h3>
+    <h3 *ngIf="addClientSuccess" class="panel-title">Edit Successful!</h3>
+
+  </div>
+  <div class="panel-body">
+
+   <p *ngIf="!addClientSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+   <p *ngIf="!addClientSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
+   <p  *ngIf="!addClientSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
+   <h3 class = "animated flash" *ngIf="addClientSuccess">Client Successfully Edited!</h3>
+  </div>
+</div>
       </div>
       <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary animated fadeIn" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
       <button *ngIf="indexVar == i && openEditForm" class="btn btn-primary animated fadeIn" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
@@ -402,6 +416,22 @@
             <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control" value="Add Subcontractor">
 
           </div>
+          <br>
+          <div *ngIf="openAddSubContractor && openEditForm   " class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 *ngIf="!addSubContractorSuccess" class="panel-title">Add Sub Contractor Instructions</h3>
+    <h3 *ngIf="addSubContractorSuccess" class="panel-title">Sub Contractor Addition Successful</h3>
+
+  </div>
+  <div class="panel-body">
+
+   <p *ngIf="!addSubContractorSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+   <p *ngIf="!addSubContractorSuccess" class = "text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+   <p *ngIf="!addSubContractorSuccess" class = "text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+   <p  *ngIf="!addSubContractorSuccess" class = "text-danger"> 4. Click "Add Sub Contractor" once completed, and wait for the message indicating the new Sub Contractor has been added.</p>
+   <h3 class = "animated flash" *ngIf="addSubContractorSuccess">Sub Contractor Successfully Added!</h3>
+  </div>
+</div>
 
         </form>
         <div *ngIf="allSubContractorConditionsMet">
@@ -613,12 +643,11 @@
             </div>
             <br>
           </div>
-          <!-- <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
-                <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
-         -->
+
           <br>
           <br>
         </div>
+
 
 
       </div>

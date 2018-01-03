@@ -62,6 +62,7 @@ export class EditclientComponent implements OnInit {
     clientContactNameIsEmpty: boolean = false;
     clientContactPhoneIsEmpty: boolean = false;
     clientContactEmailIsEmpty: boolean = false;
+    editClientSuccess: boolean = false;
     editClientLoading: boolean = false;
     openEditForm: boolean = false;
     loadingEditIcon: boolean = false;
@@ -104,6 +105,7 @@ export class EditclientComponent implements OnInit {
     addSubcontractorFailed: boolean = false;
     addSubContractorStoreNumbersFailed: boolean = false;
     addSubContractorStoreNumbersSuccess: boolean = false;
+    addSubContractorSuccess:boolean = false;
 
     subContractorNameEmpty: boolean = false;
     subContractorEmailAddressEmpty: boolean = false;
@@ -225,7 +227,8 @@ export class EditclientComponent implements OnInit {
         }
     }
     editClientFunc(clientparam) {
-        //console.log(client);
+        console.log(clientparam);
+
         let clientToBeEdited = {
             client: clientparam,
             clientname: this.clientName,
@@ -308,6 +311,7 @@ export class EditclientComponent implements OnInit {
                 console.log(data);
                 if (data.success) {
 
+                    
 
 
                     this.clientservice.getClients().subscribe(data => {
@@ -322,6 +326,12 @@ export class EditclientComponent implements OnInit {
                         this.clientContactEmail = '';
                         this.editClientLoading = false;
 
+                        this.editClientSuccess = true;
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
 
                     })
 
@@ -3078,6 +3088,7 @@ export class EditclientComponent implements OnInit {
         ) {
             console.log("allconditionsmet");
             this.addSubContractorLoading = true;
+            
             this.clientservice.editClientAddSubcontractor(subcontractor).subscribe(data => {
 
                 console.log(data)
@@ -3090,9 +3101,11 @@ export class EditclientComponent implements OnInit {
                     this.subcontractorLocations = [];
                     this.addSubContractorLoading = false;
                     this.allSubcontractorConditionsMet = true;
+                    this.addSubContractorSuccess = true;
                     setTimeout(() => {
 
                         this.allSubcontractorConditionsMet = false;
+                        this.addSubContractorSuccess = false;
 
                     }, 2000);
 
