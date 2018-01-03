@@ -4,6 +4,7 @@
 #moveitemleft{
 position:absolute;
     left:8px;
+    padding-right:200px;
 
 }
 .pullrightextreme{
@@ -17,6 +18,11 @@ position:absolute;
 
     position:absolute;
     right:0;
+
+}
+.movemenuright{
+
+    padding-left:80px;
 
 }
 .navbar-toggle {

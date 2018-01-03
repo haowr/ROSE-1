@@ -368,9 +368,9 @@
         <br>
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <button *ngIf="openEditSubcontractors && openEditForm   " (click)="openIndividualSubContractor(z);" type="button" class="btn btn-primary form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
-
+        <br>
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
-
+<br>
 
           <li class="active"><a href="#{{subcontractor[z]}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
@@ -388,13 +388,15 @@
 
         </ul>
         <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" editSubContractorIndexVar == i&&indexVar == i && openEditSubcontractors && openEditForm && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean ">
-
+          <br>
           <div class="tab-pane fade active in" id="{{subcontractor[z]}}">
             <h4>{{subcontractor.name}}:</h4>
             <input class="form-control" placeholder="{{subcontractor.name}}" name='subContractorName' [(ngModel)]='subContractorName'
               type="text">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.name,z);" class="btn btn-default form-control">edit</button>
-
+            <button (click)="editSubContractorFunc(client.name,subcontractor.name,z,'name');" class="btn btn-default form-control">edit</button>
+          <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
             <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
             <span *ngIf="editSubContractorLoading">LOADING</span>
@@ -403,11 +405,14 @@
           </div>
 
           <div class="tab-pane fade" id="{{subcontractor[z]+1}}">
+            <br>
             <h4>Sub Contractor Phone Number:</h4>
             <input class="form-control" placeholder="{{subcontractor.phonenumber}}" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber'
               type="number">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z);" class="btn btn-default form-control">edit</button>
-            
+            <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z,'phonenumber');" class="btn btn-default form-control">edit</button>
+                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
                         <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
@@ -416,12 +421,15 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+2}}">
+            <br>
             <h4>Sub Contractor Email:</h4>
 
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="email">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z);" class="btn btn-default form-control">edit</button>
-            
+            <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z,'emailaddress');" class="btn btn-default form-control">edit</button>
+                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
                         <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
@@ -430,11 +438,14 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+3}}">
+            <br>
             <h4>Sub Contractor Contact Name:</h4>
             <input class="form-control" placeholder="{{subcontractor.contactname}}" name='subContractorContactName' [(ngModel)]='subContractorContactName'
               type="text">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z);" class="btn btn-default form-control">edit</button>
-           
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z,'contactname');" class="btn btn-default form-control">edit</button>
+                     <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
                        <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
@@ -443,11 +454,14 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+4}}">
+            <br>
             <h4>Sub Contractor Contact Phone:</h4>
             <input class="form-control" placeholder="{{subcontractor.contactphone}}" name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone'
               type="number">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z);" class="btn btn-default form-control">edit</button>
-            
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z,'contactphone');" class="btn btn-default form-control">edit</button>
+                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
                         <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
@@ -456,11 +470,14 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+5}}">
+            <br>
             <h4>Sub Contractor Contact Email:</h4>
             <input class="form-control" placeholder="{{subcontractor.contactemail}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
               type="email">
-            <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z);" class="btn btn-default form-control">edit</button>
-            
+            <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z,'contactemail');" class="btn btn-default form-control">edit</button>
+            <div  class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+              {{editSubContractorFieldEmptyMsg}}
+            </div>
                         <br>
             <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
@@ -469,13 +486,13 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+6}}">
-
+            <br>
             <div class="panel panel-default">
               <div class="panel panel-heading">
                 <label>Locations(SC)</label>
               </div>
               <div class="panel-body">
-                <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subcontractorLocation" placeholder="{{subcontractorLocations}}"
+                <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subcontractorLocation" placeholder="{{subcontractor.locations}}"
                   name="subcontractorLocation" class="form-control">
 
                 <button class="btn btn-default " (click)="addLocationToSubcontractorFunc(); $event.preventDefault();">Insert    <i class="fa fa-plus-circle buttonstyling" aria-hidden="true"></i></button>
@@ -506,6 +523,7 @@
 
           </div>
           <div class="tab-pane fade" id="{{subcontractor[z]+7}}">
+            <br>
             <div class="panel panel-default">
               <div class="panel panel-heading">
 
