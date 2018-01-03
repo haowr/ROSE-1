@@ -10,6 +10,35 @@
   });
 
 </script>
+     <button id="openModalButton"class="hidebutton " hidden="true" backdrop ="false"data-toggle="modal" data-target="#myModal">Open Modal</button>
+      <button  class="hidebutton" hidden = "true"id="btnclose" data-toggle="modal" data-dismiss="modal" data-target="#myModal">Close</button>
+
+  <!-- Trigger the modal with a button -->
+
+                  <!-- Modal -->
+  <div class="modal animated fadeIn" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title openssans">ROSE</h2>
+        </div>
+        <div class="modal-body text-center">
+          <!--<div class="bigCircle rotating"><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="littleCircle"></div></div>-->
+          <h3 class = "openssans text-center">Are you sure?</h3>
+         <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger"  (click)= "removeSubContractor();">Yes</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 <div class="row">
   <div id="editclienttitle" class=" col-sm-12 text-center">
@@ -394,7 +423,9 @@
             <input class="form-control" placeholder="{{subcontractor.name}}" name='subContractorName' [(ngModel)]='subContractorName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.name,z,'name');" class="btn btn-default form-control">edit</button>
-          <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+            <button (click)="openRemoveSubContractorModal(client.name,z);" class="btn btn-danger form-control">Remove {{subcontractor.name}}</button>
+
+          <div class="well well-sm" *ngIf="subContractorNameEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
             <br>
@@ -410,7 +441,7 @@
             <input class="form-control" placeholder="{{subcontractor.phonenumber}}" name='subContractorPhoneNumber' [(ngModel)]='subContractorPhoneNumber'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.phonenumber,z,'phonenumber');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+                      <div class="well well-sm" *ngIf="subContractorPhoneNumberEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
                         <br>
@@ -427,7 +458,7 @@
             <input class="form-control" placeholder="{{subcontractor.emailaddress}}" name='subContractorEmailAddress' [(ngModel)]='subContractorEmailAddress'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.emailaddress,z,'emailaddress');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+                      <div class="well well-sm" *ngIf="subContractorEmailAddressEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
                         <br>
@@ -443,7 +474,7 @@
             <input class="form-control" placeholder="{{subcontractor.contactname}}" name='subContractorContactName' [(ngModel)]='subContractorContactName'
               type="text">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactname,z,'contactname');" class="btn btn-default form-control">edit</button>
-                     <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+                     <div class="well well-sm" *ngIf="subContractorContactNameEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
                        <br>
@@ -459,7 +490,7 @@
             <input class="form-control" placeholder="{{subcontractor.contactphone}}" name='subContractorContactPhone' [(ngModel)]='subContractorContactPhone'
               type="number">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactphone,z,'contactphone');" class="btn btn-default form-control">edit</button>
-                      <div class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+                      <div class="well well-sm" *ngIf="subContractorContactPhoneEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
                         <br>
@@ -475,7 +506,7 @@
             <input class="form-control" placeholder="{{subcontractor.contactemail}}" name='subContractorContactEmail' [(ngModel)]='subContractorContactEmail'
               type="email">
             <button (click)="editSubContractorFunc(client.name,subcontractor.contactemail,z,'contactemail');" class="btn btn-default form-control">edit</button>
-            <div  class="well well-sm" *ngIf="editSubContractorFieldEmpty">
+            <div  class="well well-sm" *ngIf="subContractorContactEmailEmpty">
               {{editSubContractorFieldEmptyMsg}}
             </div>
                         <br>

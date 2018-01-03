@@ -46,6 +46,8 @@ export class EditclientComponent implements OnInit {
     subCStoreNumbers: string = "";
     subContractorStoreNumbers: string = "";
     indexVar: string = "";
+    clientVar: string = "";
+    indexToBeRemoved: string = "";
     editSubContractorIndexVar: string = "";
     addSubContractorIndexVar: string = "";
     date = new Date();
@@ -318,15 +320,23 @@ export class EditclientComponent implements OnInit {
 
 
     }
-    removeSubcontractor(client, index) {
+    openRemoveSubContractorModal(client,index){
 
-        console.log(index);
-        console.log(client);
+        this.clientVar = client;
+        this.indexToBeRemoved = index;
+        document.getElementById("openModalButton").click();  
+        
+
+    }
+    removeSubContractor() {
+
+        
+         document.getElementById("btnclose").click();
 
         let clientToBeEdited = {
 
-            client: client,
-            index: index
+            client: this.clientVar,
+            index: this.indexToBeRemoved
 
         }
         this.clientservice.editClient3(clientToBeEdited).subscribe(data => {
@@ -354,7 +364,7 @@ export class EditclientComponent implements OnInit {
          }
          */
             //this.subContractorsArray = data.client
-            console.log("this.subcontractorsArray");
+           console.log("this.subcontractorsArray");
             console.log(this.subcontractorsArray);
 
 
@@ -3184,10 +3194,10 @@ export class EditclientComponent implements OnInit {
         })
     }else{
 
-                this.editSubContractorFieldEmpty = true;
+                this.subContractorNameEmpty = true;
         setTimeout(()=>{
 
-           this.editSubContractorFieldEmpty = false;
+           this.subContractorNameEmpty = false;
 
         },2000)
 
@@ -3252,10 +3262,10 @@ export class EditclientComponent implements OnInit {
 
     }else{
 
-                this.editSubContractorFieldEmpty = true;
+                this.subContractorEmailAddressEmpty = true;
         setTimeout(()=>{
 
-            this.editSubContractorFieldEmpty = false;
+            this.subContractorEmailAddressEmpty = false;
 
         },2000)
     }
@@ -3319,10 +3329,10 @@ this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
         })
     }else{
 
-        this.editSubContractorFieldEmpty = true;
+        this.subContractorPhoneNumberEmpty = true;
         setTimeout(()=>{
 
-            this.editSubContractorFieldEmpty = false;
+            this.subContractorPhoneNumberEmpty = false;
 
         },2000)
 
@@ -3387,10 +3397,10 @@ this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
 
     }else{
 
-                this.editSubContractorFieldEmpty = true;
+                this.subContractorContactNameEmpty = true;
         setTimeout(()=>{
 
-            this.editSubContractorFieldEmpty = false;
+            this.subContractorContactNameEmpty = false;
 
         },2000)
 
@@ -3455,10 +3465,10 @@ this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
 
     } else{
 
-                this.editSubContractorFieldEmpty = true;
+                this.subContractorContactPhoneEmpty = true;
         setTimeout(()=>{
 
-            this.editSubContractorFieldEmpty = false;
+            this.subContractorContactPhoneEmpty = false;
 
         },2000)
     }
@@ -3521,10 +3531,10 @@ this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
 
         }else{
 
-        this.editSubContractorFieldEmpty = true;
+        this.subContractorContactEmailEmpty = true;
         setTimeout(()=>{
 
-            this.editSubContractorFieldEmpty = false;
+            this.subContractorContactEmailEmpty = false;
 
         },2000)
 
