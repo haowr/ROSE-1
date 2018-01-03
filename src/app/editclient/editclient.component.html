@@ -106,7 +106,7 @@
           <div class="tab-pane fade active in" id="name">
             <h4>{{client.name}}</h4>
             <input class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
-            <button id="showeditclientdialogue" (click)="editClientFunc(client.name);" class="btn btn-default form-control" data-toggle="tooltip"
+            <button id="showeditclientdialogue" (click)="editClientFunc(client.name,'name');" class="btn btn-default form-control" data-toggle="tooltip"
               data-placement="right" title="" data-original-title="Tooltip on right">edit<div id="dialogue">hello</div></button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
@@ -126,7 +126,7 @@
             <h4>Phone Number:</h4>
             <input class="form-control" placeholder="{{client.phonenumber}}" name='clientPhoneNumber' [(ngModel)]='clientPhoneNumber'
               type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+            <button (click)="editClientFunc(client.name,'phonenumber');" class="btn btn-default form-control">edit</button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
 
@@ -143,7 +143,7 @@
             <h4>Email:</h4>
             <input class="form-control" placeholder="{{client.emailaddress}}" name='clientEmailAddress' [(ngModel)]='clientEmailAddress'
               type="email">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+            <button (click)="editClientFunc(client.name,'email');" class="btn btn-default form-control">edit</button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
 
@@ -160,7 +160,7 @@
             <h4>Contact Name:</h4>
             <input class="form-control" placeholder="{{client.contactname}}" name='clientContactName' [(ngModel)]='clientContactName'
               type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+            <button (click)="editClientFunc(client.name,'contactname');" class="btn btn-default form-control">edit</button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
 
@@ -178,7 +178,7 @@
             <input class="form-control" placeholder="{{client.contactphone}}" name='clientContactPhone' [(ngModel)]='clientContactPhone'
               type="text">
 
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+            <button (click)="editClientFunc(client.name,'contactphone');" class="btn btn-default form-control">edit</button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
 
@@ -195,7 +195,7 @@
             <h4>Contact Email:</h4>
             <input class="form-control" placeholder="{{client.contactemail}}" name='clientContactEmail' [(ngModel)]='clientContactEmail'
               type="text">
-            <button (click)="editClientFunc(client.name);" class="btn btn-default form-control">edit</button>
+            <button (click)="editClientFunc(client.name,'contactemail');" class="btn btn-default form-control">edit</button>
             <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
             </div>
 
@@ -210,18 +210,18 @@
           </div>
           <br>
         </div>
-                <div *ngIf="indexVar == i && openEditForm" class="panel panel-primary">
+                <div *ngIf="indexVar == i && openEditForm" class="panel panel-primary animated fadeIn">
   <div class="panel-heading">
-    <h3 *ngIf="!addClientSuccess" class="panel-title">Edit Client Instructions</h3>
-    <h3 *ngIf="addClientSuccess" class="panel-title">Edit Successful!</h3>
+    <h3 *ngIf="!editClientSuccess" class="panel-title">Edit Client Instructions</h3>
+    <h3 *ngIf="editClientSuccess" class="panel-title">Edit Successful!</h3>
 
   </div>
   <div class="panel-body">
 
-   <p *ngIf="!addClientSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-   <p *ngIf="!addClientSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
-   <p  *ngIf="!addClientSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
-   <h3 class = "animated flash" *ngIf="addClientSuccess">Client Successfully Edited!</h3>
+   <p *ngIf="!editClientSuccess" class = "text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+   <p *ngIf="!editClientSuccess" class = "text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
+   <p  *ngIf="!editClientSuccess" class = "text-danger"> 3. (Field Cannot Be Empty)</p>
+   <h3 class = "animated flash" *ngIf="editClientSuccess">Client Successfully Edited!</h3>
   </div>
 </div>
       </div>
@@ -413,7 +413,7 @@
          -->
 
 
-            <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control" value="Add Subcontractor">
+            <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control animated fadeIn" value="Add Subcontractor">
 
           </div>
           <br>

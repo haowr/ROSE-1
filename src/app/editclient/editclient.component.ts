@@ -226,8 +226,9 @@ export class EditclientComponent implements OnInit {
             this.openEditSubcontractors = false;
         }
     }
-    editClientFunc(clientparam) {
+    editClientFunc(clientparam,name) {
         console.log(clientparam);
+        console.log(name);
 
         let clientToBeEdited = {
             client: clientparam,
@@ -295,17 +296,24 @@ export class EditclientComponent implements OnInit {
 
             }, 2000)
 
-        } if (this.clientContactEmail !== "" || undefined &&
-            this.clientContactPhone !== "" || undefined &&
-            this.clientContactName !== "" || undefined &&
-            this.clientEmailAddress !== "" || undefined &&
-            this.clientPhoneNumber !== "" || undefined &&
-            this.clientName !== "" || undefined
-        ) {
+        } 
+        
+        if(this.clientContactName !==""|| undefined){
+
+
             this.editClientLoading = true;
+    let clientToBeEdited = {
+            name: name,
+            client: clientparam,
+            clientname: "",
+            clientphonenumber: "",
+            clientemailaddress: "",
+            clientcontactname: this.clientContactName,
+            clientContactPhone: "",
+            clientContactEmail: ""
 
-
-            this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
                 console.log(data);
@@ -340,8 +348,274 @@ export class EditclientComponent implements OnInit {
 
             })
 
-        }
 
+    }
+    if(this.clientContactEmail !==""||undefined){
+
+        this.editClientLoading = true;
+            let clientToBeEdited = {
+            name:name,
+            client: clientparam,
+            clientname: "",
+            clientphonenumber: "",
+            clientemailaddress: "",
+            clientcontactname: "",
+            clientContactPhone: "",
+            clientContactEmail: this.clientContactEmail,
+
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+
+
+                console.log(data);
+                if (data.success) {
+
+                    
+
+
+                    this.clientservice.getClients().subscribe(data => {
+
+                        console.log(data);
+                        this.clientsArray = data.clients;
+                        this.clientName = '';
+                        this.clientPhoneNumber = '';
+                        this.clientEmailAddress = '';
+                        this.clientContactName = '';
+                        this.clientContactPhone = '';
+                        this.clientContactEmail = '';
+                        this.editClientLoading = false;
+
+                        this.editClientSuccess = true;
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
+
+                    })
+
+                }
+
+
+            })
+
+    }
+    if(this.clientContactPhone !== ""|| undefined){
+
+        this.editClientLoading = true;
+            let clientToBeEdited = {
+            name: name,
+            client: clientparam,
+            clientname: "",
+            clientphonenumber: "",
+            clientemailaddress: "",
+            clientcontactname: "",
+            clientContactPhone: this.clientContactPhone,
+            clientContactEmail: ""
+
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+
+
+                console.log(data);
+                if (data.success) {
+
+                    
+
+
+                    this.clientservice.getClients().subscribe(data => {
+
+                        console.log(data);
+                        this.clientsArray = data.clients;
+                        this.clientName = '';
+                        this.clientPhoneNumber = '';
+                        this.clientEmailAddress = '';
+                        this.clientContactName = '';
+                        this.clientContactPhone = '';
+                        this.clientContactEmail = '';
+                        this.editClientLoading = false;
+
+                        this.editClientSuccess = true;
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
+
+                    })
+
+                }
+
+
+            })
+    }
+    if(this.clientEmailAddress !== ""|| undefined){
+
+        this.editClientLoading = true;
+
+    let clientToBeEdited = {
+            name:name,
+            client: clientparam,
+            clientname: "",
+            clientphonenumber: "",
+            clientemailaddress: this.clientEmailAddress,
+            clientcontactname: "",
+            clientContactPhone: "",
+            clientContactEmail: ""
+
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+
+
+                console.log(data);
+                if (data.success) {
+
+                    
+
+
+                    this.clientservice.getClients().subscribe(data => {
+
+                        console.log(data);
+                        this.clientsArray = data.clients;
+                        this.clientName = '';
+                        this.clientPhoneNumber = '';
+                        this.clientEmailAddress = '';
+                        this.clientContactName = '';
+                        this.clientContactPhone = '';
+                        this.clientContactEmail = '';
+                        this.editClientLoading = false;
+
+                        this.editClientSuccess = true;
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
+
+                    })
+
+                }
+
+
+            })
+
+    }
+    if(this.clientPhoneNumber !== ""|| undefined){
+
+        this.editClientLoading = true;
+
+            let clientToBeEdited = {
+            name:name,
+            client: clientparam,
+            clientname: "",
+            clientphonenumber: this.clientPhoneNumber,
+            clientemailaddress: "",
+            clientcontactname: "",
+            clientContactPhone: "",
+            clientContactEmail: ""
+
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+
+
+                console.log(data);
+                if (data.success) {
+
+                    
+
+
+                    this.clientservice.getClients().subscribe(data => {
+
+                        console.log(data);
+                        this.clientsArray = data.clients;
+                        this.clientName = '';
+                        this.clientPhoneNumber = '';
+                        this.clientEmailAddress = '';
+                        this.clientContactName = '';
+                        this.clientContactPhone = '';
+                        this.clientContactEmail = '';
+                        this.editClientLoading = false;
+
+                        this.editClientSuccess = true;
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
+
+                    })
+
+                }
+
+
+            })
+    }
+    if(this.clientName !== "" || undefined){
+
+        this.editClientLoading = true;
+
+            let clientToBeEdited = {
+            name:name,
+            client: clientparam,
+            clientname: this.clientName,
+            clientphonenumber: "",
+            clientemailaddress: "",
+            clientcontactname: "",
+            clientContactPhone: "",
+            clientContactEmail: ""
+
+        }
+               this.clientservice.editClient(clientToBeEdited).subscribe(data => {
+
+
+                console.log(data);
+                if (data.success) {
+
+                    
+
+
+                    this.clientservice.getClients().subscribe(data => {
+
+                        console.log(data);
+                        this.clientsArray = data.clients;
+                        this.clientName = '';
+                        this.clientPhoneNumber = '';
+                        this.clientEmailAddress = '';
+                        this.clientContactName = '';
+                        this.clientContactPhone = '';
+                        this.clientContactEmail = '';
+                        this.editClientLoading = false;
+                        this.editClientSuccess = true;
+
+                        
+                        setTimeout(()=>{
+
+                            this.editClientSuccess = false;
+
+                        },2000);
+
+                    })
+
+                }
+
+
+            })
+    }
+       /* 
+        if (this.clientContactEmail !== "" || undefined &&
+            this.clientContactPhone !== "" || undefined &&
+            this.clientContactName !== "" || undefined &&
+            this.clientEmailAddress !== "" || undefined &&
+            this.clientPhoneNumber !== "" || undefined &&
+            this.clientName !== "" || undefined
+        ) {
+            this.editClientLoading = true;
+
+
+     
+
+        }
+*/
 
 
     }

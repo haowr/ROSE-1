@@ -369,7 +369,7 @@ console.log(req.body.client);
 console.log(req.body.clientname);
 console.log(req.body);
 
-if(req.body.clientname == '' || undefined){
+if(req.body.clientname == '' || undefined && req.body.name =="name"){
 
 
 
@@ -390,7 +390,7 @@ Client.findOneAndUpdate({name: req.body.client}, {$set:{name:req.body.clientname
     
 }
 
-if(req.body.clientcontactname == ''|| undefined){
+if(req.body.clientcontactname == ''|| undefined && req.body.name == "contactname"){
 
 
 
@@ -411,7 +411,7 @@ Client.findOneAndUpdate({name: req.body.client}, {$set:{contactname:req.body.cli
     
 }
 
-if(req.body.clientContactPhone == ''|| undefined){
+if(req.body.clientContactPhone == ''|| undefined && req.body.name == "contactphone"){
 
 
 
@@ -432,7 +432,7 @@ Client.findOneAndUpdate({name: req.body.client}, {$set:{contactphone:req.body.cl
 })
 }
 
-if(req.body.clientphonenumber == ''|| undefined){
+if(req.body.clientphonenumber == ''|| undefined && req.body.name == "phonenumber"){
 
 
 
@@ -453,7 +453,7 @@ Client.findOneAndUpdate({name: req.body.client}, {$set:{phonenumber:req.body.cli
 })  
 }
 
-if(req.body.clientemailaddress == ''|| undefined){
+if(req.body.clientemailaddress == ''|| undefined && req.body.name == "emailaddress"){
 
 
 
