@@ -235,11 +235,11 @@
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
 
-        <i *ngIf="loadingClients" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-        <span *ngIf="loadingClients">LOADING</span>
+        <i *ngIf="loadingNewSubContractors" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <span *ngIf="loadingNewSubContractors">LOADING</span>
         <i style="font-size:20px;" *ngIf="loadingClients " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-        <form *ngIf="!loadingClients" class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
+        <form *ngIf="!loadingClients " class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
 
           <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
@@ -255,6 +255,7 @@
             <li class=""><a href="#contactemail2" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
             <li class=""><a href="#locations2" data-toggle="tab" aria-expanded="false">Locations</a></li>
             <li class=""><a href="#storenumbers2" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+            <li class=""><a href="#addsubcontractor" data-toggle="tab" aria-expanded="false">Submit</a></li>
 
 
 
@@ -358,19 +359,29 @@
                   <h4>Locations</h4>
                 </div>
                 <div class="panel-body">
-                  <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subcontractorLocations}}"
+                  <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subContractor.locations}}"
                     name="subCLocations" class="form-control">
 
-                  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addLocation(); $event.preventDefault();"></i>
-                  <div *ngIf="addSubContractorLocationsEmpty" class=" well well-sm">
+ <button type="button"class= "btn btn-default" (click)="addLocation();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
+                  <button  type = "button"class= "btn btn-default" (click)="removeLocation();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>                         <div *ngIf="subContractorLocationSuccessfullyRemoved" class=" well well-sm">
 
-                    {{editSubContractorFieldEmptyMsg}}
+                        <p> Store Location Successfully Removed...</p>
 
                   </div>
-                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-                  <span *ngIf="addSubContractorLoading">LOADING</span>
-                  <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                             <div *ngIf="subContractorLocationSuccessfullyAdded" class=" well well-sm">
 
+                        <p > Store Location Successfully Added...</p>
+
+                  </div>            <div *ngIf="subContractorLocationAlreadyEmpty" class=" well well-sm">
+
+                        <p> Store Location Already Empty...</p>
+
+                  </div>
+                  <div *ngIf="subContractorLocationFieldCannotBeEmpty" class=" well well-sm">
+
+                    <p> Store Location Field Cannot Be Empty...</p>
+
+                  </div>
                 </div>
 
 
@@ -392,11 +403,26 @@
                   <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subContractorStoreNumbers" placeholder="{{subContractor.storenumbers}}"
                     name="subContractorStoreNumbers" class="form-control">
 
-                  <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" (click)="addStoreNumber(); $event.preventDefault();"></i>
+                  
+                  <button type="button"class= "btn btn-default" (click)="addStoreNumber();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
+                  <button  type = "button"class= "btn btn-default" (click)="removeStoreNumber2();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
+                      <div *ngIf="subContractorStoreNumberSuccessfullyRemoved" class=" well well-sm">
 
-                  <div *ngIf="addSubContractorStoreNumbersEmpty" class=" well well-sm">
+                        <p> Store Number Successfully Removed...</p>
 
-                    {{editSubContractorFieldEmptyMsg}}
+                  </div>
+                             <div *ngIf="subContractorStoreNumberSuccessfullyAdded" class=" well well-sm">
+
+                        <p > Store Number Successfully Added...</p>
+
+                  </div>            <div *ngIf="subContractorStoreNumberAlreadyEmpty" class=" well well-sm">
+
+                        <p> Store Number Already Empty...</p>
+
+                  </div>
+                  <div *ngIf="subContractorStoreNumberFieldCannotBeEmpty" class=" well well-sm">
+
+                    <p> Store Number Field Cannot Be Empty...</p>
 
                   </div>
                   <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
@@ -409,13 +435,52 @@
 
               <br>
             </div>
+                   <div class="tab-pane fade" id="addsubcontractor">
+              <h4>Add Sub Contractor</h4>
+                <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control animated fadeIn"
+              value="Add Subcontractor">
+                            <div *ngIf="addSubContractorNameEmpty" class=" well well-sm">
+
+                Add Sub Contractor Name {{editSubContractorFieldEmptyMsg}}
+              </div>
+                          <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
+
+                Add Sub Contractor Phone Number{{editSubContractorFieldEmptyMsg}}
+              </div>
+                        <div *ngIf="addSubContractorContactNameEmpty" class=" well well-sm">
+
+               Add Sub Contractor Contact Name{{editSubContractorFieldEmptyMsg}}
+              </div>
+                    <div *ngIf="addSubContractorContactPhoneEmpty" class=" well well-sm">
+
+                Add Sub Contractor Contact Phone {{editSubContractorFieldEmptyMsg}}
+              </div>
+                       <div *ngIf="addSubContractorContactEmailEmpty" class=" well well-sm">
+
+                Add Sub Contractor Contact Email{{editSubContractorFieldEmptyMsg}}
+              </div>
+                          <div *ngIf="addSubContractorLocationsEmpty" class=" well well-sm">
+
+                  At Least One Store Location Must Be Loaded Before Continuing...
+
+                  </div>
+                      <div *ngIf="addSubContractorStoreNumbersEmpty" class=" well well-sm">
+
+                   At Least One Store Number Must Be Loaded Before Continuing...
+
+                  </div>
+        
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+            </div>
             <!-- <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
                 <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
          -->
 
 
-            <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control animated fadeIn"
-              value="Add Subcontractor">
+          
 
           </div>
           <br>
@@ -430,12 +495,14 @@
               <p *ngIf="!addSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
               <p *ngIf="!addSubContractorSuccess" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
               <p *ngIf="!addSubContractorSuccess" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p *ngIf="!addSubContractorSuccess" class="text-danger"> 4. Click "Add Sub Contractor" once completed, and wait for the message indicating the new Sub Contractor has
+              <p *ngIf="!addSubContractorSuccess" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
                 been added.</p>
               <h3 class="animated flash" *ngIf="addSubContractorSuccess">Sub Contractor Successfully Added!</h3>
+              <i *ngIf="addSubContractorSuccess" class="fa fa-check animated flash"style="font-size:40px;" aria-hidden="true"></i>
             </div>
           </div>
 
+     
         </form>
         <div *ngIf="allSubContractorConditionsMet">
 

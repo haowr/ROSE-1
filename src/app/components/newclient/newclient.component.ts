@@ -106,6 +106,7 @@ export class NewclientComponent implements OnInit {
   locationNotInput: boolean = false;
   clientAddSuccess: boolean = false;
   clientAddFailed: boolean = false;
+  clientFormOpen:boolean = false;
 
   subcontractorAdded: boolean = false;
   subcontractorNotInput: boolean = false;
@@ -127,6 +128,20 @@ export class NewclientComponent implements OnInit {
   ngOnInit() {
 
     console.log('client service loaded and initialized...');
+
+  }
+
+  openNewClientForm(){
+
+    if(!this.clientFormOpen){
+
+        this.clientFormOpen = true;
+
+    }else{
+
+        this.clientFormOpen = false;
+
+    }
 
   }
 

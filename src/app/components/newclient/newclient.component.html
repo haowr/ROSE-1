@@ -10,11 +10,14 @@
     <div id="addclienttitle"class="col-sm-12" style="text-align:center">
       <h1 class=" animated fadeIn osc" style="text-decoration:underline;">Add Client</h1>
     </div>
+    
     <div class="col-sm-3">
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-center">
+      <br>
+      <button type="button" class = "btn btn-primary" (click)="openNewClientForm()">Open/Close Add Client Form</button>
 
-      <form class=" animated fadeIn" (submit)="addSubContractor()">
+      <form *ngIf="clientFormOpen"class=" animated fadeIn" (submit)="addSubContractor()">
 
         <div class="form-group">
 
