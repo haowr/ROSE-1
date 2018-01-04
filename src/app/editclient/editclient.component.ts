@@ -47,6 +47,7 @@ export class EditclientComponent implements OnInit {
     subContractorStoreNumbers: string = "";
     indexVar: string = "";
     clientVar: string = "";
+    fieldVar:string = "";
     subContractorVar: string = "";
     indexToBeRemoved: string = "";
     editSubContractorIndexVar: string = "";
@@ -3512,6 +3513,8 @@ export class EditclientComponent implements OnInit {
         console.log(this.subContractorName2);
         console.log(item);
         console.log(field);
+        console.log("editSubContractorFunc");
+        this.fieldVar = field;
 
         if (field == "name" && this.subContractorName != "") {
 
@@ -3540,6 +3543,8 @@ export class EditclientComponent implements OnInit {
 
                         console.log(data);
                         this.editSubContractorSuccess=true;
+                        console.log("this.editSubContractorSuccess");
+                        console.log(this.editSubContractorSuccess);
                         this.editSubContractorLoading = false;
                     this.loadingEditIcon = false;
                         setTimeout(()=>{
@@ -3615,7 +3620,14 @@ export class EditclientComponent implements OnInit {
                     this.clientservice.getClients().subscribe(data => {
 
                         console.log(data);
-                        this.clientsArray = data.clients;
+                        this.editSubContractorSuccess=true;
+                        console.log("this.editSubContractorSuccess");
+                        console.log(this.editSubContractorSuccess);
+                        this.editSubContractorLoading = false;
+                    this.loadingEditIcon = false;
+                        setTimeout(()=>{
+
+           this.clientsArray = data.clients;
                         this.subContractorName = "";
                         this.subContractorEmailAddress = "";
                         this.subContractorPhoneNumber = "";
@@ -3639,9 +3651,13 @@ export class EditclientComponent implements OnInit {
                             console.log(this.subcontractorsArray[z])
 
                         }
+                                                this.editSubContractorSuccess=false;
+
+                        },1500);
+             
                     })
-                    this.editSubContractorLoading = false;
-                    this.loadingEditIcon = false;
+                    
+                    
 
                 }
 
@@ -3658,6 +3674,7 @@ export class EditclientComponent implements OnInit {
         }
         if (field == "phonenumber" && this.subContractorPhoneNumber != "") {
 
+            console.log("phonenumber");
             this.editSubContractorLoading = true;
             this.loadingEditIcon = true;
 
@@ -3683,7 +3700,14 @@ export class EditclientComponent implements OnInit {
                     this.clientservice.getClients().subscribe(data => {
 
                         console.log(data);
-                        this.clientsArray = data.clients;
+                        this.editSubContractorSuccess=true;
+                        console.log("this.editSubContractorSuccess");
+                        console.log(this.editSubContractorSuccess);
+                        this.editSubContractorLoading = false;
+                    this.loadingEditIcon = false;
+                        setTimeout(()=>{
+
+           this.clientsArray = data.clients;
                         this.subContractorName = "";
                         this.subContractorEmailAddress = "";
                         this.subContractorPhoneNumber = "";
@@ -3707,9 +3731,13 @@ export class EditclientComponent implements OnInit {
                             console.log(this.subcontractorsArray[z])
 
                         }
+                                                this.editSubContractorSuccess=false;
+
+                        },1500);
+             
                     })
-                    this.editSubContractorLoading = false;
-                    this.loadingEditIcon = false;
+                    
+                    
 
                 }
 
@@ -3748,6 +3776,7 @@ export class EditclientComponent implements OnInit {
                 if (data.success) {
 
                     this.clientservice.getClients().subscribe(data => {
+                        this.editSubContractorSuccess=true;
 
                         console.log(data);
                         this.clientsArray = data.clients;
@@ -3772,7 +3801,7 @@ export class EditclientComponent implements OnInit {
                             for (let d = 0; d < this.subcontractorsArray[z].length; d++)
                                 this.subcontractorsArray[z][d][d] = d * 34567
                             console.log(this.subcontractorsArray[z])
-
+this.editSubContractorSuccess=false;
                         }
                     })
                     this.editSubContractorLoading = false;
@@ -3816,6 +3845,7 @@ export class EditclientComponent implements OnInit {
                 if (data.success) {
 
                     this.clientservice.getClients().subscribe(data => {
+                        this.editSubContractorSuccess=true;
 
                         console.log(data);
                         this.clientsArray = data.clients;
@@ -3840,6 +3870,7 @@ export class EditclientComponent implements OnInit {
                             for (let d = 0; d < this.subcontractorsArray[z].length; d++)
                                 this.subcontractorsArray[z][d][d] = d * 34567
                             console.log(this.subcontractorsArray[z])
+                            this.editSubContractorSuccess=false;
 
                         }
                     })
@@ -3883,6 +3914,7 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getClients().subscribe(data => {
 
+                            this.editSubContractorSuccess=true;
                         console.log(data);
                         this.clientsArray = data.clients;
                         this.subContractorName = "";
@@ -3906,7 +3938,7 @@ export class EditclientComponent implements OnInit {
                             for (let d = 0; d < this.subcontractorsArray[z].length; d++)
                                 this.subcontractorsArray[z][d][d] = d * 34567
                             console.log(this.subcontractorsArray[z])
-
+this.editSubContractorSuccess=false;
                         }
                     })
                     this.editSubContractorLoading = false;
