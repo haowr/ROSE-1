@@ -487,9 +487,7 @@
               {{editSubContractorFieldEmptyMsg}}
             </div>
             <br>
-            <i style="font-size:20px;" *ngIf=" editSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-            <span *ngIf="editSubContractorLoading">LOADING</span>
-            <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+            
             <br>
             <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
               class="panel panel-primary animated fadeIn">
@@ -501,10 +499,10 @@
               </div>
               <div class="panel-body">
 
-                <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
+                <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+                <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
+                <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-danger"> 3. (Field Cannot Be Empty)</p>
+                <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
                 <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
                   <h3 *ngIf = "editSubContractorLoading"class = " animated flash text-center">LOADING</h3>
                 <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
