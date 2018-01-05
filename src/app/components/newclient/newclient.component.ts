@@ -2872,7 +2872,7 @@ this.subContractorLocationSuccessfullyRemoved = true
     this.subContractorLocationSuccessfullyRemoved = false;
     
 
-    if (this.subCLocations != undefined || "") {
+    if (this.subCLocations !== "") {
 
       
       this.subContractor.locations.push(this.subCLocations);
@@ -2904,17 +2904,11 @@ this.subContractorLocationSuccessfullyAdded = true
     
   }
   removeStoreNumber(){
-/*
-if(this.subContractorStoreNumberFieldCannotBeEmpty &&
-    this.subContractorStoreNumberAlreadyEmpty &&
-    this.subContractorStoreNumberSuccessfullyAdded &&
-    this.subContractorStoreNumberSuccessfullyRemoved ){
-this.subContractorStoreNumberFieldCannotBeEmpty = false;
-    this.subContractorStoreNumberAlreadyEmpty = false;
-    this.subContractorStoreNumberSuccessfullyAdded = false;
-    this.subContractorStoreNumberSuccessfullyRemoved = false;
 
-    }*/
+this.subContractorStoreNumberFieldCannotBeEmpty = false;
+this.subContractorStoreNumberSuccessfullyAdded = false;
+this.subContractorStoreNumberSuccessfullyRemoved = false;
+this.subContractorStoreNumberAlreadyEmpty = false;
     
         if(this.subContractor.storenumbers.length >0){
 
@@ -2946,7 +2940,7 @@ this.subContractorStoreNumberFieldCannotBeEmpty = false;
    
 
 
-    if (this.subContractorStoreNumbers != undefined || "") {
+    if (this.subContractorStoreNumbers !== "") {
 
       this.subContractor.storenumbers.push(this.subContractorStoreNumbers);
 

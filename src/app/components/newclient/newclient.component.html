@@ -239,7 +239,6 @@
             <div class="tab-pane fade" id="scemailaddress">
               <h4>Email Address</h4>
 
-              {{subContractorEmailAddress}}
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                 class="form-control">
               <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
@@ -253,7 +252,7 @@
 
             </div>
             <div class="tab-pane fade" id="scphonenumber">
-              <h4>Phone Number2</h4>
+              <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
               <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
