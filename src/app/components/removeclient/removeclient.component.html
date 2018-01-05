@@ -28,13 +28,15 @@
         <i style="font-size:30px;" *ngIf="areYouSure" class="fa fa-exclamation-triangle text-center animated flash" aria-hidden="true"></i>
         <p *ngIf="areYouSure" class="text-center">(This Action Cannot Be Undone)</p>
 
-        <h3 *ngIf="removalComplete" class="text-center animated flash text-success"> {{subContractorVar}} Successfully Removed!</h3>
+        <h3 *ngIf="removalComplete" class="text-center animated flash text-success"> {{clientNameVar}} Successfully Removed!</h3>
         <i *ngIf="removalComplete" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
 
-        <i style="font-size:20px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw">
+        <h3 *ngIf="removingClient" class="text-center animated flash "> Removing {{clientNameVar}}...</h3>
+
+        <i style="font-size:30px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw">
 </i>
         <span *ngIf="removingClient">LOADING</span>
-        <i style="font-size:20px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <i style="font-size:30px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
        
 

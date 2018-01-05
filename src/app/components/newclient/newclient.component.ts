@@ -3261,27 +3261,29 @@ if(this.name != "" &&
         console.log(data);
         if (data.success) {
 
+        this.addClientSuccess = true;
         this.addClientLoading = false;
-          this.addClientSuccess = true;
+          
           this.client.subcontractors = [];
           setTimeout(() => {
 
             this.addClientSuccess = false;
 
-          }, 3000);
+          }, 2000);
 
 
         } else {
 
-             this.addClientLoading = false;
+        
           this.clientAddFailed = true;
+          this.addClientLoading = false;
           //this.addClientFailed = true
           setTimeout(() => {
 
             //this.addClientFailed = false;
             this.clientAddFailed = false;
 
-          }, 3000);
+          }, 2000);
 
         }
 

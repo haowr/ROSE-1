@@ -13,7 +13,9 @@ const ClientModel = mongoose.Schema({
     phonenumber: String,
     
     locations:Array,
-    subcontractors: Array
+    subcontractors: Array,
+    createdAt:String
+    
 
 
 

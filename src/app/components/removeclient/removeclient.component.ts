@@ -13,6 +13,7 @@ export class RemoveclientComponent implements OnInit {
 
   listOfClients: Object[];
   client:string;
+  clientNameVar:string;
   clientRemovedSuccess:boolean = false;
   
   areYouSure:boolean = false;
@@ -34,14 +35,14 @@ export class RemoveclientComponent implements OnInit {
         this.clientsLoading=false;
   this.listOfClients = data.clients;
   //this.listOfClients.reverse();
-  for(let i =0; i<this.listOfClients.length/2; i++){
+ /* for(let i =0; i<this.listOfClients.length/2; i++){
 
     let temp = this.listOfClients[i]
     //this.listOfClients[i] = 
    this.listOfClients[i] =this.listOfClients[this.listOfClients.length-1-i]
    this.listOfClients[this.listOfClients.length-1-i] = temp;
 
-  }
+  }*/
   console.log(this.listOfClients);
 
       }
@@ -62,21 +63,29 @@ export class RemoveclientComponent implements OnInit {
       console.log(data);
       if(data.success){
 
+
+            this.clientservice.getClients().subscribe(data=>{
+
+      console.log(data)
+      if(data.success){
  this.removingClient = false;
         this.removalComplete = true;
         setTimeout(()=>{
 
           this.removalComplete = false;
-
-        },2500);
-            this.clientservice.getClients().subscribe(data=>{
-
-      console.log(data)
-      if(data.success){
-
 document.getElementById("btnclose").click();
-      this.areYouSure= true;
+        },2500);
+
+      //this.areYouSure= true;
       this.listOfClients = data.clients;
+       /* for(let i =0; i<this.listOfClients.length/2; i++){
+
+    let temp = this.listOfClients[i]
+    //this.listOfClients[i] = 
+   this.listOfClients[i] =this.listOfClients[this.listOfClients.length-1-i]
+   this.listOfClients[this.listOfClients.length-1-i] = temp;
+
+  }*/
       }
       
 
@@ -100,6 +109,7 @@ document.getElementById("btnclose").click();
 document.getElementById("openModalButton").click();
     console.log(clientname)
     this.client = clientname;
+    this.clientNameVar = clientname;
     /*this.clientservice.removeClient(clientname).subscribe(data=>{
 
       console.log(data);

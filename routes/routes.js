@@ -2026,7 +2026,7 @@ router.post('/register/newclient', function (req, res) {
 
         } else {
             let client = new Client({
-
+                createdAt:Date.now(),
                 name: req.body.name,
                 phonenumber: req.body.phonenumber,
                 emailaddress: req.body.emailaddress,
@@ -2780,7 +2780,7 @@ router.post('/register/newclient', function (req, res) {
                     "size" : "10L"
                 }, 
                 {
-                    "ordereddec" : 1,
+                    "ordereddec" : 0,
                     "orderednov" : 0,
                     "orderedoct" : 0,
                     "orderedsept" : 0,
@@ -3155,7 +3155,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 9,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline Sanitation Inc.",
                     "supplier": "Topline Sanitation Inc."
@@ -3182,7 +3182,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline Sanitation Inc.",
                     "supplier": "Topline Sanitation Inc."
@@ -3209,7 +3209,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline Sanitation Inc.",
                     "supplier": "Topline Sanitation Inc."
@@ -3236,7 +3236,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline Sanitation Inc.",
                     "supplier": "Topline Sanitation Inc."
@@ -3263,7 +3263,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline Sanitation Inc.",
                     "supplier": "Topline Sanitation Inc."
@@ -3290,7 +3290,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Pur Value",
                     "supplier": "Topline Sanitation Inc."
@@ -3317,7 +3317,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Pur Value.",
                     "supplier": "Topline Sanitation Inc."
@@ -3344,7 +3344,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Norton.",
                     "supplier": "Topline Sanitation Inc."
@@ -3371,7 +3371,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Febreeze.",
                     "supplier": "Topline Sanitation Inc."
@@ -3398,7 +3398,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "TopVac Plus Illuminate",
                     "supplier": "Topline Sanitation Inc."
@@ -3425,7 +3425,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "UltraChemLabs",
                     "supplier": "Topline Sanitation Inc."
@@ -3452,7 +3452,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Norton.",
                     "supplier": "Topline Sanitation Inc."
@@ -3479,7 +3479,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Classique",
                     "supplier": "Topline Sanitation Inc."
@@ -3506,7 +3506,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Classique",
                     "supplier": "Topline Sanitation Inc."
@@ -3533,7 +3533,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Pur Value",
                     "supplier": "Topline Sanitation Inc."
@@ -3560,7 +3560,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Safety Zone.",
                     "supplier": "Topline Sanitation Inc."
@@ -3587,7 +3587,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "AGF 4020",
                     "supplier": "Topline Sanitation Inc."
@@ -3614,7 +3614,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "RS",
                     "supplier": "Topline Sanitation Inc."
@@ -3641,7 +3641,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -3668,7 +3668,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "UltraChemLabs",
                     "supplier": "Topline Sanitation Inc."
@@ -3695,7 +3695,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "TopVac",
                     "supplier": "Topline Sanitation Inc."
@@ -3722,7 +3722,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Niagara",
                     "supplier": "Topline Sanitation Inc."
@@ -3749,7 +3749,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Niagara",
                     "supplier": "Topline Sanitation Inc."
@@ -3776,7 +3776,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -3803,7 +3803,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -3830,7 +3830,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -3857,7 +3857,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Lobby",
                     "supplier": "Topline Sanitation Inc."
@@ -3884,7 +3884,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Vileda Professional",
                     "supplier": "Topline Sanitation Inc."
@@ -3911,7 +3911,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Astrolene",
                     "supplier": "Topline Sanitation Inc."
@@ -3938,7 +3938,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Breakaway",
                     "supplier": "Topline Sanitation Inc."
@@ -3965,7 +3965,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Tork",
                     "supplier": "Topline Sanitation Inc."
@@ -3992,7 +3992,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Gojo",
                     "supplier": "Topline Sanitation Inc."
@@ -4018,7 +4018,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Pur Value",
                     "supplier": "Topline Sanitation Inc."
@@ -4045,7 +4045,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -4071,7 +4071,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Topline",
                     "supplier": "Topline Sanitation Inc."
@@ -4098,7 +4098,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Niagara",
                     "supplier": "Topline Sanitation Inc."
@@ -4125,7 +4125,7 @@ router.post('/register/newclient', function (req, res) {
                     "requested": 0,
                     "recieved": 0,
                     "orderspending": false,
-                    "ordered": 8,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "Niagara",
                     "supplier": "Topline Sanitation Inc."
@@ -4140,17 +4140,11 @@ router.post('/register/newclient', function (req, res) {
                     res.json({ success: false, message: "Client not created..." });
                 } else {
 
-                    //let subcontractor = new Sbcntrctr({
-
-
-
-
-//                    })
                     console.log(client);
                     res.json({ success: true, message: "Client Created...", client: client })
 
                 }
-
+//
             });
 
         }
@@ -4623,7 +4617,7 @@ router.post('/sobeys', function (req, res) {
 router.get('/clients', function (req, res) {
 
 
-    Client.find({}, function (err, clients) {
+    Client.find({}).sort({createdAt:'ascending'}).exec((err, clients)=> {
 
         if (err) throw err;
         if (!clients) {
