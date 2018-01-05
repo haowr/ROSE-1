@@ -14,8 +14,22 @@
           <h2 class="modal-title openssans">ROSE</h2>
         </div>
         <div class="modal-body text-center">
-          <!--<div class="bigCircle rotating"><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="littleCircle"></div></div>-->
-          <h3 class = "openssans text-center">Are you sure?</h3>
+        <h3 class="openssans text-center animated flash text-danger" *ngIf="areYouSure">Are you sure?</h3>
+        <i style="font-size:30px;" *ngIf="areYouSure" class="fa fa-exclamation-triangle text-center animated flash" aria-hidden="true"></i>
+        <p *ngIf="areYouSure" class="text-center">(This Action Cannot Be Undone)</p>
+
+        <h3 *ngIf="removalComplete" class="text-center animated flash text-success"> {{subContractorVar}} Successfully Removed!</h3>
+        <i *ngIf="removalComplete" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
+        <h3 class="modal-title text-center animated flash text-danger" *ngIf="removingSubContractor">Removing {{subContractorVar}}</h3>
+
+        <i style="font-size:20px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+        <span *ngIf="removingClient">LOADING</span>
+        <i style="font-size:20px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+       
+
+
          <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
         </div>
         <div class="modal-footer">
@@ -44,13 +58,25 @@
 
 -->
     </div>
+
     
 
   <div class ="col-sm-3">
   </div>
-  <div class = "col-sm-6 text-center " >
+  <div *ngIf="clientsLoading"class = "col-sm-6 text-center">
+
+    <h3 *ngIf="clientsLoading"class="animated flash">Loading Clients...</h3>
+            <i style="font-size:40px;" *ngIf="clientsLoading" class="fa fa-cog fa-spin fa-3x fa-fw">
+</i>
+        <span *ngIf="clientsLoading">LOADING</span>
+        <i style="font-size:40px;" *ngIf="clientsLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+       
+
+  </div>
+  <div *ngIf = "!clientsLoading"class = "col-sm-6 text-center " >
   
-    <div class ="col-sm-12" *ngFor=" let client of listOfClients" >
+    <div  class ="col-sm-12 animated fadeIn" *ngFor=" let client of listOfClients" >
 
      
       <div class = "col-sm-12 text-center">
@@ -66,8 +92,33 @@
   </div>  
   <div class = "col-sm-3">
   </div>
-  
+  <br>
+    <div class = "col-sm-12">
+      <br>
+      <br>
+                   <div  class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 *ngIf="!addClientSuccess && !addClientLoading" class="panel-title">Remove Client Instructions</h3>
+              
 
+            </div>
+            <div class="panel-body">
+       
+              <p  class="text-primary"> 1. Click the, "Remove Client", button corresponding to the client you wish to delete from the database...</p>
+              <p  class="text-success"> 2. The, "Remove Client", confirmation dialogue will then appear...</p>
+              <p  class="text-warning"> 3. Once you are sure you wish to delete the client selected, click, "Yes". Otherwise, click, "No". (This cannot be undone).</p>
+              <p  class="text-danger"> 4. If you have clicked yes, wait, and a dialogue will appear informing you that the selected client has been deleted from the database...
+           </p>
+                <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
+            
+
+           
+            </div>
+               <h3 *ngIf="addClientSuccess" class = "animated flash">Sub-Contractor Successfully Loaded...</h3>
+              <i *ngIf="addClientSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
+
+          </div>
+    </div>
 </div>
 
 </div>

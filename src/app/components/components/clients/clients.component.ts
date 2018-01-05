@@ -99,6 +99,14 @@ export class ClientsComponent implements OnInit {
 
       console.log(clients);
       this.clientArray =clients.clients ;
+        for(let i =0; i<this.clientArray.length/2; i++){
+
+    let temp = this.clientArray[i]
+    //this.listOfClients[i] = 
+   this.clientArray[i] =this.clientArray[this.clientArray.length-1-i]
+   this.clientArray[this.clientArray.length-1-i] = temp;
+
+  }
       console.log("THIS.CLIENTARRAY");
       console.log(this.clientArray);
       console.log(clients.clients[0])

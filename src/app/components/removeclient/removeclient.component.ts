@@ -14,48 +14,80 @@ export class RemoveclientComponent implements OnInit {
   listOfClients: Object[];
   client:string;
   clientRemovedSuccess:boolean = false;
+  
+  areYouSure:boolean = false;
+  removingClient:boolean = false;
+  removalComplete:boolean = false;
+  clientsLoading:boolean = false;
   clientRemovedSuccessMsg:string=" Client Successfully Removed...";
   constructor ( private dataservice: DataService ,private clientservice: ClientService) { }
 
   ngOnInit() {
                       
-
+    this.clientsLoading = true;
 
     this.clientservice.getClients().subscribe(data=>{
 
       console.log(data)
-      this.listOfClients = data.clients;
+
+      if(data.success){
+        this.clientsLoading=false;
+  this.listOfClients = data.clients;
+  //this.listOfClients.reverse();
+  for(let i =0; i<this.listOfClients.length/2; i++){
+
+    let temp = this.listOfClients[i]
+    //this.listOfClients[i] = 
+   this.listOfClients[i] =this.listOfClients[this.listOfClients.length-1-i]
+   this.listOfClients[this.listOfClients.length-1-i] = temp;
+
+  }
+  console.log(this.listOfClients);
+
+      }
+      
 
     })
 
   }
   removeClientTest(clientname){
 
+    this.areYouSure=false;
+    this.removingClient = true;
     console.log(clientname);
-    document.getElementById("btnclose").click();
+   // document.getElementById("btnclose").click();
     //document.getElementsByClassName('.close').click();
    this.clientservice.removeClient(this.client).subscribe(data=>{
 
       console.log(data);
       if(data.success){
 
-        this.clientRemovedSuccess = true;
+ this.removingClient = false;
+        this.removalComplete = true;
         setTimeout(()=>{
 
-          this.clientRemovedSuccess = false;
+          this.removalComplete = false;
 
         },2500);
+            this.clientservice.getClients().subscribe(data=>{
+
+      console.log(data)
+      if(data.success){
+
+document.getElementById("btnclose").click();
+      this.areYouSure= true;
+      this.listOfClients = data.clients;
+      }
+      
+
+    })
+       
 
 
       }else{
 
       }
-    this.clientservice.getClients().subscribe(data=>{
 
-      console.log(data)
-      this.listOfClients = data.clients;
-
-    })
     
 
     })
@@ -63,7 +95,7 @@ export class RemoveclientComponent implements OnInit {
   }
   removeClient(clientname){
 
-
+    this.areYouSure = true;
 
 document.getElementById("openModalButton").click();
     console.log(clientname)
