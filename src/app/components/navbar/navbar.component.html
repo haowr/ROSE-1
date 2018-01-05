@@ -1,9 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-         <a id="moveitemleft" [routerLink]="['/']" ><img style="position:fixed;" src="../assets/img/roselogosmaller.png"></a>
+               <a id="moveitemleft" [routerLink]="['/']" ><img style="position:fixed;" *ngIf="!largeRoseLogo" src="../assets/img/roselogosmallerhalf.png"></a>
+
+         <a id="moveitemleft" [routerLink]="['/']" ><img style="position:fixed;" *ngIf="largeRoseLogo" src="../assets/img/roselogosmaller.png"></a>
           &nbsp<a id="moveitemleft"[routerLink]="['/']" class="navbar-brand">ROSE</a>
-      <button type="button" id="navbar-toggle"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" (click)="loadLargeRoseLogo()"id="navbar-toggle"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>

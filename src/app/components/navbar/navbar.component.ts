@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   logoutSuccessMsg:string = "You Have Been Succcessfully Logged Out...";
   logOutSuccessful:boolean = false;
   loggedIn:boolean= true;
+  largeRoseLogo:boolean = false;
   subcontractorObject:Object;
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
@@ -43,6 +44,11 @@ export class NavbarComponent implements OnInit {
       console.log(this.username);
 
     });
+    if(document.documentElement.clientWidth < 766){
+
+      this.largeRoseLogo=true;
+    }
+    console.log(this.largeRoseLogo)
     this.authservice.checkIfLoggedIn();
  
     this.activatedroute.params.subscribe((params:Params)=>{
@@ -98,6 +104,18 @@ document.getElementById("navbar-toggle").click();
      
      console.log(document.documentElement.clientWidth)
   
+}
+loadLargeRoseLogo(){
+
+  if(document.documentElement.clientWidth< 766){
+
+    console.log("mobile")
+    this.largeRoseLogo = true;
+
+  }else{
+    this.largeRoseLogo = false;
+  }
+
 }
   onLogoutClick(){
 
