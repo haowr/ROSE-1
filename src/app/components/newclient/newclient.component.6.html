@@ -15,8 +15,8 @@
     </div>
     <div class="col-sm-6 text-center">
       <br>
-      <button *ngIf="clientFormOpen"type="button" class = "btn btn-primary" (click)="openNewClientForm()">Open Add Client Form</button>
-      <button *ngIf="!clientFormOpen"type="button" class = "btn btn-primary" (click)="openNewClientForm()">Close Add Client Form</button>
+      <button *ngIf="clientOpen"type="button" class = "btn btn-primary" (click)="openNewClientForm()">Open Add Client Form</button>
+      <button *ngIf="!clientOpen"type="button" class = "btn btn-primary" (click)="openNewClientForm()">Close Add Client Form</button>
 
       <form *ngIf="clientFormOpen"class=" animated fadeIn" (submit)="addClient()">
 
@@ -148,28 +148,41 @@
 
             </div>
             <div class="panel-body">
-            <!--      <div *ngIf=" !turnOffInstructions">
+                  <div *ngIf=" !turnOffInstructions">
                 <br>
                 <br>
                 
                 
-              </div>-->
-              <p  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p  class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p  class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p  class="text-danger"> 4. Click the "Open Add Sub-Contractor", button to open the "Add Sub-Contractor Form", where you 
-                may add sub-contractors to your new client before clicking the final, "Submit", button...
+              </div>
+              <p *ngIf="!turnOffInstructions && !addClientSuccess && !addClientLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+              <p *ngIf="!turnOffInstructions && !addClientSuccess && !addClientLoading" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+              <p *ngIf="!turnOffInstructions && !addClientSuccess && !addClientLoading" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+              <p *ngIf="!turnOffInstructions && !addClientSuccess && !addClientLoading" class="text-danger"> 4. Click the "Open Add Sub-Contractor", button to open the "Add Sub-Contractor Form", where you 
+                may add sub-contractors to your new client before clicking the "Add Client" button...
            </p>
                 <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
             
-<!--
+
               <div *ngIf=" !turnOffInstructions">
                 <br>
                 <br>
                 <br>
                 
-              </div>-->
+              </div>
+              <div *ngIf="addClientFailed || addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty ||
+                          emailAddressEmpty || contactNameEmpty || contactPhoneEmpty || contactEmailEmpty
+                          || subContractorsEmpty" class = "well well-sm">
 
+              <p *ngIf="addClientFailed">All Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
+              <p *ngIf="addSubContractorNameEmpty && !addClientFailed">Client Name Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorPhoneNumberEmpty && !addClientFailed">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
+
+              <p *ngIf="emailAddressEmpty && !addClientFailed">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactNameEmpty && !addClientFailed">Client Contact Name...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactPhoneEmpty && !addClientFailed">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactEmailEmpty && !addClientFailed">Client Contact Email Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="subContractorsEmpty && !addClientFailed">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
+              </div>
            
             </div>
                <h3 *ngIf="addClientSuccess" class = "animated flash">Sub-Contractor Successfully Loaded...</h3>
@@ -185,9 +198,8 @@
 
           </div>
           
-                       <button *ngIf="!clientOpen&& newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Open Add Sub-Contractor Form</button>
-                              <button *ngIf="!clientOpen && !newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Close Add Sub-Contractor Form</button>
-
+                       <button *ngIf="!clientOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Close Add Sub-Contractor Form</button>
+       
 
           <br>
  
@@ -468,7 +480,7 @@
           </form>
 
 
-        <br>
+        
 
                      <button type="submit" class="btn btn-default" >Submit</button>
 
