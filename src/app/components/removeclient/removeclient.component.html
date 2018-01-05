@@ -98,7 +98,7 @@
       <br>
                    <div  class="panel panel-primary">
             <div class="panel-heading">
-              <h3 *ngIf="!addClientSuccess && !addClientLoading" class="panel-title">Remove Client Instructions</h3>
+              <h3 class="panel-title">Remove Client Instructions</h3>
               
 
             </div>
@@ -109,14 +109,11 @@
               <p  class="text-warning"> 3. Once you are sure you wish to delete the client selected, click, "Yes". Otherwise, click, "No". (This cannot be undone).</p>
               <p  class="text-danger"> 4. If you have clicked yes, wait, and a dialogue will appear informing you that the selected client has been deleted from the database...
            </p>
-                <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
             
 
            
             </div>
-               <h3 *ngIf="addClientSuccess" class = "animated flash">Sub-Contractor Successfully Loaded...</h3>
-              <i *ngIf="addClientSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
-
+             
           </div>
     </div>
 </div>
