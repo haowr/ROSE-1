@@ -444,26 +444,26 @@
               <div *ngIf=" addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty || nameEmpty || emailAddressEmpty || phoneNumberEmpty ||
                          addSubContractorEmailAddressEmpty|| addSubContractorContactName || addSubContractorContactPhoneEmpty || addSubContractorContactEmailEmpty
                          || addSubContractorLocationsEmpty|| addSubContractorStoreNumbersEmpty|| emailAddressEmpty || contactNameEmpty || contactPhoneEmpty || contactEmailEmpty
-                          || subContractorsEmpty" class = "well well-sm">
+                          || subContractorsEmpty && !addClientLoading && !addClientSuccess && !clientAddFailed" class = "well well-sm">
                           
-              <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactNameEmpty && !addSubcontractorFailed">Sub-Contractor Contact Name...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactPhoneEmpty && !addSubcontractorFailed">Sub-Contractor Contact Phone Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactEmailEmpty && !addSubcontractorFailed">Sub-Contractor Contact Email Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorLocationsEmpty && !addSubcontractorFailed">A Sub-Contractor Store Locations Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addSubcontractorFailed">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Name...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactPhoneEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Phone Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactEmailEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Email Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorLocationsEmpty && !addSubcontractorFailed&& !addClientLoading && !addClientSuccess">A Sub-Contractor Store Locations Must Be Loaded Before Continuing...</p>
+              <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
+              <p *ngIf="addSubcontractorFailed && !addClientLoading && !addClientSuccess">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
               
-              <p *ngIf="addSubContractorNameEmpty && !addClientFailed">Client Name Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorPhoneNumberEmpty && !addClientFailed">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="emailAddressEmpty && !addClientFailed">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactNameEmpty && !addClientFailed">Client Contact Name...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactPhoneEmpty && !addClientFailed">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactEmailEmpty && !addClientFailed">Client Contact Email Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="subContractorsEmpty && !addClientFailed">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addClientFailed">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
+              <p *ngIf="addSubContractorNameEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Name Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorPhoneNumberEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="emailAddressEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactNameEmpty && !addClientFailed && !addClientLoading&& !addClientSuccess">Client Contact Name...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactPhoneEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactEmailEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Email Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="subContractorsEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
+              <p *ngIf="addClientFailed && !addClientLoading && !addClientSuccess">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
 
               </div>
            
@@ -477,11 +477,11 @@
 
  <button type="submit" class="btn btn-default text-center" >Submit</button>
         <br>
-          <h4 *ngIf = "client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) added...</h4>
+          <h4 *ngIf = "client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) Loaded...</h4>
 
   
       <div id="subcontractoricon"class="col-sm-3" *ngFor="let subcontractor of client.subcontractors;let i =index" >
-      <i style="font-size: 40px;"class="fa fa-list-alt animated flash" aria-hidden="true"></i>
+      <i style="font-size: 40px;"class="fa fa-list-alt animated flash" aria-hidden="true"> </i><i class="fa fa-times text-danger" (click)="removeSubContractor()" aria-hidden="true"></i>
       <h4>{{i+1}}{{subcontractor.name}}</h4>
      <!-- <div  id="subcontractorinfo">
         <p> {{subcontractor.contactname}} </p>

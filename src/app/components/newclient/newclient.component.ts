@@ -3263,6 +3263,7 @@ if(this.name != "" &&
 
         this.addClientLoading = false;
           this.addClientSuccess = true;
+          this.client.subcontractors = [];
           setTimeout(() => {
 
             this.addClientSuccess = false;
@@ -3384,6 +3385,15 @@ if(this.name != "" &&
       })*/
 
  // }
+
+  }
+  removeSubContractor(){
+
+    if(this.client.subcontractors.length>0){
+
+        this.client.subcontractors.splice(this.client.subcontractors.length-1,1);
+
+    }
 
   }
   addClient2() {
