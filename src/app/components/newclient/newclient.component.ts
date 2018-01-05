@@ -11,12 +11,12 @@ export class NewclientComponent implements OnInit {
 
   client = {
 
-    name: '',
+    name: "",
     contactname: "",
-    contactphone: 0,
+    contactphone: "",
     contactemail: "",
     emailaddress: "",
-    phonenumber: 0,
+    phonenumber: "",
     storeaddresses: [],
     subcontractors: [],
     locations: []
@@ -27,37 +27,37 @@ export class NewclientComponent implements OnInit {
 
     name: "",
     contactname: "",
-    contactphone: 0,
+    contactphone: "",
     contactemail: "",
     emailaddress: "",
-    phonenumber: 0,
+    phonenumber: "",
     storeaddresses: [],
     storenumbers: [],
     locations: []
 
   };
 
-  subContractorStoreNumber: string;
-  subContractorName: string;
-  subContractorContactName: string;
-  subContractorContactPhone: any;
-  subContractorContactEmail: string;
-  subContractorEmailAddress: string;
-  subContractorPhoneNumber: any;
-  subContractorLocations: string;
-  subContractorStoreNumbers: string;
+  subContractorStoreNumber:string ="";
+  subContractorName:string="";
+  subContractorContactName:string="";
+  subContractorContactPhone:any="";
+  subContractorContactEmail:string="";
+  subContractorEmailAddress:string="";
+  subContractorPhoneNumber:any="";
+  subContractorLocations:string="";
+  subContractorStoreNumbers:string="";
 
-  subCLocations: string;
+  subCLocations:string="";
 
-  storenumber: String;
-  subcontractors: String;
-  name: string;
-  contactname: string;
-  contactphone: any;
-  contactemail: string;
-  emailaddress: string;
-  phonenumber: any;
-  location: string;
+  storenumber: string ="";
+  subcontractors: string ="";
+  name: string="";
+  contactname: string="";
+  contactphone: any="";
+  contactemail: string="";
+  emailaddress: string="";
+  phonenumber: any="";
+  location: string="";
  date= new Date();
   dateNow = this.date.getDate()
   month = this.date.getMonth()+1;
@@ -79,8 +79,19 @@ export class NewclientComponent implements OnInit {
   addLocationFailed: boolean = false;
   addSubcontractorSuccess: boolean = false;
   addSubcontractorFailed: boolean = false;
+  addClientFailed:boolean = false;
+  addClientSuccess:boolean = false;
+  addClientLoading:boolean = false;
   addSubContractorStoreNumbersFailed: boolean = false;
   addSubContractorStoreNumbersSuccess: boolean = false;
+  turnOffInstructions:boolean = false;
+  nameEmpty:boolean = false;
+  phoneNumberEmpty:boolean = false;
+  emailAddressEmpty:boolean = false;
+  contactNameEmpty:boolean = false;
+  contactPhoneEmpty:boolean = false;
+  contactEmailEmpty:boolean = false;
+  subContractorsEmpty:boolean = false;
 
   addNameSuccessMsg: string = "Name Successfully Added To the Database";
   addNameFailedMsg: string = "Name Field Must Not Be Empty...";
@@ -101,12 +112,32 @@ export class NewclientComponent implements OnInit {
   addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
   addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
 
+      subContractorStoreNumberSuccessfullyRemoved:boolean= false;
+    subContractorStoreNumberSuccessfullyAdded: boolean = false;
+    subContractorStoreNumberAlreadyEmpty:boolean = false;
+    subContractorStoreNumberFieldCannotBeEmpty:boolean = false;
+    subContractorLocationFieldCannotBeEmpty:boolean = false;
+    subContractorLocationSuccessfullyRemoved:boolean = false;
+    subContractorLocationSuccessfullyAdded:boolean = false;
+    subContractorLocationAlreadyEmpty:boolean = false;
+
+addSubContractorNameEmpty: boolean = false;
+    addSubContractorEmailAddressEmpty: boolean = false;
+    addSubContractorPhoneNumberEmpty: boolean = false;
+    addSubContractorContactNameEmpty: boolean = false;
+    addSubContractorContactPhoneEmpty: boolean = false;
+    addSubContractorContactEmailEmpty: boolean = false;
+    addSubContractorLocationsEmpty: boolean = false;
+    addSubContractorStoreNumbersEmpty: boolean = false;
 
   //location: boolean = false;
   locationNotInput: boolean = false;
   clientAddSuccess: boolean = false;
+  //addClientSuccess:boolean = false;
+  addSubContractorSuccess:boolean = false;
   clientAddFailed: boolean = false;
   clientFormOpen:boolean = false;
+  newSubContractorFormOpen:boolean = false;
 
   subcontractorAdded: boolean = false;
   subcontractorNotInput: boolean = false;
@@ -128,6 +159,7 @@ export class NewclientComponent implements OnInit {
   ngOnInit() {
 
     console.log('client service loaded and initialized...');
+    console.log(this.subContractorEmailAddress)
 
   }
 
@@ -145,6 +177,17 @@ export class NewclientComponent implements OnInit {
 
   }
 
+openNewSubContractorForm(){
+
+    if(!this.newSubContractorFormOpen){
+
+        this.newSubContractorFormOpen = true;
+
+    }else{
+        this.newSubContractorFormOpen = false;
+    }
+
+}
   openSubContractorInput() {
 
     if (this.addNewSubContractor == false) {
@@ -171,80 +214,183 @@ export class NewclientComponent implements OnInit {
     console.log(this.subContractorContactEmail);
     console.log(this.subContractorPhoneNumber);
     console.log(this.subContractorEmailAddress);
-    if (this.subContractorName != undefined || "") {
+    if(this.subContractorName == "" || undefined){
 
-      this.subContractor.name = this.subContractorName;
-     // this.subContractorName = "";
-      console.log(this.subContractor.name);
+        this.addSubContractorNameEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
 
-    }
-    if (this.subContractorEmailAddress != undefined || "") {
-
-      this.subContractor.emailaddress = this.subContractorEmailAddress;
-     // this.subContractorEmailAddress = "";
+            this.addSubContractorNameEmpty = false;
+            this.turnOffInstructions = false;
+        },2000);
 
     }
-    if (this.subContractorPhoneNumber != undefined || "") {
-      this.subContractor.phonenumber = this.subContractorPhoneNumber;
-     // this.subContractorPhoneNumber = "";
+    //else{
+
+
+       // this.subContractor.name = this.subContractorName;
+
+   // }
+    if(this.subContractorEmailAddress == "" || undefined){
+
+                this.addSubContractorEmailAddressEmpty = true;
+                console.log("TRUE!!")
+                this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorEmailAddressEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
 
 
     }
-    if (this.subContractorContactName != undefined || "") {
+    //else{
 
-      this.subContractor.contactname = this.subContractorContactName;
-     // this.subContractorContactName = "";
+      //  this.subContractor.emailaddress = this.subContractorEmailAddress;
+
+    //}
+    if(this.subContractorPhoneNumber == "" || undefined){
+
+        this.addSubContractorPhoneNumberEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorPhoneNumberEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
 
     }
-    if (this.subContractorContactEmail != undefined || "") {
+    //else{
 
-      this.subContractor.contactemail = this.subContractorContactEmail;
-     // this.subContractorContactEmail = "";
+      //  this.subContractor.phonenumber = this.subContractorPhoneNumber;
+
+    //}
+    if(this.subContractorContactName == "" || undefined){
+        this.addSubContractorContactNameEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactNameEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
 
     }
-    if (this.subContractorContactPhone != undefined || "") {
+    //else{
 
-      this.subContractor.contactphone = this.subContractorContactPhone;
-      //this.subContractorContactPhone = "";
+      //  this.subContractor.contactname = this.subContractorContactName;
+
+    //}
+    if(this.subContractorContactEmail == "" || undefined){
+
+        this.addSubContractorContactEmailEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactEmailEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+    }
+    //else{
+
+      //  this.subContractor.contactemail = this.subContractorContactEmail
+    //}
+    if(this.subContractorContactPhone == "" || undefined){
+
+        this.addSubContractorContactPhoneEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactPhoneEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+
+    }
+    //else{
+
+      //  this.subContractor.contactphone = this.subContractorContactPhone
+
+    //}
+
+    if(this.subContractor.storenumbers.length < 0){
+
+
+        this.addSubContractorStoreNumbersEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorStoreNumbersEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000)
 
     }
 
-    if (this.subContractor.storenumbers.length > 0) {
+    if(this.subContractor.locations.length<0){
 
 
-    } else {
-      this.addSubContractorStoreNumbersFailed = true;
+        this.addSubContractorLocationsEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorLocationsEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000)
+
+    }
+   
+console.log(this.subContractor);
+console.log(this.subContractor.locations.length)
+console.log(this.subContractor.storenumbers.length)
+console.log(this.subContractorContactPhone)
+console.log(this.subContractorContactName)
+console.log(this.subContractorContactEmail)
+console.log(this.subContractorName)
+console.log(this.subContractorEmailAddress)
+console.log(this.subContractorPhoneNumber)
+    if (this.subContractor.locations.length == 0 && 
+        this.subContractor.storenumbers.length == 0
+        && this.subContractorContactPhone ==  ""
+        && this.subContractorContactEmail ==  ""
+        && this.subContractorContactName ==  ""
+
+        && this.subContractorPhoneNumber ==  ""
+        && this.subContractorEmailAddress ==  ""
+        && this.subContractorName ==  "") {
+
+console.log("should be here");
+      this.addSubcontractorFailed = true;
+      console.log("this.addSucontractorFailed")
+      console.log(this.addSubcontractorFailed);
 
       setTimeout(() => {
 
-        this.addSubContractorStoreNumbersFailed = false;
+        this.addSubcontractorFailed = false;
 
       }, 3000);
 
-    }
+    } if(this.subContractor.locations.length >0 &&
+        this.subContractor.storenumbers.length>0 &&
+        this.subContractorName != "" &&
+        this.subContractorPhoneNumber !="" &&
+        this.subContractorEmailAddress != ""&&
+        this.subContractorContactPhone != "" &&
+        this.subContractorContactName != "" &&
+        this.subContractorContactEmail != ""){
 
-    if (this.subContractor.locations.length > 0) {
+            console.log('success')
+    
 
-
-
-    } else {
-      this.addLocationFailed = true;
-
-      setTimeout(() => {
-
-        this.addLocationFailed = false;
-
-      }, 3000);
-    }
-
-    if (this.subContractor.locations.length > 0 && this.subContractor.storenumbers.length > 0
-        && this.subContractorContactPhone != undefined || ""
-        && this.subContractorContactEmail != undefined || ""
-        && this.subContractorContactName != undefined || ""
-        && this.subContractorPhoneNumber != undefined || ""
-        && this.subContractorEmailAddress != undefined || ""
-        && this.subContractorName != undefined || "") {
-        let copySubContractor={
+              let copySubContractor={
 
           name: this.subContractorName,
           contactname: this.subContractorContactName,
@@ -281,7 +427,7 @@ export class NewclientComponent implements OnInit {
                     "orderedapr" : 0,
                     "orderedmar" : 0,
                     "orderedfeb" : 0,
-                    "orderedjan" : 5,
+                    "orderedjan" : 0,
                     "manufacturer" : "Topline Sanitation Inc.",
                     "supplier" : "topline",
                     "instock" : 50,
@@ -308,7 +454,7 @@ export class NewclientComponent implements OnInit {
                     "orderedapr" : 0,
                     "orderedmar" : 0,
                     "orderedfeb" : 0,
-                    "orderedjan" : 1,
+                    "orderedjan" : 0,
                     "manufacturer" : "Topline Sanitation Inc.",
                     "supplier" : "topline",
                     "instock" : 50,
@@ -1288,7 +1434,7 @@ export class NewclientComponent implements OnInit {
                     "orderspending" : false,
                     "recieved" : 0,
                     "requested" : 0,
-                    "productcode" : "R03016100",
+                    "productcode" : "R030161000",
                     "description" : "25 UHS FINISH",
                     "price" : 74.45,
                     "unit" : "2/CS",
@@ -2666,24 +2812,15 @@ export class NewclientComponent implements OnInit {
       console.log(this.client.subcontractors);
       console.log(copySubContractor)
       this.client.subcontractors.push(copySubContractor);
+      console.log(this.client.subcontractors);
       this.subContractor.locations = [];
       this.subContractor.storenumbers =[];
       console.log(this.client.subcontractors);
-      this.addSubcontractorSuccess = true;
+      this.addSubContractorSuccess = true;
 
       setTimeout(() => {
 
-        this.addSubcontractorSuccess = false;
-
-      }, 3000);
-
-    } else {
-
-      this.addSubcontractorFailed = true;
-
-      setTimeout(() => {
-
-        this.addSubcontractorFailed = false;
+        this.addSubContractorSuccess = false;
 
       }, 3000);
     }
@@ -2695,63 +2832,140 @@ export class NewclientComponent implements OnInit {
 
 
   }
+
+  removeLocation(){
+
+this.subContractorLocationSuccessfullyAdded = false;
+this.subContractorLocationSuccessfullyRemoved = false;
+this.subContractorLocationAlreadyEmpty = false;
+this.subContractorLocationFieldCannotBeEmpty = false;
+
+
+if(this.subContractor.locations.length>0){
+    this.subContractor.locations.splice(this.subContractor.locations.length-1, 1);
+this.subContractorLocationSuccessfullyRemoved = true
+      setTimeout(() => {
+
+        this.subContractorLocationSuccessfullyRemoved = false;
+
+      }, 3000);
+
+}else{
+
+    this.subContractorLocationAlreadyEmpty  = true;
+    setTimeout(()=>{
+
+        this.subContractorLocationAlreadyEmpty = false;
+
+    },2000);
+
+
+}
+
+
+  }
   addLocation() {
+    
+    this.subContractorLocationAlreadyEmpty  = false;
+    this.subContractorLocationSuccessfullyAdded = false;
+    this.subContractorLocationFieldCannotBeEmpty = false;
+    this.subContractorLocationSuccessfullyRemoved = false;
     
 
     if (this.subCLocations != undefined || "") {
 
       
       this.subContractor.locations.push(this.subCLocations);
+      console.log(this.subContractor.locations);
       this.subCLocations ="";
    
 
 
-      this.addLocationSuccess = true;
-
+this.subContractorLocationSuccessfullyAdded = true
       setTimeout(() => {
 
-        this.addLocationSuccess = false;
+        this.subContractorLocationSuccessfullyAdded = false;
 
       }, 3000);
 
     } else {
 
-
+   
+    this.subContractorLocationFieldCannotBeEmpty = true;
       this.addLocationFailed = true;
 
       setTimeout(() => {
 
-        this.addLocationFailed = false;
+        this.subContractorLocationFieldCannotBeEmpty = false;
 
-      }, 3000);
+      }, 2000);
 
     }
     
   }
+  removeStoreNumber(){
+/*
+if(this.subContractorStoreNumberFieldCannotBeEmpty &&
+    this.subContractorStoreNumberAlreadyEmpty &&
+    this.subContractorStoreNumberSuccessfullyAdded &&
+    this.subContractorStoreNumberSuccessfullyRemoved ){
+this.subContractorStoreNumberFieldCannotBeEmpty = false;
+    this.subContractorStoreNumberAlreadyEmpty = false;
+    this.subContractorStoreNumberSuccessfullyAdded = false;
+    this.subContractorStoreNumberSuccessfullyRemoved = false;
+
+    }*/
+    
+        if(this.subContractor.storenumbers.length >0){
+
+            this.subContractor.storenumbers.splice(this.subContractor.storenumbers.length-1, 1);
+            this.subContractorStoreNumberSuccessfullyRemoved = true;
+            setTimeout(()=>{
+
+                    this.subContractorStoreNumberSuccessfullyRemoved = false;
+
+            },2000);
+        }else{
+
+            this.subContractorStoreNumberAlreadyEmpty = true;
+            setTimeout(()=>{
+
+                this.subContractorStoreNumberAlreadyEmpty = false;
+
+            },2000)
+
+        }
+
+  }
   addStoreNumber() {
    // this.subContractor.storenumbers = [];
+   this.subContractorStoreNumberAlreadyEmpty = false;
+   this.subContractorStoreNumberFieldCannotBeEmpty = false;
+   this.subContractorStoreNumberSuccessfullyAdded = false;
+   this.subContractorStoreNumberSuccessfullyRemoved = false;
+   
+
 
     if (this.subContractorStoreNumbers != undefined || "") {
 
       this.subContractor.storenumbers.push(this.subContractorStoreNumbers);
 
       this.addSubContractorStoreNumbersSuccess = true;
+      this.subContractorStoreNumberSuccessfullyAdded = true;
       this.subContractorStoreNumbers = "";
+      console.log(this.subContractor.storenumbers);
 
       setTimeout(() => {
 
-        this.addSubContractorStoreNumbersSuccess = false;
-
-      }, 3000);
+        this.subContractorStoreNumberSuccessfullyAdded = false;
+      }, 2000);
 
     } else {
 
-      this.addSubContractorStoreNumbersFailed = true;
-
+        this.subContractorStoreNumberFieldCannotBeEmpty = true;
       setTimeout(() => {
 
-        this.addSubContractorStoreNumbersFailed = false;
-
+        this.subContractorStoreNumberFieldCannotBeEmpty = false;
       }, 3000);
 
     }
@@ -2797,168 +3011,222 @@ export class NewclientComponent implements OnInit {
     console.log(this.phonenumber);
     console.log(this.emailaddress);
     console.log(this.client.subcontractors.length);
-    if (
-      (this.contactname == undefined || "") &&
-      (this.contactphone == undefined || "") &&
-      (this.contactemail == undefined || "") &&
-      (this.name == undefined || "") &&
-      (this.phonenumber == undefined || "") &&
-      (this.emailaddress == undefined || "") &&
-      (this.client.subcontractors.length < 1)) {
-      console.log("last condition");
+    
+    if (this.name == ""||undefined) {
+     console.log("this.name")
 
-      //this.storeAddressArrayEmpty = true;
-      //this.storeNumbersArrayEmpty = true;
-
-      this.addContactNameFailed = true;
-      this.addContactPhoneFailed = true;
-      this.addContactEmailAddressFailed = true;
-      this.addPhoneNumberFailed = true;
-      this.addEmailAddressFailed = true;
-      this.addNameFailed = true;
-      this.addSubcontractorFailed = true;
-
-
-
-      //this.emailFieldEmpty = true;
-      //this.nameFieldEmpty = true
-      setTimeout(() => {
-
-        this.addContactNameFailed = false;
-        this.addContactPhoneFailed = false;
-        this.addContactEmailAddressFailed = false;
-        this.addPhoneNumberFailed = false;
-        this.addEmailAddressFailed = false;
-        this.addNameFailed = false;
-        this.addSubcontractorFailed = true;
-
-      }, 3000);
-
-    }
-
-
-    if (this.name == undefined || "") {
-      console.log("addSubcontractorClicked");
-
-      this.addNameFailed = true;
+      this.nameEmpty = true;
+      this.turnOffInstructions=true;
 
       setTimeout(() => {
 
-        this.addNameFailed = false;
+        this.nameEmpty = false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
 
     }
-    if (this.contactname == undefined || "") {
-      console.log(this.contactname);
+    if (this.contactname ==  "") {
+      console.log("this.contactname")
 
-      this.addContactNameFailed = true;
+      this.contactNameEmpty = true;
+      this.turnOffInstructions = true;
 
       setTimeout(() => {
 
-        this.addContactNameFailed = false;
+        this.contactNameEmpty = false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
     }
-    if (this.phonenumber == undefined || "") {
-      console.log(this.contactname);
-
-      this.addPhoneNumberFailed = true;
+    if (this.phonenumber ==  "") {
+        console.log("this.phonenumber")
+      this.phoneNumberEmpty = true;
+      this.turnOffInstructions = true;
 
       setTimeout(() => {
 
-        this.addPhoneNumberFailed = false;
+        this.phoneNumberEmpty= false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
     }
-    if (this.emailaddress == undefined || "") {
-      console.log(this.contactname);
+    if (this.emailaddress ==  "") {
+      console.log(this.emailaddress)
 
-      this.addEmailAddressFailed = true;
+      this.emailAddressEmpty = true;
+      this.turnOffInstructions = true;
 
       setTimeout(() => {
 
-        this.addEmailAddressFailed = false;
-
-      }, 3000);
+        this.emailAddressEmpty = false;
+        this.turnOffInstructions = false;
+      }, 2000);
 
     }
-    if (this.contactemail == undefined || "") {
+    if (this.contactemail ==  "") {
 
-      this.addContactEmailAddressFailed = true;
-
+    console.log("this.contactemail")
+      this.contactEmailEmpty = true;
+      this.turnOffInstructions = true;
       setTimeout(() => {
 
-        this.addContactEmailAddressFailed = false;
+        this.contactEmailEmpty = false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
     }
-    if (this.contactphone == undefined) {
-      console.log(this.contactphone);
+    if (this.contactphone ==  "") {
+      console.log("this.contactphone");
 
-      this.addContactPhoneFailed = true;
-
+      this.contactPhoneEmpty = true;
+      this.turnOffInstructions = true;
       setTimeout(() => {
 
-        this.addContactPhoneFailed = false;
-
-      }, 3000);
+        this.contactPhoneEmpty = false;
+        this.turnOffInstructions = false;
+      }, 2000);
 
     }
-    if (this.emailaddress == undefined || "") {
-      console.log("addSubcontractorClicked");
+    if (this.emailaddress ==  "") {
+      console.log("this.emailaddress");
 
-      this.addEmailAddressFailed = true;
-
+      this.emailAddressEmpty = true;
+      this.turnOffInstructions = true;
       setTimeout(() => {
 
-        this.addEmailAddressFailed = false;
+        this.emailAddressEmpty = false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
     }
 
 
     if (this.client.subcontractors.length < 1) {
 
-      console.log("addSubcontractorFailed");
-      this.addSubcontractorFailed = true;
-
+      console.log("this.client.subcontractors");
+      this.subContractorsEmpty= true;
+      this.turnOffInstructions = true;
       setTimeout(() => {
 
-        this.addSubcontractorFailed = false;
+        this.subContractorsEmpty = false;
+        this.turnOffInstructions = false;
 
-      }, 3000);
+      }, 2000);
 
     }
-   /* if (this.client.locations.length < 1) {
 
-      this.addLocationFailed = true;
+if(this.name != "" &&
+    this.emailaddress !=""&&
+    this.phonenumber != "" &&
+    this.contactemail != "" &&
+    this.contactphone != "" &&
+    this.contactname != "" &&
+    this.client.subcontractors.length >0
 
-      setTimeout(() => {
+    ){
+      
+      
+      
+        console.log("success");
+        console.log("not undefined");
+      this.addClientLoading = true;
+      this.client.name = this.name;
+      this.client.phonenumber = this.phonenumber;
+      this.client.emailaddress = this.emailaddress;
+      this.client.contactname = this.contactname;
+      this.client.contactphone = this.contactphone;
+      this.client.contactemail = this.contactemail;
+      this.phonenumber = "";
+      this.name = "";
+      this.emailaddress = "";
+      this.contactname = "";
+      this.contactphone = "";
+      this.contactemail ="";
+      this.subCLocations = "";
+      this.subContractorStoreNumbers="";
+      this.subContractorContactEmail="";
+      this.subContractorContactName="";
+      this.subContractorEmailAddress="";
+      this.subContractorContactPhone="";
+      this.subContractorPhoneNumber = "";
+      this.subContractorName="";
+     
+      
+      this.clientservice.addClient(this.client).subscribe(data => {
 
-        this.addLocationFailed = false;
+        console.log(data);
+        if (data.success) {
 
-      }, 3000);
+        this.addClientLoading = false;
+          this.addClientSuccess = true;
+          setTimeout(() => {
 
-    }*/
-    if ((this.client.subcontractors.length < 1)) {
+            this.addClientSuccess = false;
 
-      this.addSubcontractorFailed = true;
+          }, 3000);
 
-      setTimeout(() => {
 
-        this.addSubcontractorFailed = false;
+        } else {
 
-      }, 3000);
+          this.clientAddFailed = true;
+          setTimeout(() => {
+
+            this.clientAddFailed = false;
+
+          }, 3000);
+
+        }
+
+      })
 
     }
-    else {
+    
+    if(this.name == "" &&
+        this.emailaddress == "" &&
+        this.phonenumber == "" &&
+        this.contactemail == "" &&
+        this.contactphone == "" &&
+        this.contactname == "" &&
+        this.client.subcontractors.length == 0){
+
+
+            console.log("alll failed")
+            this.addClientFailed = true;
+            setTimeout(()=>{
+
+                this.addClientFailed = false;
+
+            },2000);
+        }
+    /*else{
+        
+        console.log(this.client.subcontractors.length)
+        console.log(this.name)
+        console.log(this.emailaddress)
+        console.log(this.phonenumber)
+        console.log(this.contactphone)
+        console.log(this.contactname)
+
+        console.log("should be here");
+        this.addClientFailed = true
+        //this.nameEmpty = 
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addClientFailed = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+    }
+    /*{
       console.log("not undefined");
+      this.addClientLoading = true;
       this.client.name = this.name;
       this.client.phonenumber = this.phonenumber;
       this.client.emailaddress = this.emailaddress;
@@ -2986,16 +3254,17 @@ export class NewclientComponent implements OnInit {
 
 
 
-
+/*
       this.clientservice.addClient(this.client).subscribe(data => {
 
         console.log(data);
         if (data.success) {
 
-          this.clientAddSuccess = true;
+        this.addClientLoading = false;
+          this.addClientSuccess = true;
           setTimeout(() => {
 
-            this.clientAddSuccess = false;
+            this.addClientSuccess = false;
 
           }, 3000);
 
@@ -3011,9 +3280,9 @@ export class NewclientComponent implements OnInit {
 
         }
 
-      })
+      })*/
 
-    }
+ // }
 
   }
   addClient2() {

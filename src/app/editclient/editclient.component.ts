@@ -206,6 +206,9 @@ export class EditclientComponent implements OnInit {
 
             console.log(data);
             this.clientsArray = data.clients;
+            console.log("this.clientsArray");
+            console.log(this.clientsArray);
+
             for (let i = 0; i < data.clients.length; i++) {
 
                 this.subcontractorsArray[i] = data.clients[i].subcontractors;
@@ -3523,6 +3526,8 @@ export class EditclientComponent implements OnInit {
     openEditSubcontractorsFunc(index) {
 
         this.editSubContractorIndexVar = index;
+        console.log(index)
+        console.log(this.editSubContractorIndexVar)
         this.indexVar = index
 
        
@@ -3540,6 +3545,42 @@ export class EditclientComponent implements OnInit {
                       this.loadingNewSubContractors = true;
 
                       this.loadingClients = true;
+                    
+
+                            console.log("add Subcontractors was opened");
+
+                this.clientservice.getClients().subscribe(data => {
+
+                    console.log(data);
+                    if (data.success) {
+
+                        for (let i = 0; i < data.clients.length; i++) {
+
+                            this.subcontractorsArray[i] = data.clients[i].subcontractors;
+                        }
+
+                        console.log("this.subcontractorsArray");
+                        console.log(this.subcontractorsArray);
+                        for (let z = 0; z < this.subcontractorsArray.length; z++) {
+
+                            for (let d = 0; d < this.subcontractorsArray[z].length; d++)
+
+    this.subcontractorsArray[z][d][d] = d * 34567
+                            console.log(this.subcontractorsArray[z])
+                            this.loadingNewSubContractors = false;
+                            this.loadingClients = false
+                           // this.editSubContractorSuccess = true;
+                            setTimeout(()=>{
+
+                               // this.editSubContractorSuccess = false;
+                            },2000);
+                            
+                            
+
+                        }
+
+                    }
+                })
 
             if (!this.openEditSubcontractors && this.openAddSubContractor) {
                             this.loadingNewSubContractors = true;

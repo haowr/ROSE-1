@@ -55,6 +55,7 @@
 </div>
 
 <div class="row">
+
   <div id="editclienttitle" class=" col-sm-12 text-center">
     <h1 style="text-decoration:underline;" class="osc">Edit Clients</h1>
     <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Enter New Information In The Appropriate Fields And Click Edit To Modify Client Info!">Tip!</button>
@@ -62,15 +63,15 @@
 -->
     <br>
   </div>
-  <div class="col-sm-12 text-center" *ngFor="let client of clientsArray; let i=index;">
+  <br>
+  <div class="col-sm-12 text-center"  style="border-bottom:1px solid #ddd;" *ngFor="let client of clientsArray; let i=index;">
 
     <div class="col-sm-3">
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6" >
       <!-- <h4>{{client.name}}</h4>-->
       <br>
-      <button *ngIf="indexVar == i&& !openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary ">Open {{client.name}}</button>
-      <button *ngIf="indexVar == i&& openEditForm" (click)="openEditFormFunc(i);" class="btn btn-primary "> Close {{client.name}}</button>
+      <button  (click)="openEditFormFunc(i);" class="btn btn-primary ">Open/Close {{client.name}}</button>
 
       <br>
       <br>
@@ -91,16 +92,7 @@
 
 
         </ul>
-        <!--      <ul class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm">
-        <br>
-       
-        <li class="active"><a href="#contactname" data-toggle="tab" aria-expanded="false">C.Name</a></li>
-        <li class=""><a href="#contactphone" data-toggle="tab" aria-expanded="true">C.Phone</a></li>
-        <li class=""><a href="#contactemail" data-toggle="tab" aria-expanded="false">C.Email</a></li>
 
-
-
-      </ul>-->
         <div id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm">
 
           <div class="tab-pane fade active in" id="name">
@@ -235,9 +227,9 @@
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
 
-        <i *ngIf="loadingNewSubContractors" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-        <span *ngIf="loadingNewSubContractors">LOADING</span>
-        <i style="font-size:20px;" *ngIf="loadingClients " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <i *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <span *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i">LOADING</span>
+        <i style="font-size:20px;" *ngIf="loadingClients && editSubContractorIndexVar == i " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
         <form *ngIf="!loadingClients " class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
@@ -261,7 +253,7 @@
 
 
           </ul>
-          <div id="myTabContent" style="border-bottom:1px solid #ddd" class="tab-content animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
+          <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
 
             <div class="tab-pane fade active in" id="name2">
 
@@ -353,7 +345,7 @@
 
 
             <div class="tab-pane fade" id="locations2">
-
+<br>
               <div class="panel panel-default">
                 <div class="panel panel-heading">
                   <h4>Locations</h4>
@@ -393,7 +385,7 @@
 
             <div class="tab-pane fade" id="storenumbers2">
 
-
+<br>
               <div class="panel panel-default">
                 <div class="panel panel-heading">
 
@@ -433,7 +425,7 @@
               </div>
 
 
-              <br>
+              
             </div>
                    <div class="tab-pane fade" id="addsubcontractor">
               <h4>Add Sub Contractor</h4>
@@ -470,35 +462,40 @@
 
                   </div>
         
-              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+             <!-- <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
               <span *ngIf="addSubContractorLoading">LOADING</span>
               <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-
+-->
             </div>
             <!-- <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
                 <button class="btn btn-primary" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
          -->
 
 
-          
+          <br>
+          <br>
 
           </div>
           <br>
           <div *ngIf="openAddSubContractor && openEditForm   " class="panel panel-primary">
             <div class="panel-heading">
-              <h3 *ngIf="!addSubContractorSuccess" class="panel-title">Add Sub Contractor Instructions</h3>
-              <h3 *ngIf="addSubContractorSuccess" class="panel-title">Sub Contractor Addition Successful</h3>
+              <h3 *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="panel-title">Add Sub-Contractor Instructions</h3>
+              <h3 *ngIf="addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Sub-Contractor Addition Successful</h3>
+              <h3 *ngIf="addSubContractorLoading " class="panel-title animated flash">Loading</h3>
 
             </div>
             <div class="panel-body">
 
-              <p *ngIf="!addSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p *ngIf="!addSubContractorSuccess" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p *ngIf="!addSubContractorSuccess" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p *ngIf="!addSubContractorSuccess" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
+              <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+              <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+              <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+              <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
                 been added.</p>
-              <h3 class="animated flash" *ngIf="addSubContractorSuccess">Sub Contractor Successfully Added!</h3>
-              <i *ngIf="addSubContractorSuccess" class="fa fa-check animated flash"style="font-size:40px;" aria-hidden="true"></i>
+                <h3 class = "animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
+              <h3 class="animated flash text-center" *ngIf="addSubContractorSuccess && !addSubContractorLoading">Sub-Contractor Successfully Added!</h3>
+                     <i style="font-size:40px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw text-center"></i>
+
+              <i *ngIf="addSubContractorSuccess&& !addSubContractorLoading" class="fa fa-check animated flash text-center"style="font-size:40px;" aria-hidden="true"></i>
             </div>
           </div>
 
@@ -513,15 +510,18 @@
           {{allSubContractorConditionsMetMsg}}
         </div>
       </div>
-      <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
+<div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
         <br>
 
 
 
         <br>
+<div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm &&!loadingClients  " style = "border-bottom: 1px solid gray">
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
-        <button *ngIf="openEditSubcontractors && openEditForm &&!loadingClients  " (click)="openIndividualSubContractor(z);" type="button"
-          class="btn btn-primary form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
+        <button *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm &&!loadingClients  " (click)="openIndividualSubContractor(z);" type="button"
+        
+          class="btn btn-default form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
+</div>
         <br>
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
           <br>
@@ -869,8 +869,7 @@
             </div>
           </div>
 
-          <br>
-          <br>
+          
 
 
 
@@ -881,6 +880,6 @@
       </div>
       <div class="col-sm-3">
       </div>
-      <br><br><br>
+      
     </div>
   </div>
