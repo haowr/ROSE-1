@@ -3174,9 +3174,12 @@ if(this.name != "" &&
 
         } else {
 
+             this.addClientLoading = false;
           this.clientAddFailed = true;
+          //this.addClientFailed = true
           setTimeout(() => {
 
+            //this.addClientFailed = false;
             this.clientAddFailed = false;
 
           }, 3000);

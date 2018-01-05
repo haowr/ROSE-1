@@ -209,6 +209,13 @@ export class EditclientComponent implements OnInit {
             console.log("this.clientsArray");
             console.log(this.clientsArray);
 
+            for(let i = 0; i<this.clientsArray.length; i ++){
+
+                this.clientsArray[i][i] = i * 777
+                
+
+            }
+            console.log(this.clientsArray);
             for (let i = 0; i < data.clients.length; i++) {
 
                 this.subcontractorsArray[i] = data.clients[i].subcontractors;
@@ -677,7 +684,9 @@ export class EditclientComponent implements OnInit {
 
                             this.subcontractorsArray[i] = data.clients[i].subcontractors;
 
+
                         }
+                        this.openIndividualAddSubContractorBoolean = false;
 
                     })
 

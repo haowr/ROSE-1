@@ -172,8 +172,7 @@
 
            
             </div>
-               <h3 *ngIf="addClientSuccess" class = "animated flash">Sub-Contractor Successfully Loaded...</h3>
-              <i *ngIf="addClientSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
+             
 
           </div>
             <!-- <button class="btn btn-primary" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
@@ -416,25 +415,34 @@
 
                <div *ngIf="newSubContractorFormOpen" class="panel panel-primary">
             <div class="panel-heading">
-              <h3 *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="panel-title">Add Sub-Contractor Instructions</h3>
+              <h3 *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !addClientSuccess &&!addClientLoading" class="panel-title">Add Sub-Contractor Instructions</h3>
+               <h3 *ngIf="addClientSuccess && !addClientLoading " class="panel-title">Client Addition Successful</h3>
+
               <h3 *ngIf="addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Sub-Contractor Addition Successful</h3>
-              <h3 *ngIf="addSubContractorLoading " class="panel-title animated flash">Loading</h3>
+                            <h3 *ngIf="clientAddFailed &&!addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Client Addition Failed</h3>
+
+              <h3 *ngIf="addSubContractorLoading || addClientLoading " class="panel-title animated flash">Loading</h3>
 
             </div>
             <div class="panel-body">
 
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading && !clientAddFailed" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading  && !clientAddFailed" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
                 been added.</p>
                 <h3 class = "animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
             
 
               <h3 *ngIf="addSubContractorSuccess" class = "animated flash">Sub-Contractor Successfully Loaded...</h3>
               <i *ngIf="addSubContractorSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
+              <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed" class = "animated flash">Inserting Client Into Database...</h3>
+                <h3 *ngIf="addClientSuccess" class = "animated flash">Client Successfully Added To The Database...</h3>
+              <i *ngIf="addClientSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
+              <h3 *ngIf="clientAddFailed" class = "animated flash text-danger">Client Already Exists In The Database...</h3>
 
-              <div *ngIf="addClientFailed || addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty ||
+              <i   *ngIf="clientAddFailed" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
+              <div *ngIf=" addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty ||
                           emailAddressEmpty || contactNameEmpty || contactPhoneEmpty || contactEmailEmpty
                           || subContractorsEmpty" class = "well well-sm">
                           
@@ -486,16 +494,7 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
-      <div class="jumbotron" style="text-align:center" *ngIf="clientAddSuccess">
 
-        {{clientAddSuccessMsg }}
-
-      </div>
-      <div class="jumbotron" style="text-align:center" *ngIf="clientAddFailed">
-
-        {{clientAddFailedMsg }}
-
-      </div>
       <div class="col-sm-3">
       </div>
     </div>

@@ -239,17 +239,17 @@
           <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
 
             <br>
-            <li class="active"><a href="#name2" data-toggle="tab" aria-expanded="false">Name</a></li>
+            <li class="active"><a href="#name{{client[i]+1}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
-            <li class=""><a href="#phonenumber2" data-toggle="tab" aria-expanded="false">Phone</a></li>
+            <li class=""><a href="#phonenumber{{client[i]+2}}" data-toggle="tab" aria-expanded="false">Phone</a></li>
 
-            <li class=""><a href="#emailaddress2" data-toggle="tab" aria-expanded="false">Email</a></li>
-            <li class=""><a href="#contactname2" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
-            <li class=""><a href="#contactphone2" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
-            <li class=""><a href="#contactemail2" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
-            <li class=""><a href="#locations2" data-toggle="tab" aria-expanded="false">Locations</a></li>
-            <li class=""><a href="#storenumbers2" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
-            <li class=""><a href="#addsubcontractor" data-toggle="tab" aria-expanded="false">Submit</a></li>
+            <li class=""><a href="#emailaddress{{client[i]+3}}" data-toggle="tab" aria-expanded="false">Email</a></li>
+            <li class=""><a href="#contactname{{client[i]+4}}" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
+            <li class=""><a href="#contactphone{{client[i]+5}}" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
+            <li class=""><a href="#contactemail{{client[i]+6}}" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+            <li class=""><a href="#locations{{client[i]+7}}" data-toggle="tab" aria-expanded="false">Locations</a></li>
+            <li class=""><a href="#storenumbers{{client[i]+8}}" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+            <li class=""><a href="#addsubcontractor{{client[i]+9}}" data-toggle="tab" aria-expanded="false">Submit</a></li>
 
 
 
@@ -257,7 +257,7 @@
           </ul>
           <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
 
-            <div class="tab-pane fade active in" id="name2">
+            <div class="tab-pane fade active in" id="name{{client[i]+1}}">
 
               <h4>Name</h4>
 
@@ -276,21 +276,10 @@
             </div>
 
 
-            <div class="tab-pane fade" id="emailaddress2">
-              <h4>Email Address</h4>
-              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
-                class="form-control">
-              <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
+            <div class="tab-pane fade" id="phonenumber{{client[i]+2}}">
+       
 
-                {{editSubContractorFieldEmptyMsg}}
-              </div>
-              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-              <span *ngIf="addSubContractorLoading">LOADING</span>
-              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-
-            </div>
-            <div class="tab-pane fade" id="phonenumber2">
-              <h4>Phone Number</h4>
+            <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
               <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
@@ -302,7 +291,20 @@
               <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
             </div>
-            <div class="tab-pane fade" id="contactname2">
+            <div class="tab-pane fade" id="emailaddress{{client[i]+3}}">
+          <h4>Email Address</h4>
+              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
+                class="form-control">
+              <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
+              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+
+            </div>
+            <div class="tab-pane fade" id="contactname{{client[i]+4}}">
               <h4>Contact Name</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                 class="form-control">
@@ -318,7 +320,7 @@
             </div>
 
 
-            <div class="tab-pane fade" id="contactphone2">
+            <div class="tab-pane fade" id="contactphone{{client[i]+5}}">
               <h4>Contact Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                 name="subContractorContactPhone" class="form-control">
@@ -331,7 +333,7 @@
               <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
             </div>
-            <div class="tab-pane fade" id="contactemail2">
+            <div class="tab-pane fade" id="contactemail{{client[i]+6}}">
               <h4>Contact Email</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                 class="form-control">
@@ -346,7 +348,7 @@
             </div>
 
 
-            <div class="tab-pane fade" id="locations2">
+            <div class="tab-pane fade" id="locations{{client[i]+7}}">
 <br>
               <div class="panel panel-default">
                 <div class="panel panel-heading">
@@ -385,7 +387,7 @@
             </div>
 
 
-            <div class="tab-pane fade" id="storenumbers2">
+            <div class="tab-pane fade" id="storenumbers{{client[i]+8}}">
 
 <br>
               <div class="panel panel-default">
@@ -429,7 +431,7 @@
 
               
             </div>
-                   <div class="tab-pane fade" id="addsubcontractor">
+                   <div class="tab-pane fade" id="addsubcontractor{{client[i]+9}}">
               <h4>Add Sub Contractor</h4>
                 <input *ngIf="openAddSubContractor && openEditForm   " type="submit" class="btn btn-default form-control animated fadeIn"
               value="Add Subcontractor">
@@ -493,7 +495,7 @@
               <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
               <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating the new Sub Contractor has
                 been added.</p>
-                <h3 class = "animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
+                <h3 class = "animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor  To {{client.name}}...</h3>
               <h3 class="animated flash text-center" *ngIf="addSubContractorSuccess && !addSubContractorLoading">Sub-Contractor Successfully Added!</h3>
                      <i style="font-size:40px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw text-center"></i>
 
