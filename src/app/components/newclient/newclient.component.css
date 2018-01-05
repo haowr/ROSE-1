@@ -24,3 +24,24 @@ font-family: 'Open Sans Condensed', sans-serif;
     padding-bottom:20px;
 
 }
+
+#subcontractorinfo{
+
+    opacity:0;
+    transition:1s;
+
+}
+#subcontractoricon:active #subcontractorinfo{
+
+    opacity:1;
+    transition:1s;
+
+
+}
+#subcontractoricon:hover #subcontractorinfo{
+
+    opacity:1;
+    transition:1s;
+
+
+}

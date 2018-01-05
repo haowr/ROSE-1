@@ -225,12 +225,7 @@ openNewSubContractorForm(){
         },2000);
 
     }
-    //else{
 
-
-       // this.subContractor.name = this.subContractorName;
-
-   // }
     if(this.subContractorEmailAddress == "" || undefined){
 
                 this.addSubContractorEmailAddressEmpty = true;
@@ -245,11 +240,7 @@ openNewSubContractorForm(){
 
 
     }
-    //else{
-
-      //  this.subContractor.emailaddress = this.subContractorEmailAddress;
-
-    //}
+  
     if(this.subContractorPhoneNumber == "" || undefined){
 
         this.addSubContractorPhoneNumberEmpty = true;
@@ -263,11 +254,7 @@ openNewSubContractorForm(){
 
 
     }
-    //else{
-
-      //  this.subContractor.phonenumber = this.subContractorPhoneNumber;
-
-    //}
+ 
     if(this.subContractorContactName == "" || undefined){
         this.addSubContractorContactNameEmpty = true;
         this.turnOffInstructions = true;
@@ -280,11 +267,7 @@ openNewSubContractorForm(){
 
 
     }
-    //else{
-
-      //  this.subContractor.contactname = this.subContractorContactName;
-
-    //}
+ 
     if(this.subContractorContactEmail == "" || undefined){
 
         this.addSubContractorContactEmailEmpty = true;
@@ -297,10 +280,7 @@ openNewSubContractorForm(){
         },2000);
 
     }
-    //else{
-
-      //  this.subContractor.contactemail = this.subContractorContactEmail
-    //}
+    
     if(this.subContractorContactPhone == "" || undefined){
 
         this.addSubContractorContactPhoneEmpty = true;
@@ -314,11 +294,6 @@ openNewSubContractorForm(){
 
 
     }
-    //else{
-
-      //  this.subContractor.contactphone = this.subContractorContactPhone
-
-    //}
 
     if(this.subContractor.storenumbers.length < 0){
 
@@ -3099,7 +3074,114 @@ this.subContractorStoreNumberAlreadyEmpty = false;
       }, 2000);
 
     }
+ if(this.subContractorName == "" || undefined){
 
+        this.addSubContractorNameEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorNameEmpty = false;
+            this.turnOffInstructions = false;
+        },2000);
+
+    }
+
+    if(this.subContractorEmailAddress == "" || undefined){
+
+                this.addSubContractorEmailAddressEmpty = true;
+                console.log("TRUE!!")
+                this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorEmailAddressEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+
+    }
+  
+    if(this.subContractorPhoneNumber == "" || undefined){
+
+        this.addSubContractorPhoneNumberEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorPhoneNumberEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+
+    }
+ 
+    if(this.subContractorContactName == "" || undefined){
+        this.addSubContractorContactNameEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactNameEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+
+    }
+ 
+    if(this.subContractorContactEmail == "" || undefined){
+
+        this.addSubContractorContactEmailEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactEmailEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+    }
+    
+    if(this.subContractorContactPhone == "" || undefined){
+
+        this.addSubContractorContactPhoneEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorContactPhoneEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000);
+
+
+    }
+
+    if(this.subContractor.storenumbers.length < 0){
+
+
+        this.addSubContractorStoreNumbersEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorStoreNumbersEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000)
+
+    }
+
+    if(this.subContractor.locations.length<0){
+
+
+        this.addSubContractorLocationsEmpty = true;
+        this.turnOffInstructions = true;
+        setTimeout(()=>{
+
+            this.addSubContractorLocationsEmpty = false;
+            this.turnOffInstructions = false;
+
+        },2000)
+
+    }
 
     if (this.client.subcontractors.length < 1) {
 
@@ -3112,6 +3194,28 @@ this.subContractorStoreNumberAlreadyEmpty = false;
         this.turnOffInstructions = false;
 
       }, 2000);
+
+    }
+        if (this.subContractor.locations.length == 0 && 
+        this.subContractor.storenumbers.length == 0
+        && this.subContractorContactPhone ==  ""
+        && this.subContractorContactEmail ==  ""
+        && this.subContractorContactName ==  ""
+
+        && this.subContractorPhoneNumber ==  ""
+        && this.subContractorEmailAddress ==  ""
+        && this.subContractorName ==  "") {
+
+console.log("should be here");
+      this.addSubcontractorFailed = true;
+      console.log("this.addSucontractorFailed")
+      console.log(this.addSubcontractorFailed);
+
+      setTimeout(() => {
+
+        this.addSubcontractorFailed = false;
+
+      }, 3000);
 
     }
 
