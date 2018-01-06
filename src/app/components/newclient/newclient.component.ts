@@ -283,7 +283,7 @@ this.subContractorReady= true;
     }else{
 
         this.clientFormOpen = false;
-        if(this.subContractorReady){
+       /* if(this.subContractorReady){
 
             this.subContractorReady = false;
                setTimeout(()=>{
@@ -291,19 +291,34 @@ this.subContractorReady= true;
                 this.scReady = false;
             },1000);
 
+        }else{
+            this.clientsReady = false
+              setTimeout(()=>{
+
+                this.cReady = false;
+            },1000);
         }
         if(this.clientsReady){
-
+            console.log("oy")
             this.clientsReady = false
             setTimeout(()=>{
 
                 this.cReady = false;
             },1000);
 
+        }else{
+            console.log('wer')
+            //this.subContractorReady = false;
+            //this.clientsReady = false;
+            //  setTimeout(()=>{
+
+               // this.scReady = false;
+                //this.cReady = false;
+            //},1000);
         }
 
+    }*/
     }
-
   }
 
 openNewSubContractorForm(){
