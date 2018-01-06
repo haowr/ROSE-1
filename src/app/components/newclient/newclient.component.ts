@@ -278,7 +278,13 @@ this.subContractorReady= true;
     if(!this.clientFormOpen){
 
         this.clientFormOpen = true;
-        
+        setTimeout(()=>{
+         document.getElementById("name2").click();
+
+
+        },900)
+         
+         
 
     }else{
 
