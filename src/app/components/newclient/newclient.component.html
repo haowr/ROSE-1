@@ -444,7 +444,7 @@
               <div *ngIf=" addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty || nameEmpty || emailAddressEmpty || phoneNumberEmpty ||
                          addSubContractorEmailAddressEmpty|| addSubContractorContactName || addSubContractorContactPhoneEmpty || addSubContractorContactEmailEmpty
                          || addSubContractorLocationsEmpty|| addSubContractorStoreNumbersEmpty|| emailAddressEmpty || contactNameEmpty || contactPhoneEmpty || contactEmailEmpty
-                          || subContractorsEmpty && !addClientLoading && !addClientSuccess && !clientAddFailed" class = "well well-sm">
+                          || subContractorsEmpty || !addClientLoading || !addClientSuccess || !clientAddFailed" class = "well well-sm">
                           
               <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
