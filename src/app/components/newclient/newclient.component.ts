@@ -93,6 +93,9 @@ export class NewclientComponent implements OnInit {
   contactEmailEmpty:boolean = false;
   subContractorsEmpty:boolean = false;
  subContractorReady:boolean =false;
+ clientsReady:boolean= true;
+ scReady:boolean = false;
+ cReady:boolean = true;
   addNameSuccessMsg: string = "Name Successfully Added To the Database";
   addNameFailedMsg: string = "Name Field Must Not Be Empty...";
   addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
@@ -165,9 +168,40 @@ addSubContractorNameEmpty: boolean = false;
   subContractorReady2(){
 if(!this.subContractorReady){
 this.subContractorReady = true;
+//this.scReady = true
+//this.cReady = false;
+this.clientsReady = false
+//setTimeout(()=>{
+
+    //this.newSubContractorFormOpen=false;
+    this.scReady = true;
+    this.cReady = false;
+       console.log("this.subContractorReady")
+    console.log(this.subContractorReady)
+    console.log("scready");
+    console.log(this.scReady)
+    console.log(this.cReady);
+    console.log("clientsready")
+    console.log(this.clientsReady)
+//},1500)
 
 }else{
     this.subContractorReady = false;//
+    this.scReady = false;
+    this.clientsReady = true;
+    this.cReady = true;
+    console.log("this.subContractorReady")
+    console.log(this.subContractorReady)
+    console.log("scready");
+    console.log(this.scReady)
+    console.log("clientsready")
+    console.log(this.clientsReady)
+    //this.cReady = true;
+    //setTimeout(()=>{
+
+    //this.newSubContractorFormOpen=false;
+   // this.cReady = false;
+//},1500)
 }
       
   }
