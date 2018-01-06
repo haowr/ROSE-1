@@ -280,7 +280,7 @@ this.subContractorReady= true;
         this.clientFormOpen = true;
         setTimeout(()=>{
          document.getElementById("name2").click();
-
+document.getElementById("scname2").click();
 
         },900)
          
