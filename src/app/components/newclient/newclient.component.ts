@@ -92,7 +92,7 @@ export class NewclientComponent implements OnInit {
   contactPhoneEmpty:boolean = false;
   contactEmailEmpty:boolean = false;
   subContractorsEmpty:boolean = false;
- subContractorReady:boolean = false;
+ subContractorReady:boolean =false;
   addNameSuccessMsg: string = "Name Successfully Added To the Database";
   addNameFailedMsg: string = "Name Field Must Not Be Empty...";
   addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";

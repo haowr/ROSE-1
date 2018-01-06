@@ -22,7 +22,7 @@
 
 
         
-          <ul class="nav nav-tabs animated fadeOutLeft" *ngIf="clientFormOpen && subContractorReady">
+          <ul class="nav nav-tabs " [ngClass]="{'animated': subContractorReady || !subContractorReady,'fadeOutLeft': subContractorReady, 'fadeInRight':!subContractorReady}" *ngIf="clientFormOpen ">
 
             <br>
             <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
@@ -37,7 +37,7 @@
             <li class=""><a href="#addsubcontractor" data-toggle="tab" aria-expanded="false">Submit</a></li>
 
       </ul>
-                <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn" *ngIf=" clientFormOpen ">
+                <div id="myTabContent" style="border-bottom:1px solid gray" class="tab-content animated fadeIn"  *ngIf=" clientFormOpen ">
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade active in" id="name">
 
@@ -151,9 +151,10 @@
             <!--      <div *ngIf=" !turnOffInstructions">
                 <br>
                 <br>
-                
+                <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
                 
               </div>-->
+              <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
               <p  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
               <p  class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
               <p  class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
@@ -198,6 +199,7 @@
      
        
           <form *ngIf="newSubContractorFormOpen" (submit)="addSubContractor()">
+            <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
       <ul class="nav nav-tabs animated fadeIn" *ngIf="newSubContractorFormOpen" >
 
             <br>
