@@ -133,7 +133,7 @@
 
                    <div style="border-bottom:1px solid gray"class="tab-pane fade" id="addsubcontractor">
               <h4>Add Sub Contractor</h4>
-             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Add Sub-Contractor</button>
+             <button type="button" (click)="clientReady2()"class="btn btn-default" >Open Sub-Contractor Form</button>
              <button type="submit" class="btn btn-default" >Submit Client</button>
                         
                         
@@ -249,11 +249,11 @@
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade active in" id="scname">
 
-              <h4>Namesc</h4>
+              <h4>Name</h4>
 
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
                 class="form-control">
-
+<i class="fa fa-chevron-right" (click)="openNextTab('scphonenumber2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('scphonenumber2')"style="font-size:40px" aria-hidden="true"></i>
               <div *ngIf="addSubContractorNameEmpty" class=" well well-sm">
 
                 {{editSubContractorFieldEmptyMsg}}
@@ -265,24 +265,11 @@
 <br>
             </div>
 
-
-            <div  style="border-bottom:1px solid gray"class="tab-pane fade" id="scemailaddress">
-              <h4>Email Address</h4>
-              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
-                class="form-control">
-              <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
-
-                {{editSubContractorFieldEmptyMsg}}
-              </div>
-              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-              <span *ngIf="addSubContractorLoading">LOADING</span>
-              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-<br>
-            </div>
             <div style="border-bottom:1px solid gray"class="tab-pane fade" id="scphonenumber">
               <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
+                <i class="fa fa-chevron-right" (click)="openNextTab('scemailaddress2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('scemailaddress2')"style="font-size:40px" aria-hidden="true"></i>
               <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
 
                 {{editSubContractorFieldEmptyMsg}}
@@ -292,10 +279,26 @@
               <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 <br>
             </div>
+            <div  style="border-bottom:1px solid gray"class="tab-pane fade" id="scemailaddress">
+              <h4>Email Address</h4>
+              <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
+                class="form-control">
+                <i class="fa fa-chevron-right" (click)="openNextTab('sccontactname2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('sccontactname2')"style="font-size:40px" aria-hidden="true"></i>
+              <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
+
+                {{editSubContractorFieldEmptyMsg}}
+              </div>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span *ngIf="addSubContractorLoading">LOADING</span>
+              <i style="font-size:20px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+<br>
+            </div>
+
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="sccontactname">
               <h4>Contact Name</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                 class="form-control">
+                <i class="fa fa-chevron-right" (click)="openNextTab('sccontactphone2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('sccontactphone2')"style="font-size:40px" aria-hidden="true"></i>
               <div *ngIf="addSubContractorContactNameEmpty" class=" well well-sm">
 
                 {{editSubContractorFieldEmptyMsg}}
@@ -312,6 +315,7 @@
               <h4>Contact Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                 name="subContractorContactPhone" class="form-control">
+                <i class="fa fa-chevron-right" (click)="openNextTab('sccontactemail2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('sccontactemail2')"style="font-size:40px" aria-hidden="true"></i>
               <div *ngIf="addSubContractorContactPhoneEmpty" class=" well well-sm">
 
                 {{editSubContractorFieldEmptyMsg}}
@@ -325,6 +329,7 @@
               <h4>Contact Email</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                 class="form-control">
+                <i class="fa fa-chevron-right" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i>
               <div *ngIf="addSubContractorContactEmailEmpty" class=" well well-sm">
 
                 {{editSubContractorFieldEmptyMsg}}
@@ -353,8 +358,7 @@
 
  <button  type = "button"class= "btn btn-default" (click)="removeLocation();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>                         
                    <br>
-                  <button type="button" class="btn btn-default"(click)="openNextTab('scstorenumbers2')">Next</button>
- <div *ngIf="subContractorLocationSuccessfullyRemoved" class=" well well-sm">
+ <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i> <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i> <div *ngIf="subContractorLocationSuccessfullyRemoved" class=" well well-sm">
  <p> Store Location Successfully Removed...</p>
                   </div>
                              <div *ngIf="subContractorLocationSuccessfullyAdded" class=" well well-sm">
@@ -396,7 +400,10 @@
                   <button type="button"class= "btn btn-default" (click)="addStoreNumber();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                   <button  type = "button"class= "btn btn-default" (click)="removeStoreNumber();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <br>
-                                 <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
+                    <br>
+                                <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i>                                <i class="fa fa-chevron-right" (click)="openNextTab('sc')"style="font-size:40px" aria-hidden="true"></i>
+
+   <!--<button type="button" (click)="subContractorReady2()"class="btn btn-default form-control" >Submit</button>-->
 
                       <div *ngIf="subContractorStoreNumberSuccessfullyRemoved" class=" well well-sm">
 
@@ -431,7 +438,7 @@
 
                    <div style="border-bottom:1px solid gray"class="tab-pane fade" id="submit2">
               <h4>Add Sub Contractor</h4>
-             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Return To Client Form</button>
+             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Edit Client Form</button>
              <button type="button" (click)="addSubContractor()"class="btn btn-default" >Insert Sub-Contractor</button>
          
         
@@ -465,7 +472,7 @@
               <i *ngIf="addSubContractorSuccess "class="fa fa-check text-center" aria-hidden="true" style="font-size:40px"></i>
               <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed" class = "animated flash">Inserting Client Into Database...</h3>
                 <h3 *ngIf="addClientSuccess" class = "animated flash">Client Successfully Added To The Database...</h3>
-              <i *ngIf="addClientSuccess"class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
+              <i *ngIf="addClientSuccess"class="fa fa-check text-center" aria-hidden="true" style="font-size:40px"></i>
               <h3 *ngIf="clientAddFailed" class = "animated flash text-danger">Client Already Exists In The Database...</h3>
 
               <i   *ngIf="clientAddFailed" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
@@ -517,12 +524,12 @@
           
 
           </div>
-                       <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
+                      <!-- <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
 
           
                        <button *ngIf="!clientOpen&& !newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Open Add Sub-Contractor Form</button>
                               <button *ngIf="!clientOpen && newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Close Add Sub-Contractor Form</button>
-
+`                 MIGHT NEED TO RE ACTIVATE THIS..-->
 
           <br>
  
@@ -683,8 +690,8 @@
           </form>
 
 
-<!--END OF FORN-->
- <button type="submit" class="btn btn-default text-center" >Submit</button>
+<!--END OF FORm-->
+ <!--<button type="submit" class="btn btn-default text-center" >Submit</button>-->
 
       <br>
                     

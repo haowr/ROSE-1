@@ -167,18 +167,21 @@ addSubContractorNameEmpty: boolean = false;
   }
   subContractorReady2(){
 if(!this.subContractorReady){
-this.subContractorReady = true;
+
 //this.scReady = true
 //this.cReady = false;
 this.clientsReady = false
 //setTimeout(()=>{
 
     //this.newSubContractorFormOpen=false;
+    this.cReady = false;
     this.scReady = true;
-    setTimeout(()=>{
-this.cReady = false;
 
-    },2000)
+    setTimeout(()=>{
+
+this.subContractorReady = true;
+
+    },1000)
     
        console.log("this.subContractorReady")
     console.log(this.subContractorReady)
@@ -190,24 +193,84 @@ this.cReady = false;
 //},1500)
 
 }else{
-    this.subContractorReady = false;//
-    this.scReady = false;
-    this.clientsReady = true;
-    this.cReady = true;
-    console.log("this.subContractorReady")
-    console.log(this.subContractorReady)
-    console.log("scready");
-    console.log(this.scReady)
-    console.log("clientsready")
-    console.log(this.clientsReady)
-    //this.cReady = true;
-    //setTimeout(()=>{
+    //
 
-    //this.newSubContractorFormOpen=false;
-   // this.cReady = false;
-//},1500)
+    
+    this.subContractorReady = false;
+    
+   setTimeout(()=>{
+//this.scReady = true
+//this.clientsReady = false;
+this.scReady= false;
+this.cReady= true;
+//setTimeout(()=>{
+    
+
+
+
+this.clientsReady= true;
+
+
+//
+
+
+    
+//},50)
+
+    },1000)
+    
+    //this.clientsReady = true;
+   // this.cReady = true;
+
 }
       
+  }
+  clientReady2(){
+
+ if(!this.clientsReady){
+
+//this.subContractorReady = false
+//setTimeout(()=>{
+
+    //this.newSubContractorFormOpen=false;
+    this.clientsReady = true;
+
+    setTimeout(()=>{
+
+
+    this.cReady = true
+
+this.scReady = false;
+
+    },1000)
+
+
+ }else{
+
+    this.clientsReady = false;
+    
+   setTimeout(()=>{
+//this.scReady = true
+//this.clientsReady = false;
+this.cReady= false;
+//setTimeout(()=>{
+    
+
+this.scReady= true;
+
+this.subContractorReady= true;
+
+
+//
+
+
+    
+//},50)
+
+    },1000)
+
+ }
+
   }
 
   openNewClientForm(){
