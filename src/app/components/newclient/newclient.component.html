@@ -157,7 +157,7 @@
               <p  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
               <p  class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
               <p  class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p  class="text-danger"> 4. Click the "Open Add Sub-Contractor", button to open the "Add Sub-Contractor Form", where you 
+              <p  class="text-danger"> 4. Click the "Open Add Sub-Contractor Form", button to open the "Add Sub-Contractor Form", where you 
                 may add sub-contractors to your new client before clicking the final, "Submit", button...
            </p>
                 <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
@@ -256,7 +256,7 @@
 
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                 class="form-control">
-                <button type="button" class="btn btn-default"(click)="openNextTab('sccontactname2')">>></button>
+                <button type="button" class="btn btn-default"(click)="openNextTab('sccontactname2')">Next</button>
               <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Email Address Field Cannot Be Empty...</p>
