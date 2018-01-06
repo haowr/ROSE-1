@@ -499,11 +499,24 @@
                   <button  type = "button"class= "btn btn-default" (click)="removeStoreNumber();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <br>
                     <br>
-                  <i class="fa fa-chevron-left" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i> 
-                  <i class="fa fa-chevron-left" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i>
-                  <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i>                                
-                  <i class="fa fa-chevron-right" (click)="openNextTab('sc')"style="font-size:40px" aria-hidden="true"></i>
+                   <i class="fa fa-chevron-left" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i>                                
+                   <i class="fa fa-chevron-left" (click)="openNextTab('sclocations2')"style="font-size:40px" aria-hidden="true"></i>
 
+                   <i *ngIf="subContractorName == '' || subContractorEmailAddress == '' || subContractorPhoneNumber =='' || subContractorContactEmail == ''
+                        || subContractorContactPhone =='' || subContractorContactName ==''"
+                  class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>
+                  <i *ngIf="subContractorName == '' || subContractorEmailAddress == '' || subContractorPhoneNumber =='' || subContractorContactEmail == ''
+                        || subContractorContactPhone =='' || subContractorContactName ==''"
+                  class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>
+              
+                  <i *ngIf="subContractorName !== '' && subContractorEmailAddress !== '' && subContractorPhoneNumber !=='' && subContractorContactEmail !== ''
+                        && subContractorContactPhone !=='' && subContractorContactName !=='' && subContractor.storenumbers.length>0 && subContractor.locations.length>0"
+                  class="fa fa-chevron-right animated flash" (click)="openNextTab('scaddsubcontractor')"style="font-size:40px" aria-hidden="true"></i>
+                  <i *ngIf="subContractorName !== '' && subContractorEmailAddress !== '' && subContractorPhoneNumber !=='' && subContractorContactEmail !== ''
+                        && subContractorContactPhone !=='' && subContractorContactName !=='' && subContractor.storenumbers.length>0 && subContractor.locations.length>0 "
+                  class="fa fa-chevron-right animated flash" (click)="openNextTab('scaddsubcontractor')"style="font-size:40px" aria-hidden="true"></i>
+              
+       
                   <div *ngIf="subContractorStoreNumberSuccessfullyRemoved" class=" well well-sm">
 
                         <p> Store Number Successfully Removed...</p>
@@ -541,10 +554,10 @@
              <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Edit Client Form</button>
              <button type="button" (click)="addSubContractor()"class="btn btn-default" >Insert Sub-Contractor</button>
              
-             <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i> 
-             <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i>
-             <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers2')"style="font-size:40px" aria-hidden="true"></i>              
-             <i class="fa fa-chevron-right" (click)="openNextTab('sc')"style="font-size:40px" aria-hidden="true"></i>
+             <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i> 
+             <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i>
+             <i class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>              
+             <i class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>
 
  
 <br>
