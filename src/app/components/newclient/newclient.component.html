@@ -201,16 +201,16 @@
       <ul class="nav nav-tabs animated fadeIn" *ngIf="newSubContractorFormOpen" >
 
             <br>
-            <li class="active"><a href="#scname" data-toggle="tab" aria-expanded="false">Name</a></li>
+            <li class="active"><a id="scname"href="#scname" data-toggle="tab" aria-expanded="false">Name</a></li>
 
-            <li class=""><a href="#scphonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
+            <li class=""><a id="scphonenumber"href="#scphonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
 
-            <li class=""><a href="#scemailaddress" data-toggle="tab" aria-expanded="false">Email</a></li>
-            <li class=""><a href="#sccontactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
-            <li class=""><a href="#sccontactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
-            <li class=""><a href="#sccontactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
-            <li class=""><a href="#sclocations" data-toggle="tab" aria-expanded="false">Locations</a></li>
-            <li class=""><a href="#scstorenumbers" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+            <li class=""><a id="scemailaddress"href="#scemailaddress" data-toggle="tab" aria-expanded="false">Email</a></li>
+            <li class=""><a id="sccontactname"href="#sccontactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
+            <li class=""><a id="sccontactphone"href="#sccontactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
+            <li class=""><a id="sccontactemail"href="#sccontactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
+            <li class=""><a id="sclocations" href="#sclocations" data-toggle="tab" aria-expanded="false">Locations</a></li>
+            <li class=""><a id="scstorenumbers" href="#scstorenumbers" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
             <li class=""><a href="#addsubcontractor2" data-toggle="tab" aria-expanded="false">Submit</a></li>
 
       </ul>
@@ -223,7 +223,7 @@
 
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
                 class="form-control">
-                <button type="button" class="btn btn-submit"><a href="#scemailaddress" data-toggle="tab" aria-expanded="false">Next</a></button>
+                <button type="button" class="btn btn-submit"(click)="openNextTab('scemailaddress')">Next</button>
               <div *ngIf="addSubContractorNameEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Name Field Cannot Be Empty...</p>
@@ -241,6 +241,7 @@
 
               <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                 class="form-control">
+                <button type="button" class="btn btn-submit"(click)="openNextTab('scphonenumber)">Next</button>
               <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Email Address Field Cannot Be Empty...</p>
@@ -255,6 +256,7 @@
               <h4>Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                 class="form-control">
+                <button type="button" class="btn btn-submit"(click)="openNextTab('sccontactname')">Next</button>
               <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Phone Number Field Cannot Be Empty...</p>
@@ -268,6 +270,7 @@
               <h4>Contact Name</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                 class="form-control">
+                <button type="button" class="btn btn-submit"(click)="openNextTab('sccontactphone')">Next</button>
               <div *ngIf="addSubContractorContactNameEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Contact Name Field Cannot Be Empty...</p>
@@ -285,6 +288,7 @@
               <h4>Contact Phone Number</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                 name="subContractorContactPhone" class="form-control">
+                <button type="button" class="btn btn-submit"(click)="openNextTab('sccontactemail')">Next</button>
               <div *ngIf="addSubContractorContactPhoneEmpty" class=" well well-sm">
 
                 <p>Sub-Contractor Contact Phone Field Cannot Be Empty...</p>
@@ -298,6 +302,7 @@
               <h4>Contact Email</h4>
               <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                 class="form-control">
+                <button type="button" class="btn btn-submit"(click)="openNextTab('sclocations')">Next</button>
               <div *ngIf="addSubContractorContactEmailEmpty" class=" well well-sm">
 
                <p>Sub-Contractor Contact Email Field Cannot Be Empty...</p>
@@ -318,6 +323,7 @@
                 <div class="panel-body">
                   <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subContractor.locations}}"
                     name="subCLocations" class="form-control">
+                    <button type="button" class="btn btn-submit"(click)="openNextTab('scstorenumbers')">Next</button>
 
  <button type="button"class= "btn btn-default" (click)="addLocation();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                   <button  type = "button"class= "btn btn-default" (click)="removeLocation();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>                         <div *ngIf="subContractorLocationSuccessfullyRemoved" class=" well well-sm">

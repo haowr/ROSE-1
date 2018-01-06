@@ -3389,6 +3389,11 @@ if(this.name != "" &&
  // }
 
   }
+  openNextTab(id){
+
+    document.getElementById(id).click();
+
+  }
   removeSubContractor(){
 
     if(this.client.subcontractors.length>0){
