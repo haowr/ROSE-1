@@ -22,7 +22,7 @@
 
 
         
-          <ul class="nav nav-tabs animated fadeIn" *ngIf="clientFormOpen">
+          <ul class="nav nav-tabs animated fadeOutLeft" *ngIf="clientFormOpen && subContractorReady">
 
             <br>
             <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
@@ -132,7 +132,7 @@
 
                    <div style="border-bottom:1px solid gray"class="tab-pane fade" id="addsubcontractor">
               <h4>Add Sub Contractor</h4>
-             <button type="submit" class="btn btn-default" >Submit</button>
+             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
                         
         
  
