@@ -452,8 +452,8 @@
                     <button  type = "button"class= "btn btn-default" (click)="removeLocation();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>                         
                    <br>
 
-                  <i class="fa fa-chevron-left" (click)="openNextTab('sccontactphone2')"style="font-size:40px" aria-hidden="true"></i> 
-                  <i class="fa fa-chevron-left" (click)="openNextTab('sccontactphone2')"style="font-size:40px" aria-hidden="true"></i>
+                  <i class="fa fa-chevron-left" (click)="openNextTab('sccontactemail2')"style="font-size:40px" aria-hidden="true"></i> 
+                  <i class="fa fa-chevron-left" (click)="openNextTab('sccontactemail2')"style="font-size:40px" aria-hidden="true"></i>
                   <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i> 
                   <i class="fa fa-chevron-right" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i> <div *ngIf="subContractorLocationSuccessfullyRemoved" class=" well well-sm">
 
@@ -506,7 +506,7 @@
                         || subContractorContactPhone =='' || subContractorContactName ==''"
                   class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>
                   <i *ngIf="subContractorName == '' || subContractorEmailAddress == '' || subContractorPhoneNumber =='' || subContractorContactEmail == ''
-                        || subContractorContactPhone =='' || subContractorContactName ==''"
+                        || subContractorContactPhone =='' || subContractorContactName =='' || subContractor.storenumbers.length == 0 || subContractor.locations.length == 0"
                   class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>
               
                   <i *ngIf="subContractorName !== '' && subContractorEmailAddress !== '' && subContractorPhoneNumber !=='' && subContractorContactEmail !== ''
@@ -553,7 +553,7 @@
               <h4>Add Sub Contractor</h4>
              <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Edit Client Form</button>
              <button type="button" (click)="addSubContractor()"class="btn btn-default" >Insert Sub-Contractor</button>
-             
+             <br>
              <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i> 
              <i class="fa fa-chevron-left" (click)="openNextTab('scstorenumbers3')"style="font-size:40px" aria-hidden="true"></i>
              <i class="fa fa-chevron-right" (click)="openNextTab('scname2')"style="font-size:40px" aria-hidden="true"></i>              
