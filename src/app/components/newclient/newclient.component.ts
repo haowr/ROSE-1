@@ -278,10 +278,29 @@ this.subContractorReady= true;
     if(!this.clientFormOpen){
 
         this.clientFormOpen = true;
+        
 
     }else{
 
         this.clientFormOpen = false;
+        if(this.subContractorReady){
+
+            this.subContractorReady = false;
+               setTimeout(()=>{
+
+                this.scReady = false;
+            },1000);
+
+        }
+        if(this.clientsReady){
+
+            this.clientsReady = false
+            setTimeout(()=>{
+
+                this.cReady = false;
+            },1000);
+
+        }
 
     }
 
