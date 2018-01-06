@@ -38,6 +38,17 @@ font-family: 'Open Sans Condensed', sans-serif;
 
 
 }
+.chevronleft{
+
+display:inline-block;
+
+
+
+}
+.chevronright{
+    display:inline-block;
+  
+}
 #subcontractoricon:hover #subcontractorinfo{
 
     opacity:1;
