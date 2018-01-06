@@ -4,13 +4,22 @@ import { AuthService } from '../../services/auth.service';
 import { Routes,Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from "../../services/data.service";
 import { ClientService } from "../../services/client.service";
+import { ChangeDetectorRef } from '@angular/core';
+import { HostListener } from '@angular/core';
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+
+
 export class NavbarComponent implements OnInit {
 
+
+  innerWidth:number;
   pendingRequest:boolean = false;
   userName:string;
   username:any;
@@ -19,17 +28,38 @@ export class NavbarComponent implements OnInit {
   logoutSuccessMsg:string = "You Have Been Succcessfully Logged Out...";
   logOutSuccessful:boolean = false;
   loggedIn:boolean= true;
+  smallestRoseLogo:boolean = false;
   largeRoseLogo:boolean = false;
+  largestRoseLogo:boolean=false;
   subcontractorObject:Object;
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
+  @HostListener('window:resize', ['$event'])
+onResize(event) {
+  this.innerWidth = window.innerWidth;
+  if(this.innerWidth < 766){
+    this.smallestRoseLogo = true;
+    console.log(this.largeRoseLogo)
+    console.log(this.innerWidth)
+    console.log("Smaller")
+  }else{
+    this.largeRoseLogo = true;
+    this.smallestRoseLogo = false;
+    //this.largestRoseLogo= false;
+    console.log(this.largeRoseLogo)
+  }
+  console.log("POLLYS")
+  console.log(this.innerWidth)
+  console.log(this.largeRoseLogo);
+}
 
   constructor( public authservice: AuthService, 
                //private flashmessage: FlashMessagesService,
                private router: Router,
                private dataservice:DataService,
                private clientservice: ClientService,
-               private activatedroute: ActivatedRoute) { }
+               private activatedroute: ActivatedRoute,
+               private cdRef: ChangeDetectorRef) { }
 
 
   ngOnInit() {
@@ -44,11 +74,16 @@ export class NavbarComponent implements OnInit {
       console.log(this.username);
 
     });
+
     if(document.documentElement.clientWidth < 766){
 
-      this.largeRoseLogo=true;
+      this.smallestRoseLogo=true;
+      
+    }else{
+      this.largeRoseLogo = true;
     }
     console.log(this.largeRoseLogo)
+
     this.authservice.checkIfLoggedIn();
  
     this.activatedroute.params.subscribe((params:Params)=>{
@@ -94,7 +129,16 @@ export class NavbarComponent implements OnInit {
 
   }
 
+ngAfterViewInit(){
 
+this.cdRef.detectChanges();
+console.log("CHAAAAAANGES")
+
+if(document.documentElement.clientWidth<766){
+
+  console.log("smaller")
+}
+}
     closeNavbar(){
       if(document.documentElement.clientWidth < 766){
 document.getElementById("navbar-toggle").click();
@@ -108,11 +152,23 @@ document.getElementById("navbar-toggle").click();
 loadLargeRoseLogo(){
 
   if(document.documentElement.clientWidth< 766){
-
+if(!this.largestRoseLogo){
+  this.smallestRoseLogo = false
     console.log("mobile")
-    this.largeRoseLogo = true;
+    this.largestRoseLogo = true;
+
+}else{
+  setTimeout(()=>{
+
+  this.largestRoseLogo = false;
+  this.smallestRoseLogo= true;
+  },300)
+
+}
+    
 
   }else{
+    this.smallestRoseLogo = true;
     this.largeRoseLogo = false;
   }
 
