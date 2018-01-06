@@ -2794,7 +2794,7 @@ console.log("should be here");
       this.addSubContractorSuccess = true;
 
       setTimeout(() => {
-
+        document.getElementById("scname2").click();
         this.addSubContractorSuccess = false;
 
       }, 3000);
@@ -3393,6 +3393,10 @@ if(this.name != "" &&
 
     document.getElementById(id).click();
 
+  }
+  openHomeTab(){
+
+      document.getElementById("scname2");
   }
   removeSubContractor(){
 
