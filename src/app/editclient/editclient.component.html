@@ -514,17 +514,16 @@
           {{allSubContractorConditionsMetMsg}}
         </div>
       </div>
-<div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
+<div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  ">
+<div  *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
         <br>
 
 
 
         <br>
-<div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm &&!loadingClients  " style = "border-bottom: 1px solid gray">
+<div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  " style = "border-bottom: 1px solid gray">
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
-        <button *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm &&!loadingClients  " (click)="openIndividualSubContractor(z);" type="button"
-        
-          class="btn btn-default form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
+        <button *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients " (click)="openIndividualSubContractor(z);" type="button" class="btn btn-default form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
 </div>
         <br>
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
@@ -882,6 +881,7 @@
 
 
       </div>
+    </div>
       <div class="col-sm-3">
       </div>
       

@@ -200,6 +200,7 @@ export class EditclientComponent implements OnInit {
     ngOnInit() {
 
         console.log("getClients");
+        console.log(this.openEditForm)
 
         //this.openIndividualSubContractor(index);
         this.clientservice.getClients().subscribe(data => {
