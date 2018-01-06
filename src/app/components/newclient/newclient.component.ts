@@ -175,7 +175,11 @@ this.clientsReady = false
 
     //this.newSubContractorFormOpen=false;
     this.scReady = true;
-    this.cReady = false;
+    setTimeout(()=>{
+this.cReady = false;
+
+    },2000)
+    
        console.log("this.subContractorReady")
     console.log(this.subContractorReady)
     console.log("scready");

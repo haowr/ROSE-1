@@ -26,7 +26,7 @@
           <ul class="nav nav-tabs " [ngClass]="{'animated': clientsReady || !clientsReady,'fadeOutLeft': !clientsReady, 'fadeInRight':clientsReady}" *ngIf="clientFormOpen && cReady ">
 
             <br>
-            <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name2</a></li>
+            <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
 
             <li class=""><a href="#phonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
 
@@ -42,7 +42,7 @@
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade active in" id="name">
 
-              <h4>NameSC</h4>
+              <h4>Name</h4>
 
               <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="name" name="name"
                 class="form-control">
@@ -133,7 +133,7 @@
 
                    <div style="border-bottom:1px solid gray"class="tab-pane fade" id="addsubcontractor">
               <h4>Add Sub Contractor</h4>
-             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
+             <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Add Sub-Contractor</button>
              <button type="submit" class="btn btn-default" >Submit Client</button>
                         
                         
@@ -157,10 +157,10 @@
                 <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
                 
               </div>-->
-              <p  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p  class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p  class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p  class="text-danger"> 4. Click the "Open Add Sub-Contractor Form", button to open the "Add Sub-Contractor Form", where you 
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed" class="text-danger"> 4. Click the "Open Add Sub-Contractor Form", button to open the "Add Sub-Contractor Form", where you 
                 may add sub-contractors to your new client before clicking the final, "Submit", button...
            </p>
                 <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
@@ -230,7 +230,7 @@
 
 
             <br>
-            <li class="active"><a id="scname2"href="#scname" data-toggle="tab" aria-expanded="false">Name2144</a></li>
+            <li class="active"><a id="scname2"href="#scname" data-toggle="tab" aria-expanded="false">Name</a></li>
 
             <li class=""><a id="scphonenumber2"href="#scphonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
 
@@ -685,20 +685,7 @@
 
 <!--END OF FORN-->
  <button type="submit" class="btn btn-default text-center" >Submit</button>
-        <br>
-          <h4 *ngIf = "client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) Loaded...</h4>
 
-  
-      <div id="subcontractoricon"class="col-sm-3" *ngFor="let subcontractor of client.subcontractors;let i =index" >
-      <i style="font-size: 40px;"class="fa fa-list-alt animated flash" aria-hidden="true"> </i><i class="fa fa-times text-danger" (click)="removeSubContractor()" aria-hidden="true"></i>
-      <h4>{{subcontractor.name}}</h4>
-     <!-- <div  id="subcontractorinfo">
-        <p> {{subcontractor.contactname}} </p>
-        <p> {{subcontractor.phonenumber}} </p>
-         <p> {{subcontractor.emailaddress}} </p>
-          
-      </div>-->
-      </div>
       <br>
                     
 
