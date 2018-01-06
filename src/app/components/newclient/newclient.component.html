@@ -441,11 +441,7 @@
               <h3 *ngIf="clientAddFailed" class = "animated flash text-danger">Client Already Exists In The Database...</h3>
 
               <i   *ngIf="clientAddFailed" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
-              <div *ngIf=" addSubContractorNameEmpty || addSubContractorPhoneNumberEmpty || nameEmpty || emailAddressEmpty || phoneNumberEmpty ||
-                         addSubContractorEmailAddressEmpty|| addSubContractorContactName || addSubContractorContactPhoneEmpty || addSubContractorContactEmailEmpty
-                         || addSubContractorLocationsEmpty|| addSubContractorStoreNumbersEmpty|| emailAddressEmpty || contactNameEmpty || contactPhoneEmpty || contactEmailEmpty
-                          || subContractorsEmpty || !addClientLoading || !addClientSuccess || !clientAddFailed" class = "well well-sm">
-                          
+       
               <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
@@ -465,7 +461,7 @@
               <p *ngIf="subContractorsEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
               <p *ngIf="addClientFailed && !addClientLoading && !addClientSuccess">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
 
-              </div>
+            
            
             </div>
           </div>
