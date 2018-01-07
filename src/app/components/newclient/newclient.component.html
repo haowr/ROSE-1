@@ -280,13 +280,13 @@
 
               <h3 class="animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
 
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed"
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess "
                 class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading && !clientAddFailed"
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess "
                 class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading  && !clientAddFailed"
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess "
                 class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed"
+              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess "
                 class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
                 the new Sub Contractor has been added.</p>
               <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
@@ -638,20 +638,20 @@
             </div>
             <div class="panel-body">
 
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed && !client.subcontractors.length"
+              <p *ngIf="!turnOnInstructions || !client.subcontractors.length"
                 class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading && !clientAddFailed && !client.subcontractors.length"
+              <p *ngIf="!turnOnInstructions || !client.subcontractors.length"
                 class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess && !addClientLoading  && !clientAddFailed && !client.subcontractors.length"
+              <p *ngIf="!turnOnInstructions || !client.subcontractors.length"
                 class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-              <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed && !client.subcontractors.length"
+              <p *ngIf="!turnOnInstructions || !client.subcontractors.length"
                 class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
                 the new Sub Contractor has been added.</p>
               <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
 
 
-              <h3 *ngIf="addSubContractorSuccess " class="animated flash">Sub-Contractor Successfully Loaded...</h3>
-              <i *ngIf="addSubContractorSuccess " class="fa fa-check text-center" aria-hidden="true" style="font-size:40px"></i>
+              <h3 *ngIf="addSubContractorSuccess " class="animated flash text-center">Sub-Contractor Successfully Loaded...</h3>
+              <i *ngIf="addSubContractorSuccess " class="animated flash text-center fa fa-check " aria-hidden="true" style="font-size:40px"></i>
            
               <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
@@ -664,22 +664,22 @@
               <p *ngIf="addSubcontractorFailed && !addClientLoading && !addClientSuccess">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
 
     
-              <h3 *ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
-                            && contactphone != '' && client.subcontractors.length && !imReady"> Are You Ready To Submit Your New Client? </h3>
+              <h3 class = "text-center"*ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
+                            && contactphone != '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading"> Are You Ready To Submit Your New Client? </h3>
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== ''  && client.subcontractors.length && !imReady" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-default">Yes</button>
+                            && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-default text-center">Yes</button>
                             <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== '' && client.subcontractors.length && !imReady" (click)="imNotReadyFunc()"type="button" class="btn btn-default">No</button>
+                            && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-default text-center">No</button>
               <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== '' && client.subcontractors.length && imReady" type="submit" class="btn btn-default">Yes</button>
+                            && contactphone !== '' && client.subcontractors.length && imReady" type="submit" class="btn btn-default text-center">Yes</button>
               <h4 *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess&& client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) Loaded...</h4>
 
               <div id="subcontractoricon" class="col-sm-3" *ngFor="let subcontractor of client.subcontractors;let i =index">
-                <i *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess" style="font-size: 40px;"
-                  class="fa fa-list-alt animated flash" aria-hidden="true"> </i><i class="fa fa-times text-danger"
-                  *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess" (click)="removeSubContractor()"
+                <i *ngIf="!addSubContractorLoading && !addSubContractorSuccess && !addClientLoading && !addClientSuccess " style="font-size: 40px;"
+                  class="fa fa-list-alt animated flash text-center" aria-hidden="true"> </i><i class="fa fa-times text-danger text-center"
+                  *ngIf="!addSubContractorLoading && !addSubContractorSuccess && !addClientLoading && !addClientSuccess " (click)="removeSubContractor()"
                   aria-hidden="true"></i>
-                <h4 *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess">{{subcontractor.name}}</h4>
+                <h4 class = "text-center"*ngIf="!addSubContractorLoading && !addSubContractorSuccess && !addClientLoading && !addClientSuccess">{{subcontractor.name}}</h4>
                 <!-- <div  id="subcontractorinfo">
         <p> {{subcontractor.contactname}} </p>
         <p> {{subcontractor.phonenumber}} </p>

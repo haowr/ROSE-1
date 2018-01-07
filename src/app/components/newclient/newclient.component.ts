@@ -85,6 +85,7 @@ export class NewclientComponent implements OnInit {
   addSubContractorStoreNumbersFailed: boolean = false;
   addSubContractorStoreNumbersSuccess: boolean = false;
   turnOffInstructions:boolean = false;
+  turnOnInstructions:boolean = false;
   nameEmpty:boolean = false;
   phoneNumberEmpty:boolean = false;
   emailAddressEmpty:boolean = false;
@@ -557,7 +558,8 @@ console.log("should be here");
         this.subContractorContactPhone != "" &&
         this.subContractorContactName != "" &&
         this.subContractorContactEmail != ""){
-
+           
+            this.turnOnInstructions = true;
             console.log('success')
     
 
@@ -2992,6 +2994,7 @@ console.log("should be here");
       setTimeout(() => {
         document.getElementById("scname2").click();
         this.addSubContractorSuccess = false;
+//this.turnOnInstructions =;
 
       }, 3000);
     }
@@ -3459,6 +3462,7 @@ if(this.name != "" &&
 
         this.addClientSuccess = true;
         this.addClientLoading = false;
+        this.turnOnInstructions = false;
           
           this.client.subcontractors = [];
           setTimeout(() => {
@@ -3479,6 +3483,8 @@ if(this.name != "" &&
 
             //this.addClientFailed = false;
             this.clientAddFailed = false;
+               document.getElementById('btnclose').click();
+            this.areYouSure = true;
 
           }, 2000);
 
