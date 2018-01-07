@@ -636,7 +636,7 @@
               <h3 *ngIf="addClientSuccess && !addClientLoading " class="panel-title">.</h3>
 
             </div>
-            <div class="panel-body">
+            <div class="panel-body text-center">
 
               <p *ngIf="!turnOnInstructions || !client.subcontractors.length"
                 class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
@@ -650,9 +650,7 @@
               <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
 
 
-              <h3 *ngIf="addSubContractorSuccess " class="animated flash text-center">Sub-Contractor Successfully Loaded...</h3>
-              <i *ngIf="addSubContractorSuccess " class="animated flash text-center fa fa-check " aria-hidden="true" style="font-size:40px"></i>
-           
+              
               <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
@@ -662,8 +660,10 @@
               <p *ngIf="addSubContractorLocationsEmpty && !addSubcontractorFailed&& !addClientLoading && !addClientSuccess">A Sub-Contractor Store Locations Must Be Loaded Before Continuing...</p>
               <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
               <p *ngIf="addSubcontractorFailed && !addClientLoading && !addClientSuccess">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
-
-    
+<h3 *ngIf="addSubContractorSuccess " class="animated flash ">Sub-Contractor Successfully Loaded...</h3>
+              <br>
+              <i style=" text-align:center"*ngIf="addSubContractorSuccess  && !addSubContractorSuccess " class=" fa fa-check " aria-hidden="true" style="font-size:40px"></i>
+    <i style ="display:block; font-size:40px;"*ngIf="addSubContractorSuccess " class="fa fa-check-circle text-center animated flash" aria-hidden="true"></i>
               <h3 class = "text-center"*ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
                             && contactphone != '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading"> Are You Ready To Submit Your New Client? </h3>
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''

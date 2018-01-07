@@ -225,6 +225,7 @@ this.clientsReady= true;
 setTimeout(()=>{
 
 document.getElementById("name2").click();
+document.getElementById("nameinput").focus();
 },900)
          
 //document.getElementById("scname2").click();
