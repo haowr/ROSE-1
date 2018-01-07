@@ -180,6 +180,13 @@ this.clientsReady = false
     setTimeout(()=>{
 
 this.subContractorReady = true;
+         //document.getElementById("name2").click();
+         setTimeout(()=>{
+
+             document.getElementById("scname2").click();
+             document.getElementById("scnameinput").focus();
+         },900)
+
 
     },1000)
     
@@ -212,8 +219,12 @@ this.clientsReady= true;
 
 
 //
+setTimeout(()=>{
 
-
+document.getElementById("name2").click();
+},900)
+         
+//document.getElementById("scname2").click();
     
 //},50)
 
@@ -241,6 +252,12 @@ this.clientsReady= true;
     this.cReady = true
 
 this.scReady = false;
+//setTimeout(()=>{
+
+document.getElementById("scname2").click();
+document.getElementById("scnameinput").focus();
+
+//},900)
 
     },1000)
 
@@ -260,7 +277,11 @@ this.scReady= true;
 
 this.subContractorReady= true;
 
+   setTimeout(()=>{
 
+document.getElementById("scname2").click();
+document.getElementById("scnameinput").focus();
+},1200)
 //
 
 
@@ -268,6 +289,8 @@ this.subContractorReady= true;
 //},50)
 
     },1000)
+ 
+
 
  }
 
@@ -3539,9 +3562,18 @@ if(this.name != "" &&
  // }
 
   }
-  openNextTab(id){
-
+  openNextTab(id,input){
+    console.log(input)
     document.getElementById(id).click();
+    if(input != undefined){
+        setTimeout(()=>{
+
+            document.getElementById(input).focus();
+
+
+        },500)
+
+    }
 
   }
   openHomeTab(){
