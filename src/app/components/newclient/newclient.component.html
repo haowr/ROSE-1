@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
-    <button id="openModalButton"class="hidebutton " hidden="true" backdrop ="false"data-toggle="modal" data-target="#myModal2">Open Modal</button>
-      <button  class="hidebutton" hidden = "true"id="btnclose" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">Close</button>
-
+ 
   <!-- Trigger the modal with a button -->
 
 
@@ -13,19 +11,8 @@
     <br>
     <br>
 
-    <div id="addclienttitle" class="col-sm-12" style="text-align:center">
-      <h1 class=" animated fadeIn osc" style="text-decoration:underline;">Add Client</h1>
-    </div>
-
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-6 text-center">
-      <br>
-      <button *ngIf="!clientFormOpen" type="button" class="btn btn-primary" (click)="openNewClientForm()">Open Add Client Form</button>
-      <button *ngIf="clientFormOpen" type="button" class="btn btn-primary" (click)="openNewClientForm()">Close Add Client Form</button>
-
-      <form *ngIf="clientFormOpen" class=" animated fadeIn" (submit)="addClient()">
-
+   <button id="openModalButton"class="hidebutton " hidden="true" backdrop ="false"data-toggle="modal" data-target="#myModal2">Open Modal</button>
+      <button  class="hidebutton" hidden = "true"id="btnclose" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">Close</button>
 
                           <!-- Modal -->
   <div class="modal animated fadeIn" id="myModal2" role="dialog">
@@ -51,6 +38,12 @@
 </i>
         <span *ngIf="removingClient">LOADING</span>
         <i style="font-size:30px;" *ngIf="removingClient" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed && !areYouSure" class="animated flash">Inserting Client Into Database...</h3>
+              <h3 *ngIf="addClientSuccess && !areYouSure" class="animated flash">Client Successfully Added To The Database...</h3>
+              <i *ngIf="addClientSuccess && !areYouSure" class="fa fa-check-circle animated flash" aria-hidden="true" style="font-size:40px"></i>
+              <h3 *ngIf="clientAddFailed && !areYouSure" class="animated flash text-danger">Client Already Exists In The Database...</h3>
+
+              <i *ngIf="clientAddFailed && !areYouSure" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
 
        
 
@@ -58,15 +51,28 @@
          <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
         </div>
         <div class="modal-footer">
-        <button  type="submit" class="btn btn-default">Yes</button>
+        <button *ngIf="areYouSure"  (click)="addClient();" type="button" class="btn btn-default">Yes</button>
 
-           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+           <button *ngIf="areYouSure"type="button" class="btn btn-default" data-dismiss="modal">No</button>
 
         </div>
       </div>
       
     </div>
   </div>
+
+    <div id="addclienttitle" class="col-sm-12" style="text-align:center">
+      <h1 class=" animated fadeIn osc" style="text-decoration:underline;">Add Client</h1>
+    </div>
+
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6 text-center">
+      <br>
+      <button *ngIf="!clientFormOpen" type="button" class="btn btn-primary" (click)="openNewClientForm()">Open Add Client Form</button>
+      <button *ngIf="clientFormOpen" type="button" class="btn btn-primary" (click)="openNewClientForm()">Close Add Client Form</button>
+
+      <form *ngIf="clientFormOpen" class=" animated fadeIn" > <!-- (submit)="addClient()" -->
 
         <ul class="nav nav-tabs " [ngClass]="{'animated': clientsReady || !clientsReady,'fadeOutLeft': !clientsReady, 'fadeInRight':clientsReady}"
           *ngIf="clientFormOpen && cReady ">
@@ -288,31 +294,27 @@
 
               <h3 *ngIf="addSubContractorSuccess" class="animated flash">Sub-Contractor Successfully Loaded...</h3>
               <i *ngIf="addSubContractorSuccess" class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
-              <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed" class="animated flash">Inserting Client Into Database...</h3>
-              <h3 *ngIf="addClientSuccess" class="animated flash">Client Successfully Added To The Database...</h3>
-              <i *ngIf="addClientSuccess" class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
-              <h3 *ngIf="clientAddFailed" class="animated flash text-danger">Client Already Exists In The Database...</h3>
+          
+              <i *ngIf="clientAddFailed && !areYouSure" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
 
-              <i *ngIf="clientAddFailed" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
+              <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed ">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed ">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed ">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactNameEmpty && !addSubcontractorFailed ">Sub-Contractor Contact Name...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactPhoneEmpty && !addSubcontractorFailed">Sub-Contractor Contact Phone Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorContactEmailEmpty && !addSubcontractorFailed ">Sub-Contractor Contact Email Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorLocationsEmpty && !addSubcontractorFailed">A Sub-Contractor Store Locations Must Be Loaded Before Continuing...</p>
+              <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed ">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
+              <p *ngIf="addSubcontractorFailed ">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
 
-              <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Name...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactPhoneEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Phone Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorContactEmailEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Contact Email Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorLocationsEmpty && !addSubcontractorFailed&& !addClientLoading && !addClientSuccess">A Sub-Contractor Store Locations Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addSubcontractorFailed && !addClientLoading && !addClientSuccess">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
-
-              <p *ngIf="addSubContractorNameEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Name Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorPhoneNumberEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="emailAddressEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactNameEmpty && !addClientFailed && !addClientLoading&& !addClientSuccess">Client Contact Name...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactPhoneEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactEmailEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Email Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="subContractorsEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addClientFailed && !addClientLoading && !addClientSuccess">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
+              <p *ngIf="addSubContractorNameEmpty ">Client Name Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="addSubContractorPhoneNumberEmpty ">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="emailAddressEmpty ">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactNameEmpty ">Client Contact Name...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactPhoneEmpty ">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="contactEmailEmpty ">Client Contact Email Empty...Please Input Information Before Continuing...</p>
+              <p *ngIf="subContractorsEmpty s">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
+              <!--<p *ngIf="addClientFailed && !addClientLoading && !addClientSuccess">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>-->
 
 
 
@@ -650,13 +652,7 @@
 
               <h3 *ngIf="addSubContractorSuccess " class="animated flash">Sub-Contractor Successfully Loaded...</h3>
               <i *ngIf="addSubContractorSuccess " class="fa fa-check text-center" aria-hidden="true" style="font-size:40px"></i>
-              <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed" class="animated flash">Inserting Client Into Database...</h3>
-              <h3 *ngIf="addClientSuccess" class="animated flash">Client Successfully Added To The Database...</h3>
-              <i *ngIf="addClientSuccess" class="fa fa-check text-center" aria-hidden="true" style="font-size:40px"></i>
-              <h3 *ngIf="clientAddFailed" class="animated flash text-danger">Client Already Exists In The Database...</h3>
-
-              <i *ngIf="clientAddFailed" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
-
+           
               <p *ngIf="addSubContractorNameEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Name Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorPhoneNumberEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Phone Number Field Empty...Please Input Information Before Continuing...</p>
               <p *ngIf="addSubContractorEmailAddressEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">Sub-Contractor Email Address Field Empty...Please Input Information Before Continuing...</p>
@@ -667,15 +663,7 @@
               <p *ngIf="addSubContractorStoreNumbersEmpty && !addSubcontractorFailed && !addClientLoading && !addClientSuccess">A Sub-Contractor Store Number Must Be Loaded Before Continuing...</p>
               <p *ngIf="addSubcontractorFailed && !addClientLoading && !addClientSuccess">All Sub-Contractor Fields Empty...Please Input Information Before Continuing...</p>
 
-              <p *ngIf="addSubContractorNameEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Name Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="addSubContractorPhoneNumberEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Phone Number Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="emailAddressEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Email Address Field Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactNameEmpty && !addClientFailed && !addClientLoading&& !addClientSuccess">Client Contact Name...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactPhoneEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Phone Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="contactEmailEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">Client Contact Email Empty...Please Input Information Before Continuing...</p>
-              <p *ngIf="subContractorsEmpty && !addClientFailed && !addClientLoading && !addClientSuccess">At Least One Sub-Contractor Must Be Loaded Before Continuing...</p>
-              <p *ngIf="addClientFailed && !addClientLoading && !addClientSuccess">All Client Fields Empty...Please Input Fill In All Fields Before Continuing...</p>
-
+    
               <h3 *ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
                             && contactphone != '' && client.subcontractors.length && !imReady"> Are You Ready To Submit Your New Client? </h3>
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''

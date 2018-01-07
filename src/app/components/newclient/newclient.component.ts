@@ -3424,7 +3424,7 @@ if(this.name != "" &&
     this.client.subcontractors.length >0
 
     ){
-      
+      this.areYouSure = false;
       
       
         console.log("success");
@@ -3453,7 +3453,7 @@ if(this.name != "" &&
      
       
       this.clientservice.addClient(this.client).subscribe(data => {
-
+        
         console.log(data);
         if (data.success) {
 
@@ -3465,7 +3465,7 @@ if(this.name != "" &&
 
             this.addClientSuccess = false;
             document.getElementById('btnclose').click();
-
+            this.areYouSure = true;
           }, 2000);
 
 
