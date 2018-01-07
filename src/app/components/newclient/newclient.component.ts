@@ -3464,6 +3464,7 @@ if(this.name != "" &&
           setTimeout(() => {
 
             this.addClientSuccess = false;
+            document.getElementById('btnclose').click();
 
           }, 2000);
 
