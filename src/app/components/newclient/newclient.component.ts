@@ -96,6 +96,8 @@ export class NewclientComponent implements OnInit {
  clientsReady:boolean= true;
  scReady:boolean = false;
  cReady:boolean = true;
+ imReady:boolean = false;
+ areYouSure:boolean = false;
   addNameSuccessMsg: string = "Name Successfully Added To the Database";
   addNameFailedMsg: string = "Name Field Must Not Be Empty...";
   addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
@@ -296,6 +298,27 @@ document.getElementById("scnameinput").focus();
 
   }
 
+imReadyToSubmitFunc(){
+
+    this.areYouSure= true;
+    document.getElementById("openModalButton").click();
+
+    /*if(!this.imReady){
+
+        this.imReady = true;
+
+
+    }*/
+}
+imNotReadyToSubmitFunc(){
+
+    if(this.imReady){
+
+        this.imReady = false;
+
+    }
+
+}
   openNewClientForm(){
 
     if(!this.clientFormOpen){
