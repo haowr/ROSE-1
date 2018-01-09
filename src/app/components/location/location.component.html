@@ -43,22 +43,22 @@
  
     <div class = "panel panel-default">
 
-    <h3 class ="subcontractorlabel animated fadeIn">Name:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.name}}</h4></h3>
+    <h3 class ="subcontractorlabel animated fadeIn">Name:<h4 class="subcontractorlabel animated fadeIn">{{subContractorName}}</h4></h3>
     </div>
     <div class = "panel panel-default">
-    <h3 class ="subcontractorlabel animated fadeIn">Contact Name:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactname}}</h4></h3>
+    <h3 class ="subcontractorlabel animated fadeIn">Contact Name:<h4 class="subcontractorlabel animated fadeIn">{{subContractorContactName}}</h4></h3>
     </div>
     <div class = "panel panel-default">
-    <h3 class ="subcontractorlabel animated fadeIn">Contact Phone:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.contactphone}}</h4></h3>
+    <h3 class ="subcontractorlabel animated fadeIn">Contact Phone:<h4 class="subcontractorlabel animated fadeIn">{{subContractorContactPhone}}</h4></h3>
     </div>
     <div class ="panel panel-default">
-    <h3 class ="subcontractorlabel animated fadeIn">E-mail:<h4 class="subcontractorlabel animated fadeIn">{{subcontractorObject.emailaddress}}</h4></h3>
+    <h3 class ="subcontractorlabel animated fadeIn">E-mail:<h4 class="subcontractorlabel animated fadeIn">{{subContractorContactEmail}}</h4></h3>
     </div>
         <div class ="panel panel-default">
     <h3 class ="subcontractorlabel animated fadeIn">Expenditures This Month:<h4 class="subcontractorlabel animated fadeIn">{{totalCostThisMonth| currency}}</h4></h3>
     <div class ="placeholderforexpenditureloadingicon" *ngIf="!expenditureLoading">
     </div>
-    <i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoading"style="font-size:21px;"></i><span *ngIf="expenditureLoading">LOADING CHART DATA</span><i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoaded"style="font-size:21px;"></i>
+    <i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoading"style="font-size:21px;"></i><span *ngIf="expenditureLoading">LOADING CHART DATA</span><i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoading"style="font-size:21px;"></i>
     <span class="sr-only">Loading...</span>
     </div>
           <canvas  baseChart

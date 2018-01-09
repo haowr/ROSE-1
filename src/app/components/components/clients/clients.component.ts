@@ -24,6 +24,7 @@ export class ClientsComponent implements OnInit {
   public url: string = "";
   public clientList: string[];
   showLocations:boolean = false;
+  clientsLoading:boolean = false;
   address: Address;
   clients: Clients;
   user: Object;
@@ -64,6 +65,7 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
     console.log("ngOnInit has run...");
     console.log(this.dataService.globalData);
+    this.clientsLoading = true;
     this.url = this.router.url;
         this.activatedroute.params.subscribe((params: Params) => {
 
@@ -94,6 +96,7 @@ export class ClientsComponent implements OnInit {
     this.clientservice.getClients().subscribe(clients =>{
 
       console.log(clients);
+      this.clientsLoading = false;
       this.clientArray =clients.clients ;
      /*   for(let i =0; i<this.clientArray.length/2; i++){
 

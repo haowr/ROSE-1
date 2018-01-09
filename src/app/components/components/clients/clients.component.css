@@ -93,6 +93,7 @@ opacity:1;
   overflow-y:scroll;
   height:200px;
   right:-35px;
+  font-family: 'Lora', serif;
   
 }
 .clientnameheader{
@@ -102,6 +103,14 @@ opacity:1;
 .subcontractorhref{
   width:200px;
   border:1px solid black;
+
+}
+#clientstitle{
+   border:1px solid #ddd;
+}
+.loadingcontainer{
+
+     border:1px solid #ddd;
 
 }
 /*

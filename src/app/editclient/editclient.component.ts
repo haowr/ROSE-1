@@ -134,6 +134,7 @@ export class EditclientComponent implements OnInit {
     subContractorLocationSuccessfullyAdded:boolean = false;
     subContractorLocationAlreadyEmpty:boolean = false;
     loadingNewSubContractors:boolean = false;
+    clientsLoading:boolean = false;
     editSubContractorFieldEmptyMsg: string = "Field Cannot Be Empty...";
     areYouSure: boolean = false;
 
@@ -201,12 +202,15 @@ export class EditclientComponent implements OnInit {
 
         console.log("getClients");
         console.log(this.openEditForm)
+        this.clientsLoading= true;
 
         //this.openIndividualSubContractor(index);
         this.clientservice.getClients().subscribe(data => {
 
             console.log(data);
+            this.clientsLoading = false;
             this.clientsArray = data.clients;
+            
             console.log("this.clientsArray");
             console.log(this.clientsArray);
 
