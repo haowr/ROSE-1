@@ -333,9 +333,11 @@ imNotReadyToSubmitFunc(){
     if(!this.clientFormOpen){
 
         this.clientFormOpen = true;
+        this.clientsReady = true;
+        this.subContractorReady = true;
         setTimeout(()=>{
          document.getElementById("name2").click();
-document.getElementById("scname2").click();
+        document.getElementById("scname2").click();
 
         },900)
          
@@ -343,42 +345,13 @@ document.getElementById("scname2").click();
 
     }else{
 
-        this.clientFormOpen = false;
-       /* if(this.subContractorReady){
+        //this.clientFormOpen = false;
+        this.clientsReady = false;
+        this.subContractorReady = false;
+        setTimeout(()=>{
+            this.clientFormOpen = false;
 
-            this.subContractorReady = false;
-               setTimeout(()=>{
-
-                this.scReady = false;
-            },1000);
-
-        }else{
-            this.clientsReady = false
-              setTimeout(()=>{
-
-                this.cReady = false;
-            },1000);
-        }
-        if(this.clientsReady){
-            console.log("oy")
-            this.clientsReady = false
-            setTimeout(()=>{
-
-                this.cReady = false;
-            },1000);
-
-        }else{
-            console.log('wer')
-            //this.subContractorReady = false;
-            //this.clientsReady = false;
-            //  setTimeout(()=>{
-
-               // this.scReady = false;
-                //this.cReady = false;
-            //},1000);
-        }
-
-    }*/
+        },600)
     }
   }
 
@@ -582,7 +555,7 @@ console.log("should be here");
           locations: this.subContractor.locations,
           storenumbers: this.subContractor.storenumbers,
            date: this.month,
-         expjan:0,
+            expjan:0,
             expfeb:0,
             expmar:0,
             expapr:0,
@@ -3487,9 +3460,35 @@ if(this.name != "" &&
           setTimeout(() => {
 
             this.addClientSuccess = false;
+ 
+            
             document.getElementById('btnclose').click();
             this.areYouSure = true;
+            this.subContractorReady = false;
+          
+            
+            console.log("formLoading")
+            console.log(this.formLoading)
+            console.log("scReady")
+            console.log(this.scReady)
+            console.log("cReady")
+            console.log(this.cReady)
           }, 2000);
+            setTimeout(()=>{
+                this.scReady = false;
+                this.cReady = true;
+                this.clientsReady = true;
+
+
+                
+
+            },2500)
+
+            setTimeout(()=>{
+                 document.getElementById("name2").click();
+             document.getElementById("nameinput").focus();
+
+            },2700)
 
 
         } else {
