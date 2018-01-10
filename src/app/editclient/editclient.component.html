@@ -88,7 +88,7 @@
       <br>
       <br>
       <div>
-        <ul class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm">
+        <ul [ngClass]="{'animated': editFormReady || !editFormReady,'fadeOutLeft': !editFormReady, 'fadeInRight':editFormReady}"class="nav nav-tabs animated fadeIn" *ngIf="indexVar == i&& openEditForm && eFormReady">
 
           <li class="active"><a href="#name" data-toggle="tab" aria-expanded="false">Name</a></li>
 
@@ -105,7 +105,7 @@
 
         </ul>
 
-        <div id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm">
+        <div [ngClass]="{'animated': editFormReady || !editFormReady,'fadeOutLeft': !editFormReady, 'fadeInRight':editFormReady}" id="myTabContent" class="tab-content animated fadeIn" *ngIf="indexVar == i && openEditForm && eFormReady">
 
           <div class="tab-pane fade active in" id="name">
             <h4>{{client.name}}</h4>
@@ -214,7 +214,7 @@
           </div>
           <br>
         </div>
-        <div *ngIf="indexVar == i && openEditForm" class="panel panel-primary animated fadeIn">
+        <div [ngClass]="{'animated': editFormReady || !editFormReady,'fadeOutLeft': !editFormReady, 'fadeInRight':editFormReady}" *ngIf="indexVar == i && openEditForm && eFormReady" class="panel panel-primary animated fadeIn">
           <div class="panel-heading">
             <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Client Instructions</h3>
             <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
@@ -241,9 +241,9 @@
 
         <i *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
         <span *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i">LOADING</span>
-        <i style="font-size:20px;" *ngIf="loadingClients && editSubContractorIndexVar == i " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <i style="font-size:20px;" *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-        <form *ngIf="!loadingClients " class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
+        <form [ngClass]="{'animated': addSubContractorFormReady || !addSubContractorFormReady,'fadeOutLeft': !addSubContractorFormReady, 'fadeInRight':addSubContractorFormReady}" *ngIf="!loadingClients && eScFormReady && addSubContractorIndexVar == i" class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
 
           <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
@@ -525,20 +525,20 @@
         </div>
       </div>
 <div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  ">
-<div  *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
+<div   *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
         <br>
 
 
 
         <br>
-<div *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  " style = "border-bottom: 1px solid gray">
+<div [ngClass]="{'animated': editSubContractorFormReady || !editSubContractorFormReady,'fadeOutLeft': !editSubContractorFormReady, 'fadeInRight':editSubContractorFormReady}" *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients " style = "border-bottom: 1px solid gray">
         <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
         <button *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients " (click)="openIndividualSubContractor(z);" type="button" class="btn btn-default form-control animated fadeIn">Open/Close {{subcontractor.name}}.</button>
 </div>
         <br>
         <ul class="nav nav-tabs animated fadeIn" *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean">
           <br>
-
+<h1>EC!!!!!!!!!!!!</h1>
           <li class="active"><a href="#{{subcontractor[z]}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
           <li class=""><a href="#{{subcontractor[z]+1}}" data-toggle="tab" aria-expanded="false">Phone</a></li>
