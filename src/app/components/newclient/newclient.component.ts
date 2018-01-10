@@ -99,6 +99,7 @@ export class NewclientComponent implements OnInit {
  cReady:boolean = true;
  imReady:boolean = false;
  areYouSure:boolean = false;
+ formLoading:boolean = false;
   addNameSuccessMsg: string = "Name Successfully Added To the Database";
   addNameFailedMsg: string = "Name Field Must Not Be Empty...";
   addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
@@ -167,6 +168,12 @@ addSubContractorNameEmpty: boolean = false;
     console.log('client service loaded and initialized...');
     console.log(this.subContractorEmailAddress)
 
+    this.formLoading= true;
+    setTimeout(()=>{
+
+        this.formLoading = false;
+
+    },1000)
   }
   subContractorReady2(){
 if(!this.subContractorReady){
