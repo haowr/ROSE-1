@@ -178,14 +178,6 @@
                 may add sub-contractors to your new client before clicking the final, "Submit", button...
            </p>
                 <h3 class = "animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
-            
-<!--
-              <div *ngIf=" !turnOffInstructions">
-                <br>
-                <br>
-                <br>
-                
-              </div>-->
 
            
             </div>
@@ -202,7 +194,7 @@
           </div>
           
                        <button *ngIf="!clientOpen&& !newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Open Add Sub-Contractor Form</button>
-                              <button *ngIf="!clientOpen && newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Close Add Sub-Contractor Form</button>
+                       <button *ngIf="!clientOpen && newSubContractorFormOpen"type="button" class = "btn btn-primary" (click)="openNewSubContractorForm()">Close Add Sub-Contractor Form</button>
 
 
           <br>
@@ -219,16 +211,16 @@
       <ul class="nav nav-tabs animated fadeIn" *ngIf="newSubContractorFormOpen" >
 
             <br>
-            <li class="active"><a id="scname2"href="#scname" data-toggle="tab" aria-expanded="false">Name</a></li>
+            <li class="active"><a id="scname2"  href="#scname"         data-toggle="tab" aria-expanded="false">Name</a></li>
 
-            <li class=""><a id="scphonenumber2"href="#scphonenumber" data-toggle="tab" aria-expanded="false">Phone</a></li>
+            <li class=""><a id="scphonenumber2" href="#scphonenumber"  data-toggle="tab" aria-expanded="false">Phone</a></li>
 
             <li class=""><a id="scemailaddress2"href="#scemailaddress" data-toggle="tab" aria-expanded="false">Email</a></li>
-            <li class=""><a id="sccontactname2"href="#sccontactname" data-toggle="tab" aria-expanded="false">Contact Name</a></li>
+            <li class=""><a id="sccontactname2" href="#sccontactname"  data-toggle="tab" aria-expanded="false">Contact Name</a></li>
             <li class=""><a id="sccontactphone2"href="#sccontactphone" data-toggle="tab" aria-expanded="true">Contact Phone</a></li>
             <li class=""><a id="sccontactemail2"href="#sccontactemail" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
-            <li class=""><a id="sclocations2" href="#sclocations" data-toggle="tab" aria-expanded="false">Locations</a></li>
-            <li class=""><a id="scstorenumbers2" href="#scstorenumbers" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+            <li class=""><a id="sclocations2"   href="#sclocations"    data-toggle="tab" aria-expanded="false">Locations</a></li>
+            <li class=""><a id="scstorenumbers2"href="#scstorenumbers" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
             <li class=""><a *ngIf="subContractor.storenumbers.length && subContractor.storenumbers.length && subContractorName !=''
                                   && subContractorPhoneNumber !='' && subContractorEmailAddress !='' && subContractorContactName !=''
                                   && subContractorContactPhone !='' && subContractorContactEmail !=''"href="#addsubcontractor2" class = "animated flash"data-toggle="tab" aria-expanded="false">Submit</a></li>
@@ -509,12 +501,7 @@
       <div id="subcontractoricon"class="col-sm-3" *ngFor="let subcontractor of client.subcontractors;let i =index" >
       <i style="font-size: 40px;"class="fa fa-list-alt animated flash" aria-hidden="true"> </i><i class="fa fa-times text-danger" (click)="removeSubContractor()" aria-hidden="true"></i>
       <h4>{{subcontractor.name}}</h4>
-     <!-- <div  id="subcontractorinfo">
-        <p> {{subcontractor.contactname}} </p>
-        <p> {{subcontractor.phonenumber}} </p>
-         <p> {{subcontractor.emailaddress}} </p>
-          
-      </div>-->
+
       </div>
       <br>
                     

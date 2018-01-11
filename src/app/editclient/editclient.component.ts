@@ -3639,15 +3639,13 @@ export class EditclientComponent implements OnInit {
         if (!this.openEditSubcontractors) {
            console.log("i'mm here");
            console.log(this.openAddSubContractor)
-           this.addSubContractorFormReady = false;
            
            setTimeout(()=>{
-            this.eScFormReady = false;
             
-            this.openAddSubContractor = false;
+            
             this.loadingNewSubContractors = true;
 
-                      this.loadingClients = true;
+                     // this.loadingClients = true;
                     
 
                             console.log("add Subcontractors was opened");
@@ -3659,7 +3657,7 @@ export class EditclientComponent implements OnInit {
                         console.log
                         
                         console.log(this.editSubContractorFormReady)
-                        this.editSubContractorFormReady =true;
+                        
                         console.log(this.editSubContractorFormReady)
                         for (let i = 0; i < data.clients.length; i++) {
 
@@ -3692,18 +3690,22 @@ export class EditclientComponent implements OnInit {
                   this.editFormReady = false;
                   this.loadingNewSubContractors = false;
                   this.loadingClients = false;
+                             this.addSubContractorFormReady = false;   // CLOSE ADD SUBCONTRACTOR FORM SLIDE AWAY
+
                   console.log(this.openEditSubcontractors)
-                  this.openEditSubcontractors = true;
+                  
                   this.openIndividualAddSubContractorBoolean= true;
                   
                   setTimeout(()=>{
-                      this.eFormReady = false;
-                                               // this.loadingNewSubContractors = false;
-                           // this.loadingClients = false
-                   // this.eFormReady = false;
-                   // this.editSubContractorFormReady = true;
+                                  this.openAddSubContractor = false;      //REMOVE ADD SUBCONTRACTOR FORM FROM DOM...
+                                  this.eScFormReady = false;
 
-                  },400)
+                      this.eFormReady = false;
+                      this.openEditSubcontractors = true;
+                      this.editSubContractorFormReady =true;
+                      console.log("settimeout")
+     
+                  },1200)
        
                     }
                 })
@@ -3726,43 +3728,10 @@ export class EditclientComponent implements OnInit {
 
                             console.log("add Subcontractors was opened");
 
-              /*  this.clientservice.getClients().subscribe(data => {
-
-                    console.log(data);
-                    if (data.success) {
-
-                        for (let i = 0; i < data.clients.length; i++) {
-
-                            this.subcontractorsArray[i] = data.clients[i].subcontractors;
-                        }
-
-                        console.log("this.subcontractorsArray");
-                        console.log(this.subcontractorsArray);
-                        for (let z = 0; z < this.subcontractorsArray.length; z++) {
-
-                            for (let d = 0; d < this.subcontractorsArray[z].length; d++)
-
-    this.subcontractorsArray[z][d][d] = d * 34567
-                            console.log(this.subcontractorsArray[z])
-                            this.loadingNewSubContractors = false;
-                            this.loadingClients = false
-                           // this.editSubContractorSuccess = true;
-                           
-                            setTimeout(()=>{
-
-                               // this.editSubContractorSuccess = false;
-                            },2000);
-                            
-                            
-
-                        }
-
-                    }
-                })*/
                 this.editFormReady = false;
               
                 setTimeout(()=>{
-
+                    console.log("settimeout")
             
                    this.eFormReady= false
                    this.openEditSubcontractors = true;

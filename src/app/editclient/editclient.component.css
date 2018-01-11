@@ -44,3 +44,10 @@ font-family: 'Open Sans Condensed', sans-serif;
 #editclienttitle{
     border:1px solid #ddd;
 }
+.editindividualsubcontractorscontainer{
+
+    height:300px;
+    width:100%;
+    overflow-y:auto;
+
+}
