@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-        <li class="dropdown">
+        <li *ngIf="authservice.loggedIn()" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
        
@@ -34,10 +34,10 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-             <li  *ngIf="authservice.isLoggedIn" class = "animated fadeIn"><a class="monserrat" style="color:white;" href="#">Welcome, {{username}}.</a></li>
-            <li *ngIf="!authservice.isLoggedIn" class = "animated fadeIn"><a class="monserrat"  [routerLink]="['/login']" >Employee Login</a></li>
-           <!-- <li><a  [routerLink]="['/register']"class = "animated fadeIn" >Employee Register</a></li>-->
-            <li *ngIf="authservice.isLoggedIn"class = "animated fadeIn"><a  class="monserrat"  href="#"(click)="onLogoutClick();" >Logout</a></li>
+             <li  *ngIf="authservice.loggedIn()"[routerLinkActive]="['active']" class = "animated fadeIn"><a class="monserrat" style="color:white;" href="#">Welcome, {{username}}.</a></li>
+            <li *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']"class = "animated fadeIn"><a class="monserrat"  [routerLink]="['/login']" >Employee Login</a></li>
+            <li><a *ngIf="authservice.loggedIn()" [routerLink]="['/register']"class = "animated fadeIn" >Employee Register</a></li>
+            <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']"class = "animated fadeIn"><a  class="monserrat"  href="#"(click)="onLogoutClick();" >Logout</a></li>
   
       </ul>
     </div>

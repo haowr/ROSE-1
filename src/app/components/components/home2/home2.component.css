@@ -1,9 +1,4 @@
-.companyname{
 
-    text-align:center;
-   
-
-}
 .missionstatement{
 
   border:1px solid black;
@@ -12,6 +7,12 @@
 #companyhero{
 
   text-align:center;
+
+}
+.capitaltitle{
+
+  position:absolute;
+  left:45%;
 
 }
 #rosejumbotron{
