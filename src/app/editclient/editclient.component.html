@@ -85,7 +85,8 @@
         <div class="col-sm-6">
           <!-- <h4>{{client.name}}</h4>-->
           <br>
-          <button (click)="openEditFormFunc(i);" class="btn btn-primary ">Open/Close {{client.name}}</button>
+          <button *ngIf="!returnToClientForm" (click)="openEditFormFunc(i);" class="btn btn-primary ">Open/Close {{client.name}}</button>
+          <button *ngIf="returnToClientForm && indexVar == i" (click)="openEditFormFunc(i);" class="btn btn-primary ">Return To Edit Client Form</button>
 
           <br>
           <br>
