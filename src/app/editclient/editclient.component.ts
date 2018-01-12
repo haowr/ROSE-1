@@ -256,11 +256,24 @@ export class EditclientComponent implements OnInit {
             this.openEditForm = true;
             this.eFormReady= true
             this.editFormReady = true;
+                  setTimeout(()=>{
+                                document.getElementById('nameform').focus();
+                                document.getElementById("clientnametab").click();
+
+
+                                },300)
+
         } else if(this.openEditForm && this.addSubContractorFormReady  ){
             console.log("OY")
             //this.openEditForm = true;
             this.eFormReady = true
             this.editFormReady = true;
+                 setTimeout(()=>{
+                                document.getElementById('nameform').focus();
+ document.getElementById("clientnametab").click();
+
+                                },300)
+
             this.addSubContractorFormReady = false;
                  setTimeout(()=>{
 
@@ -280,6 +293,13 @@ export class EditclientComponent implements OnInit {
                 this.openEditSubcontractors = false
                            this.eFormReady = true
             this.editFormReady = true;
+                              setTimeout(()=>{
+                                document.getElementById('nameform').focus();
+                                 document.getElementById("clientnametab").click();
+
+
+                                },300)
+
             })
 
 
@@ -3566,7 +3586,10 @@ export class EditclientComponent implements OnInit {
                 this.openIndividualAddSubContractorBoolean = true;
                 this.addSubContractorFormReady = true;
 
-                },400)
+            },400)
+     
+
+            
                 
 
             }
@@ -3584,10 +3607,17 @@ export class EditclientComponent implements OnInit {
                                 console.log("editSubContractorFormReady")
                                 console.log(this.editSubContractorFormReady)
                                 console.log(this.addSubContractorFormReady)
+                                                              //   document.getElementById("editsubcontractornametab").click();
+
 
                     },400);
 
+       setTimeout(()=>{
 
+                                 document.getElementById("editsubcontractornametab").click();
+
+
+            },700)
         } else if (!this.openAddSubContractor && this.openEditSubcontractors) {
 
 
@@ -3607,6 +3637,8 @@ export class EditclientComponent implements OnInit {
                                 this.openIndividualAddSubContractorBoolean = false;
                                 this.eFormReady = true;
                                 this.editFormReady = true;
+
+
                                 
                                 console.log("eFormReady")
                                 console.log(this.eFormReady)
@@ -3614,6 +3646,11 @@ export class EditclientComponent implements OnInit {
                                 console.log(this.addSubContractorFormReady)                        
 
                     },400)
+                                                    setTimeout(()=>{
+                                document.getElementById('nameform').focus();
+ document.getElementById("clientnametab").click();
+
+                                },700)
 
         }
         console.log(this.openAddSubContractor)
@@ -3764,8 +3801,15 @@ export class EditclientComponent implements OnInit {
             this.openIndividualAddSubContractorBoolean = false;
             this.eFormReady = true;
             this.editFormReady = true;
+              
 
-            },400)
+        },400)
+            setTimeout(()=>{
+                                document.getElementById('nameform').focus();
+                                 document.getElementById("clientnametab").click();
+
+
+                                },700)
 
         }
         console.log(index)
