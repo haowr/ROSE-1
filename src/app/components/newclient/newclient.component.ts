@@ -2964,6 +2964,7 @@ console.log("should be here");
         this.subContractorContactPhone = "";
         this.subContractorLocations = "";
         this.subContractorStoreNumbers = "";
+    
       //console.log(this.subContractor);
       console.log(this.client.subcontractors);
       console.log(copySubContractor)

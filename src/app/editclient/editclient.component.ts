@@ -44,7 +44,8 @@ export class EditclientComponent implements OnInit {
     individualAddSubContractorIndexVar: string = "";
     subCLocations: string = "";
     subCStoreNumbers: string = "";
-    subContractorStoreNumbers: string = "";
+    //subContractorStoreNumbers
+    //subContractorStoreNumbers: string = "";
     indexVar: string = "";
     clientVar: string = "";
     fieldVar: string = "";
@@ -132,7 +133,7 @@ export class EditclientComponent implements OnInit {
     subContractorLocationFieldCannotBeEmpty: boolean = false;
     subContractorLocationSuccessfullyRemoved: boolean = false;
     subContractorLocationSuccessfullyAdded: boolean = false;
-    subContractorLocationAlreadyEmpty: boolean = false;
+    subContractorLocationsAlreadyEmpty: boolean = false;
     loadingNewSubContractors: boolean = false;
     clientsLoading: boolean = false;
     editFormReady: boolean = false;
@@ -245,6 +246,21 @@ export class EditclientComponent implements OnInit {
         })
 
     }
+     openNextTab(id,input){
+    console.log(input)
+    console.log(id)
+    document.getElementById(id).click();
+    if(input != undefined){
+        setTimeout(()=>{
+
+            document.getElementById(input).focus();
+
+
+        },500)
+
+    }
+
+  }
     openEditFormFunc(index) {
 
         this.indexVar = index;
@@ -783,7 +799,7 @@ export class EditclientComponent implements OnInit {
 
     addLocationToSubcontractorFunc() {
         //let subcontractorLocation = [];
-        if (this.subcontractorLocation == "" || undefined) {
+        if (this.subCLocations == "" || undefined) {
 
             this.addSubcontractorLocationsConditionsNotMet = true;
             setTimeout(() => {
@@ -793,9 +809,9 @@ export class EditclientComponent implements OnInit {
             }, 2000);
 
         } else {
-            this.subcontractorLocations.push(this.subcontractorLocation);
+            this.subcontractorLocations.push(this.subCLocations);
             console.log(this.subcontractorLocations);
-            this.subcontractorLocation = "";
+            this.subCLocations = "";
             this.addSubcontractorLocationConditionsMet = true;
             setTimeout(() => {
 
@@ -807,13 +823,27 @@ export class EditclientComponent implements OnInit {
     }
     removeLocationFromSubcontractorFunc() {
 
-        this.subcontractorLocations.splice(0, 1);
+        if(this.subcontractorLocations.length>0){
+
+                    this.subcontractorLocations.splice(0, 1);
+
+
+        }else{
+
+            this.subContractorLocationsAlreadyEmpty = true;
+            setTimeout(()=>{
+
+                this.subContractorLocationsAlreadyEmpty = false;
+
+            },2000)
+
+        }
 
     }
     addStoreNumberToSubcontractorFunc(client, index, storenumbers) {
         //this.subcontractorStoreNumbers = [];
         console.log(storenumbers);
-        if (this.subcontractorStoreNumber == "" || undefined) {
+        if (this.subCStoreNumbers == "" || undefined) {
 
             this.subContractorStoreNumberFieldCannotBeEmpty = true;
             setTimeout(() => {
@@ -823,10 +853,10 @@ export class EditclientComponent implements OnInit {
             }, 2000);
 
         } else {
-            this.subcontractorStoreNumbers.push(this.subcontractorStoreNumber);
-            storenumbers.push(this.subcontractorStoreNumber);
+            this.subcontractorStoreNumbers.push(this.subCStoreNumbers);
+            //storenumbers.push(this.subcontractorStoreNumber);
             console.log(storenumbers);
-            let storenumberObject = {
+            /*let storenumberObject = {
 
                 client: client,
                 index: index,
@@ -838,7 +868,7 @@ export class EditclientComponent implements OnInit {
                 console.log(data);
             })
 
-
+*/
 
 
 
@@ -860,19 +890,23 @@ export class EditclientComponent implements OnInit {
         storenumbers.splice(storenumbers.length - 1, 1);
         // storenumbers.push(this.subcontractorStoreNumber);
         console.log(storenumbers);
-        let storenumberObject = {
+        if(this.subcontractorStoreNumbers.length>0){
 
-            client: client,
-            index: index,
-            storenumbers: storenumbers
+                    this.subcontractorStoreNumbers.splice(this.subcontractorStoreNumber.length-1, 1);
+
+
+        }else{
+
+            this.subContractorLocationsAlreadyEmpty = true;
+            setTimeout(()=>{
+
+                this.subContractorLocationsAlreadyEmpty = false;
+
+            },2000)
 
         }
-        this.clientservice.editClientAddStoreNumberToSubContractor(storenumberObject).subscribe(data => {
-
-            console.log(data);
-        })
-
     }
+    /*
     removeLocation() {
 
 
@@ -901,6 +935,8 @@ export class EditclientComponent implements OnInit {
         }
 
     }
+    */
+    /*
     addLocation() {
         this.subContractorLocationFieldCannotBeEmpty = false
         this.subContractorLocationSuccessfullyRemoved = false
@@ -941,7 +977,8 @@ export class EditclientComponent implements OnInit {
 
         }
 
-    }
+    }*/
+    /*
     addStoreNumber() {
         // this.subContractor.storenumbers = [];
         this.subContractorLocationFieldCannotBeEmpty = false
@@ -981,6 +1018,7 @@ export class EditclientComponent implements OnInit {
         }
 
     }
+    */
     addSubcontractor(client) {
 
         let subcontractor = {
@@ -1893,6 +1931,7 @@ export class EditclientComponent implements OnInit {
                     "recieved": 0,
                     "requested": 0,
                     "productcode": 32,
+                    "price": 8.99,
                     "description": "Garbage Bags Regular",
                     "unit": "250/CS",
                     "color": "Black",
@@ -1946,6 +1985,7 @@ export class EditclientComponent implements OnInit {
                     "recieved": 0,
                     "requested": 0,
                     "productcode": 34,
+                    "price":9.99,
                     "description": "Super Scraper 4\" Replacement Blades",
                     "unit": "10/PKG",
                     "color": "N/A",
@@ -3492,6 +3532,9 @@ export class EditclientComponent implements OnInit {
 
                 console.log(data)
                 if (data.success) {
+                    this.clientservice.addSubContractor(subcontractor).subscribe(data=>{
+
+                
                     this.subcontractorEmailAddress = "";
                     this.subcontractorContactName = "";
                     this.subcontractorContactEmail = "";
@@ -3507,6 +3550,9 @@ export class EditclientComponent implements OnInit {
                         this.addSubContractorSuccess = false;
 
                     }, 2000);
+
+                    })
+
 
                 } else {
 
