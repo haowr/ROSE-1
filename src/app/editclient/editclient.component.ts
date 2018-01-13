@@ -344,12 +344,13 @@ export class EditclientComponent implements OnInit {
         }
         else {
             this.editFormReady = false;
-            this.slideOutForm = false
+            this.slideOutForm = true
             setTimeout(()=>{
 
                 this.eFormReady = false;
                     this.openEditForm = false;
             this.openEditSubcontractors = false;
+            this.slideOutForm=false;
 
             },400)
         
