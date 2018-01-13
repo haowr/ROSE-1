@@ -63,19 +63,18 @@
       <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Enter New Information In The Appropriate Fields And Click Edit To Modify Client Info!">Tip!</button>
 
 -->
-      <br>
+      
     </div>
 
     <div *ngIf="clientsLoading" class=" text-center">
-      <br>
-      <br>
+      
       <br>
       <br>
       <i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size:30px;"></i> <span class="animated flash" style="font-family: 'Lora', serif; font-size:30px;">//LOADING//</span>
       <i style="font-size:30px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
     </div>
-    <br>
+    
 
     <div>
       <div class="col-sm-12 text-center" style="border-bottom:1px solid #ddd;" *ngFor="let client of clientsArray; let i=index;">
@@ -88,11 +87,11 @@
           <button *ngIf="!returnToClientForm" (click)="openEditFormFunc(i);" class="btn btn-primary ">Open/Close {{client.name}}</button>
           <button *ngIf="returnToClientForm && indexVar == i" (click)="openEditFormFunc(i);" class="btn btn-primary ">Return To Edit Client Form</button>
 
-          <br>
-          <br>
+          
           <div [ngClass]="{'animated': editSubContractorFormReady || !editSubContractorFormReady,'fadeOutLeft': !editSubContractorFormReady, 'fadeInRight':editSubContractorFormReady}"
             *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients ">
-            <div class="editindividualsubcontractorscontainer" *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  ">
+            <div  *ngIf="editSubContractorIndexVar == i && openEditSubcontractors && openEditForm && !loadingClients  ">
+              <!--class="editindividualsubcontractorscontainer"-->
               <div *ngFor="let subcontractor of subcontractorsArray[i]; let z = index; ">
 
                 <div style="border-bottom: 1px solid gray">
@@ -114,6 +113,7 @@
                   <li class=""><a href="#{{subcontractor[z]+5}}" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
                   <li class=""><a href="#{{subcontractor[z]+6}}" data-toggle="tab" aria-expanded="false">Locations</a></li>
                   <li class=""><a href="#{{subcontractor[z]+7}}" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
+                  <li class=""><a href="#{{subcontractor[z]+8}}" data-toggle="tab" aria-expanded="false">Remove Sub-Contractor</a></li>
 
 
 
@@ -126,7 +126,6 @@
                     <input class="form-control" placeholder="{{subcontractor.name}}" name='subContractorName' [(ngModel)]='subContractorName'
                       type="text">
                     <button (click)="editSubContractorFunc(client.name,subcontractor.name,z,'name');" class="btn btn-default form-control">edit</button>
-                    <button (click)="openRemoveSubContractorModal(client.name,z,subcontractor.name);" class="btn btn-danger form-control">Remove {{subcontractor.name}}</button>
 
                     <div class="well well-sm" *ngIf="subContractorNameEmpty">
                       {{editSubContractorFieldEmptyMsg}}
@@ -134,28 +133,7 @@
                     <br>
 
                     <br>
-                 <!--   <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions!</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions!</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-
-                      </div>
-                    </div>-->
+              
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+1}}">
 
@@ -169,27 +147,7 @@
                     <br>
 
 
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess  && !editSubContractorLoading" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess &&!editSubContractorLoading" class="fa fa-check animated flash  text-center" style="font-size:40px;"
-                          aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-                      </div>
-                    </div>
+  
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+2}}">
 
@@ -207,25 +165,6 @@
                     <span *ngIf="editSubContractorLoading">LOADING</span>
                     <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-                      </div>
-                    </div>
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+3}}">
 
@@ -242,26 +181,6 @@
                     <span *ngIf="editSubContractorLoading">LOADING</span>
                     <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-
-                      </div>
-                    </div>
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+4}}">
 
@@ -277,26 +196,7 @@
 </i>
                     <span *ngIf="editSubContractorLoading">LOADING</span>
                     <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-
-                      </div>
-                    </div>
+                  
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+5}}">
 
@@ -313,26 +213,6 @@
                     <span *ngIf="editSubContractorLoading">LOADING</span>
                     <i style="font-size:20px;" *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-
-                      </div>
-                    </div>
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+6}}">
                     <br>
@@ -370,26 +250,6 @@
 
                     </div>
 
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
-                      class="panel panel-primary animated fadeIn">
-
-                      <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
-                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
-
-                      </div>
-                      <div class="panel-body">
-
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
-                        <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
-                        <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
-                        <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
-
-                      </div>
-                    </div>
                   </div>
                   <div class="tab-pane fade" id="{{subcontractor[z]+7}}">
                     <br>
@@ -426,28 +286,51 @@
                       </div>
                     </div>
                     <br>
-                    <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
+                
+                  </div>
+                           <div class="tab-pane fade" id="{{subcontractor[z]+8}}">
+                   
+                   
+                      
+
+                        <h3>Remove {{subcontractor.name}}</h3>
+                      
+                      
+                      
+                        <button (click)="openRemoveSubContractorModal(client.name,z,subcontractor.name);" class="btn btn-danger form-control">Remove {{subcontractor.name}}</button>
+
+                        
+  
+            
+                    
+                    </div>
+                    <br>
+   
+                  </div>
+                                     
+
+     <div *ngIf="editSubContractorIndexVar == i &&indexVar == i && openEditSubcontractors && individualSubContractorIndexVar== z && openIndividualSubContractorBoolean"
                       class="panel panel-primary animated fadeIn">
 
                       <div class="panel-heading">
-                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions</h3>
+                        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions!</h3>
                         <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
 
                       </div>
                       <div class="panel-body">
+        <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Sub Contractor Instructions!</h3>
+                        <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
 
-                        <p *ngIf="!editSubContractorSuccess" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                        <p *ngIf="!editSubContractorSuccess" class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
+                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
+                        <p *ngIf="!editSubContractorSuccess && !editSubContractorLoading" class="text-danger"> 3. (Field Cannot Be Empty)</p>
+                        <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading">{{subcontractor.name}}'s {{fieldVar}} Successfully Edited!</h3>
                         <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
                         <h3 *ngIf="editSubContractorLoading" class=" animated flash text-center">LOADING</h3>
                         <i *ngIf="editSubContractorLoading" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
 
                       </div>
                     </div>
-                  </div>
-
 
 
 
@@ -948,14 +831,14 @@
               <div class="tab-pane fade" id="addsubcontractor">
                 <h4>Open Add Sub-Contractor Form:</h4>
 
-                <button class="btn btn-primary form-control animated fadeIn" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
+                <button class="btn btn-default form-control animated fadeIn" (click)="openAddSubcontractorsFunc(i);">Add Subcontractor</button>
 
 
               </div>
               <div class="tab-pane fade" id="editsubcontractor">
                 <h4>Open Edit Sub-Contractor Form:</h4>
 
-                <button class="btn btn-primary form-control animated fadeIn" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
+                <button class="btn btn-default form-control animated fadeIn" (click)="openEditSubcontractorsFunc(i);">Edit Subcontractor</button>
 
 
               </div>
@@ -964,7 +847,7 @@
 
 
 
-            <div [ngClass]="{'animated': openEditForm ,'fadeInRight':openEditForm}"
+            <div [ngClass]="{'animated': openEditForm ,'fadeOutLeft':editSubContractorFormReady,'fadeInRight':openEditForm}"
               *ngIf="indexVar == i && openEditForm " class="panel panel-primary animated fadeIn">
               <div class="panel-heading">
                 <h3 *ngIf="  !editSubContractorFormReady && !addSubContractorFormReady &&!addSubContractorSuccess" class="panel-title animated fadeIn">Edit Client Instructions</h3>

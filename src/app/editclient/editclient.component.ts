@@ -280,7 +280,7 @@ export class EditclientComponent implements OnInit {
             this.editFormReady = true;
             setTimeout(() => {
                // document.getElementById('nameform').focus();
-                document.getElementById("clientnametab").click();
+                //document.getElementById("clientnametab").click();
 
 
             }, 300)
@@ -332,7 +332,7 @@ export class EditclientComponent implements OnInit {
                 this.editFormReady = true;
                 setTimeout(() => {
                    // document.getElementById('nameform').focus();
-                    document.getElementById("clientnametab").click();
+                   // document.getElementById("clientnametab").click();
 
 
                 }, 300)
