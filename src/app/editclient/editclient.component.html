@@ -341,7 +341,7 @@
 
               </div>
             </div>
-          </div>
+         
           <form [ngClass]="{'animated': addSubContractorFormReady || !addSubContractorFormReady,'fadeOutLeft': !addSubContractorFormReady, 'fadeInRight':addSubContractorFormReady}"
             *ngIf="!loadingClients && eScFormReady && addSubContractorIndexVar == i" class=" animated fadeIn" (submit)="addSubcontractor(client.name)">
 
@@ -876,7 +876,7 @@
 
 
 
-            <div [ngClass]="{'animated': openEditForm ,'fadeOutLeft':editSubContractorFormReady || slideOutForm && indexVar == i ,'fadeInRight':openEditForm}"
+            <div [ngClass]="{'animated': openEditForm ,'fadeOutLeft':editSubContractorFormReady || slideOutForm  ,'fadeInRight':openEditForm}"
               *ngIf="indexVar == i && openEditForm " class="panel panel-primary animated fadeIn">
               <div class="panel-heading">
                 <h3 *ngIf="  !editSubContractorFormReady && !addSubContractorFormReady &&!addSubContractorSuccess" class="panel-title animated fadeIn">Edit Client Instructions</h3>

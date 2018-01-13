@@ -46,7 +46,7 @@ export class EditclientComponent implements OnInit {
     subCStoreNumbers: string = "";
     //subContractorStoreNumbers
     //subContractorStoreNumbers: string = "";
-    indexVar: string = "";
+    indexVar: any= 0;
     clientVar: string = "";
     fieldVar: string = "";
     subContractorVar: string = "";
@@ -264,8 +264,9 @@ export class EditclientComponent implements OnInit {
   }
     openEditFormFunc(index) {
 
-        this.indexVar = index;
+        //this.indexVar = index;
         console.log(this.indexVar)
+        console.log(index)
         console.log("this.openEditForm")
         console.log(this.openEditForm)
         console.log("this.eFormReady")
@@ -343,6 +344,17 @@ export class EditclientComponent implements OnInit {
 
         }
         else {
+            console.log("final condition")
+            if(this.indexVar != index){
+
+                console.log("no matcho")
+                this.eFormReady = true
+               // this.slideOutForm = true
+                this.openEditForm = true
+               // this.openEditSubcontractors = true;
+                this.indexVar = index;
+            }else{
+
             this.editFormReady = false;
             this.slideOutForm = true
             setTimeout(()=>{
@@ -353,6 +365,8 @@ export class EditclientComponent implements OnInit {
             this.slideOutForm=false;
 
             },400)
+            }
+
         
         }
     }
