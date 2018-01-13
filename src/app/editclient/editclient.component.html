@@ -847,7 +847,7 @@
 
 
 
-            <div [ngClass]="{'animated': openEditForm ,'fadeOutLeft':editSubContractorFormReady || !editFormReady ,'fadeInRight':openEditForm}"
+            <div [ngClass]="{'animated': openEditForm ,'fadeOutLeft':editSubContractorFormReady || slideOutForm ,'fadeInRight':openEditForm}"
               *ngIf="indexVar == i && openEditForm " class="panel panel-primary animated fadeIn">
               <div class="panel-heading">
                 <h3 *ngIf="  !editSubContractorFormReady && !addSubContractorFormReady &&!addSubContractorSuccess" class="panel-title animated fadeIn">Edit Client Instructions</h3>

@@ -137,6 +137,7 @@ export class EditclientComponent implements OnInit {
     loadingNewSubContractors: boolean = false;
     clientsLoading: boolean = false;
     editFormReady: boolean = false;
+    slideOutForm:boolean = false;
     addSubContractorFormReady: boolean = false;
     editSubContractorFormReady: boolean = false;
     eFormReady: boolean = false;
@@ -343,6 +344,7 @@ export class EditclientComponent implements OnInit {
         }
         else {
             this.editFormReady = false;
+            this.slideOutForm = false
             setTimeout(()=>{
 
                 this.eFormReady = false;
