@@ -2642,7 +2642,7 @@ export class EditclientComponent implements OnInit {
                     "requested": 0,
                     "received": 0,
                     "orderspending": false,
-                    "ordered": 2,
+                    "ordered": 0,
                     "instock": 50,
                     "manufacturer": "3M",
                     "name": "threem"
