@@ -888,7 +888,7 @@ export class LocationComponent implements OnInit {
 
         if(this.inventory[z].productcode == productcode){
             
-            if(this.inventory[z].ordered > 1){
+            if(this.inventory[z].ordered > 0){
 
                 this.inventory[z].ordered = this.inventory[z].ordered - 1;
 
@@ -961,7 +961,8 @@ export class LocationComponent implements OnInit {
 
         if(this.toplineInventoryArray[z].productcode == productcode){
             console.log(this.inventory[z])
-            if(this.toplineInventoryArray[z].ordered > 1){
+            console.log(this.toplineInventoryArray[z].ordered)
+            if(this.toplineInventoryArray[z].ordered >0){
 
                 this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered - 1;
 
@@ -1038,7 +1039,7 @@ export class LocationComponent implements OnInit {
 
         if(this.wescleanInventoryArray[z].productcode == productcode){
             console.log(this.inventory[z])
-            if(this.wescleanInventoryArray[z].ordered > 1){
+            if(this.wescleanInventoryArray[z].ordered > 0){
 
                 this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered - 1;
 
