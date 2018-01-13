@@ -464,7 +464,7 @@
             <ul class="nav nav-tabs animated fadeIn" *ngIf=" openIndividualAddSubContractorBoolean ">
 
 
-              <li class=""><a id="editsubcontractornametab"  href="#name{{client[i]+1}}" data-toggle="tab" aria-expanded="false">Name</a></li>
+              <li class=""><a id="asname"  href="#name{{client[i]+1}}" data-toggle="tab" aria-expanded="false">Name</a></li>
 
               <li class=""><a id="asphonenumber"  href="#phonenumber{{client[i]+2}}" data-toggle="tab" aria-expanded="false">Phone</a></li>
 
@@ -474,7 +474,8 @@
               <li class=""><a id="ascontactemail" href="#contactemail{{client[i]+6}}" data-toggle="tab" aria-expanded="false">Contact Email</a></li>
               <li class=""><a id="aslocations"    href="#locations{{client[i]+7}}" data-toggle="tab" aria-expanded="false">Locations</a></li>
               <li class=""><a id="asstorenumbers" href="#storenumbers{{client[i]+8}}" data-toggle="tab" aria-expanded="false">Store Numbers</a></li>
-              <li class=""><a id="assubmit" href="#addsubcontractor{{client[i]+9}}" data-toggle="tab" aria-expanded="false">Submit</a></li>
+              <li *ngIf="subContractorName != '' && subContractorPhoneNumber != '' && subContractorEmailAddress != '' && subContractorContactName != '' && subContractorContactPhone != '' && subContractorContactEmail != '' 
+                          && subcontractorStoreNumbers.length > 0 && subcontractorLocations.length > 0"class="animated flash"><a id="assubmit" href="#addsubcontractor{{client[i]+9}}" data-toggle="tab" aria-expanded="false">Submit</a></li>
            <!--   <li class=""><a href="#addsubcontractor{{client[i]+11}}" data-toggle="tab" aria-expanded="false">Edit Sub-Contractors</a></li>-->
 
 
@@ -489,9 +490,14 @@
 
                 <input type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="subContractorName" name="subContractorName"
                   class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                 
+                <i *ngIf="subContractorName == '' || subContractorPhoneNumber == '' || subContractorEmailAddress == '' || subContractorContactName == '' || subContractorContactPhone == '' || subContractorContactEmail == '' 
+                          || subcontractorStoreNumbers.length <= 0 || subcontractorLocations.length <= 0"class="fa fa-chevron-left" (click)="openNextTab('asstorenumbers','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i *ngIf="subContractorName == '' || subContractorPhoneNumber == '' || subContractorEmailAddress == '' || subContractorContactName == '' || subContractorContactPhone == '' || subContractorContactEmail == '' 
+                          || subcontractorStoreNumbers.length <= 0 || subcontractorLocations.length <= 0"class="fa fa-chevron-left" (click)="openNextTab('asstorenumbers','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i *ngIf="subContractorName != '' && subContractorPhoneNumber != '' && subContractorEmailAddress != '' && subContractorContactName != '' && subContractorContactPhone != '' && subContractorContactEmail != '' 
+                          && subcontractorStoreNumbers.length > 0 && subcontractorLocations.length > 0"  class="fa fa-chevron-left animated flash" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i *ngIf="subContractorName != '' && subContractorPhoneNumber != '' && subContractorEmailAddress != '' && subContractorContactName != '' && subContractorContactPhone != '' && subContractorContactEmail != '' 
+                          && subcontractorStoreNumbers.length > 0 && subcontractorLocations.length > 0"class="fa fa-chevron-left animated flash" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>     
                 <i class="fa fa-chevron-right" (click)="openNextTab('asphonenumber','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('asphonenumber','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
 
@@ -514,11 +520,11 @@
                 <h4>Phone Number</h4>
                 <input type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="subContractorPhoneNumber" name="subContractorPhoneNumber"
                   class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
-                <i class="fa fa-chevron-right" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-right" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
 
                 <div *ngIf="addSubContractorPhoneNumberEmpty" class=" well well-sm">
 
@@ -533,11 +539,11 @@
                 <h4>Email Address</h4>
                 <input type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="subContractorEmailAddress" name="subContractorEmailAddress"
                   class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asphonenumber','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asphonenumber','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
-                <i class="fa fa-chevron-right" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-right" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
 
                 <div *ngIf="addSubContractorEmailAddressEmpty" class=" well well-sm">
 
@@ -552,8 +558,8 @@
                 <h4>Contact Name</h4>
                 <input type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="subContractorContactName" name="subContractorContactName"
                   class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('asemailaddress','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
                 <i class="fa fa-chevron-right" (click)="openNextTab('ascontactphone','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('ascontactphone','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -574,8 +580,8 @@
                 <h4>Contact Phone Number</h4>
                 <input type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="subContractorContactPhone"
                   name="subContractorContactPhone" class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('ascontactname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
                 <i class="fa fa-chevron-right" (click)="openNextTab('ascontactemail','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('ascontactemail','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -593,8 +599,8 @@
                 <h4>Contact Email</h4>
                 <input type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="subContractorContactEmail" name="subContractorContactEmail"
                   class="form-control">
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('ascontactphone','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" (click)="openNextTab('ascontactphone','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
                 <i class="fa fa-chevron-right" (click)="openNextTab('aslocations','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('aslocations','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -617,14 +623,14 @@
                     <h4>Locations</h4>
                   </div>
                   <div class="panel-body">
-                    <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subContractor.locations}}"
+                    <input type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations" placeholder="{{subcontractorLocations}}"
                       name="subCLocations" class="form-control">
 
                     <button type="button" class="btn btn-default" (click)="addLocationToSubcontractorFunc();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <button type="button" class="btn btn-default" (click)="removeLocationFromSubcontractorFunc();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <br>
-                    <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                    <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-left" (click)="openNextTab('ascontactemail','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-left" (click)="openNextTab('ascontactemail','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                  
                     <i class="fa fa-chevron-right" (click)="openNextTab('asstorenumbers','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                     <i class="fa fa-chevron-right" (click)="openNextTab('asstorenumbers','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -667,18 +673,23 @@
                     <h4>Store Numbers</h4>
                   </div>
                   <div class="panel-body">
-                    <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subCStoreNumbers" placeholder="{{subContractor.storenumbers}}"
+                    <input type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subCStoreNumbers" placeholder="{{subcontractorStoreNumbers}}"
                       name="subContractorStoreNumbers" class="form-control">
 
 
                     <button type="button" class="btn btn-default" (click)="addStoreNumberToSubcontractorFunc();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <button type="button" class="btn btn-default" (click)="removeStoreNumberFromSubcontractorFunc();">Remove <i class="fa fa-minus-circle buttonstyling" aria-hidden="true" ></i></button>
                     <br>
-                    <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                    <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                 
-                    <i class="fa fa-chevron-right" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
-                    <i class="fa fa-chevron-right" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-left" (click)="openNextTab('aslocations','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-left" (click)="openNextTab('aslocations','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>                    
+                    <i *ngIf="subContractorName != '' && subContractorPhoneNumber != '' && subContractorEmailAddress != '' && subContractorContactName != '' && subContractorContactPhone != '' && subContractorContactEmail != '' 
+                              && subcontractorStoreNumbers.length > 0 && subcontractorLocations.length > 0"  class="fa fa-chevron-right animated flash" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i *ngIf="subContractorName != '' && subContractorPhoneNumber != '' && subContractorEmailAddress != '' && subContractorContactName != '' && subContractorContactPhone != '' && subContractorContactEmail != '' 
+                              && subcontractorStoreNumbers.length > 0 && subcontractorLocations.length > 0"class="fa fa-chevron-right animated flash" (click)="openNextTab('assubmit','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>               
+                    <i *ngIf="subContractorName == '' || subContractorPhoneNumber == '' || subContractorEmailAddress == '' || subContractorContactName == '' || subContractorContactPhone == '' || subContractorContactEmail == '' 
+                          || subcontractorStoreNumbers.length <= 0 || subcontractorLocations.length <= 0"class="fa fa-chevron-right" (click)="openNextTab('asname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
+                    <i *ngIf="subContractorName == '' || subContractorPhoneNumber == '' || subContractorEmailAddress == '' || subContractorContactName == '' || subContractorContactPhone == '' || subContractorContactEmail == '' 
+                          || subcontractorStoreNumbers.length <= 0 || subcontractorLocations.length <= 0"class="fa fa-chevron-right" (click)="openNextTab('asname','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
 
                     <div *ngIf="subContractorStoreNumberSuccessfullyRemoved" class=" well well-sm">
 
@@ -954,8 +965,11 @@
             <div [ngClass]="{'animated': openEditForm ,'fadeInRight':openEditForm}"
               *ngIf="indexVar == i && openEditForm " class="panel panel-primary animated fadeIn">
               <div class="panel-heading">
-                <h3 *ngIf="!editSubContractorSuccess" class="panel-title">Edit Client Instructions</h3>
-                <h3 *ngIf="editSubContractorSuccess" class="panel-title">Edit Successful!</h3>
+                <h3 *ngIf="  !editSubContractorFormReady && !addSubContractorFormReady" class="panel-title animated fadeIn">Edit Client Instructions</h3>
+                <h3 *ngIf="!this.openEditForm && editSubContractorSuccess && !addSubContractorFormReady" class="panel-title">Edit Successful!</h3>
+                <h3 *ngIf="addSubContractorFormReady  " class="panel-title animated fadeIn">Add Sub-Contractor Instructions</h3>
+                <h3 *ngIf="editSubContractorFormReady && !addSubContractorFormReady " class="panel-title animated fadeIn">Edit Sub-Contractor Instructions</h3>
+          
 
               </div>
               <div class="panel-body">

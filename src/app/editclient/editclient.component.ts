@@ -810,6 +810,7 @@ export class EditclientComponent implements OnInit {
 
         } else {
             this.subcontractorLocations.push(this.subCLocations);
+            console.log(this.subcontractorLocations.length)
             console.log(this.subcontractorLocations);
             this.subCLocations = "";
             this.addSubcontractorLocationConditionsMet = true;
@@ -854,6 +855,8 @@ export class EditclientComponent implements OnInit {
 
         } else {
             this.subcontractorStoreNumbers.push(this.subCStoreNumbers);
+                        console.log(this.subcontractorStoreNumbers.length)
+
             //storenumbers.push(this.subcontractorStoreNumber);
             console.log(storenumbers);
             /*let storenumberObject = {
