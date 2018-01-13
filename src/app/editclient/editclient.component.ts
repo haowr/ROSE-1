@@ -279,7 +279,7 @@ export class EditclientComponent implements OnInit {
             this.eFormReady = true
             this.editFormReady = true;
             setTimeout(() => {
-                document.getElementById('nameform').focus();
+               // document.getElementById('nameform').focus();
                 document.getElementById("clientnametab").click();
 
 
@@ -331,7 +331,7 @@ export class EditclientComponent implements OnInit {
                 this.eFormReady = true
                 this.editFormReady = true;
                 setTimeout(() => {
-                    document.getElementById('nameform').focus();
+                   // document.getElementById('nameform').focus();
                     document.getElementById("clientnametab").click();
 
 
