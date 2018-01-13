@@ -140,7 +140,6 @@ export class EditclientComponent implements OnInit {
     addSubContractorFormReady: boolean = false;
     editSubContractorFormReady: boolean = false;
     eFormReady: boolean = false;
-    slideOutForm:boolean = false;
     eScFormReady: boolean = false;
     editSubContractorFieldEmptyMsg: string = "Field Cannot Be Empty...";
     areYouSure: boolean = false;
@@ -343,14 +342,8 @@ export class EditclientComponent implements OnInit {
 
         }
         else {
-            console.log("lastcondition")
-            //this.openEditForm = false;
-            this.slideOutForm = true;
-            console.log(this.openEditForm)
+            this.openEditForm = false;
             this.openEditSubcontractors = false;
-            setTimeout(function() {
-this.openEditForm = false;
-            }, 400);
         }
     }
     editClientFunc(clientparam, name) {
