@@ -342,8 +342,15 @@ export class EditclientComponent implements OnInit {
 
         }
         else {
-            this.openEditForm = false;
+            this.editFormReady = false;
+            setTimeout(()=>{
+
+                this.eFormReady = false;
+                    this.openEditForm = false;
             this.openEditSubcontractors = false;
+
+            },400)
+        
         }
     }
     editClientFunc(clientparam, name) {
