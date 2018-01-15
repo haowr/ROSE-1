@@ -62,7 +62,11 @@ export class RemoveclientComponent implements OnInit {
 
       console.log(data);
       if(data.success){
+    this.clientservice.removeSubContractor2(this.client).subscribe(data=>{
 
+  console.log(data)
+
+})
 
             this.clientservice.getClients().subscribe(data=>{
 
@@ -110,6 +114,7 @@ document.getElementById("openModalButton").click();
     console.log(clientname)
     this.client = clientname;
     this.clientNameVar = clientname;
+
     /*this.clientservice.removeClient(clientname).subscribe(data=>{
 
       console.log(data);

@@ -55,6 +55,8 @@ export class EditclientComponent implements OnInit {
     subContractorIdVar:string ="";
     fieldVar: string = "";
     subContractorVar: string = "";
+    subContractorNameVar:string = "";
+    clientNameVar: string = "";
     indexToBeRemoved: string = "";
     editSubContractorIndexVar: string = "";
     addSubContractorIndexVar: string = "";
@@ -380,6 +382,7 @@ export class EditclientComponent implements OnInit {
     editClientFunc(clientparam, name) {
         console.log(clientparam);
         console.log(name);
+        this.clientNameVar = clientparam;
 
         let clientToBeEdited = {
             client: clientparam,
@@ -464,6 +467,12 @@ export class EditclientComponent implements OnInit {
                 clientContactEmail: ""
 
             }
+            this.clientservice.getSubContractors().subscribe(data=>{
+
+
+                console.log(data)
+
+            })
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
@@ -787,6 +796,7 @@ export class EditclientComponent implements OnInit {
             if (data.success) {
 
                 //document.getElementById("btnclose").click();
+
                 this.clientservice.removeSubContractor(this.subContractorIdVar).subscribe(data=>{
 
                     if(data.success){
@@ -4339,8 +4349,10 @@ if(data.success){
         console.log(field);
         console.log(id)
         console.log(index)
+        console.log()
         console.log("editSubContractorFunc");
         this.fieldVar = field;
+        this.subContractorNameVar = item;
 
         if (field == "name" && this.subContractorName != "") {
 
@@ -4366,6 +4378,38 @@ if(data.success){
 
                 console.log(data)
                 if (data.success) {
+                    this.clientservice.getClients().subscribe(data=>{
+
+                        console.log(data.clients)
+                        data.clients.forEach(client =>{
+
+                            console.log(client)
+                            client.subcontractors.forEach(subcontractor=> {
+                                console.log(subcontractor)
+                                if(subcontractor.name == this.subContractorNameVar){
+
+                                    subcontractor.name == this.subContractorNameVar
+                                    console.log(subcontractor)
+
+                                }
+
+                            })
+                        })
+                        console.log(data.clients[clientindex])
+
+                        let clientToBeEdited = {
+
+                            client: client,
+                            subcontractors: data.clients[clientindex].subcontractors
+
+                        }
+                        
+                        this.clientservice.editClientSubContractorName(clientToBeEdited).subscribe(data=>{
+
+                            console.log(data);
+
+                        })
+                    })
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
   console.log(data)

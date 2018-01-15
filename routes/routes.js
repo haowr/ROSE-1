@@ -41,269 +41,312 @@ const Sbcntrctr = require('../models/sbcntrctor');
 const SubCon = require('../models/newsubcontractor');
 
 //EDIT SUB-CONTRACTOR BY ID
-router.post('/removelocationfromclient', (req,res)=>{
+router.post('/removelocationfromclient', (req, res) => {
 
-console.log(req.body)
-if(req.body.removelocation){
+    console.log(req.body)
+    if (req.body.removelocation) {
 
-    Client.findOne({name:req.body.client},(err,client)=>{
+        Client.findOne({ name: req.body.client }, (err, client) => {
 
-        if(err) throw err;
-        if(!client){
+            if (err) throw err;
+            if (!client) {
 
-            res.json({success:false, message: "Client Not Found.."})
+                res.json({ success: false, message: "Client Not Found.." })
 
-        }else{
-
-
-           console.log(client)
-     for(let z = 0; z<client.subcontractors.length;z++){
-
-            if(client.subcontractors[z].name == req.body.subcontractorname){
-                //console.log(client.subcontractors[z].storenumbers)
-                
-                if(client.subcontractors[z].locations.length >0){
-
-                client.subcontractors[z].locations.splice(client.subcontractors[z].locations.length-1,1)
-
-                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+            } else {
 
 
-                    if(err)throw err;
-                    if(!client){
+                console.log(client)
+                for (let z = 0; z < client.subcontractors.length; z++) {
 
-                        res.json({success: false, message: "Client Not Found..."})
-                    }else{
-                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    if (client.subcontractors[z].name == req.body.subcontractorname) {
+                        //console.log(client.subcontractors[z].storenumbers)
+
+                        if (client.subcontractors[z].locations.length > 0) {
+
+                            client.subcontractors[z].locations.splice(client.subcontractors[z].locations.length - 1, 1)
+
+                            Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, (err, client) => {
+
+
+                                if (err) throw err;
+                                if (!client) {
+
+                                    res.json({ success: false, message: "Client Not Found..." })
+                                } else {
+                                    res.json({ success: true, message: "Client Sub-Contractor Found And Updated", client: client })
+                                }
+
+                            })
+
+                        } else {
+
+                            res.json({ success: false, messae: "Client Sub-Contractor Already Empty...", })
+
+                        }
+
+
                     }
-
-                })
-
-            }else{
-
-                    res.json({success: false, messae: "Client Sub-Contractor Already Empty...", })
 
                 }
 
+            }
+        })
 
-           }
 
-        }
 
     }
-                })
-
-
-
-}
 })
-router.post('/addlocationtoclient', (req,res)=>{
+router.post('/addlocationtoclient', (req, res) => {
 
-console.log(req.body)
-if(req.body.addlocation){
+    console.log(req.body)
+    if (req.body.addlocation) {
 
-    Client.findOne({name:req.body.client},(err,client)=>{
+        Client.findOne({ name: req.body.client }, (err, client) => {
 
-        if(err) throw err;
-        if(!client){
+            if (err) throw err;
+            if (!client) {
 
-            res.json({success:false, message: "Client Not Found.."})
+                res.json({ success: false, message: "Client Not Found.." })
 
-        }else{
-
-
-           console.log(client)
-     for(let z = 0; z<client.subcontractors.length;z++){
-
-            if(client.subcontractors[z].name == req.body.subcontractorname){
-                //console.log(client.subcontractors[z].storenumbers)
-
-                client.subcontractors[z].locations.push(req.body.subclocations2)
-                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+            } else {
 
 
-                    if(err)throw err;
-                    if(!client){
+                console.log(client)
+                for (let z = 0; z < client.subcontractors.length; z++) {
 
-                        res.json({success: false, message: "Client Not Found..."})
-                    }else{
-                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    if (client.subcontractors[z].name == req.body.subcontractorname) {
+                        //console.log(client.subcontractors[z].storenumbers)
+
+                        client.subcontractors[z].locations.push(req.body.subclocations2)
+                        Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, (err, client) => {
+
+
+                            if (err) throw err;
+                            if (!client) {
+
+                                res.json({ success: false, message: "Client Not Found..." })
+                            } else {
+                                res.json({ success: true, message: "Client Sub-Contractor Found And Updated", client: client })
+                            }
+
+                        })
+
                     }
 
-                })
-
-            }
-
-
-           }
-
-        }
-
-    })
-
-
-}
-})
-router.post('/removestorenumberfromclient', (req,res)=>{
-
-console.log(req.body)
-if(req.body.removestorenumber){
-
-    Client.findOne({name:req.body.client},(err,client)=>{
-
-        if(err) throw err;
-        if(!client){
-
-            res.json({success:false, message: "Client Not Found.."})
-
-        }else{
-
-
-           console.log(client)
-           for(let z = 0; z<client.subcontractors.length;z++){
-
-            if(client.subcontractors[z].name == req.body.subcontractorname){
-                console.log(client.subcontractors[z].storenumbers)
-                if(client.subcontractors[z].storenumbers.length>0){
-
-              client.subcontractors[z].storenumbers.splice(client.subcontractors[z].storenumbers.length-1,1)
-                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
-
-
-                    if(err)throw err;
-                    if(!client){
-
-                        res.json({success: false, message: "Client Not Found..."})
-                    }else{
-                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
-                    }
-
-                })
-                }else{
-
-                    res.json({success: false, messae: "Client Sub-Contractor Already Empty...", })
 
                 }
-  
 
             }
 
-
-           }
-
-        }
-
-        //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
-    })
+        })
 
 
-}
+    }
 })
+router.post('/removestorenumberfromclient', (req, res) => {
 
-router.post('/addstorenumbertoclient', (req,res)=>{
+    console.log(req.body)
+    if (req.body.removestorenumber) {
 
-console.log(req.body)
-if(req.body.addstorenumber){
+        Client.findOne({ name: req.body.client }, (err, client) => {
 
-    Client.findOne({name:req.body.client},(err,client)=>{
+            if (err) throw err;
+            if (!client) {
 
-        if(err) throw err;
-        if(!client){
+                res.json({ success: false, message: "Client Not Found.." })
 
-            res.json({success:false, message: "Client Not Found.."})
-
-        }else{
-
-
-           console.log(client)
-           for(let z = 0; z<client.subcontractors.length;z++){
-
-            if(client.subcontractors[z].name == req.body.subcontractorname){
-                console.log(client.subcontractors[z].storenumbers)
-
-                client.subcontractors[z].storenumbers.push(req.body.subcstorenumbers2)
-                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+            } else {
 
 
-                    if(err)throw err;
-                    if(!client){
+                console.log(client)
+                for (let z = 0; z < client.subcontractors.length; z++) {
 
-                        res.json({success: false, message: "Client Not Found..."})
-                    }else{
-                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    if (client.subcontractors[z].name == req.body.subcontractorname) {
+                        console.log(client.subcontractors[z].storenumbers)
+                        if (client.subcontractors[z].storenumbers.length > 0) {
+
+                            client.subcontractors[z].storenumbers.splice(client.subcontractors[z].storenumbers.length - 1, 1)
+                            Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, (err, client) => {
+
+
+                                if (err) throw err;
+                                if (!client) {
+
+                                    res.json({ success: false, message: "Client Not Found..." })
+                                } else {
+                                    res.json({ success: true, message: "Client Sub-Contractor Found And Updated", client: client })
+                                }
+
+                            })
+                        } else {
+
+                            res.json({ success: false, messae: "Client Sub-Contractor Already Empty...", })
+
+                        }
+
+
                     }
 
-                })
+
+                }
 
             }
 
-
-           }
-
-        }
-
-        //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
-    })
+            //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
+        })
 
 
-}
+    }
+})
+
+router.post('/addstorenumbertoclient', (req, res) => {
+
+    console.log(req.body)
+    if (req.body.addstorenumber) {
+
+        Client.findOne({ name: req.body.client }, (err, client) => {
+
+            if (err) throw err;
+            if (!client) {
+
+                res.json({ success: false, message: "Client Not Found.." })
+
+            } else {
+
+
+                console.log(client)
+                for (let z = 0; z < client.subcontractors.length; z++) {
+
+                    if (client.subcontractors[z].name == req.body.subcontractorname) {
+                        console.log(client.subcontractors[z].storenumbers)
+
+                        client.subcontractors[z].storenumbers.push(req.body.subcstorenumbers2)
+                        Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, (err, client) => {
+
+
+                            if (err) throw err;
+                            if (!client) {
+
+                                res.json({ success: false, message: "Client Not Found..." })
+                            } else {
+                                res.json({ success: true, message: "Client Sub-Contractor Found And Updated", client: client })
+                            }
+
+                        })
+
+                    }
+
+
+                }
+
+            }
+
+            //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
+        })
+
+
+    }
 })
 
 
 
+router.put('/removesubcontractor2/:client', (req, res) => {
 
 
-router.put('/removesubcontractor/:id', (req,res)=>{
+    SubCon.find({}, (err, subcontractors) => {
 
-    SubCon.findOneAndRemove({_id: req.params.id}, (err,subcontractors)=>{
+        if (err) throw err;
+        if (!subcontractors) {
 
-        if(err)throw err;
-        if(!subcontractors){
+            res.json({ success: false, message: "Sub-Contractors Not Found..." })
 
-            res.json({success: false, message:"Sub-Contractor Not Found..."})
+        } else {
 
-        }else{
-            res.json({success: true, message: "Sub-Contractor Found And Removed..", subcontractors:subcontractors})
+
+            subcontractors.forEach(subcontractor => {
+
+                //console.log(subcontractor.client)
+                if (subcontractor.client == req.params.client) {
+
+                    console.log(subcontractor.client)
+                    SubCon.findOneAndRemove({ client: req.params.client }, (err, subcontractors) => {
+
+                        if (err) throw err;
+                        if (!subcontractors) {
+
+                            res.json({ success: false, message: "Sub-Contractors Not Found.." })
+
+                        } else {
+
+                            console.log("success")
+                            console.log(subcontractor.name)
+                        }
+
+                    })
+
+                }
+
+            })
+
+        }
+
+
+    })
+
+})
+
+router.put('/removesubcontractor/:id', (req, res) => {
+
+    SubCon.findOneAndRemove({ _id: req.params.id }, (err, subcontractors) => {
+
+        if (err) throw err;
+        if (!subcontractors) {
+
+            res.json({ success: false, message: "Sub-Contractor Not Found..." })
+
+        } else {
+            res.json({ success: true, message: "Sub-Contractor Found And Removed..", subcontractors: subcontractors })
         }
 
     })
 
 
 })
-router.post('/editsubcontractorstorenumber', (req,res)=>{
+router.post('/editsubcontractorstorenumber', (req, res) => {
 
-        if(req.body.removestorenumber){
+    if (req.body.removestorenumber) {
         console.log("RLOCATION")
 
-        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{storenumbers:req.body.storenumbers}}, {new:true},(err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { storenumbers: req.body.storenumbers } }, { new: true }, (err, subcontractor) => {
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
 
             }
 
         })
 
     }
-            if(req.body.addstorenumber){
+    if (req.body.addstorenumber) {
         console.log("RLOCATION")
 
-        SubCon.findOneAndUpdate({_id:req.body.id}, {$push:{storenumbers:req.body.subcstorenumbers2}}, {new:true},(err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $push: { storenumbers: req.body.subcstorenumbers2 } }, { new: true }, (err, subcontractor) => {
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
 
             }
 
@@ -313,40 +356,40 @@ router.post('/editsubcontractorstorenumber', (req,res)=>{
 
 })
 //EDIT SUB-CONTRACTOR BY ID
-router.post('/editsubcontractorlocation', (req,res)=>{
+router.post('/editsubcontractorlocation', (req, res) => {
 
-        if(req.body.removelocation){
+    if (req.body.removelocation) {
         console.log("RLOCATION")
 
-        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{locations:req.body.locations}}, {new:true},(err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { locations: req.body.locations } }, { new: true }, (err, subcontractor) => {
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
 
             }
 
         })
 
     }
-            if(req.body.addlocation){
+    if (req.body.addlocation) {
         console.log("RLOCATION")
 
-        SubCon.findOneAndUpdate({_id:req.body.id}, {$push:{locations:req.body.subclocations2}}, {new:true},(err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $push: { locations: req.body.subclocations2 } }, { new: true }, (err, subcontractor) => {
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
 
             }
 
@@ -355,22 +398,22 @@ router.post('/editsubcontractorlocation', (req,res)=>{
     }
 
 })
-router.post('/editsubcontractorbyid', (req,res)=>{
-console.log(req.body)
-console.log()
-    if(req.body.removelocation){
+router.post('/editsubcontractorbyid', (req, res) => {
+    console.log(req.body)
+    console.log()
+    if (req.body.removelocation) {
         console.log("RLOCATION")
 
-        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{locations:req.body.locations}}, {new:true},(err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { locations: req.body.locations } }, { new: true }, (err, subcontractor) => {
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
 
             }
 
@@ -384,17 +427,17 @@ console.log()
     } else {
         console.log("scname")
 
-        SubCon.findOneAndUpdate({_id:req.body.id},{$set:{name:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { name: req.body.subContractorName } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -406,18 +449,18 @@ console.log()
 
 
     } else {
-        console.log("it doesn't! contactmail");       
-         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactemail:req.body.subContractorContactEmail}}, {new:true}, (err,subcontractor)=>{
+        console.log("it doesn't! contactmail");
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { contactemail: req.body.subContractorContactEmail } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -428,18 +471,18 @@ console.log()
 
 
     } else {
-        console.log("it doesn't!contactname");       
-         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactname:req.body.subContractorContactName}}, {new:true}, (err,subcontractor)=>{
+        console.log("it doesn't!contactname");
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { contactname: req.body.subContractorContactName } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -452,18 +495,18 @@ console.log()
 
     } else {
 
-console.log("contactphone")
-            SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactphone:req.body.subContractorContactPhone}}, {new:true}, (err,subcontractor)=>{
+        console.log("contactphone")
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { contactphone: req.body.subContractorContactPhone } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -476,17 +519,17 @@ console.log("contactphone")
 
     } else {
         console.log("it doesn'tphone!");
-               SubCon.findOneAndUpdate({_id:req.body.id},{$set:{phonenumber:req.body.subContractorPhoneNumber}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { phonenumber: req.body.subContractorPhoneNumber } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -500,17 +543,17 @@ console.log("contactphone")
     } else {
 
         console.log("it doesn't!");
-                SubCon.findOneAndUpdate({_id:req.body.id},{$set:{emailaddress:req.body.subContractorEmailAddress}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ _id: req.body.id }, { $set: { emailaddress: req.body.subContractorEmailAddress } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err)throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message:"Sub-Contractor Not Found..."})
+                res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-            }else{
+            } else {
 
-                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+                res.json({ success: true, message: "Sub-Contractor Found And Updated", subcontractor: subcontractor })
 
             }
 
@@ -521,64 +564,64 @@ console.log("contactphone")
 })
 //GET LOCATIONS OF CLIENT
 
-router.put('/getlocationsofclient/:client',(req,res)=>{
+router.put('/getlocationsofclient/:client', (req, res) => {
 
-console.log(req.params)
-    SubCon.find({client:req.params.client}, (err,subcontractors)=>{
+    console.log(req.params)
+    SubCon.find({ client: req.params.client }, (err, subcontractors) => {
 
-        if(err)throw err;
-        if(!subcontractors){
+        if (err) throw err;
+        if (!subcontractors) {
 
-            res.json({success: false,message:"Sub-Contractors Not Found..."})
+            res.json({ success: false, message: "Sub-Contractors Not Found..." })
 
-        }else{
+        } else {
 
-            res.json({success:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+            res.json({ success: true, message: "Sub-Contractors Found...", subcontractors: subcontractors })
 
         }
 
     })
-    
+
 
 })
 
 //GET SUB-CONTRACTORS OF CLIENT
 
-router.put('/getsubcontractorsofclient/:client',(req,res)=>{
+router.put('/getsubcontractorsofclient/:client', (req, res) => {
 
-console.log(req.params)
-    SubCon.find({client:req.params.client}, (err,subcontractors)=>{
+    console.log(req.params)
+    SubCon.find({ client: req.params.client }, (err, subcontractors) => {
 
-        if(err)throw err;
-        if(!subcontractors){
+        if (err) throw err;
+        if (!subcontractors) {
 
-            res.json({success: false,message:"Sub-Contractors Not Found..."})
+            res.json({ success: false, message: "Sub-Contractors Not Found..." })
 
-        }else{
+        } else {
 
-            res.json({success:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+            res.json({ success: true, message: "Sub-Contractors Found...", subcontractors: subcontractors })
 
         }
 
     })
-    
+
 
 })
 
 
 //GET SUB-CONTRACTORS
-router.get('/getsubcontractors', (req,res)=>{
+router.get('/getsubcontractors', (req, res) => {
 
-    SubCon.find({}, (err,subcontractors)=>{
+    SubCon.find({}, (err, subcontractors) => {
 
-        if(err)throw err;
-        if(!subcontractors){
+        if (err) throw err;
+        if (!subcontractors) {
 
-            res.json({success: false, message: "Sub-Contractors not found..."})
+            res.json({ success: false, message: "Sub-Contractors not found..." })
 
-        }else{
+        } else {
 
-            res.json({succes:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+            res.json({ succes: true, message: "Sub-Contractors Found...", subcontractors: subcontractors })
 
         }
 
@@ -591,25 +634,25 @@ router.get('/getsubcontractors', (req,res)=>{
 
 //router.post('/updatesubcontractor', (req,res)=>{
 
- //   SubCon.findOneAndUpdate({_id: req.body.id}, {$set:{locations:}})
+//   SubCon.findOneAndUpdate({_id: req.body.id}, {$set:{locations:}})
 
 
 //})
 
 //UPDATE SUBCONTRACTOR TOTAL EPENDITURES
 
-router.post('/updatesubcontractortotalexpenditures', (req,res)=>{
+router.post('/updatesubcontractortotalexpenditures', (req, res) => {
 
 
-    SubCon.findOneAndUpdate({name: req.body.name}, {$set: {totalexpenditures: req.body.totalexpenditures}},{new:true}, (err, subcontractor)=>{
+    SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { totalexpenditures: req.body.totalexpenditures } }, { new: true }, (err, subcontractor) => {
 
-        if(!subcontractor){
+        if (!subcontractor) {
 
-            res.json({success: false, message: "Sub-Contractor Not Found..."})
+            res.json({ success: false, message: "Sub-Contractor Not Found..." })
 
-        }else{
+        } else {
 
-            res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+            res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
         }
 
 
@@ -620,60 +663,60 @@ router.post('/updatesubcontractortotalexpenditures', (req,res)=>{
 })
 
 //UPDATE SUBCONTRACTOR INVENTORY
-router.post('/updatesubcontractorinventory', (req,res)=>{
+router.post('/updatesubcontractorinventory', (req, res) => {
 
-    if(req.body.inventory == "topline"){
+    if (req.body.inventory == "topline") {
 
-        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ topline: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { topline: req.body.topline } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found.."})
+                res.json({ success: false, message: "Sub-Contractor Not Found.." })
 
-           } else{
-                
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            } else {
+
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
             }
 
-        } )
+        })
 
     }
-        if(req.body.inventory == "wesclean"){
+    if (req.body.inventory == "wesclean") {
 
-        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ wesclean: req.body.wesclean}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { wesclean: req.body.wesclean } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found.."})
+                res.json({ success: false, message: "Sub-Contractor Not Found.." })
 
-           } else{
-                
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            } else {
+
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
             }
 
-        } )
+        })
 
     }
-        if(req.body.inventory == "veritivcanada"){
+    if (req.body.inventory == "veritivcanada") {
 
-        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ veritivcanada: req.body.veritivcanada}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
-            if(err) throw err;
-            if(!subcontractor){
+            if (err) throw err;
+            if (!subcontractor) {
 
-                res.json({success: false, message: "Sub-Contractor Not Found.."})
+                res.json({ success: false, message: "Sub-Contractor Not Found.." })
 
-           } else{
-                
-                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor})
+            } else {
+
+                res.json({ success: true, message: "Sub-Contractor Found And Updated...", subcontractor: subcontractor })
             }
 
-        } )
+        })
 
     }
 
@@ -685,10 +728,10 @@ router.post('/updatesubcontractor', (req, res) => {
 
     if (req.body.date == 1) {
 
-//console.log(req.body)
-console.log("i'm here")
+        //console.log(req.body)
+        console.log("i'm here")
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expdec:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expdec: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -706,10 +749,10 @@ console.log("i'm here")
 
     }
     if (req.body.date == 2) {
-console.log("i'm here")
+        console.log("i'm here")
 
-console.log(req.body)
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjan:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        console.log(req.body)
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjan: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -728,7 +771,7 @@ console.log(req.body)
     }
     if (req.body.date == 3) {
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expfeb:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expfeb: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -747,7 +790,7 @@ console.log(req.body)
     }
     if (req.body.date == 4) {
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmar:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmar: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -766,7 +809,7 @@ console.log(req.body)
     }
     if (req.body.date == 5) {
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expapr:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expapr: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -786,7 +829,7 @@ console.log(req.body)
     if (req.body.date == 6) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmay:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expmay: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -806,7 +849,7 @@ console.log(req.body)
     if (req.body.date == 7) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjun:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjun: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -826,7 +869,7 @@ console.log(req.body)
     if (req.body.date == 8) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjul:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjul: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -846,7 +889,7 @@ console.log(req.body)
     if (req.body.date == 9) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expaug:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expaug: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -866,7 +909,7 @@ console.log(req.body)
     if (req.body.date == 10) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expsep:req.body.oldordered, date:req.body.date,topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expsep: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -886,7 +929,7 @@ console.log(req.body)
     if (req.body.date == 11) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: {expoct:req.body.oldordered, date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expoct: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -906,7 +949,7 @@ console.log(req.body)
     if (req.body.date == 12) {
 
 
-        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expnov:req.body.oldordered,date:req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
+        SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expnov: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
             if (err) throw err;
@@ -952,7 +995,7 @@ router.post('/addsubcontractor', function (req, res) {
     const newsubcontractor = new SubCon({
 
         name: req.body.name,
-        client:req.body.client,
+        client: req.body.client,
         emailaddress: req.body.emailaddresss,
         phonenumber: req.body.phonenumber,
         contactphone: req.body.contactphone,
@@ -1108,6 +1151,24 @@ router.post('/editclientaddsubcontractor', function (req, res) {
     })
 
 
+
+})
+//EDIT CLIENT SUBCONTRACTORNAME
+router.post('/editclientsubcontractorname', (req, res) => {
+
+    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractors } }, (err, client) => {
+
+        if (!client) {
+
+            res.json({ success: false, message: "Client Not Found..." })
+
+        } else {
+
+            res.json({ success: true, message: "Client Sub-Contractor Found And Updated...", client: client })
+
+        }
+
+    })
 
 })
 //EDIT CLIENT
