@@ -4396,6 +4396,8 @@ if(data.success){
                                     console.log(this.subContractorName)
                                     subcontractor.name == this.subContractorName
                                     console.log(subcontractor)
+                                   console.log("data.clients[clientindex].subcontractors")
+                                   console.log(data.clients[clientindex].subcontractors)
                         let clientToBeEdited = {
 
                             client: this.clientNameVar2,
