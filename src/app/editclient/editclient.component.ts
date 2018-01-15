@@ -4389,7 +4389,7 @@ if(data.success){
                                 console.log(subcontractor)
                                 if(subcontractor.name == this.subContractorNameVar){
 
-                                    subcontractor.name == item
+                                    subcontractor.name == this.subContractorName
                                     console.log(subcontractor)
 
                                 }
