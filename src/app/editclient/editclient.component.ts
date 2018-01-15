@@ -4141,7 +4141,7 @@ if(data.success){
 
             }, 400)
             setTimeout(() => {
-                document.getElementById('nameform').focus();
+               // document.getElementById('nameform').focus();
                 document.getElementById("clientnametab").click();
 
             }, 700)
@@ -4328,8 +4328,8 @@ if(data.success){
 
             }, 400)
             setTimeout(() => {
-                document.getElementById('nameform').focus();
-                document.getElementById("clientnametab").click();
+               // document.getElementById('nameform').focus();
+               // document.getElementById("clientnametab").click();
 
 
             }, 700)
