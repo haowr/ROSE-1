@@ -4388,7 +4388,10 @@ if(data.success){
                             client.subcontractors.forEach(subcontractor=> {
                                 console.log(subcontractor)
                                 if(subcontractor.name == item){
-
+                                    console.log("IT MATCHED")
+                                    console.log(subcontractor.name)
+                                    console.log(item)
+                                    console.log(this.subContractorName)
                                     subcontractor.name == this.subContractorName
                                     console.log(subcontractor)
 
