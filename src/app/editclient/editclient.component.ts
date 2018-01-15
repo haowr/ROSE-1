@@ -4394,13 +4394,6 @@ if(data.success){
                                     console.log(this.subContractorName)
                                     subcontractor.name == this.subContractorName
                                     console.log(subcontractor)
-
-                                }
-
-                            })
-                        })
-                        console.log(data.clients[clientindex])
-
                         let clientToBeEdited = {
 
                             client: client,
@@ -4413,6 +4406,14 @@ if(data.success){
                             console.log(data);
 
                         })
+
+                                }
+
+                            })
+                        })
+                        console.log(data.clients[clientindex])
+
+
                     })
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
