@@ -57,6 +57,7 @@ export class EditclientComponent implements OnInit {
     subContractorVar: string = "";
     subContractorNameVar:string = "";
     clientNameVar: string = "";
+    clientNameVar2: string = "";
     indexToBeRemoved: string = "";
     editSubContractorIndexVar: string = "";
     addSubContractorIndexVar: string = "";
@@ -4354,6 +4355,7 @@ if(data.success){
         console.log("editSubContractorFunc");
         this.fieldVar = field;
         this.subContractorNameVar = item;
+        this.clientNameVar2=client;
 
         if (field == "name" && this.subContractorName != "") {
 
@@ -4396,7 +4398,7 @@ if(data.success){
                                     console.log(subcontractor)
                         let clientToBeEdited = {
 
-                            client: client,
+                            client: this.clientNameVar2,
                             subcontractors: data.clients[clientindex].subcontractors
 
                         }
