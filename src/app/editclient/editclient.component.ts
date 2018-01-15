@@ -4384,6 +4384,21 @@ if(data.success){
                     this.clientservice.getClients().subscribe(data=>{
 
                         console.log(data.clients)
+                      /*  for(let z=0;z<data.clients.length;z++){
+
+
+                            for(let d=0;d<data.clients[z].subcontractors.length;d++){
+
+                                if(data.clients[z].subcontractors[d].name == item){
+
+                                    data.clients[z].subcontractors[d].name =
+
+                                }
+
+
+                            }
+
+                        }*/
                         data.clients.forEach(client =>{
 
                             console.log(client)
@@ -4394,7 +4409,7 @@ if(data.success){
                                     console.log(subcontractor.name)
                                     console.log(item)
                                     console.log(this.subContractorName)
-                                    subcontractor.name == this.subContractorName
+                                    subcontractor.name = this.subContractorName
                                     console.log(subcontractor)
                                    console.log("data.clients[clientindex].subcontractors")
                                    console.log(data.clients[clientindex].subcontractors)
