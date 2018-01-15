@@ -1157,7 +1157,7 @@ router.post('/editclientaddsubcontractor', function (req, res) {
 //EDIT CLIENT SUBCONTRACTORNAME
 router.post('/editclientsubcontractorname', (req, res) => {
 
-    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractors } }, (err, client) => {
+    Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: req.body.subcontractors } },{new:true}, (err, client) => {
 
         if (!client) {
 
