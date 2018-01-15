@@ -40,6 +40,538 @@ const SuperGen = require('../models/supergeneratorltd');
 const Sbcntrctr = require('../models/sbcntrctor');
 const SubCon = require('../models/newsubcontractor');
 
+//EDIT SUB-CONTRACTOR BY ID
+router.post('/removelocationfromclient', (req,res)=>{
+
+console.log(req.body)
+if(req.body.removelocation){
+
+    Client.findOne({name:req.body.client},(err,client)=>{
+
+        if(err) throw err;
+        if(!client){
+
+            res.json({success:false, message: "Client Not Found.."})
+
+        }else{
+
+
+           console.log(client)
+     for(let z = 0; z<client.subcontractors.length;z++){
+
+            if(client.subcontractors[z].name == req.body.subcontractorname){
+                //console.log(client.subcontractors[z].storenumbers)
+                
+                if(client.subcontractors[z].locations.length >0){
+
+                client.subcontractors[z].locations.splice(client.subcontractors[z].locations.length-1,1)
+
+                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+
+
+                    if(err)throw err;
+                    if(!client){
+
+                        res.json({success: false, message: "Client Not Found..."})
+                    }else{
+                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    }
+
+                })
+
+            }else{
+
+                    res.json({success: false, messae: "Client Sub-Contractor Already Empty...", })
+
+                }
+
+
+           }
+
+        }
+
+    }
+                })
+
+
+
+}
+})
+router.post('/addlocationtoclient', (req,res)=>{
+
+console.log(req.body)
+if(req.body.addlocation){
+
+    Client.findOne({name:req.body.client},(err,client)=>{
+
+        if(err) throw err;
+        if(!client){
+
+            res.json({success:false, message: "Client Not Found.."})
+
+        }else{
+
+
+           console.log(client)
+     for(let z = 0; z<client.subcontractors.length;z++){
+
+            if(client.subcontractors[z].name == req.body.subcontractorname){
+                //console.log(client.subcontractors[z].storenumbers)
+
+                client.subcontractors[z].locations.push(req.body.subclocations2)
+                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+
+
+                    if(err)throw err;
+                    if(!client){
+
+                        res.json({success: false, message: "Client Not Found..."})
+                    }else{
+                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    }
+
+                })
+
+            }
+
+
+           }
+
+        }
+
+    })
+
+
+}
+})
+router.post('/removestorenumberfromclient', (req,res)=>{
+
+console.log(req.body)
+if(req.body.removestorenumber){
+
+    Client.findOne({name:req.body.client},(err,client)=>{
+
+        if(err) throw err;
+        if(!client){
+
+            res.json({success:false, message: "Client Not Found.."})
+
+        }else{
+
+
+           console.log(client)
+           for(let z = 0; z<client.subcontractors.length;z++){
+
+            if(client.subcontractors[z].name == req.body.subcontractorname){
+                console.log(client.subcontractors[z].storenumbers)
+                if(client.subcontractors[z].storenumbers.length>0){
+
+              client.subcontractors[z].storenumbers.splice(client.subcontractors[z].storenumbers.length-1,1)
+                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+
+
+                    if(err)throw err;
+                    if(!client){
+
+                        res.json({success: false, message: "Client Not Found..."})
+                    }else{
+                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    }
+
+                })
+                }else{
+
+                    res.json({success: false, messae: "Client Sub-Contractor Already Empty...", })
+
+                }
+  
+
+            }
+
+
+           }
+
+        }
+
+        //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
+    })
+
+
+}
+})
+
+router.post('/addstorenumbertoclient', (req,res)=>{
+
+console.log(req.body)
+if(req.body.addstorenumber){
+
+    Client.findOne({name:req.body.client},(err,client)=>{
+
+        if(err) throw err;
+        if(!client){
+
+            res.json({success:false, message: "Client Not Found.."})
+
+        }else{
+
+
+           console.log(client)
+           for(let z = 0; z<client.subcontractors.length;z++){
+
+            if(client.subcontractors[z].name == req.body.subcontractorname){
+                console.log(client.subcontractors[z].storenumbers)
+
+                client.subcontractors[z].storenumbers.push(req.body.subcstorenumbers2)
+                Client.findOneAndUpdate({name:req.body.client}, {$set:{subcontractors:client.subcontractors}},{new:true},(err,client)=>{
+
+
+                    if(err)throw err;
+                    if(!client){
+
+                        res.json({success: false, message: "Client Not Found..."})
+                    }else{
+                        res.json({success: true, message: "Client Sub-Contractor Found And Updated", client:client})
+                    }
+
+                })
+
+            }
+
+
+           }
+
+        }
+
+        //res.json({success: true, message:"Client Sub-Contractor Found And Updated", client:client})
+    })
+
+
+}
+})
+
+
+
+
+
+router.put('/removesubcontractor/:id', (req,res)=>{
+
+    SubCon.findOneAndRemove({_id: req.params.id}, (err,subcontractors)=>{
+
+        if(err)throw err;
+        if(!subcontractors){
+
+            res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+        }else{
+            res.json({success: true, message: "Sub-Contractor Found And Removed..", subcontractors:subcontractors})
+        }
+
+    })
+
+
+})
+router.post('/editsubcontractorstorenumber', (req,res)=>{
+
+        if(req.body.removestorenumber){
+        console.log("RLOCATION")
+
+        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{storenumbers:req.body.storenumbers}}, {new:true},(err,subcontractor)=>{
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+            if(req.body.addstorenumber){
+        console.log("RLOCATION")
+
+        SubCon.findOneAndUpdate({_id:req.body.id}, {$push:{storenumbers:req.body.subcstorenumbers2}}, {new:true},(err,subcontractor)=>{
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+
+})
+//EDIT SUB-CONTRACTOR BY ID
+router.post('/editsubcontractorlocation', (req,res)=>{
+
+        if(req.body.removelocation){
+        console.log("RLOCATION")
+
+        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{locations:req.body.locations}}, {new:true},(err,subcontractor)=>{
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+            if(req.body.addlocation){
+        console.log("RLOCATION")
+
+        SubCon.findOneAndUpdate({_id:req.body.id}, {$push:{locations:req.body.subclocations2}}, {new:true},(err,subcontractor)=>{
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+
+})
+router.post('/editsubcontractorbyid', (req,res)=>{
+console.log(req.body)
+console.log()
+    if(req.body.removelocation){
+        console.log("RLOCATION")
+
+        SubCon.findOneAndUpdate({_id:req.body.id}, {$set:{locations:req.body.locations}}, {new:true},(err,subcontractor)=>{
+
+            if(err) throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message: "Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated...", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+    if (req.body.subContractorName == '' || undefined) {
+
+
+
+    } else {
+        console.log("scname")
+
+        SubCon.findOneAndUpdate({_id:req.body.id},{$set:{name:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+
+    }
+    if (req.body.subContractorContactEmail == '' || undefined) {
+
+
+
+    } else {
+        console.log("it doesn't! contactmail");       
+         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactemail:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+    }
+    if (req.body.subContractorContactName == '' || undefined) {
+
+
+
+    } else {
+        console.log("it doesn't!contactname");       
+         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactname:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+    }
+
+    if (req.body.subContractorContactPhone == '' || undefined) {
+
+
+
+    } else {
+
+console.log("contactphone")
+            SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactphone:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+    }
+
+    if (req.body.subContractorPhoneNumber == '' || undefined) {
+
+
+
+    } else {
+        console.log("it doesn'tphone!");
+               SubCon.findOneAndUpdate({_id:req.body.id},{$set:{phonenumber:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+    }
+
+    if (req.body.subContractorEmailAddress == '' || undefined) {
+
+
+
+    } else {
+
+        console.log("it doesn't!");
+                SubCon.findOneAndUpdate({_id:req.body.id},{$set:{emailaddress:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+
+
+            if(err)throw err;
+            if(!subcontractor){
+
+                res.json({success: false, message:"Sub-Contractor Not Found..."})
+
+            }else{
+
+                res.json({success: true, message: "Sub-Contractor Found And Updated", subcontractor:subcontractor})
+
+            }
+
+        })
+
+
+    }
+})
+//GET SUB-CONTRACTORS OF CLIENT
+
+router.put('/getsubcontractorsofclient/:client',(req,res)=>{
+
+console.log(req.params)
+    SubCon.find({client:req.params.client}, (err,subcontractors)=>{
+
+        if(err)throw err;
+        if(!subcontractors){
+
+            res.json({success: false,message:"Sub-Contractors Not Found..."})
+
+        }else{
+
+            res.json({success:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+
+        }
+
+    })
+    
+
+})
+
+
+//GET SUB-CONTRACTORS
+router.get('/getsubcontractors', (req,res)=>{
+
+    SubCon.find({}, (err,subcontractors)=>{
+
+        if(err)throw err;
+        if(!subcontractors){
+
+            res.json({success: false, message: "Sub-Contractors not found..."})
+
+        }else{
+
+            res.json({succes:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+
+        }
+
+    })
+
+
+})
+
+//EDIT SUB-CONTRACTOR
+
+//router.post('/updatesubcontractor', (req,res)=>{
+
+ //   SubCon.findOneAndUpdate({_id: req.body.id}, {$set:{locations:}})
+
+
+//})
 
 //UPDATE SUBCONTRACTOR TOTAL EPENDITURES
 
@@ -373,7 +905,7 @@ console.log(req.body)
 })
 //GET SUBCONTRACTOR
 
-router.put('/getsubcontractors/:name', (req, res) => {
+router.put('/getsubcontractor/:name', (req, res) => {
 
 
     SubCon.findOne({ name: req.params.name }, (err, subcontractor) => {
@@ -397,6 +929,7 @@ router.post('/addsubcontractor', function (req, res) {
     const newsubcontractor = new SubCon({
 
         name: req.body.name,
+        client:req.body.client,
         emailaddress: req.body.emailaddresss,
         phonenumber: req.body.phonenumber,
         contactphone: req.body.contactphone,

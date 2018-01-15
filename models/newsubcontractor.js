@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 const SubSchema = mongoose.Schema({
 
     name: {type:String, unique:true, required:true},
+    client:String,
     contactname:{type:String},
     contactemail:String,
     contactphone:String,
     phonenumber:String,
     emailaddress:String,
     locations:Array,
-    storenumbes:Array,
+    storenumbers:Array,
     veritivcanada:Array,
     topline:Array,
     wesclean:Array,
