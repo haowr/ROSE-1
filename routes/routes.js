@@ -214,14 +214,15 @@ router.post('/addstorenumbertoclient', (req, res) => {
 
             } else {
 
-
-                console.log(client)
+console.log("WEDIDIT!!")
+               
                 for (let z = 0; z < client.subcontractors.length; z++) {
-
+                    console.log(client.subcontractors[z].name)
                     if (client.subcontractors[z].name == req.body.subcontractorname) {
-                        console.log(client.subcontractors[z].storenumbers)
+                      //  console.log(client.subcontractors[z].storenumbers)
 
                         client.subcontractors[z].storenumbers.push(req.body.subcstorenumbers2)
+                        console.log("WEDIDIT!!")
                         Client.findOneAndUpdate({ name: req.body.client }, { $set: { subcontractors: client.subcontractors } }, { new: true }, (err, client) => {
 
 

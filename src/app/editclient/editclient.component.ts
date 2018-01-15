@@ -4345,6 +4345,7 @@ if(data.success){
     }
     editSubContractorFunc(client, item, index, clientindex, field, id) {
         console.log(this.subContractorName2);
+        console.log(this.subContractorName)
         console.log(item);
         console.log(field);
         console.log(id)
@@ -4388,7 +4389,7 @@ if(data.success){
                                 console.log(subcontractor)
                                 if(subcontractor.name == this.subContractorNameVar){
 
-                                    subcontractor.name == this.subContractorNameVar
+                                    subcontractor.name == item
                                     console.log(subcontractor)
 
                                 }
