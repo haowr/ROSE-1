@@ -4387,9 +4387,9 @@ if(data.success){
                             console.log(client)
                             client.subcontractors.forEach(subcontractor=> {
                                 console.log(subcontractor)
-                                if(subcontractor.name == this.subContractorNameVar){
+                                if(subcontractor.name == item){
 
-                                    subcontractor.name == item
+                                    subcontractor.name == this.subContractorName
                                     console.log(subcontractor)
 
                                 }
