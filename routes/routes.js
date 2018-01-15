@@ -407,7 +407,7 @@ console.log()
 
     } else {
         console.log("it doesn't! contactmail");       
-         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactemail:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactemail:req.body.subContractorContactEmail}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err)throw err;
@@ -429,7 +429,7 @@ console.log()
 
     } else {
         console.log("it doesn't!contactname");       
-         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactname:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+         SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactname:req.body.subContractorContactName}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err)throw err;
@@ -453,7 +453,7 @@ console.log()
     } else {
 
 console.log("contactphone")
-            SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactphone:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+            SubCon.findOneAndUpdate({_id:req.body.id},{$set:{contactphone:req.body.subContractorContactPhone}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err)throw err;
@@ -476,7 +476,7 @@ console.log("contactphone")
 
     } else {
         console.log("it doesn'tphone!");
-               SubCon.findOneAndUpdate({_id:req.body.id},{$set:{phonenumber:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+               SubCon.findOneAndUpdate({_id:req.body.id},{$set:{phonenumber:req.body.subContractorPhoneNumber}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err)throw err;
@@ -500,7 +500,7 @@ console.log("contactphone")
     } else {
 
         console.log("it doesn't!");
-                SubCon.findOneAndUpdate({_id:req.body.id},{$set:{emailaddress:req.body.subContractorName}}, {new:true}, (err,subcontractor)=>{
+                SubCon.findOneAndUpdate({_id:req.body.id},{$set:{emailaddress:req.body.subContractorEmailAddress}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err)throw err;
@@ -519,6 +519,29 @@ console.log("contactphone")
 
     }
 })
+//GET LOCATIONS OF CLIENT
+
+router.put('/getlocationsofclient/:client',(req,res)=>{
+
+console.log(req.params)
+    SubCon.find({client:req.params.client}, (err,subcontractors)=>{
+
+        if(err)throw err;
+        if(!subcontractors){
+
+            res.json({success: false,message:"Sub-Contractors Not Found..."})
+
+        }else{
+
+            res.json({success:true, message: "Sub-Contractors Found...", subcontractors:subcontractors})
+
+        }
+
+    })
+    
+
+})
+
 //GET SUB-CONTRACTORS OF CLIENT
 
 router.put('/getsubcontractorsofclient/:client',(req,res)=>{
