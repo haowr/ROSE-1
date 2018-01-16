@@ -18,6 +18,7 @@ import { HomeComponent2 } from './components/components/home2/home2.component';
 import { DataService } from './services/data.service';
 import { ValidateService } from './services/validate.service';
 import { ClientService } from './services/client.service';
+import { WeatherService } from './services/weather.service';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, ActivatedRoute, Params,PreloadAllModules } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
@@ -115,7 +116,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [DataService, ValidateService, AuthService,ClientService, AuthGuard],
+  providers: [DataService, ValidateService, AuthService,ClientService, AuthGuard, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

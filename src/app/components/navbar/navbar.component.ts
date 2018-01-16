@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 //import { FlashMessagesService} from 'angular2-flash-messages';
 import { Routes,Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from "../../services/data.service";
+import { WeatherService } from '../../services/weather.service'
 import { ClientService } from "../../services/client.service";
 import { ChangeDetectorRef } from '@angular/core';
 import { HostListener } from '@angular/core';
@@ -20,6 +21,8 @@ export class NavbarComponent implements OnInit {
 
 
   innerWidth:number;
+  weatherNow:string = "";
+  temperatureNow:string = ""
   pendingRequest:boolean = false;
   userName:string;
   username:any;
@@ -59,12 +62,21 @@ onResize(event) {
                private dataservice:DataService,
                private clientservice: ClientService,
                private activatedroute: ActivatedRoute,
-               private cdRef: ChangeDetectorRef) { }
+               private cdRef: ChangeDetectorRef,
+               private weatherservice: WeatherService) { }
 
 
   ngOnInit() {
 
     
+    this.weatherservice.getWeather().subscribe(data=>{
+
+      console.log(data)
+     this.weatherNow =  data.weather[0].icon;
+     this.temperatureNow = data.main.temp;
+
+    })
+
     this.username =this.authservice.userName;
     console.log(this.authservice.getUserData());
     this.authservice.userSubscribable.subscribe(value =>{
