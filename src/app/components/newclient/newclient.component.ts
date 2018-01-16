@@ -321,11 +321,11 @@ imReadyToSubmitFunc(){
 }
 imNotReadyToSubmitFunc(){
 
-    if(this.areYouSure){
+   
 
         this.areYouSure = false;
 
-    }
+    
 
 }
   openNewClientForm(){
