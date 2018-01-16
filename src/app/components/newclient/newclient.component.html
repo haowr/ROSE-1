@@ -44,7 +44,7 @@
          <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
         </div>
         <div class="modal-footer">
-        <button *ngIf="areYouSure"  (click)="addClient();" type="button" class="btn btn-success ">Yes</button>
+        <button *ngIf="areYouSure"  (click)="addClient();" type="button" class="btn btn-default ">Yes</button>
 
            <button *ngIf="areYouSure"type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
@@ -667,12 +667,12 @@
               <br>
               <i style=" text-align:center"*ngIf="addSubContractorSuccess  && !addSubContractorSuccess " class=" fa fa-check " aria-hidden="true" style="font-size:40px"></i>
     <i style ="display:block; font-size:40px;"*ngIf="addSubContractorSuccess " class="fa fa-check-circle text-center animated flash" aria-hidden="true"></i>
-              <h3 class = "text-center" style="font-family: 'Lora', serif; font-size:30px;" *ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
+              <h3 class = "text-center" style="font-family: 'Lora', serif; " *ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
                             && contactphone != '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading"> Are You Ready To Submit Your New Client? </h3>
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-primary text-center">Yes</button>
+                            && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-default text-center">Yes</button>
                             <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-default text-center">No</button>
+                            && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-danger text-center">No</button>
               <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
                             && contactphone !== '' && client.subcontractors.length && imReady" type="submit" class="btn btn-default text-center">Yes</button>
               <h4 *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess&& client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) Loaded...</h4>
