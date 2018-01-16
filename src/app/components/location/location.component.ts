@@ -832,7 +832,7 @@ export class LocationComponent implements OnInit {
 
             }
 
-            this.totalCostThisMonth = this.totalCostThisMonth + price;
+            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth
@@ -902,7 +902,7 @@ export class LocationComponent implements OnInit {
 
                 if(this.totalCostThisMonth > 0){
 
-                  this.totalCostThisMonth = this.totalCostThisMonth - price;
+                  this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
 
                 }                
@@ -976,7 +976,7 @@ export class LocationComponent implements OnInit {
 
                 if(this.totalCostThisMonth > 0){
 
-                  this.totalCostThisMonth = this.totalCostThisMonth - price;
+                  this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
 
                 }
@@ -1053,7 +1053,7 @@ export class LocationComponent implements OnInit {
 
             if(this.totalCostThisMonth > 0){
 
-                this.totalCostThisMonth = this.totalCostThisMonth - price;
+                this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
 
                 }                
@@ -1125,7 +1125,7 @@ export class LocationComponent implements OnInit {
 
             }
             
-            this.totalCostThisMonth = this.totalCostThisMonth + price;
+            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth
@@ -1189,7 +1189,7 @@ export class LocationComponent implements OnInit {
 
             }
             
-            this.totalCostThisMonth = this.totalCostThisMonth + price;
+            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth
