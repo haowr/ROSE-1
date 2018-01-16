@@ -1,49 +1,60 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-        <a id="moveitemleft" *ngIf="largeRoseLogo  && !largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']" ><img style="position:fixed;"*ngIf="largeRoseLogo && !largestRoseLogo && !smallestRoseLogo"  src="../assets/img/roselogosmallerhalf.png"></a>
-         <a id="moveitemleft" *ngIf="smallestRoseLogo" [routerLink]="['/']" ><img style="position:fixed;"*ngIf="smallestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
+      <a id="moveitemleft" *ngIf="largeRoseLogo  && !largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="largeRoseLogo && !largestRoseLogo && !smallestRoseLogo"  src="../assets/img/roselogosmallerhalf.png"></a>
+      <a id="moveitemleft" *ngIf="smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="smallestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
 
-         <a id="moveitemleft" *ngIf="largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']" ><img style="position:fixed;"*ngIf="largestRoseLogo && !smallestRoseLogo" src="../assets/img/roselogosmaller.png"></a>
-          <a id="moveitemleft"[routerLink]="['/']" class="navbar-brand">ROSE</a>
-      <button type="button" (click)="loadLargeRoseLogo()"id="navbar-toggle"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <a id="moveitemleft" *ngIf="largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="largestRoseLogo && !smallestRoseLogo" src="../assets/img/roselogosmaller.png"></a>
+      <a id="moveitemleft" [routerLink]="['/']" class="navbar-brand">ROSE</a>
+      <button type="button" (click)="loadLargeRoseLogo()" id="navbar-toggle" class="navbar-toggle collapsed" data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        
+
     </div>
 
     <div class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav">
-        
+
         <li *ngIf="authservice.loggedIn()" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-       
-             <li><a href="#"></a></li>
-                <li class="divider"></li><!--(click)="closeNavbar()" -->
-                <li  class ="animated fadeIn" ><a (click)="closeNavbar()"   
-                   [routerLink]="['/clients']" >Client List</a></li>
-                <li class ="animated fadeIn"><a (click)="closeNavbar()" [routerLink]="['register', 'newclient']" >Add Client</a></li>
-                <li class ="animated fadeIn" ><a (click)="closeNavbar()" [routerLink]="['/edit']" >Edit Client</a></li>
-                <li class ="animated fadeIn" ><a (click)="closeNavbar()"  [routerLink]="['/remove']" >Remove Client</a></li>
+
+            <li><a href="#"></a></li>
+            <li class="divider"></li>
+            <!--(click)="closeNavbar()" -->
+            <li class="animated fadeIn"><a (click)="closeNavbar()" [routerLink]="['/clients']">Client List</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" [routerLink]="['register', 'newclient']">Add Client</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" [routerLink]="['/edit']">Edit Client</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" [routerLink]="['/remove']">Remove Client</a></li>
           </ul>
         </li>
       </ul>
-                    
+
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="font-size:20px;" href="#"><i class="wi wi-night-partly-cloudy" style="font-size:30px; color:white;"></i>{{temperatureNow}}</a></li>
-                
+        <li *ngIf="weatherNow == '02d' || weatherNow == '03d' "><a style="font-size:20px;" href="#"><i  class="wi wi-day-sunny-overcast" style="font-size:30px; color:white; "></i>{{temperatureNow}}</a></li>
 
-             <li  *ngIf="authservice.loggedIn()"[routerLinkActive]="['active']" class = "animated fadeIn"><a  style="color:white;" href="#">Welcome, {{username}}.</a></li>
-            <li *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']"class = "animated fadeIn"><a   [routerLink]="['/login']" >Employee Login</a></li>
-            <li><a *ngIf="authservice.loggedIn()" [routerLink]="['/register']"class = "animated fadeIn" >Employee Register</a></li>
-            <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']"class = "animated fadeIn"><a    href="#"(click)="onLogoutClick();" >Logout</a></li>
-  
+        <li *ngIf="weatherNow == '02n' || weatherNow == '03n' "><a style="font-size:20px;" href="#">  <i  class="wi wi-night-partly-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '04n'"><a style="font-size:20px;" href="#">  <i  class="wi wi-night-alt-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '04d'"><a style="font-size:20px;" href="#">  <i  class="wi wi-day-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+
+        <li *ngIf="weatherNow == '01n'"><a style="font-size:20px;" href="#"> <i  class="wi wi-night-clear" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '01d'"><a style="font-size:20px;" href="#">  <i  class="wi wi-day-sunny" style="font-size:30px; color:white;"></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '13d'"><a style="font-size:20px;" href="#">  <i  class="wi wi-snow" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '10d'"><a style="font-size:20px;" href="#">  <i class="wi wi-rain" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '09d'"><a style="font-size:20px;" href="#">  <i  class="wi wi-rain-wind" style="font-size:30px; color:white;"></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '11d'"><a style="font-size:20px;" href="#">  <i class="wi wi-storm-showers" style="font-size:30px;color:white;"></i>{{temperatureNow}}</a></li>
+
+        <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a style="color:white;" href="#">Welcome, {{username}}.</a></li>
+        <li *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a [routerLink]="['/login']">Employee Login</a></li>
+        <li><a *ngIf="authservice.loggedIn()" [routerLink]="['/register']" class="animated fadeIn">Employee Register</a></li>
+        <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a href="#" (click)="onLogoutClick();">Logout</a></li>
+
       </ul>
     </div>
   </div>
