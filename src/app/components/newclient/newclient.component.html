@@ -24,7 +24,7 @@
           <h2 class="modal-title openssans">ROSE</h2>
         </div>
         <div class="modal-body text-center">
-        <h3 class="openssans text-center animated flash " *ngIf="areYouSure">Are you sure?</h3>
+        <h3 class="openssans text-center animated flash " style="font-family: 'Lora', serif; font-size:30px;" *ngIf="areYouSure">Are you sure?</h3>
         <!--<i style="font-size:30px;" *ngIf="areYouSure" class="fa fa-exclamation-triangle text-center animated flash" aria-hidden="true"></i>-->
         <i style = "font-size:30px;"class="fa fa-question-circle text-center animated flash" *ngIf="areYouSure"aria-hidden="true"></i>
 
@@ -32,6 +32,7 @@
 
               <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed && !areYouSure" class="animated flash">Inserting Client Into Database...</h3>
               <h3 *ngIf="addClientSuccess && !areYouSure" class="animated flash">Client Successfully Added To The Database...</h3>
+              <i *ngIf="addClientSuccess" class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
               <i *ngIf="addClientSuccess && !areYouSure" class="fa fa-check-circle animated flash" aria-hidden="true" style="font-size:40px"></i>
               <h3 *ngIf="clientAddFailed && !areYouSure" class="animated flash text-danger">Client Already Exists In The Database...</h3>
 
@@ -43,9 +44,9 @@
          <!-- <p style="font-size:20px;">Orders for the month of {{previousMonth}}, have been charted, and reset</p>-->
         </div>
         <div class="modal-footer">
-        <button *ngIf="areYouSure"  (click)="addClient();" type="button" class="btn btn-default">Yes</button>
+        <button *ngIf="areYouSure"  (click)="addClient();" type="button" class="btn btn-success ">Yes</button>
 
-           <button *ngIf="areYouSure"type="button" class="btn btn-default" data-dismiss="modal">No</button>
+           <button *ngIf="areYouSure"type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
         </div>
       </div>
@@ -630,10 +631,10 @@
           <div *ngIf="clientFormOpen && scReady" class="panel panel-primary">
             <div class="panel-heading">
               <h3 *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !addClientSuccess &&!addClientLoading" class="panel-title">Add Sub-Contractor Instructions</h3>
-              <h3 *ngIf="addClientSuccess && !addClientLoading " class="panel-title">Client Addition Successful</h3>
+              <h3 *ngIf="addClientSuccess && !addClientLoading " style="font-family: 'Lora', serif; font-size:30px;"class="panel-title">Client Addition Successful</h3>
 
               <h3 *ngIf="addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Sub-Contractor Addition Successful</h3>
-              <h3 *ngIf="clientAddFailed &&!addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Client Addition Failed</h3>
+              <h3 *ngIf="clientAddFailed &&!addSubContractorSuccess && !addSubContractorLoading "style="font-family: 'Lora', serif; font-size:30px;" class="panel-title">Client Addition Failed</h3>
               <h3 *ngIf="addSubContractorLoading || addClientLoading " class="panel-title animated flash">Loading</h3>
               <h3 *ngIf="addClientSuccess && !addClientLoading " class="panel-title">.</h3>
 
@@ -666,10 +667,10 @@
               <br>
               <i style=" text-align:center"*ngIf="addSubContractorSuccess  && !addSubContractorSuccess " class=" fa fa-check " aria-hidden="true" style="font-size:40px"></i>
     <i style ="display:block; font-size:40px;"*ngIf="addSubContractorSuccess " class="fa fa-check-circle text-center animated flash" aria-hidden="true"></i>
-              <h3 class = "text-center"*ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
+              <h3 class = "text-center" style="font-family: 'Lora', serif; font-size:30px;" *ngIf="name != '' && phonenumber != '' && emailaddress != '' && contactname  != ''&& contactemail!= ''
                             && contactphone != '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading"> Are You Ready To Submit Your New Client? </h3>
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-default text-center">Yes</button>
+                            && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-primary text-center">Yes</button>
                             <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
                             && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-default text-center">No</button>
               <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
