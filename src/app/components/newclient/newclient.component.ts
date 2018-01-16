@@ -321,9 +321,9 @@ imReadyToSubmitFunc(){
 }
 imNotReadyToSubmitFunc(){
 
-    if(this.imReady){
+    if(this.areYouSure){
 
-        this.imReady = false;
+        this.areYouSure = false;
 
     }
 

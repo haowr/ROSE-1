@@ -672,7 +672,7 @@
               <button *ngIf="name !== '' && phonenumber !==''  && emailaddress !== ''  && contactname  !== ''&& contactemail!== ''
                             && contactphone !== ''  && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imReadyToSubmitFunc()" type="button" class="btn btn-default text-center">Yes</button>
                             <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
-                            && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-danger text-center">No</button>
+                            && contactphone !== '' && client.subcontractors.length && !imReady &&!addSubContractorSuccess && !addSubContractorLoading" (click)="imNotReadyFunc()"type="button" class="btn btn-default text-center">No</button>
               <button *ngIf="name !== '' && phonenumber !== '' && emailaddress !== '' && contactname  !== ''&& contactemail!== ''
                             && contactphone !== '' && client.subcontractors.length && imReady" type="submit" class="btn btn-default text-center">Yes</button>
               <h4 *ngIf="!addSubContractorLoading && !addClientLoading &&!addClientSuccess && !addSubContractorSuccess&& client.subcontractors.length">{{client.subcontractors.length}} Sub-Contractor(s) Loaded...</h4>

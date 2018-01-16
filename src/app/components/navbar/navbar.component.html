@@ -37,18 +37,18 @@
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="weatherNow == '02d' || weatherNow == '03d' "><a style="font-size:18px;" href="#"><i  class="wi wi-day-sunny-overcast" style="font-size:30px; color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '02d' || weatherNow == '03d' "><a style="font-size:18px;" href="#"><i  class="wi wi-day-sunny-overcast" style="font-size:18px; color:white; "></i>{{temperatureNow}}</a></li>
 
-        <li *ngIf="weatherNow == '02n' || weatherNow == '03n' "><a style="font-size:18px;" href="#">  <i  class="wi wi-night-partly-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '04n'"><a style="font-size:18px;" href="#">  <i  class="wi wi-night-alt-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '04d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-cloudy" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '02n' || weatherNow == '03n' "><a style="font-size:18px;" href="#">  <i  class="wi wi-night-partly-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '04n'"><a style="font-size:18px;" href="#">  <i  class="wi wi-night-alt-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '04d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
 
-        <li *ngIf="weatherNow == '01n'"><a style="font-size:18px;" href="#"> <i  class="wi wi-night-clear" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '01d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-sunny" style="font-size:30px; color:white;"></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '13d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-snow" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '10d'"><a style="font-size:18px;" href="#">  <i class="wi wi-rain" style="font-size:30px;color:white; "></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '09d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-rain-wind" style="font-size:30px; color:white;"></i>{{temperatureNow}}</a></li>
-        <li *ngIf="weatherNow == '11d'"><a style="font-size:18px;" href="#">  <i class="wi wi-storm-showers" style="font-size:30px;color:white;"></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '01n'"><a style="font-size:18px;" href="#"> <i  class="wi wi-night-clear" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '01d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-sunny" style="font-size:18px; color:white;"></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '13d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-snow" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '10d'"><a style="font-size:18px;" href="#">  <i class="wi wi-rain" style="font-size:18px;color:white; "></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '09d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-rain-wind" style="font-size:18px; color:white;"></i>{{temperatureNow}}</a></li>
+        <li *ngIf="weatherNow == '11d'"><a style="font-size:18px;" href="#">  <i class="wi wi-storm-showers" style="font-size:18px;color:white;"></i>{{temperatureNow}}</a></li>
 
         <li *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a style="color:white;" href="#">Welcome, {{username}}.</a></li>
         <li *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a [routerLink]="['/login']">Employee Login</a></li>
