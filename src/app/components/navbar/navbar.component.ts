@@ -204,7 +204,11 @@ if(!this.largestRoseLogo){
 
   }
 
+closeDropdown(){
 
+  document.getElementById('navbar-toggle').click();
+
+}
 
 
 }
