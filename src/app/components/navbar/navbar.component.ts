@@ -214,6 +214,10 @@ if(!this.largestRoseLogo){
     this.largestRoseLogo = true;
 
 }else{
+      this.weatherInfo2=false;
+      this.divUnderlineOpen = false;
+      this.weatherInfo3Hidden = true;
+      this.weatherInfoHidden = false;
   setTimeout(()=>{
 
   this.largestRoseLogo = false;
