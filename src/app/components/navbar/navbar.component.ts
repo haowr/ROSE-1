@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
   weatherInfoHidden:boolean = false;
   weatherInfo3Hidden:boolean = true;
   divUnderlineOpen:boolean = false;
+  removeWeatherQuickly:boolean =false;
   subcontractorObject:Object;
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
@@ -75,6 +76,7 @@ onResize(event) {
   ngOnInit() {
 
 console.log(this.divUnderlineOpen)
+console.log(this.removeWeatherQuickly)
     
     this.weatherservice.getWeather().subscribe(data=>{
 
@@ -208,20 +210,26 @@ document.getElementById("navbar-toggle").click();
 loadLargeRoseLogo(){
 
   if(document.documentElement.clientWidth< 766){
+    console.log("pressed")
+    this.removeWeatherQuickly = true;
+    console.log(this.removeWeatherQuickly)
 if(!this.largestRoseLogo){
   this.smallestRoseLogo = false
     console.log("mobile")
     this.largestRoseLogo = true;
 
 }else{
+  this.removeWeatherQuickly = false;
       this.weatherInfo2=false;
       this.divUnderlineOpen = false;
       this.weatherInfo3Hidden = true;
       this.weatherInfoHidden = false;
+      
   setTimeout(()=>{
 
   this.largestRoseLogo = false;
   this.smallestRoseLogo= true;
+  //this.removeWeatherQuickly = false;
   },300)
 
 }

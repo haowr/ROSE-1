@@ -7,7 +7,14 @@
     opacity:1;
 
 }
+.removeweatherquickly{
+    display:none;
 
+
+}
+.resetweatherdisplay{
+    display:inline-block;
+}
 .divunderlineopen{
 opacity:1;
 width:230px; 
@@ -17,7 +24,7 @@ transition:2s;
 .divunderlineclosed{
 opacity:0;
 width:0px; 
-transition:2s;
+transition:1s;
 
 }
 .weatherinfo3{
@@ -30,7 +37,7 @@ left:240px;
 height:0px;
     position:absolute; 
 opacity:0;
-transition:2s;
+transition:.3s;
 
 }
 .weatherinfoparagraphhidden{

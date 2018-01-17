@@ -38,17 +38,17 @@
 
       <ul class="nav navbar-nav navbar-right">
       
-          
+          <div *ngIf="removeWeatherQuickly">
 
-          <div class="text-center" [ngClass]="{'weatherinfo2': weatherInfo, 'weatherinfo3hidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfo':weatherInfoHidden && !weatherInfo3Hidden,'weatherinfoparagraph':weatherInfo2}" style="position:absolute; border:2px solid #ddd; width:100px; ">
+          <div  class="text-center" [ngClass]="{'weatherinfo2': weatherInfo, 'weatherinfo3hidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfo':weatherInfoHidden && !weatherInfo3Hidden,'weatherinfoparagraph':weatherInfo2}" style="position:absolute; border:2px solid #ddd; width:100px; ">
 
             <p [ngClass]="{'weatherinfotitlehidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfotitle':weatherInfo2}"style="color:white; font-family: 'Lora', serif; left:12px;">DESCRIPTION</p>
             <br>
             <p [ngClass]="{'weatherinfoparagraphhidden':weatherInfo3Hidden && !weatherInfoHidden, 'weatherinfoparagraph2':weatherInfo2}"
               style="color:white; font-family: 'Lora', serif; left: 12px;">{{weatherDescription}}</p>
           </div>
-        
-        <li *ngIf="weatherNow == '02d' || weatherNow == '03d' "><a style="font-size:18px;" href="#"><i  class="wi wi-day-sunny-overcast" style="font-size:18px; color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
+          </div>
+        <li *ngIf="weatherNow == '02d' || weatherNow == '03d' "(click)="openWeatherInfo()"><a style="font-size:18px;" href="#"><i  class="wi wi-day-sunny-overcast" style="font-size:18px; color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
 
         <li *ngIf="weatherNow == '02n' || weatherNow == '03n' " (click)="openWeatherInfo()"><a style="font-size:18px;" href="#">  <i  class="wi wi-night-partly-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
         <li *ngIf="weatherNow == '04n'" (click)="openWeatherInfo()"><a style="font-size:18px;" href="#">  <i  class="wi wi-night-alt-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a>
@@ -57,7 +57,7 @@
     <li *ngIf="weatherNow == '04d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-cloudy" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
 
     <li *ngIf="weatherNow == '01n'" (click)="openWeatherInfo()"><a style="font-size:18px;" href="#"> <i  class="wi wi-night-clear" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
-    <li *ngIf="weatherNow == '01d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-sunny" style="font-size:18px; color:white;"></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
+    <li *ngIf="weatherNow == '01d'"(click)="openWeatherInfo()"><a style="font-size:18px;" href="#">  <i  class="wi wi-day-sunny" style="font-size:18px; color:white;"></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
     <li *ngIf="weatherNow == '13d'"><a style="font-size:18px;" href="#">  <i  class="wi wi-snow" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
     <li *ngIf="weatherNow == '10d'"><a style="font-size:18px;" href="#">  <i class="wi wi-rain" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
     <li *ngIf="weatherNow == '10n'" (click)="openWeatherInfo()"><a style="font-size:18px;" href="#">  <i class="wi wi-rain" style="font-size:18px;color:white; "></i>{{temperatureNow}}<div  [ngClass]="{'divunderlineclosed':weatherInfo3Hidden && !weatherInfoHidden, 'divunderlineopen': divUnderlineOpen}" ></div></a></li>
