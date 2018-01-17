@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
 
   innerWidth:number;
   weatherNow:string = "";
+  weatherDescription:string = "";
   temperatureNow:string = ""
   pendingRequest:boolean = false;
   userName:string;
@@ -34,6 +35,11 @@ export class NavbarComponent implements OnInit {
   smallestRoseLogo:boolean = false;
   largeRoseLogo:boolean = false;
   largestRoseLogo:boolean=false;
+  weatherInfo:boolean = false;
+  weatherInfo2:boolean = false;
+  weatherInfoHidden:boolean = false;
+  weatherInfo3Hidden:boolean = true;
+  divUnderlineOpen:boolean = false;
   subcontractorObject:Object;
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
@@ -68,12 +74,14 @@ onResize(event) {
 
   ngOnInit() {
 
+console.log(this.divUnderlineOpen)
     
     this.weatherservice.getWeather().subscribe(data=>{
 
       console.log(data)
      this.weatherNow =  data.weather[0].icon;
      this.temperatureNow = data.main.temp;
+     this.weatherDescription = data.weather[0].description;
 
     })
 
@@ -98,6 +106,7 @@ onResize(event) {
 
     this.authservice.checkIfLoggedIn();
  
+    
     this.activatedroute.params.subscribe((params:Params)=>{
 
       console.log(params);
@@ -139,6 +148,41 @@ onResize(event) {
 
    // })
 
+  }
+  openWeatherInfo(){
+
+    if(!this.weatherInfo && document.documentElement.clientWidth >768){
+
+      this.weatherInfo = true;
+      console.log(this.weatherInfo)
+      console.log(this.innerWidth)
+
+    }
+    else{
+
+      this.weatherInfo = false;
+      console.log(this.weatherInfo)
+      console.log(this.innerWidth)
+      console.log(document.documentElement.clientWidth)
+    }
+
+ if(!this.weatherInfo2 && document.documentElement.clientWidth < 768)
+    {
+
+      this.weatherInfo2 = true
+      this.divUnderlineOpen = true;
+      this.weatherInfo3Hidden = false;
+      this.weatherInfoHidden = false;
+      console.log(this.weatherInfo2)
+      console.log(this.divUnderlineOpen)
+    }else{
+
+      this.weatherInfo2=false;
+      this.divUnderlineOpen = false;
+      this.weatherInfo3Hidden = true;
+      this.weatherInfoHidden = false;
+      console.log(this.weatherInfo2)
+    }
   }
 
 ngAfterViewInit(){

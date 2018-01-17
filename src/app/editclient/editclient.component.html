@@ -60,10 +60,13 @@
 
     </div>
 
-    <div *ngIf="clientsLoading" class=" text-center">
 
-      <br>
-      <br>
+    <div *ngIf="clientsLoading" class=" text-center">
+<br>
+<br>
+<br>
+<br>
+    
       <i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size:30px;"></i> <span class="animated flash" style="font-family: 'Lora', serif; font-size:30px;">//LOADING//</span>
       <i style="font-size:30px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
@@ -733,7 +736,7 @@
 
               <div class="tab-pane fade active in" id="name">
 
-                <h4>{{client.name}}</h4>
+                <h4>Name:</h4>
                 <input id="nameform" class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
                 <button id="showeditclientdialogue" (click)="editClientFunc(client.name,'name');" class="btn btn-default form-control" data-toggle="tooltip"
                   data-placement="right" title="" data-original-title="Tooltip on right">edit<div id="dialogue">hello</div></button>
@@ -807,13 +810,7 @@
                 <i class="fa fa-chevron-right" (click)="openNextTab('eccontactphone','asphonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('eccontactphone','asphonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
 
-                <div *ngIf="!editClientLoading && clientNameIsEmpty" class="editclientloadingplaceholder">
-                </div>
-
-                <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw">
-</i>
-                <span *ngIf="editClientLoading">LOADING</span>
-                <i style="font-size:20px;" *ngIf="editClientLoading && !clientNameIsEmpty" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+          
 
                 <div *ngIf="clientContactNameIsEmpty">
                   <p>{{clientContactNameIsEmptyMsg}}</p>
@@ -907,37 +904,40 @@
 
 
                 <div *ngIf="editClientLoading || addSubContractorLoading || editSubContractorLoading || loadingNewSubContractors" class=" text-center">
-                  <br>
+                  
 
                   <i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size:20px;"></i> <span class="animated flash" style="font-family: 'Lora', serif; font-size:20px;">//LOADING//</span>
                   <i style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
                 </div>
 
-                <p *ngIf=" editSubContractorFormReady&&!editSubContractorSuccess && !editSubContractorLoading && !loadingNewSubContractors"
-                  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                <p *ngIf="editSubContractorFormReady&&!editSubContractorSuccess && !editSubContractorLoading&& !loadingNewSubContractors"
-                  class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
-                <p *ngIf="editSubContractorFormReady&&!editSubContractorSuccess && !editSubContractorLoading&& !loadingNewSubContractors"
-                  class="text-danger"> 3. (Field Cannot Be Empty)</p>
-                <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading&& !loadingNewSubContractors">{{subcontractor.name}} Successfully Edited!</h3>
+                <p *ngIf=" editSubContractorFormReady && !editSubContractorSuccess && !editSubContractorLoading 
+                           && !loadingNewSubContractors && !addSubContractorFormReady"
+                     class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+                <p *ngIf=" editSubContractorFormReady && !editSubContractorSuccess && !editSubContractorLoading 
+                           && !loadingNewSubContractors && !addSubContractorFormReady"
+                     class="text-success"> 2. Click "Edit" once completed, and wait for the message indicating the edit has been accepted.</p>
+                <p *ngIf=" editSubContractorFormReady && !editSubContractorSuccess && !editSubContractorLoading 
+                           && !loadingNewSubContractors && !addSubContractorFormReady"
+                    class="text-danger"> 3. (Field Cannot Be Empty)</p>
+                <h3 class="animated flash text-center" *ngIf="editSubContractorSuccess && !editSubContractorLoading && !loadingNewSubContractors && !addSubContractorFormReady">{{subcontractor.name}} Successfully Edited!</h3>
                 <i *ngIf="editSubContractorSuccess" class="fa fa-check animated flash  text-center" style="font-size:40px;" aria-hidden="true"></i>
 
                 <p *ngIf="addSubContractorFormReady && !addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors"
-                  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
+                  class="text-primary animated fadeIn"> 1. Input your information to the appropriate field (eg. "Name").</p>
                 <p *ngIf="addSubContractorFormReady && !addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors"
-                  class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
+                  class="text-success animated fadeIn"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
                 <p *ngIf="addSubContractorFormReady && !addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors"
-                  class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
+                  class="text-warning animated fadeIn"> 3. Do this for all fields ( All fields must be filled in ).</p>
                 <p *ngIf="addSubContractorFormReady && !addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors"
-                  class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
+                  class="text-danger animated fadeIn"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
                   the new Sub Contractor has been added.</p>
-                <p *ngIf="!editSubContractorFormReady&&!editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess&& !loadingNewSubContractors"
-                  class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                <p *ngIf="!editSubContractorFormReady&&!editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess&& !loadingNewSubContractors"
-                  class="text-success"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
-                <p *ngIf="!editSubContractorFormReady&&!editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess&& !loadingNewSubContractors"
-                  class="text-danger"> 3. (Field Cannot Be Empty)</p>
+                <p *ngIf="!editSubContractorFormReady && !editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess && !loadingNewSubContractors && !eScFormReady"
+                  class="text-primary animated fadeIn"> 1. Input your information to the appropriate field (eg. "Name").</p>
+                <p *ngIf="!editSubContractorFormReady && !editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess && !loadingNewSubContractors && !eScFormReady"
+                  class="text-success animated fadeIn"> 2. Click "Edit Client" once completed, and wait for the message indicating the edit has been accepted.</p>
+                <p *ngIf="!editSubContractorFormReady && !editSubContractorSuccess && !addSubContractorLoading && !addSubContractorSuccess && !loadingNewSubContractors && !eScFormReady"
+                  class="text-danger animated fadeIn"> 3. (Field Cannot Be Empty)</p>
                 <h3 class="animated flash" *ngIf="editSubContractorSuccess">Client Successfully Edited!</h3>
                 <h3 class="animated flash" *ngIf="addSubContractorSuccess">Sub-Contractor Successfully Added!</h3>
 

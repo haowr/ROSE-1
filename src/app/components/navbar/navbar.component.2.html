@@ -1,4 +1,25 @@
 
+
+    <div [ngClass]="{'weatherinfo2': weatherInfo, 'weatherinfo3hidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfo':weatherInfoHidden && !weatherInfo3Hidden,'weatherinfo3':weatherInfo2}">
+          <br>
+          <br>
+          <br>
+          <div>
+            <p [ngClass]="{ 'divunderlineopen': divUnderlineOpen}">--------</p>
+            <div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen}" style="border:1px solid white"></div>
+          </div>
+
+          <div class="text-center" style="position:absolute; border:1px solid #ddd; width:100px; height:100px;">
+
+            <p [ngClass]="{'weatherinfoparagraphhidden':weatherInfo3Hidden && !weatherInfoHidden, 'weatherinfoparagraph':weatherInfo2}"
+              style="color:white; font-family: 'Lora', serif;">--------</p>
+            <p [ngClass]="{'weatherinfoparagraphhidden':weatherInfo3Hidden && !weatherInfoHidden, 'weatherinfoparagraph':weatherInfo2}"
+              style="color:white; font-family: 'Lora', serif;">{{weatherDescription}}</p>
+          </div>
+        </div>
+
+
+
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -9,6 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <br>

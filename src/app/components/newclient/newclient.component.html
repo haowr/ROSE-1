@@ -110,7 +110,7 @@
 
               <h4>Name</h4>
 
-              <input id="nameinput" type="text" placeholder="(Please Enter Subcontractor Name...)" [(ngModel)]="name" name="name" class="form-control">
+              <input id="nameinput" type="text" placeholder="(Please Enter Client Name...)" [(ngModel)]="name" name="name" class="form-control">
               <i *ngIf="name !== '' && emailaddress !== '' && phonenumber !=='' && contactemail !== ''
           && contactphone !=='' && contactname !==''" class="fa fa-chevron-left" (click)="openNextTab('addsubcontractor2')"
                 style="font-size:40px" aria-hidden="true"></i>
@@ -139,7 +139,7 @@
             </div>
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="phonenumber">
               <h4>Phone Number</h4>
-              <input id="phonenumberinput" type="text" placeholder="(Please Enter Subcontractor Phone Number...)" [(ngModel)]="phonenumber"
+              <input id="phonenumberinput" type="text" placeholder="(Please Enter Client Phone Number...)" [(ngModel)]="phonenumber"
                 name="phonenumber" class="form-control">
 
               <i class="fa fa-chevron-left" (click)="openNextTab('name2','nameinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -159,7 +159,7 @@
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="emailaddress">
               <h4>Email Address</h4>
-              <input id="emailaddressinput" type="text" placeholder="(Please Enter Subcontractor Email Address...)" [(ngModel)]="emailaddress"
+              <input id="emailaddressinput" type="text" placeholder="(Please Enter Client Email Address...)" [(ngModel)]="emailaddress"
                 name="emailaddress" class="form-control">
 
               <i class="fa fa-chevron-left" (click)="openNextTab('phonenumber2','phonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -179,7 +179,7 @@
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="contactname">
               <h4>Contact Name</h4>
-              <input id="contactnameinput" type="text" placeholder="(Please Enter Subcontractor Contact Name...)" [(ngModel)]="contactname"
+              <input id="contactnameinput" type="text" placeholder="(Please Enter Client Contact Name...)" [(ngModel)]="contactname"
                 name="contactname" class="form-control">
 
               <i class="fa fa-chevron-left" (click)="openNextTab('emailaddress2','emailaddressinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -201,7 +201,7 @@
 
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="contactphone">
               <h4>Contact Phone Number</h4>
-              <input id="contactphoneinput" type="text" placeholder="(Please Enter Subcontractor Contact Phone Number...)" [(ngModel)]="contactphone"
+              <input id="contactphoneinput" type="text" placeholder="(Please Enter Client Contact Phone Number...)" [(ngModel)]="contactphone"
                 name="contactphone" class="form-control">
 
               <i class="fa fa-chevron-left" (click)="openNextTab('contactname2','contactnameinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -220,7 +220,7 @@
             </div>
             <div style="border-bottom:1px solid gray" class="tab-pane fade" id="contactemail">
               <h4>Contact Email</h4>
-              <input id="contactemailinput" type="text" placeholder="(Please Enter Subcontractor Contact Email...)" [(ngModel)]="contactemail"
+              <input id="contactemailinput" type="text" placeholder="(Please Enter Client Contact Email...)" [(ngModel)]="contactemail"
                 name="contactemail" class="form-control">
 
               <i class="fa fa-chevron-left" (click)="openNextTab('contactphone2','contactphoneinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -509,7 +509,7 @@
                  
                 
                 
-                  <input id="sclocationsinput" type="text" placeholder="(Please Enter Subcontractor Locations...)" [(ngModel)]="subCLocations"
+                  <input id="sclocationsinput" type="text" placeholder="(You May Insert More Than One Location...)" [(ngModel)]="subCLocations"
                     placeholder="{{subContractor.locations}}" name="subCLocations" class="form-control">
 
                   <button type="button" class="btn btn-default" (click)="addLocation();">Insert <i class="fa fa-plus-circle buttonstyling" aria-hidden="true" ></i></button>
@@ -556,7 +556,7 @@
                   <h4>Store Numbers</h4>
                 
                 
-                  <input id="scstorenumbersinput" type="text" placeholder="(Please Enter Subcontractor Store Numbers...)" [(ngModel)]="subContractorStoreNumbers"
+                  <input id="scstorenumbersinput" type="text" placeholder="(You May Enter More Than One Store Number...)" [(ngModel)]="subContractorStoreNumbers"
                     placeholder="{{subContractor.storenumbers}}" name="subContractorStoreNumbers" class="form-control">
 
 

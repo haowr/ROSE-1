@@ -1,6 +1,70 @@
 /*.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
 .navbar {min-height:32px !important}*/
+.weatherinfo2{
+    
+    position:absolute;
+    height:300px;
+opacity:1;
+transition:5s;
 
+}
+.weatherinfo3hidden{
+top:72px;
+left:240px;
+height:0px;
+    position:absolute; 
+opacity:0;
+transition:0.5s;
+
+}
+.divunderlineopen{
+opacity:1;
+width:240px; 
+transition:2s;
+
+}
+.divunderlineclosed{
+opacity:1;
+width:0px; 
+transition:2s;
+
+}
+.weatherinfo3{
+top:72px;
+left:240px;
+height:300px;
+width:100px;
+    position:absolute; 
+opacity:1;
+transition:0.5s;
+
+}
+.weatherinfoparagraphhidden{
+position:absolute;
+left:10px;
+height:0px;
+opacity:0;
+transition:1s;
+
+}
+.weatherinfoparagraph{
+
+position:absolute;
+left:10px;
+height:100px;
+opacity:1;
+transition:3s;
+text-align:center;
+
+
+}
+.weatherinfo{
+    position:absolute; 
+
+opacity:0;
+transition:0.5s;
+
+}
 #moveitemleft{
 position:absolute;
     left:8px;
