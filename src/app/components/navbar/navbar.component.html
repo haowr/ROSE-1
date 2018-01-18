@@ -86,7 +86,7 @@
         <li (click)="closeDropdown()" *ngIf="authservice.loggedIn()" class="animated fadeIn"><a style="color:white;" href="javascript:void(0);">Welcome, {{username}}.</a></li>
         <li (click)="closeDropdown()" *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a [routerLink]="['/login']"href="javascript:void(0);">Employee Login</a></li>
         <li (click)="closeDropdown()"><a *ngIf="authservice.loggedIn()" [routerLink]="['/register']" class="animated fadeIn"href="javascript:void(0);">Employee Register</a></li>
-        <li (click)="closeDropdown()" *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><ahref="javascript:void(0);"(click)="onLogoutClick();">Logout</a></li>
+        <li (click)="closeDropdown()" *ngIf="authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a href="javascript:void(0);"(click)="onLogoutClick();">Logout</a></li>
 
 
       </ul>
