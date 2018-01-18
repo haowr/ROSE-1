@@ -52,14 +52,31 @@ export class NavbarComponent implements OnInit {
 onResize(event) {
   this.innerWidth = window.innerWidth;
   if(this.innerWidth < 766){
-    this.smallestRoseLogo = true;
-    this.removeDesktopWeatherInfo = true;
+
+    if(!this.largestRoseLogo){
+       this.smallestRoseLogo = true;
+    }
+   
+   if(this.removeDesktopWeatherInfo && !this.removeWeatherQuickly && !this.divUnderlineOpen && !this.weatherInfo2){
+
+this.removeDesktopWeatherInfo = true;
+    //this.weatherInfo3Hidden = true;
+    this.removeWeatherQuickly = false;;
+    this.divUnderlineOpen = false;
+    this.weatherInfo2 = false;
+   }
+   this.removeDesktopWeatherInfo = true;
+    
+   // this.removeWeatherQuickly = false;
     console.log(this.largeRoseLogo)
     console.log(this.innerWidth)
     console.log("Smaller")
-  }else{
+  }else{ //
     this.largeRoseLogo = true;
-        this.removeDesktopWeatherInfo = true;
+        //this.removeDesktopWeatherInfo = false;
+        this.removeWeatherQuickly = false;
+        this.weatherInfo2 =false;
+        this.divUnderlineOpen = false;
 
     this.smallestRoseLogo = false;
     //this.largestRoseLogo= false;
@@ -177,8 +194,9 @@ console.log(this.removeWeatherQuickly)
   openWeatherInfo(){
 
     if(!this.weatherInfoDesktop && document.documentElement.clientWidth >768){
-
+this.removeDesktopWeatherInfo = false;
       this.weatherInfoDesktop = true;
+      
       //console.log(this.weatherInfo)
       //console.log(this.innerWidth)
 
@@ -198,6 +216,7 @@ console.log(this.removeWeatherQuickly)
       this.divUnderlineOpen = true;
       this.weatherInfo3Hidden = false;
       this.weatherInfoHidden = false;
+      //this.removeWeatherQuickly=true;
       console.log(this.weatherInfo2)
       console.log(this.divUnderlineOpen)
     }else{
