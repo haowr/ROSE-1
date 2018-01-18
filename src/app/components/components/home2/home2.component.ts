@@ -15,7 +15,7 @@ export class HomeComponent2 implements OnInit {
 
 
   
-  constructor(private weatherservice:WeatherService, private authservice:AuthService) {
+  constructor(private weatherservice:WeatherService, public authservice:AuthService) {
 
    }
 
