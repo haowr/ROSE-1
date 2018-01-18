@@ -60,7 +60,7 @@
             <p [ngClass]="{'weatherinfotitlehidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfotitle':weatherInfo2}" style="color:white; font-family: 'Lora', serif; left:12px;">DESCRIPTION</p>
             <br>
             <p [ngClass]="{'weatherinfoparagraphhidden':weatherInfo3Hidden && !weatherInfoHidden, 'weatherinfoparagraph2':weatherInfo2}"
-              style="color:white; font-family: 'Lora', serif; left: 12px;">{{weatherDescription}}</p>
+              style="color:white; font-family: 'Lora', serif; left: 14px;">{{weatherDescription}}</p>
           </div>
         </div>
         <li *ngIf="weatherNow == '02d' || weatherNow == '03d' && authservice.loggedIn() " (click)="openWeatherInfo()"><a style="font-size:18px;" href="javascript:void(0);"><i  class="wi wi-day-sunny-overcast" style="font-size:18px; color:white; "></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
