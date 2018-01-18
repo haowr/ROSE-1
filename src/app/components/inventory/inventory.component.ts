@@ -143,7 +143,9 @@ export class InventoryComponent implements OnInit {
                   this.orderedOct   =   data.subcontractor.topline[z].orderedoct
                   this.orderedNov   =   data.subcontractor.topline[z].orderednov
                   this.orderedDec   =   data.subcontractor.topline[z].ordereddec
+                  
                   this.description  =   data.subcontractor.topline[z].description
+                  this.manufacturer =   data.subcontractor.topline[z].manufacturer
 
 
 
@@ -200,6 +202,7 @@ export class InventoryComponent implements OnInit {
                   this.orderedDec   =   data.subcontractor.wesclean[z].ordereddec
                   
                   this.description  =   data.subcontractor.wesclean[z].description;
+                  this.manufacturer =   data.subcontractor.wesclean[z].manufacturer
 
 
 
@@ -258,6 +261,7 @@ export class InventoryComponent implements OnInit {
                   this.orderedDec   =   data.subcontractor.veritivcanada[z].ordereddec
 
                   this.description  =   data.subcontractor.veritivcanada[z].description
+                  this.manufacturer =   data.subcontractor.veritivcanada[z].manufacturer
 
 
               }
