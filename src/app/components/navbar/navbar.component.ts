@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
 
   divUnderlineOpen:boolean = false;
   removeWeatherQuickly:boolean =false;
+  removeDesktopWeatherInfo:boolean = false;
   subcontractorObject:Object;
   subContractorArray: Object[];
   arrayOfOrderedItems:Number[];
@@ -52,11 +53,14 @@ onResize(event) {
   this.innerWidth = window.innerWidth;
   if(this.innerWidth < 766){
     this.smallestRoseLogo = true;
+    this.removeDesktopWeatherInfo = true;
     console.log(this.largeRoseLogo)
     console.log(this.innerWidth)
     console.log("Smaller")
   }else{
     this.largeRoseLogo = true;
+        this.removeDesktopWeatherInfo = true;
+
     this.smallestRoseLogo = false;
     //this.largestRoseLogo= false;
     console.log(this.largeRoseLogo)
@@ -105,9 +109,13 @@ console.log(this.removeWeatherQuickly)
     if(document.documentElement.clientWidth < 766){
 
       this.smallestRoseLogo=true;
-      
+                this.removeDesktopWeatherInfo = true;
+
     }else{
       this.largeRoseLogo = true;
+                this.removeDesktopWeatherInfo = false;
+
+
     }
     console.log(this.largeRoseLogo)
 

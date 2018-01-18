@@ -38,7 +38,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <div [ngClass]="{'weatherinfodesktopopen':weatherInfoDesktop,'weatherinfodesktopclosed':!weatherInfoDesktop}" class="arrow_box">
+        <div *ngIf = "!removeDesktopWeatherInfo"[ngClass]="{'weatherinfodesktopopen':weatherInfoDesktop,'weatherinfodesktopclosed':!weatherInfoDesktop}" class="arrow_box">
           <br>
           <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
 
