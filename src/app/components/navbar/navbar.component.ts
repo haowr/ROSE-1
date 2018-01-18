@@ -81,6 +81,7 @@ this.removeDesktopWeatherInfo = true;
     this.smallestRoseLogo = false;
     //this.largestRoseLogo= false;
     console.log(this.largeRoseLogo)
+    console.log(this.smallestRoseLogo)
   }
   console.log("POLLYS")
   console.log(this.innerWidth)
@@ -286,8 +287,10 @@ if(!this.largestRoseLogo){
   onLogoutClick(){
 
     this.authservice.logOut();
+    console.log("pressed")
     this.logOutSuccessful = true;
     document.getElementById("navbar-toggle").click();
+
     
     this.username="";
     setTimeout(()=>{
@@ -303,8 +306,17 @@ if(!this.largestRoseLogo){
   }
 
 closeDropdown(){
-
+console.log("pressed")
   document.getElementById('navbar-toggle').click();
+      if(document.documentElement.clientWidth > 768){
+        console.log("fist condition")
+      this.largeRoseLogo = true;
+      this.largestRoseLogo = false;
+      this.smallestRoseLogo = false;
+
+    }else{
+      this.smallestRoseLogo = true;
+    }
 
 }
 
