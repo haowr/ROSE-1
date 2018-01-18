@@ -193,7 +193,7 @@ console.log(this.removeWeatherQuickly)
 
   }
   openWeatherInfo(){
-
+console.log("pressed")
     if(!this.weatherInfoDesktop && document.documentElement.clientWidth >768){
 this.removeDesktopWeatherInfo = false;
       this.weatherInfoDesktop = true;
@@ -289,7 +289,7 @@ if(!this.largestRoseLogo){
     this.authservice.logOut();
     console.log("pressed")
     this.logOutSuccessful = true;
-    document.getElementById("navbar-toggle").click();
+    //document.getElementById("navbar-toggle").click();
 
     
     this.username="";
@@ -299,7 +299,7 @@ if(!this.largestRoseLogo){
        this.router.navigate(['/']);   
     return false;
 
-    },2000);
+    },500);
     //this.flashmessage.show("You are now logged out..",{cssClass: 'alert-success',timeout: 5000});
    
 
