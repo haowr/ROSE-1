@@ -23,6 +23,8 @@ export class NavbarComponent implements OnInit {
   innerWidth:number;
   weatherNow:string = "";
   weatherDescription:string = "";
+    temperatureHigh:string = "";
+  temperatureLow:string = "";
   temperatureNow:string = ""
   pendingRequest:boolean = false;
   userName:string;
@@ -35,10 +37,11 @@ export class NavbarComponent implements OnInit {
   smallestRoseLogo:boolean = false;
   largeRoseLogo:boolean = false;
   largestRoseLogo:boolean=false;
-  weatherInfo:boolean = false;
+  weatherInfoDesktop:boolean = false;
   weatherInfo2:boolean = false;
   weatherInfoHidden:boolean = false;
   weatherInfo3Hidden:boolean = true;
+
   divUnderlineOpen:boolean = false;
   removeWeatherQuickly:boolean =false;
   subcontractorObject:Object;
@@ -83,6 +86,8 @@ console.log(this.removeWeatherQuickly)
       console.log(data)
      this.weatherNow =  data.weather[0].icon;
      this.temperatureNow = data.main.temp;
+     this.temperatureHigh = data.main.temp_max;
+     this.temperatureLow = data.main.temp_min;
      this.weatherDescription = data.weather[0].description;
 
     })
@@ -151,19 +156,29 @@ console.log(this.removeWeatherQuickly)
    // })
 
   }
+  closeWeatherInfo(){
+
+      this.weatherInfo2=false;
+      this.divUnderlineOpen = false;
+      this.weatherInfo3Hidden = true;
+      this.weatherInfoHidden = false;
+      console.log(this.weatherInfo2)
+
+
+  }
   openWeatherInfo(){
 
-    if(!this.weatherInfo && document.documentElement.clientWidth >768){
+    if(!this.weatherInfoDesktop && document.documentElement.clientWidth >768){
 
-      this.weatherInfo = true;
-      console.log(this.weatherInfo)
-      console.log(this.innerWidth)
+      this.weatherInfoDesktop = true;
+      //console.log(this.weatherInfo)
+      //console.log(this.innerWidth)
 
     }
     else{
 
-      this.weatherInfo = false;
-      console.log(this.weatherInfo)
+      this.weatherInfoDesktop = false;
+     // console.log(this.weatherInfo)
       console.log(this.innerWidth)
       console.log(document.documentElement.clientWidth)
     }

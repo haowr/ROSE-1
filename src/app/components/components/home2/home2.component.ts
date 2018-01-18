@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home2',
@@ -14,13 +15,14 @@ export class HomeComponent2 implements OnInit {
 
 
   
-  constructor(private weatherservice:WeatherService) {
+  constructor(private weatherservice:WeatherService, private authservice:AuthService) {
 
    }
 
   ngOnInit() {
     this.name = 'ROSE';
         
+    this.authservice.checkIfLoggedIn();
     this.weatherservice.getWeather().subscribe(data=>{
 
       console.log(data)
