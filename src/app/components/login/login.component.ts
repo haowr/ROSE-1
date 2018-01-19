@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
 
   templateUrl: './login.component.html',
-  styles:[
+  styles: [
 
   ],
 
@@ -15,13 +15,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username: String;
-  password: String;
-  userName:string;
+  username: string = "";
+  password: string = "";
+  userName: string;
+  errorMsg: String;
   successfulLoginMsg: string = "Login Successful...";
   unSuccessfulLoginMsg: string = "Login Unsuccessful...";
   successfulLogin: boolean = false;
-  unSuccessfulLogin:boolean = false;
+  unSuccessfulLogin: boolean = false;
+  userNameCannotBeEmpty:boolean = false;
+  passwordCannotBeEmpty:boolean = false;
+  userNameCannotBeEmptyMsg:string = "Username Cannot Be Empty..."
+  passwordCannotBeEmptyMsg:string = "Password Cannot Be Empty..."
 
   constructor(private authservice: AuthService, private router: Router) { }
 
@@ -40,19 +45,44 @@ export class LoginComponent implements OnInit {
 
     }
 
-    this.authservice.authenticateUser(user).subscribe(data => {
+    if(this.username == ""){
+
+      this.userNameCannotBeEmpty = true;
+      setTimeout(()=>{
+
+
+        this.userNameCannotBeEmpty = false;
+
+      },2000);
+
+    }
+     if( this.password == ""){
+
+      this.passwordCannotBeEmpty =true;
+      setTimeout(()=>{
+
+        this.passwordCannotBeEmpty  = false;
+
+      },2000)
+
+    }
+
+    if(this.password !== "" && this.username!== ""){
+
+
+        this.authservice.authenticateUser(user).subscribe(data => {
 
       console.log(data);
       if (data.success) {
         this.successfulLogin = true;
         this.authservice.storeUserData(data.token, user);
-         this.authservice.updateGlobalUsername(data.name);
-         this.userName = this.authservice.userName
-          this.authservice.storeUsername();
-          //this.userName = username;
-    //return this.userName;
+        this.authservice.updateGlobalUsername(data.name);
+        this.userName = this.authservice.userName
+        this.authservice.storeUsername();
+        //this.userName = username;
+        //return this.userName;
 
-          
+
         //this.flashmessage.show("You are now logged in...", { cssClass: 'alert-success', timeout: 5000 });
         setTimeout(() => {
 
@@ -66,13 +96,15 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/clients']);
 
 
-        },3000);
+        }, 3000);
 
       } else {
         console.log("failed login");
-                            this.unSuccessfulLogin = true;
+        console.log(data)
+        this.errorMsg = data.message;
+        this.unSuccessfulLogin = true;
 
-                setTimeout(() => {
+        setTimeout(() => {
 
           this.unSuccessfulLogin = false;
 
@@ -82,7 +114,7 @@ export class LoginComponent implements OnInit {
           //this.addNameSuccess = false;
           // this.router.navigateByUrl('/edit/newsubcontractor');
 
-         // this.router.navigate(['/clients']);
+          // this.router.navigate(['/clients']);
 
 
         }, 2000);
@@ -91,6 +123,12 @@ export class LoginComponent implements OnInit {
       }
 
     })
+
+
+    }
+
+
+  
 
 
   }

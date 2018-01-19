@@ -307,7 +307,7 @@ if(!this.largestRoseLogo){
 
 closeDropdown(){
 console.log("pressed")
-  document.getElementById('navbar-toggle').click();
+ 
       if(document.documentElement.clientWidth > 768){
         console.log("fist condition")
       this.largeRoseLogo = true;
@@ -316,6 +316,7 @@ console.log("pressed")
 
     }else{
       this.smallestRoseLogo = true;
+       document.getElementById('navbar-toggle').click();
     }
 
 }

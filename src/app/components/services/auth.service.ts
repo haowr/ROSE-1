@@ -31,10 +31,12 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('localhost:3000/routes/authenticate', user, { headers: headers })
       .map(res => {
+        res.json()
         let result = res.json();
-        console.log(result);
-        console.log(result.user.name);
+       
         if (result.success) {
+          
+          console.log(result)
           this.userName = result.user.name;
           //this.userSubscribable = result.user.username;
           this.userSubscribable.next(result.user.name);

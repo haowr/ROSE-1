@@ -11,19 +11,28 @@
     <div class = "form-group">
     <label>Username</label>
     <input type ="text"[(ngModel)]="username" name="username" class = "form-control">
+    <div *ngIf="userNameCannotBeEmpty" class = "well well-sm">
+      {{userNameCannotBeEmptyMsg}}
+    </div>
+
   </div>
 
     <div class = "form-group">
     <label>Password</label>
     <input type ="password" [(ngModel)]="password" name="password"class = "form-control">
+    <div *ngIf="passwordCannotBeEmpty" class = "well well-sm">
+      {{passwordCannotBeEmptyMsg}}
+    </div>
   </div>
   <input type ="submit" class = "btn btn-primary bounce" value="Submit">
 </form>
 
 <div *ngIf="successfulLogin" class = "jumbotron text-center pulse animated fadeIn">
-  {{successfulLoginMsg}}
+  <h3> {{successfulLoginMsg}}</h3>
+  <h4> {{errorMsg}}</h4>
 </div>
 <div *ngIf="unSuccessfulLogin" class = "jumbotron text-center animated fadeIn">
-  {{unSuccessfulLoginMsg}}
+  <h3>{{unSuccessfulLoginMsg}}</h3>
+   <h4> {{errorMsg}}</h4>
 </div>
 </div>

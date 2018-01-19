@@ -33,14 +33,18 @@ export class AuthService {
     return this.http.post('routes/authenticate', user, { headers: headers })
       .map(res => {
         let result = res.json();
-        console.log(result);
-        console.log(result.user.name);
+        //console.log(result);
+        //console.log(result.user.name);
         if (result.success) {
           this.userName = result.user.name;
           this.userSubscribable.next(result.user.name);
           console.log(this.userName);
           console.log(result.name);
           this.isLoggedIn = true;
+
+        }else{
+
+          res.json();
 
         }
         return result;
