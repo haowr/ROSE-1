@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home2',
@@ -15,9 +16,31 @@ export class HomeComponent2 implements OnInit {
 
 
   
-  constructor(private weatherservice:WeatherService, public authservice:AuthService) {
+  constructor(private weatherservice:WeatherService, public authservice:AuthService, private router: Router) {
+
+    
 
    }
+  onLogoutClick(){
+
+    this.authservice.logOut();
+    console.log("pressed")
+    //this.logOutSuccessful = true;
+    //document.getElementById("navbar-toggle").click();
+
+    
+    
+    setTimeout(()=>{
+//this.username="";
+      //this.logOutSuccessful = false;
+       this.router.navigate(['/']);   
+    return false;
+
+    },500);
+    //this.flashmessage.show("You are now logged out..",{cssClass: 'alert-success',timeout: 5000});
+   
+
+  }
 
   ngOnInit() {
     this.name = 'ROSE';

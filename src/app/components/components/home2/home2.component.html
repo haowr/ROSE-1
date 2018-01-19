@@ -12,7 +12,7 @@
 
 
                 <a *ngIf="!authservice.loggedIn()" class="btn btn-default animated fadeIn" [routerLink]="['/login']">Employee Login</a>
-                <a *ngIf="authservice.loggedIn()" class="btn btn-default animated fadeIn" [routerLink]="['/logout']">Employee Logout</a>
+                <a *ngIf="authservice.loggedIn()" class="btn btn-default animated fadeIn" (click)="onLogoutClick()">Employee Logout</a>
 
                 <br>
                 <br>

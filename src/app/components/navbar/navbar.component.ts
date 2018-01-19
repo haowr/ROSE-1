@@ -288,18 +288,18 @@ if(!this.largestRoseLogo){
 
     this.authservice.logOut();
     console.log("pressed")
-    this.logOutSuccessful = true;
+   // this.logOutSuccessful = true;
     //document.getElementById("navbar-toggle").click();
 
     
     this.username="";
-    setTimeout(()=>{
+   // setTimeout(()=>{
 
-      this.logOutSuccessful = false;
+     // this.logOutSuccessful = false;
        this.router.navigate(['/']);   
-    return false;
+   // return false;
 
-    },500);
+   /// },500);
     //this.flashmessage.show("You are now logged out..",{cssClass: 'alert-success',timeout: 5000});
    
 
