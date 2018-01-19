@@ -23,6 +23,11 @@ export class HomeComponent2 implements OnInit {
    }
   onLogoutClick(){
 
+if(document.documentElement.clientWidth < 768){
+
+         document.getElementById('navbar-toggle').click();
+
+}
     this.authservice.logOut();
     console.log("pressed")
     //this.logOutSuccessful = true;
