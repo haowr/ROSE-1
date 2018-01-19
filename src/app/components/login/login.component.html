@@ -26,13 +26,17 @@
   </div>
   <input type ="submit" class = "btn btn-primary bounce" value="Submit">
 </form>
+<div *ngIf="loadingLogin" style="background-color:white;" class = "jumbotron text-center">
+  <i style ="font-size:22px;"class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 
+<span class="sr-only">Loading...</span>
+</div>
 <div *ngIf="successfulLogin" class = "jumbotron text-center pulse animated fadeIn">
   <h3 style = "font-family: 'Lora', serif; "> Login Successful...</h3>
  
 </div>
 <div *ngIf="unSuccessfulLogin" class = "jumbotron text-center animated flash">
   <h3 style = "font-family: 'Lora', serif; ">{{unSuccessfulLoginMsg}}</h3>
-   <h4 style = "font-family: 'Lora', serif; "> {{errorMessage}}</h4>
+   <h4 style = "font-family: 'Lora', serif; "> ({{errorMsg}})</h4>
 </div>
 </div>

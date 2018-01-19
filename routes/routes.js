@@ -5739,7 +5739,7 @@ router.post('/authenticate', function (req, res) {
 
         if (err) throw err;
         if (!user) {
-            res.json({ success: false, message: "User not found..." });
+            res.json({ success: false, message: "User Not Found" });
 
         } else {
             User.comparePassword(password, user.password, function (err, isMatch) {

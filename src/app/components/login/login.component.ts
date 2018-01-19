@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   unSuccessfulLogin: boolean = false;
   userNameCannotBeEmpty:boolean = false;
   passwordCannotBeEmpty:boolean = false;
+  loadingLogin:boolean = false;
   userNameCannotBeEmptyMsg:string = "Username Cannot Be Empty..."
   passwordCannotBeEmptyMsg:string = "Password Cannot Be Empty..."
 
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.username == ""){
-
+      this.loadingLogin = false;
       this.userNameCannotBeEmpty = true;
       setTimeout(()=>{
 
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit {
 
     }
      if( this.password == ""){
-
+      this.loadingLogin = false;
       this.passwordCannotBeEmpty =true;
       setTimeout(()=>{
 
@@ -68,12 +69,14 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.password !== "" && this.username!== ""){
+    this.loadingLogin = true;
 
 
         this.authservice.authenticateUser(user).subscribe(data => {
 
       console.log(data);
       if (data.success) {
+        this.loadingLogin = false;
         this.successfulLogin = true;
         this.authservice.storeUserData(data.token, user);
         this.authservice.updateGlobalUsername(data.name);
@@ -101,6 +104,7 @@ export class LoginComponent implements OnInit {
       } else {
         console.log("failed login");
         console.log(data)
+        this.loadingLogin = false;
         this.errorMsg = data.message;
         this.unSuccessfulLogin = true;
 
@@ -109,7 +113,7 @@ export class LoginComponent implements OnInit {
           this.unSuccessfulLogin = false;
 
 
-        }, 2000);
+        }, 3000);
         setTimeout(() => {
           //this.addNameSuccess = false;
           // this.router.navigateByUrl('/edit/newsubcontractor');

@@ -20,11 +20,14 @@ export class RegisterComponent implements OnInit {
   emailCannotBeEmptyMsg: string = "Email Field Cannot Be Empty...";
   usernameCannotBeEmptyMsg: string = "Username Field Cannot Be Empty...";
   nameCannotBeEmptyMsg: string = "Name Field Cannot Be Empty...";
+  unSuccessfulRegistrationMsg:string = "Registration Unsuccessful..."
+  successfulRegistrationMsg:string = "Registration Successful"
   invalidEmailMsg:string = "Invalid Email...";
   nameCannotBeEmpty:boolean = false;
   emailCannotBeEmpty:boolean = false;
   usernameCannotBeEmpty:boolean = false;
   passwordCannotBeEmpty:boolean = false;
+  loadingRegistration:boolean = false;
   validEmail:boolean = false;
   invalidEmail:boolean = false;
   registrationFailed:boolean = false;
@@ -51,7 +54,7 @@ export class RegisterComponent implements OnInit {
     if(this.name == ""){
 
       this.nameCannotBeEmpty = true;
-      setTimeout(function() {
+      setTimeout(()=> {
 
           this.nameCannotBeEmpty = false;
 
@@ -61,7 +64,7 @@ export class RegisterComponent implements OnInit {
     if(this.email == ""){
 
       this.emailCannotBeEmpty = true;
-      setTimeout(function() {
+      setTimeout(()=> {
 
           this.emailCannotBeEmpty = false;
 
@@ -69,7 +72,7 @@ export class RegisterComponent implements OnInit {
     }
     if(this.username == ""){
       this.usernameCannotBeEmpty = true;
-      setTimeout(function() {
+      setTimeout(()=> {
 
           this.usernameCannotBeEmpty = false;
 
@@ -79,7 +82,7 @@ export class RegisterComponent implements OnInit {
     if(this.password == ""){
 
       this.passwordCannotBeEmpty = true;
-      setTimeout(function() {
+      setTimeout(()=> {
 
           this.passwordCannotBeEmpty = false;
 
@@ -104,11 +107,12 @@ export class RegisterComponent implements OnInit {
         this.validEmail){
 
 
-       
+       this.loadingRegistration = true;
        // Register user
     this.authservice.registerUser(user).subscribe(data => {
       if(data.success){
        // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
+        this.loadingRegistration = false;
         this.registrationSuccess = true;
         setTimeout(()=>{
 
@@ -119,6 +123,7 @@ export class RegisterComponent implements OnInit {
         
       } else {
        // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+       this.loadingRegistration = false;
        this.registrationFailed = true;
        console.log(data)
        if(data.err.code == 11000){
@@ -128,7 +133,7 @@ export class RegisterComponent implements OnInit {
 
        }else{
 
-         this.errorMessage = "Registration Failed..."
+         this.errorMessage = "Registration Failed";
        }
        setTimeout(()=>{
 
