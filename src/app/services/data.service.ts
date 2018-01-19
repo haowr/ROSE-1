@@ -56,7 +56,7 @@ export class DataService {
     increaseItemInWescleanInventory(productcode){
     console.log(productcode);
     let headers = new Headers();
-    headers.append('Content-type','application/json');
+    headers.append('Content-type','application/json'); 
     return this.http.post('routes/increaseiteminwescleaninventory/',productcode, {headers:headers})
     .map(res=>
       res.json());
