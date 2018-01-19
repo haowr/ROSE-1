@@ -315,8 +315,13 @@ console.log("pressed")
       this.smallestRoseLogo = false;
 
     }else{
-      this.smallestRoseLogo = true;
+      
        document.getElementById('navbar-toggle').click();
+       setTimeout(()=>{
+
+        
+
+       },500)
     }
 
 }

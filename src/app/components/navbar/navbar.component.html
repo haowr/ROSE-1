@@ -1,10 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a id="moveitemleft" *ngIf="largeRoseLogo  && !largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="largeRoseLogo && !largestRoseLogo && !smallestRoseLogo"  src="../assets/img/roselogosmallerhalf.png"></a>
-      <a id="moveitemleft" *ngIf="smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="smallestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
+      <a id="moveitemleft" *ngIf="largeRoseLogo  && !largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed; z-index:1000000;"*ngIf="largeRoseLogo && !largestRoseLogo && !smallestRoseLogo"  src="../assets/img/roselogosmallerhalf.png"></a>
+      <a id="moveitemleft" *ngIf="smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;z-index:1000000;"*ngIf="smallestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
 
-      <a (click)="closeDropdown()" id="moveitemleft" *ngIf="largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed;"*ngIf="largestRoseLogo && !smallestRoseLogo" src="../assets/img/roselogosmaller.png"></a>
+      <a (click)="closeDropdown()" id="moveitemleft" *ngIf="largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed; z-index:1000000;"*ngIf="largestRoseLogo && !smallestRoseLogo" src="../assets/img/roselogosmaller.png"></a>
       <!--<a id="moveitemleft" [routerLink]="['/']" class="navbar-brand">ROSE</a>-->
       <button type="button" (click)="loadLargeRoseLogo()" id="navbar-toggle" class="navbar-toggle collapsed" data-toggle="collapse"
         data-target="#bs-example-navbar-collapse-1">
