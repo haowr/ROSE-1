@@ -272,12 +272,7 @@
 
               </div>
               <div class="panel-body">
-                <!--      <div *ngIf=" !turnOffInstructions">
-                <br>
-                <br>
-                <button type="button" (click)="subContractorReady2()"class="btn btn-default" >Submit</button>
-                
-              </div>-->
+      
                 <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed"
                   class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
                 <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed"
@@ -289,17 +284,6 @@
                   one), or click, "Submit Client", to add the new client to the database...</p>
 
                 <h3 class="animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
-
-                <p *ngIf="!turnOffInstructions && !addSubContractorSuccess " class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                <p *ngIf="!turnOffInstructions && !addSubContractorSuccess " class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-                <p *ngIf="!turnOffInstructions && !addSubContractorSuccess " class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-                <p *ngIf="!turnOffInstructions && !addSubContractorSuccess " class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
-                  the new Sub Contractor has been added.</p>
-                <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
-
-
-                <h3 *ngIf="addSubContractorSuccess" class="animated flash" style="font-family: 'Lora', serif;">Sub-Contractor Successfully Loaded...</h3>
-                <i *ngIf="addSubContractorSuccess" class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
 
                 <i *ngIf="clientAddFailed && !areYouSure" class="fa fa-times animated flash" style="font-size:40px;" aria-hidden="true"></i>
 
