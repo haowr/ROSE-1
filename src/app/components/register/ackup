@@ -10,43 +10,19 @@
   <div class = "form-group">
     <label>Name</label>
     <input type ="text" [(ngModel)]="name" name="name"class = "form-control">
-    <div *ngIf="nameCannotBeEmpty"class = "well well-sm">
-      {{nameCannotBeEmptyMsg}}
-    </div>
   </div>
     <div class = "form-group">
     <label>Username</label>
     <input type ="text"[(ngModel)]="username" name="username" class = "form-control">
-    <div *ngIf="usernameCannotBeEmpty" class = "well well-sm">
-      {{usernameCannotBeEmptyMsg}}
-    </div>
   </div>
     <div class = "form-group">
     <label>Email</label>
     <input type ="text" [(ngModel)]="email" name="email"class = "form-control">
-    <div *ngIf="emailCannotBeEmpty" class = "well well-sm">
-      {{emailCannotBeEmptyMsg}}
-    </div>
-       <div *ngIf="invalidEmail" class = "well well-sm">
-      {{invalidEmailMsg}}
-    </div>
   </div>
     <div class = "form-group">
     <label>Password</label>
     <input type ="text" [(ngModel)]="password" name="password"class = "form-control">
-    <div *ngIf="passwordCannotBeEmpty" class = "well well-sm">
-      {{passwordCannotBeEmptyMsg}}
-    </div>
   </div>
   <input type ="submit" class = "btn btn-primary" value="Submit">
 </form>
-<br>
-<div *ngIf="registrationSuccess" class = "jumbotron text-center pulse animated fadeIn">
-  <h3> {{successfulLoginMsg}}</h3>
- 
-</div>
-<div *ngIf="registrationFailed" class = "jumbotron text-center animated flash">
-  <h3>{{unSuccessfulLoginMsg}}</h3>
-   <h4> {{errorMessage}}</h4>
-</div>
 </div>

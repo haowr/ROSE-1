@@ -28,11 +28,11 @@
 </form>
 
 <div *ngIf="successfulLogin" class = "jumbotron text-center pulse animated fadeIn">
-  <h3> {{successfulLoginMsg}}</h3>
-  <h4> {{errorMsg}}</h4>
+  <h3> Registration Successful...</h3>
+ 
 </div>
-<div *ngIf="unSuccessfulLogin" class = "jumbotron text-center animated fadeIn">
+<div *ngIf="unSuccessfulLogin" class = "jumbotron text-center animated flash">
   <h3>{{unSuccessfulLoginMsg}}</h3>
-   <h4> {{errorMsg}}</h4>
+   <h4> {{errorMessage}}</h4>
 </div>
 </div>

@@ -74,7 +74,7 @@
     </div>
 
 
-    <div>
+  
       <div class="col-sm-12 text-center" style="border-bottom:1px solid #ddd;" *ngFor="let client of clientsArray; let i=index;">
         <br>
         <div class="col-sm-3">
@@ -675,40 +675,6 @@
             <br>
 
 
-            <!--
-            <div *ngIf="openAddSubContractor && openEditForm    " class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 *ngIf="!addSubContractorSuccess && !addSubContractorLoading" class="panel-title">Add Sub-Contractor Instructions</h3>
-                <h3 *ngIf="addSubContractorSuccess && !addSubContractorLoading " class="panel-title">Sub-Contractor Addition Successful</h3>
-                <h3 *ngIf="addSubContractorLoading " class="panel-title animated flash">Loading</h3>
-
-              </div>
-              <div class="panel-body">
-
-                <div *ngIf="loadingNewSubContractors" class=" text-center">
-                  <br>
-
-                  <i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size:30px;"></i> <span class="animated flash" style="font-family: 'Lora', serif; font-size:30px;">//LOADING//</span>
-                  <i style="font-size:30px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-
-                </div>
-                <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors" class="text-primary"> 1. Input your information to the appropriate field (eg. "Name").</p>
-                <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors" class="text-success"> 2. Click the next tab (eg. "Phone Number"), to input the appropriate information for that field.</p>
-                <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
-                <p *ngIf="!addSubContractorSuccess && !addSubContractorLoading && !loadingNewSubContractors" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
-                  the new Sub Contractor has been added.</p>
-                <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To {{client.name}}...</h3>
-                <h3 class="animated flash text-center" *ngIf="addSubContractorSuccess && !addSubContractorLoading">Sub-Contractor Successfully Added!</h3>
-                <i style="font-size:40px;" *ngIf="addSubContractorLoading " class="fa fa-cog fa-spin fa-3x fa-fw text-center"></i>
-
-                <i *ngIf="addSubContractorSuccess&& !addSubContractorLoading" class="fa fa-check animated flash text-center" style="font-size:40px;"
-                  aria-hidden="true"></i>
-              </div>
-            </div>
--->
-
-
-
           </form>
           <div>
             <ul [ngClass]="{'animated': editFormReady || !editFormReady,'fadeOutLeft': !editFormReady && indexVar == i, 'fadeInRight':editFormReady}"
@@ -740,7 +706,7 @@
                 <h4>Name:</h4>
                 <input id="nameform" class="form-control" placeholder="{{client.name}}" name='clientName' [(ngModel)]='clientName' type="text">
                 <button id="showeditclientdialogue" (click)="editClientFunc(client.name,'name');" class="btn btn-default form-control" data-toggle="tooltip"
-                  data-placement="right" title="" data-original-title="Tooltip on right">edit<div id="dialogue">hello</div></button>
+                  data-placement="right" title="" data-original-title="Tooltip on right">edit</button>
                 <i class="fa fa-chevron-left" (click)="openNextTab('asphonenumber','asphonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-left" (click)="openNextTab('asphonenumber','asphonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
                 <i class="fa fa-chevron-right" (click)="openNextTab('ecphonenumber','asphonenumberinput')" style="font-size:40px" aria-hidden="true"></i>
@@ -950,18 +916,9 @@
 
           </div>
           <br>
+        
           <div>
-          </div>
-          <div>
-            <br>
-            <!-- don't use this because i want all buttons visible && individualSubContractorIndexVar== z -->
-            <!-- <button *ngIf="openAddSubContractor && openEditForm   " (click)="openIndividualAddSubContractor(i);"type="button" class = "btn btn-primary form-control">Open/Close.</button>-->
-            <!--
-            <i *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i" style="font-size:20px;" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-            <span *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i">LOADING</span>
-            <i style="font-size:20px;" *ngIf="loadingNewSubContractors && editSubContractorIndexVar == i " class="fa fa-cog fa-spin fa-3x fa-fw"></i>
--->
-
+     
             <div *ngIf="allSubContractorConditionsMet">
 
               {{allSubContractorConditionsMetMsg}}
@@ -977,6 +934,6 @@
 
         </div>
       </div>
-    </div>
+    
   </div>
 </div>
