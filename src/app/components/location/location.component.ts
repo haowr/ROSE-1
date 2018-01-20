@@ -110,6 +110,9 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarning = true;
       this.expenditureDangerWarningMobile = false;
       this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
 
     }
     if(window.innerWidth < 1020 && window.innerWidth> 364 && this.totalCostThisMonth >=2000){
@@ -119,9 +122,10 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
 
     }
-         if(window.innerWidth < 428 && this.totalCostThisMonth >=2000){
+         if(window.innerWidth < 532 && this.totalCostThisMonth >=2000){
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = false;
@@ -139,6 +143,7 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmall = true;
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
       console.log("small")
 
     }
@@ -150,6 +155,8 @@ export class LocationComponent implements OnInit {
             this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = true;
       this.expenditureDangerWarningMobileSmallest = false;
+            this.expenditureDangerWarningMobileMedium = false;
+
 
     }
         if(window.innerWidth < 244 && this.totalCostThisMonth >=2000){
@@ -159,6 +166,8 @@ export class LocationComponent implements OnInit {
             this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = false;
             this.expenditureDangerWarningMobileSmallest = true;
+                  this.expenditureDangerWarningMobileMedium = false;
+
 
 
     }
