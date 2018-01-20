@@ -119,7 +119,7 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileIphoneX = false;
 
     }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && this.totalCostThisMonth >= 2000) {
+    if (window.innerWidth < 1020 && window.innerWidth > 364 &&  document.documentElement.clientWidth  != 360 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = true;
@@ -210,6 +210,7 @@ export class LocationComponent implements OnInit {
 
 
     }
+    console.log( this.expenditureDangerWarningMobile )
   }
 
 
@@ -875,7 +876,7 @@ export class LocationComponent implements OnInit {
         const reducer = (accumulator, currentValue) => accumulator + currentValue
         this.totalCostThisMonth = expendituresArray.reduce(reducer);
 
-        if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = true;
           this.expenditureDangerWarningMobile = false;
@@ -887,7 +888,7 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileSamsung = false;
 
         }
-        if (window.innerWidth < 1020 && window.innerWidth > 364 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 1020 && document.documentElement.clientWidth > 364 && document.documentElement.clientWidth  != 360 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = true;
@@ -897,9 +898,10 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileMedium = false
           this.expenditureDangerWarningMobileIphoneX = false;
           this.expenditureDangerWarningMobileSamsung = false;
+          console.log("WARNING MOBILE TRUE")
 
         }
-        if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth< 532 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
@@ -940,7 +942,7 @@ export class LocationComponent implements OnInit {
           console.log(this.expenditureDangerWarningMobile)
 
         }
-        if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 359 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
@@ -952,7 +954,7 @@ export class LocationComponent implements OnInit {
 
         }
 
-        if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 293 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
@@ -963,7 +965,7 @@ export class LocationComponent implements OnInit {
 
 
         }
-        if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 244 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
@@ -976,7 +978,7 @@ export class LocationComponent implements OnInit {
 
         }
         console.log(this.expenditureDangerWarningMobile)
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+  /*      if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
@@ -988,6 +990,7 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarning = false;
 
         }
+        */
 
         let totalExpenditureUpdater = {
 
