@@ -41,6 +41,8 @@ export class NavbarComponent implements OnInit {
   weatherInfo2: boolean = false;
   weatherInfoHidden: boolean = false;
   weatherInfo3Hidden: boolean = true;
+  brandMobile:boolean = false;
+  brandFullScreen:boolean = false;
 
   divUnderlineOpen: boolean = false;
   removeWeatherQuickly: boolean = false;
@@ -53,6 +55,8 @@ export class NavbarComponent implements OnInit {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth < 766) {
 
+      this.brandMobile = true;
+      this.brandFullScreen = false;
       if (!this.largestRoseLogo) {
         this.smallestRoseLogo = true;
       }
@@ -72,6 +76,8 @@ export class NavbarComponent implements OnInit {
       console.log(this.innerWidth)
       console.log("Smaller")
     } else { //
+      this.brandFullScreen = true;
+      this.brandMobile = false;
       this.largeRoseLogo = true;
       //this.removeDesktopWeatherInfo = false;
       this.removeWeatherQuickly = false;

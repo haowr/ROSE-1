@@ -195,6 +195,17 @@ position:absolute;
     margin-left: -50px !important;  /* 50% of your logo width */
     display: block;
 }
+.brand-fullscreen {
+    position: absolute;
+    color: white;
+    font-family:'Lora';
+   font-size:19px;
+   top:22px;
+    left: 50%;
+    text-decoration:none;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
 
 /*
 .navbar{
