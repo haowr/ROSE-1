@@ -128,7 +128,7 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMedium = true
+      this.expenditureDangerWarningMobileMedium = true
       console.log("small")
 
     }
