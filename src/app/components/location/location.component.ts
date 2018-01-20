@@ -17,22 +17,24 @@ export class LocationComponent implements OnInit {
   //UPDATE SUBCONTRACTOR CHART MANUALLY
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
- 
- 
-  
+
+
+
   //BOOLEANS
 
   wescleanInventory2: boolean = false;
   toplineInventory2: boolean = true;
   veritivInventory2: boolean = false;
   expenditureLoaded: boolean = false;
-  expenditureLoading:boolean = false;
-  expenditureDangerWarning:boolean = false;
-  expenditureDangerWarningMobile:boolean = false;
-  expenditureDangerWarningMobileSmall:boolean = false;
-  expenditureDangerWarningMobileSmaller:boolean = false;
-    expenditureDangerWarningMobileSmallest:boolean = false;
-    expenditureDangerWarningMobileMedium:boolean = false;
+  expenditureLoading: boolean = false;
+  expenditureDangerWarning: boolean = false;
+  expenditureDangerWarningMobile: boolean = false;
+  expenditureDangerWarningMobileSmall: boolean = false;
+  expenditureDangerWarningMobileSmaller: boolean = false;
+  expenditureDangerWarningMobileSmallest: boolean = false;
+  expenditureDangerWarningMobileMedium: boolean = false;
+  expenditureDangerWarningMobileSamsung: boolean = false;
+  expenditureDangerWarningMobileIphoneX: boolean = false;
 
 
   //STRING VARIABLES
@@ -41,16 +43,16 @@ export class LocationComponent implements OnInit {
   client: string;
   url: string;
   subContractorName: string;
-  subContractorContactPhone:string;
-  subContractorContactEmail:string;
-  subContractorContactName:string;
+  subContractorContactPhone: string;
+  subContractorContactEmail: string;
+  subContractorContactName: string;
   monthName: string;
   previousMonth: string;
   date = new Date();
   dateNow = this.date.getDate()
   year = this.date.getFullYear();
   month = this.date.getMonth() + 1;
-  
+
   //NUMERIC VARIABLES
 
   totalCostThisMonth: number;
@@ -70,12 +72,12 @@ export class LocationComponent implements OnInit {
   expnov: number = 0;
   expdec: number = 0;
 
-//OBJECTS
+  //OBJECTS
 
- chartOptions = {
+  chartOptions = {
     responsive: true
   };
-  
+
   subcontractorObject = {
 
     name: "",
@@ -84,7 +86,7 @@ export class LocationComponent implements OnInit {
     emailaddress: ""
 
   }
-  
+
   //ARRAYS
 
   toplineInventoryArray: any = [];
@@ -100,12 +102,12 @@ export class LocationComponent implements OnInit {
   chartData: Object[];
   locationObject: Object[];
   inventory: any = [];
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
 
     console.log(window.innerWidth)
-    if(window.innerWidth > 1020 && this.totalCostThisMonth >= 2000){
+    if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = true;
       this.expenditureDangerWarningMobile = false;
@@ -113,9 +115,11 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
       this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
     }
-    if(window.innerWidth < 1020 && window.innerWidth> 364 && this.totalCostThisMonth >=2000){
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = true;
@@ -123,9 +127,11 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
       this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
     }
-         if(window.innerWidth < 532 && this.totalCostThisMonth >=2000){
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = false;
@@ -133,10 +139,38 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
       this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
       console.log("small")
 
     }
-        if(window.innerWidth < 364 && this.totalCostThisMonth >=2000){
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+      console.log("small360")
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+      console.log("small375")
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = false;
@@ -144,59 +178,71 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
       this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
       console.log("small")
 
     }
 
-    if(window.innerWidth < 293 && this.totalCostThisMonth >=2000){
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = false;
-            this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = true;
       this.expenditureDangerWarningMobileSmallest = false;
-            this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
 
 
     }
-        if(window.innerWidth < 244 && this.totalCostThisMonth >=2000){
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = false;
-            this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = false;
-            this.expenditureDangerWarningMobileSmallest = true;
-                  this.expenditureDangerWarningMobileMedium = false;
-
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
 
 
     }
   }
- 
 
 
 
-  
+
+
 
   constructor(private clientservice: ClientService, private router: Router, private dataservice: DataService, private activatedroute: ActivatedRoute) { }
 
 
-noThanks(){
+  noThanks() {
 
-  this.expenditureDangerWarning = false
-  this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-}
+  }
   ngOnInit() {
     console.log(this.ordered);
-    console.log(this.month);
-            this.chartData = [
+    console.log(document.documentElement.clientWidth);
+
+    this.chartData = [
 
       { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-    
+
 
     ];
-    
+
     this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     this.activatedroute.params.subscribe((params: Params) => {
@@ -206,7 +252,7 @@ noThanks(){
       this.location = params.location
       this.client = params.client;
       console.log(this.location);
-   
+
       if (this.month == 1) {
 
         this.monthName = "January";
@@ -264,9 +310,9 @@ noThanks(){
         this.previousMonth = "November";
 
       }
-      
-      this.clientservice.getSubContractor(this.location).subscribe(data=>{
-        
+
+      this.clientservice.getSubContractor(this.location).subscribe(data => {
+
         console.log(data.subcontractor);
         this.singleSubContractorsArray.push(data.subcontractor)
         this.subContractorName = data.subcontractor.name
@@ -279,7 +325,7 @@ noThanks(){
         console.log(this.inventory)
 
         this.curexp = data.subcontractor.expcur,
-        this.expjan = data.subcontractor.expjan
+          this.expjan = data.subcontractor.expjan
         this.expfeb = data.subcontractor.expfeb
         this.expmar = data.subcontractor.expmar
         this.expapr = data.subcontractor.expapr
@@ -292,514 +338,514 @@ noThanks(){
         this.expnov = data.subcontractor.expnov
         this.expdec = data.subcontractor.expdec
 
-        if(data.subcontractor.date == this.month){
+        if (data.subcontractor.date == this.month) {
 
           console.log("Inventory Still In Service")
           console.log(this.totalCostThisMonth)
 
-        }else{
+        } else {
 
-          let subContractorToBeUpdated={
+          let subContractorToBeUpdated = {
 
             name: "",
-            month:0,
+            month: 0,
             date: 0,
-            oldordered:0,
+            oldordered: 0,
             topline: [],
-            veritivcanada:[],
-            wesclean:[]
+            veritivcanada: [],
+            wesclean: []
 
           }
           console.log("Inventory Is Out Of Date")
-          if(this.month == 1){
+          if (this.month == 1) {
             //data.subcontractor.ordereddec = data.subcontractor.ordered;
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].ordereddec = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].ordereddec = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
-
-            }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
-
-                data.subcontractor.wesclean[z].ordereddec = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].ordereddec = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
+
+              data.subcontractor.wesclean[z].ordereddec = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
+
+            }
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].ordereddec = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 1
+            data.subcontractor.date = 1
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
+            })
 
           }
-          if(this.month == 2){
+          if (this.month == 2) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedjan = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedjan = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedjan = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedjan = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedjan = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedjan = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 2
+            data.subcontractor.date = 2
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
+            })
 
-            
+
           }
-          if(this.month == 3){
+          if (this.month == 3) {
 
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedfeb = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedfeb = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedfeb = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedfeb = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedfeb = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedfeb = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 3
+            data.subcontractor.date = 3
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
-            
+            })
+
           }
-          if(this.month == 4){
+          if (this.month == 4) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedmar = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedmar = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedmar = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedmar = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedmar = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedmar = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 4
+            data.subcontractor.date = 4
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
-            
+            })
+
           }
-          if(this.month == 5){
+          if (this.month == 5) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedapr = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedapr = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedapr = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedapr = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedapr = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedapr = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 5
+            data.subcontractor.date = 5
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
-            
+            })
+
           }
-          if(this.month == 6){
+          if (this.month == 6) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedmay = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedmay = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedmay = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedmay = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedmay = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedmay = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 6
+            data.subcontractor.date = 6
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
+            })
           }
-          if(this.month == 7){
+          if (this.month == 7) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedjun = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedjun = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedjun = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedjun = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedjun = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedjun = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 7
+            data.subcontractor.date = 7
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-            }) 
-            
+            })
+
           }
-          if(this.month == 8){
+          if (this.month == 8) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedjul = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedjul = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedjul = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedjul = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedjul = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedjul = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 8
+            data.subcontractor.date = 8
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })        
+            })
           }
-          if(this.month == 9){
-            
-
-            for(let z =0; z< data.subcontractor.topline.length; z++){
-
-                data.subcontractor.topline[z].orderedaug = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+          if (this.month == 9) {
 
 
-            }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedaug = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.topline[z].orderedaug = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
+
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedaug = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
+
+              data.subcontractor.wesclean[z].orderedaug = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
+
+            }
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedaug = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 9
+            data.subcontractor.date = 9
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
-            
+            })
+
           }
-          if(this.month == 10){
+          if (this.month == 10) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedsept = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedsept = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedsept = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedsept = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedsept = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedsept = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 10
+            data.subcontractor.date = 10
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })   
+            })
           }
-          if(this.month == 11){
+          if (this.month == 11) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderedoct = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderedoct = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderedoct = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderedoct = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderedoct = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderedoct = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 11;
+            data.subcontractor.date = 11;
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })          
+            })
           }
-          if(this.month == 12){
+          if (this.month == 12) {
 
 
-            for(let z =0; z< data.subcontractor.topline.length; z++){
+            for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
-                data.subcontractor.topline[z].orderednov = this.toplineInventoryArray[z].ordered
-                data.subcontractor.topline[z].ordered = 0;
+              data.subcontractor.topline[z].orderednov = this.toplineInventoryArray[z].ordered
+              data.subcontractor.topline[z].ordered = 0;
 
 
             }
-            for(let z =0; z< data.subcontractor.wesclean.length; z++){
+            for (let z = 0; z < data.subcontractor.wesclean.length; z++) {
 
-                data.subcontractor.wesclean[z].orderednov = this.wescleanInventoryArray[z].ordered
-                data.subcontractor.wesclean[z].ordered = 0;
+              data.subcontractor.wesclean[z].orderednov = this.wescleanInventoryArray[z].ordered
+              data.subcontractor.wesclean[z].ordered = 0;
 
             }
-            for(let z = 0; z< data.subcontractor.veritivcanada.length; z++){
-               
-               data.subcontractor.veritivcanada[z].orderednov = this.inventory[z].ordered
-               data.subcontractor.veritivcanada[z].ordered=0;
+            for (let z = 0; z < data.subcontractor.veritivcanada.length; z++) {
+
+              data.subcontractor.veritivcanada[z].orderednov = this.inventory[z].ordered
+              data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
             //console.log(this.curexp);
-              data.subcontractor.date = 12
+            data.subcontractor.date = 12
 
-              subContractorToBeUpdated.name = data.subcontractor.name
-              subContractorToBeUpdated.month = this.month
-              subContractorToBeUpdated.date = data.subcontractor.date
-              subContractorToBeUpdated.oldordered = this.curexp;
-              subContractorToBeUpdated.topline = data.subcontractor.topline
-              subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
-              subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
+            subContractorToBeUpdated.name = data.subcontractor.name
+            subContractorToBeUpdated.month = this.month
+            subContractorToBeUpdated.date = data.subcontractor.date
+            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.topline = data.subcontractor.topline
+            subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
+            subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
-              this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data=>{
+            this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
               console.log(data);
 
 
-              })
-            
+            })
+
           }
 
         }
@@ -808,19 +854,19 @@ noThanks(){
 
 
         ]
-        for(let z = 0; z< this.toplineInventoryArray.length; z++){
-            
-            expendituresArray.push(Number(this.toplineInventoryArray[z].ordered * this.toplineInventoryArray[z].price))
-            console.log(expendituresArray)
-            
-      }
+        for (let z = 0; z < this.toplineInventoryArray.length; z++) {
 
-      for(let z = 0; z< this.inventory.length; z++){
+          expendituresArray.push(Number(this.toplineInventoryArray[z].ordered * this.toplineInventoryArray[z].price))
+          console.log(expendituresArray)
 
-         expendituresArray.push(Number(this.inventory[z].ordered * this.inventory[z].price) )
-          
         }
-        for(let z = 0; z< this.wescleanInventoryArray.length; z++){
+
+        for (let z = 0; z < this.inventory.length; z++) {
+
+          expendituresArray.push(Number(this.inventory[z].ordered * this.inventory[z].price))
+
+        }
+        for (let z = 0; z < this.wescleanInventoryArray.length; z++) {
 
           console.log(this.wescleanInventoryArray[z].ordered)
           expendituresArray.push(Number(this.wescleanInventoryArray[z].ordered * this.wescleanInventoryArray[z].price));
@@ -828,43 +874,145 @@ noThanks(){
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue
         this.totalCostThisMonth = expendituresArray.reduce(reducer);
-        if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+        if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = true;
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+
+        }
+        if (window.innerWidth < 1020 && window.innerWidth > 364 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = true;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+
+        }
+        if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = true
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
+          console.log("small532")
+
+        }
+        if (document.documentElement.clientWidth === 360 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = true;
+          this.expenditureDangerWarningMobileIphoneX = false;
+          console.log("small360")
+
+        }
+        if (document.documentElement.clientWidth === 375 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = true;
+          console.log("small375")
+          console.log(this.expenditureDangerWarningMobile)
+
+        }
+        if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = true;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          console.log("small")
+
+        }
+
+        if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = true;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+
+
+        }
+        if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = true;
+          this.expenditureDangerWarningMobileMedium = false;
+
+
+
+        }
+        console.log(this.expenditureDangerWarningMobile)
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
         }
 
-        let totalExpenditureUpdater={
+        let totalExpenditureUpdater = {
 
           name: this.location,
           totalexpenditures: this.totalCostThisMonth
 
         }
-        this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
+        this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
           console.log(data)
 
         })
         console.log(this.totalCostThisMonth)
         this.curexp = this.totalCostThisMonth
-            this.chartData = [
+        this.chartData = [
 
-      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-    
+          { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
-    ];
-    
-    this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    })
-   
+        ];
+
+        this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      })
+
 
     });
 
@@ -910,74 +1058,74 @@ noThanks(){
       subcontractorarray: this.singleSubContractorsArray
 
     }
-    
+
     this.expenditureLoading = true;
 
-        for(let z =0; z< this.toplineInventoryArray.length; z++){
+    for (let z = 0; z < this.toplineInventoryArray.length; z++) {
 
 
-        if(this.toplineInventoryArray[z].productcode == productcode){
-          //console.log(this.inventory[z])
-            this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered + 1;
-           // console.log(this.inventory[z])
-            let subcontractor = {
+      if (this.toplineInventoryArray[z].productcode == productcode) {
+        //console.log(this.inventory[z])
+        this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered + 1;
+        // console.log(this.inventory[z])
+        let subcontractor = {
 
-              name: this.location,
-              topline: this.toplineInventoryArray,
-              inventory: "topline"
+          name: this.location,
+          topline: this.toplineInventoryArray,
+          inventory: "topline"
 
-            }
+        }
 
-            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
-        if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+        this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
         }
-            let totalExpenditureUpdater = {
-              name : this.location,
-              totalexpenditures: this.totalCostThisMonth
-
-            }
-            this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-              console.log(data)
-              this.expenditureLoading = false;
-              this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              
-              this.curexp = this.totalCostThisMonth;
-
-              this.chartData = [
-
-                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-              ];         
-
-            })
-
-            this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-              console.log(data);
-              this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              this.toplineInventoryArray = data.subcontractor.topline;
-
-
-            })
+        let totalExpenditureUpdater = {
+          name: this.location,
+          totalexpenditures: this.totalCostThisMonth
 
         }
+        this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
+
+          console.log(data)
+          this.expenditureLoading = false;
+          this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+
+          this.curexp = this.totalCostThisMonth;
+
+          this.chartData = [
+
+            { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+          ];
+
+        })
+
+        this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
+
+          console.log(data);
+          this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+          this.toplineInventoryArray = data.subcontractor.topline;
+
+
+        })
+
+      }
 
     }
- 
+
   }
-  decreaseVeritivCanadaInventory(ordered,supplier, price, productcode, index) {
+  decreaseVeritivCanadaInventory(ordered, supplier, price, productcode, index) {
 
     let productToBeModified = {
 
@@ -991,82 +1139,82 @@ noThanks(){
 
     this.expenditureLoading = true;
 
-    for(let z =0; z< this.inventory.length; z++){
+    for (let z = 0; z < this.inventory.length; z++) {
 
 
-        if(this.inventory[z].productcode == productcode){
-            
-            if(this.inventory[z].ordered > 0){
+      if (this.inventory[z].productcode == productcode) {
 
-                this.inventory[z].ordered = this.inventory[z].ordered - 1;
+        if (this.inventory[z].ordered > 0) {
 
-                let subcontractor = {
+          this.inventory[z].ordered = this.inventory[z].ordered - 1;
 
-                  name: this.location,
-                  veritivcanada: this.inventory,
-                  inventory: "veritivcanada"
+          let subcontractor = {
 
-                }
+            name: this.location,
+            veritivcanada: this.inventory,
+            inventory: "veritivcanada"
 
-                if(this.totalCostThisMonth > 0){
+          }
 
-                  this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
-                    if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+          if (this.totalCostThisMonth > 0) {
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
+            this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-        }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+              this.expenditureDangerWarning = true
+              this.expenditureDangerWarningMobile = false;
 
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
+            }
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
-        }else{
+              this.expenditureDangerWarningMobile = true
+              this.expenditureDangerWarning = false;
 
-          this.expenditureDangerWarningMobile = false;
-          this.expenditureDangerWarning = false;
-        }
+            } else {
 
-
-                }                
-                let totalExpenditureUpdater = {
-                    name : this.location,
-                    totalexpenditures: this.totalCostThisMonth
-
-                }
-                this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-                    console.log(data)
-                    this.expenditureLoading = false;
-                    this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              
-                    this.curexp = this.totalCostThisMonth;
-
-                    this.chartData = [
-
-                        { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-                    ];         
-
-                  })
-                
-                  this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-                       console.log(data);
-                       this.inventory = data.subcontractor.veritivcanada
-
-                  })
-
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarning = false;
             }
 
 
+          }
+          let totalExpenditureUpdater = {
+            name: this.location,
+            totalexpenditures: this.totalCostThisMonth
+
+          }
+          this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
+
+            console.log(data)
+            this.expenditureLoading = false;
+            this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+
+            this.curexp = this.totalCostThisMonth;
+
+            this.chartData = [
+
+              { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+            ];
+
+          })
+
+          this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
+
+            console.log(data);
+            this.inventory = data.subcontractor.veritivcanada
+
+          })
+
         }
+
+
+      }
 
     }
   }
-  decreaseToplineInventory(ordered,supplier, price, productcode, index) {
+  decreaseToplineInventory(ordered, supplier, price, productcode, index) {
 
     console.log("clicked");
     let productToBeModified = {
@@ -1080,86 +1228,86 @@ noThanks(){
     }
     this.expenditureLoading = true;
 
-    for(let z =0; z< this.toplineInventoryArray.length; z++){
+    for (let z = 0; z < this.toplineInventoryArray.length; z++) {
 
 
-        if(this.toplineInventoryArray[z].productcode == productcode){
-            console.log(this.inventory[z])
-            console.log(this.toplineInventoryArray[z].ordered)
-            if(this.toplineInventoryArray[z].ordered >0){
+      if (this.toplineInventoryArray[z].productcode == productcode) {
+        console.log(this.inventory[z])
+        console.log(this.toplineInventoryArray[z].ordered)
+        if (this.toplineInventoryArray[z].ordered > 0) {
 
-                this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered - 1;
+          this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered - 1;
 
-                let subcontractor = {
+          let subcontractor = {
 
-                  name: this.location,
-                  topline: this.toplineInventoryArray,
-                  inventory: "topline"
+            name: this.location,
+            topline: this.toplineInventoryArray,
+            inventory: "topline"
 
-                }
+          }
 
-                if(this.totalCostThisMonth > 0){
+          if (this.totalCostThisMonth > 0) {
 
-                  this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
-             if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+            this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
-
-        }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
-
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
-
-        }else{
-
-          this.expenditureDangerWarningMobile = false;
-          this.expenditureDangerWarning = false;
-        }
-
-                }
-                let totalExpenditureUpdater = {
-                   name : this.location,
-                   totalexpenditures: this.totalCostThisMonth
-
-                }
-                this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-                    console.log(data)
-                  this.expenditureLoading = false;
-                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              
-                  this.curexp = this.totalCostThisMonth;
-
-                  this.chartData = [
-
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-                  ];         
-
-                })
-                
-                this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-                    console.log(data);
-                    this.toplineInventoryArray = data.subcontractor.topline
-
-                })
+              this.expenditureDangerWarning = true
+              this.expenditureDangerWarningMobile = false;
 
             }
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
+              this.expenditureDangerWarningMobile = true
+              this.expenditureDangerWarning = false;
+
+            } else {
+
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarning = false;
+            }
+
+          }
+          let totalExpenditureUpdater = {
+            name: this.location,
+            totalexpenditures: this.totalCostThisMonth
+
+          }
+          this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
+
+            console.log(data)
+            this.expenditureLoading = false;
+            this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+
+            this.curexp = this.totalCostThisMonth;
+
+            this.chartData = [
+
+              { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+            ];
+
+          })
+
+          this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
+
+            console.log(data);
+            this.toplineInventoryArray = data.subcontractor.topline
+
+          })
 
         }
 
-    }
+
+      }
 
     }
-   
 
-  
-  decreaseWescleanInventory(ordered,supplier, price, productcode, index) {
+  }
+
+
+
+  decreaseWescleanInventory(ordered, supplier, price, productcode, index) {
 
 
     let productToBeModified = {
@@ -1173,79 +1321,79 @@ noThanks(){
 
     }
     this.expenditureLoading = true;
-        for(let z =0; z< this.wescleanInventoryArray.length; z++){
+    for (let z = 0; z < this.wescleanInventoryArray.length; z++) {
 
 
-        if(this.wescleanInventoryArray[z].productcode == productcode){
-            console.log(this.inventory[z])
-            if(this.wescleanInventoryArray[z].ordered > 0){
+      if (this.wescleanInventoryArray[z].productcode == productcode) {
+        console.log(this.inventory[z])
+        if (this.wescleanInventoryArray[z].ordered > 0) {
 
-                this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered - 1;
+          this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered - 1;
 
-                let subcontractor = {
+          let subcontractor = {
 
-                  name: this.location,
-                  wesclean: this.wescleanInventoryArray,
-                  inventory: "wesclean"
+            name: this.location,
+            wesclean: this.wescleanInventoryArray,
+            inventory: "wesclean"
 
-                }
+          }
 
-            if(this.totalCostThisMonth > 0){
+          if (this.totalCostThisMonth > 0) {
 
-                this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
-           if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+            this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarning = true
+              this.expenditureDangerWarningMobile = false;
 
-        }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+            }
+            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
+              this.expenditureDangerWarningMobile = true
+              this.expenditureDangerWarning = false;
 
-        }else{
+            } else {
 
-          this.expenditureDangerWarningMobile = false;
-          this.expenditureDangerWarning = false;
-        }
-
-
-                }                
-            let totalExpenditureUpdater = {
-                  name : this.location,
-                  totalexpenditures: this.totalCostThisMonth
-
-                }
-
-                this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-                  console.log(data)
-                  this.expenditureLoading = false;
-                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              
-                  this.curexp = this.totalCostThisMonth;
-
-                  this.chartData = [
-
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-                  ];         
-
-                })
-                
-                this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-                    console.log(data);
-                    this.wescleanInventoryArray = data.subcontractor.wesclean
-
-                })
-
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarning = false;
             }
 
 
+          }
+          let totalExpenditureUpdater = {
+            name: this.location,
+            totalexpenditures: this.totalCostThisMonth
+
+          }
+
+          this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
+
+            console.log(data)
+            this.expenditureLoading = false;
+            this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+
+            this.curexp = this.totalCostThisMonth;
+
+            this.chartData = [
+
+              { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+            ];
+
+          })
+
+          this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
+
+            console.log(data);
+            this.wescleanInventoryArray = data.subcontractor.wesclean
+
+          })
+
         }
+
+
+      }
 
     }
 
@@ -1265,69 +1413,69 @@ noThanks(){
 
     }
     this.expenditureLoading = true;
-        for(let z =0; z< this.wescleanInventoryArray.length; z++){
+    for (let z = 0; z < this.wescleanInventoryArray.length; z++) {
 
 
-        if(this.wescleanInventoryArray[z].productcode == productcode){
-          console.log(this.inventory[z])
-            this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered + 1;
-            console.log(this.inventory[z])
-            let subcontractor = {
+      if (this.wescleanInventoryArray[z].productcode == productcode) {
+        console.log(this.inventory[z])
+        this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered + 1;
+        console.log(this.inventory[z])
+        let subcontractor = {
 
-              name: this.location,
-              wesclean: this.wescleanInventoryArray,
-              inventory: "wesclean"
+          name: this.location,
+          wesclean: this.wescleanInventoryArray,
+          inventory: "wesclean"
 
-            }
-            
-            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
-           if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+        }
+
+        this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        }else{
+        } else {
 
           this.expenditureDangerWarningMobile = false;
           this.expenditureDangerWarning = false;
         }
-            let totalExpenditureUpdater = {
-              name : this.location,
-              totalexpenditures: this.totalCostThisMonth
-
-            }
-            this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-              console.log(data)
-              this.expenditureLoading = false;
-              this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-              this.curexp = this.totalCostThisMonth;
-
-              this.chartData = [
-
-                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-              ];
-
-            })
-            this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-              console.log(data);
-              this.wescleanInventoryArray = data.subcontractor.wesclean
-
-            })
+        let totalExpenditureUpdater = {
+          name: this.location,
+          totalexpenditures: this.totalCostThisMonth
 
         }
+        this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
+
+          console.log(data)
+          this.expenditureLoading = false;
+          this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+          this.curexp = this.totalCostThisMonth;
+
+          this.chartData = [
+
+            { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+          ];
+
+        })
+        this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
+
+          console.log(data);
+          this.wescleanInventoryArray = data.subcontractor.wesclean
+
+        })
+
+      }
 
     }
-    
+
 
   }
 
@@ -1345,190 +1493,190 @@ noThanks(){
     }
     console.log(productcode)
     this.expenditureLoading = true;
-    for(let z =0; z< this.inventory.length; z++){
+    for (let z = 0; z < this.inventory.length; z++) {
 
 
-        if(this.inventory[z].productcode == productcode){
-          console.log(this.inventory[z])
-            this.inventory[z].ordered = this.inventory[z].ordered + 1;
-            console.log(this.inventory[z])
-            let subcontractor = {
+      if (this.inventory[z].productcode == productcode) {
+        console.log(this.inventory[z])
+        this.inventory[z].ordered = this.inventory[z].ordered + 1;
+        console.log(this.inventory[z])
+        let subcontractor = {
 
-              name: this.location,
-              veritivcanada: this.inventory,
-              inventory: "veritivcanada"
+          name: this.location,
+          veritivcanada: this.inventory,
+          inventory: "veritivcanada"
 
-            }
-            
-            this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
-            if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+        }
+
+        this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
-                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        }else{
+        } else {
 
           this.expenditureDangerWarningMobile = false;
           this.expenditureDangerWarning = false;
         }
-            let totalExpenditureUpdater = {
-              name : this.location,
-              totalexpenditures: this.totalCostThisMonth
-
-            }
-            this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data=>{
-
-              console.log(data)
-              this.expenditureLoading = false;
-              this.totalCostThisMonth = data.subcontractor.totalexpenditures;
-
-              this.curexp = this.totalCostThisMonth;
-
-              this.chartData = [
-
-                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-              ];             
-
-            })
-            this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data=>{
-
-              console.log(data);
-              //this.totalCostThisMonth
-                            //this.totalCostThisMonth = data.subcontactor.totalexpenditures;
-              this.inventory = data.subcontractor.veritivcanada;
-              
-
-            })
+        let totalExpenditureUpdater = {
+          name: this.location,
+          totalexpenditures: this.totalCostThisMonth
 
         }
+        this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-    }
+          console.log(data)
+          this.expenditureLoading = false;
+          this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
-  /*  this.clientservice.updateSubContractorInventory().subscribe(data=>{
+          this.curexp = this.totalCostThisMonth;
 
-      this.inventory
+          this.chartData = [
 
-    })
-    this.clientservice.updateSubContractor()
-    this.expenditureLoaded = true;
-    setTimeout(() => {
-      this.curexp = 0;
-      this.chartData = [
-
-        { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+            { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
 
 
-      ];
-      this.totalCostThisMonth = Number(price) + this.totalCostThisMonth;
-      this.curexp = this.totalCostThisMonth;
-      this.chartData = [
+          ];
 
-        { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+        })
+        this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-
-      ];
-      this.expenditureLoaded = false;
-    }, 2000);
-    console.log("PRODUCTCODE")
-    console.log(productcode);
-    console.log("SINGLESUBCONTRACTORSARRAY");
-    console.log(this.singleSubContractorsArray)
-
-    for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
-
-      if (this.singleSubContractorsArray[z].name == this.location) {
-
-        console.log(this.location);
-        console.log(this.singleSubContractorsArray[z].veritivcanada);
-        for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
-          console.log(d);
-          // console.log(console.log(this.singleSubContractorsArray[z].topline[d].productcode));
-
-          if (this.singleSubContractorsArray[z].veritivcanada[d].productcode == productcode) {
-
-            console.log(this.singleSubContractorsArray[z].veritivcanada[d]);
-            this.singleSubContractorsArray[z].veritivcanada[d].ordered = this.singleSubContractorsArray[z].veritivcanada[d].ordered + 1;
-            console.log(this.singleSubContractorsArray[z].veritivcanada[d].ordered);
-            this.dataservice.increaseItemInVeritivCanadaInventory(productToBeModified)
-              .subscribe(data => {
-                console.log("DATA!");
-                console.log(data);
-                console.log(this.singleSubContractorsArray)
-                let totalCostThisMonthArray = [];
-                for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
-                  console.log(z)
+          console.log(data);
+          //this.totalCostThisMonth
+          //this.totalCostThisMonth = data.subcontactor.totalexpenditures;
+          this.inventory = data.subcontractor.veritivcanada;
 
 
-                  this.singleSubContractorsArray[z].topline[32].price = 9.99;
-                  this.singleSubContractorsArray[z].topline[34].price = 9.99;
-                  if (this.singleSubContractorsArray[z].name == this.location) {
+        })
 
-                    for (let d = 0; d < this.singleSubContractorsArray[z].topline.length; d++) {
-                      console.log(d)
-                      totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
-
-
-
-                    }
-                    for (let d = 0; d < this.singleSubContractorsArray[z].wesclean.length; d++) {
-                      console.log(d)
-                      totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
-
-
-
-                    }
-                    for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
-                      console.log(d)
-                      totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
-
-
-
-                    }
-                    console.log(totalCostThisMonthArray);
-                  }
-
-
-                  if (totalCostThisMonthArray.length > 0) {
-                    let reducer = (accumulator, currentValue) => accumulator + currentValue;
-                    this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
-
-                    console.log(this.totalCostThisMonth);
-
-                  }
-
-
-
-                  this.curexp = this.totalCostThisMonth;
-                  //this.expenditureLoaded = false;
-                  console.log("done");
-                  this.chartData = [
-
-                    { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-
-
-                  ];
-                  console.log(this.totalCostThisMonth);
-
-
-                }
-
-              });
-          }
-
-        }
       }
 
-
     }
-    */
+
+    /*  this.clientservice.updateSubContractorInventory().subscribe(data=>{
+  
+        this.inventory
+  
+      })
+      this.clientservice.updateSubContractor()
+      this.expenditureLoaded = true;
+      setTimeout(() => {
+        this.curexp = 0;
+        this.chartData = [
+  
+          { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+  
+  
+        ];
+        this.totalCostThisMonth = Number(price) + this.totalCostThisMonth;
+        this.curexp = this.totalCostThisMonth;
+        this.chartData = [
+  
+          { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+  
+  
+        ];
+        this.expenditureLoaded = false;
+      }, 2000);
+      console.log("PRODUCTCODE")
+      console.log(productcode);
+      console.log("SINGLESUBCONTRACTORSARRAY");
+      console.log(this.singleSubContractorsArray)
+  
+      for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
+  
+        if (this.singleSubContractorsArray[z].name == this.location) {
+  
+          console.log(this.location);
+          console.log(this.singleSubContractorsArray[z].veritivcanada);
+          for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
+            console.log(d);
+            // console.log(console.log(this.singleSubContractorsArray[z].topline[d].productcode));
+  
+            if (this.singleSubContractorsArray[z].veritivcanada[d].productcode == productcode) {
+  
+              console.log(this.singleSubContractorsArray[z].veritivcanada[d]);
+              this.singleSubContractorsArray[z].veritivcanada[d].ordered = this.singleSubContractorsArray[z].veritivcanada[d].ordered + 1;
+              console.log(this.singleSubContractorsArray[z].veritivcanada[d].ordered);
+              this.dataservice.increaseItemInVeritivCanadaInventory(productToBeModified)
+                .subscribe(data => {
+                  console.log("DATA!");
+                  console.log(data);
+                  console.log(this.singleSubContractorsArray)
+                  let totalCostThisMonthArray = [];
+                  for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
+                    console.log(z)
+  
+  
+                    this.singleSubContractorsArray[z].topline[32].price = 9.99;
+                    this.singleSubContractorsArray[z].topline[34].price = 9.99;
+                    if (this.singleSubContractorsArray[z].name == this.location) {
+  
+                      for (let d = 0; d < this.singleSubContractorsArray[z].topline.length; d++) {
+                        console.log(d)
+                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
+  
+  
+  
+                      }
+                      for (let d = 0; d < this.singleSubContractorsArray[z].wesclean.length; d++) {
+                        console.log(d)
+                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
+  
+  
+  
+                      }
+                      for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
+                        console.log(d)
+                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
+  
+  
+  
+                      }
+                      console.log(totalCostThisMonthArray);
+                    }
+  
+  
+                    if (totalCostThisMonthArray.length > 0) {
+                      let reducer = (accumulator, currentValue) => accumulator + currentValue;
+                      this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
+  
+                      console.log(this.totalCostThisMonth);
+  
+                    }
+  
+  
+  
+                    this.curexp = this.totalCostThisMonth;
+                    //this.expenditureLoaded = false;
+                    console.log("done");
+                    this.chartData = [
+  
+                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+  
+  
+                    ];
+                    console.log(this.totalCostThisMonth);
+  
+  
+                  }
+  
+                });
+            }
+  
+          }
+        }
+  
+  
+      }
+      */
   }
 
   openToplineInventoryok() {
