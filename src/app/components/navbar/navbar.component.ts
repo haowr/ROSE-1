@@ -84,6 +84,7 @@ export class NavbarComponent implements OnInit {
         this.brandMobile = false;
         this.brandFullScreen = false;
         this.removeBrand = true;
+        this.removeDesktopWeatherInfo = true;
 
       }else { //
       this.brandFullScreen = true;

@@ -1082,6 +1082,7 @@ export class LocationComponent implements OnInit {
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
+          console.log("i'm here")
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
@@ -1350,6 +1351,12 @@ export class LocationComponent implements OnInit {
               this.expenditureDangerWarningMobile = false;
 
             }
+                 if (this.totalCostThisMonth < 2000 && document.documentElement.clientWidth > 1020) {
+
+              this.expenditureDangerWarning = false;
+              this.expenditureDangerWarningMobile = false;
+
+            }
             if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
 
               this.expenditureDangerWarningMobile = true
@@ -1432,22 +1439,27 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        console.log(this.totalCostThisMonth)
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
-
-          this.expenditureDangerWarning = true
+          console.log("ive run")
+          console.log(this.totalCostThisMonth)
+          console.log(document.documentElement.clientWidth)
+   this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
-
+         console.log("ive run")
+          console.log(this.totalCostThisMonth)
+          console.log(document.documentElement.clientWidth)
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        } else {
+        }/* else {
 
           this.expenditureDangerWarningMobile = false;
           this.expenditureDangerWarning = false;
-        }
+        }*/
         let totalExpenditureUpdater = {
           name: this.location,
           totalexpenditures: this.totalCostThisMonth
@@ -1523,11 +1535,11 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        } else {
+        }/* else {
 
           this.expenditureDangerWarningMobile = false;
           this.expenditureDangerWarning = false;
-        }
+        }*/
         let totalExpenditureUpdater = {
           name: this.location,
           totalexpenditures: this.totalCostThisMonth

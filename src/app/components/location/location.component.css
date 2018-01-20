@@ -395,7 +395,7 @@ background: #ffffff;
 
 .arrow_box:after {
 	border-color: rgba(136, 183, 213, 0);
-	border-right-color:  #ff9999;
+	border-right-color:  #ffe6e6;
 	border-width: 30px;
 	margin-top: -30px;
 }
