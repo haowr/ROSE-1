@@ -184,6 +184,17 @@ position:absolute;
 
     font-family: 'Montserrat'
 }
+.brand {
+    position: absolute;
+    color: white;
+    font-family:'Lora';
+   font-size:19px;
+   top:22px;
+    left: 58%;
+    text-decoration:none;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
 
 /*
 .navbar{
