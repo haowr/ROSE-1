@@ -32,6 +32,7 @@ export class LocationComponent implements OnInit {
   expenditureDangerWarningMobileSmall:boolean = false;
   expenditureDangerWarningMobileSmaller:boolean = false;
     expenditureDangerWarningMobileSmallest:boolean = false;
+    expenditureDangerWarningMobileMedium:boolean = false;
 
 
   //STRING VARIABLES
@@ -118,6 +119,17 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileSmall = false;
       this.expenditureDangerWarningMobileSmaller = false;
       this.expenditureDangerWarningMobileSmallest = false;
+
+    }
+         if(window.innerWidth < 428 && this.totalCostThisMonth >=2000){
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMedium = true
+      console.log("small")
 
     }
         if(window.innerWidth < 364 && this.totalCostThisMonth >=2000){
