@@ -84,6 +84,7 @@
 
         <li *ngIf="weatherNow == '11d'&& authservice.loggedIn()" (click)="openWeatherInfo()"><a style="font-size:18px;" href="javascript:void(0);">  <i class="wi wi-storm-showers" style="font-size:18px;color:white;"></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
   <li *ngIf="weatherNow == '50n'&& authservice.loggedIn()" (click)="openWeatherInfo()"><a style="font-size:18px;" href="javascript:void(0);">  <i class="wi wi-fog" style="font-size:18px;color:white;"></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
+  <li *ngIf="weatherNow == '50d'&& authservice.loggedIn()" (click)="openWeatherInfo()"><a style="font-size:18px;" href="javascript:void(0);">  <i class="wi wi-fog" style="font-size:18px;color:white;"></i>{{temperatureNow}}<div  [ngClass]="{ 'divunderlineopen': divUnderlineOpen,'divunderlineclosed': !divUnderlineOpen}" style="border:1px solid white"></div></a></li>
 
         <li (click)="closeDropdown()" *ngIf="authservice.loggedIn()" class="animated fadeIn"><a style="color:white;" href="javascript:void(0);">Welcome, {{username}}.</a></li>
         <li (click)="closeDropdown()" *ngIf="!authservice.loggedIn()" [routerLinkActive]="['active']" class="animated fadeIn"><a [routerLink]="['/login']" href="javascript:void(0);">Employee Login</a></li>
