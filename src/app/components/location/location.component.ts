@@ -35,6 +35,7 @@ export class LocationComponent implements OnInit {
   expenditureDangerWarningMobileMedium: boolean = false;
   expenditureDangerWarningMobileSamsung: boolean = false;
   expenditureDangerWarningMobileIphoneX: boolean = false;
+  noThanksVar = false;
 
 
   //STRING VARIABLES
@@ -231,6 +232,7 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileMedium = false;
       this.expenditureDangerWarningMobileSamsung = false
       this.expenditureDangerWarningMobileIphoneX = false;
+      this.noThanksVar = true;
 
   }
   ngOnInit() {
