@@ -40,6 +40,15 @@
     <br>
 <br>
   <!-- <button style="opacity:0;"class = "btn btn-default"(click)="openPopup();">open</button>-->
+  <div class = "col-sm-12" style = "text-align:center">
+          <div *ngIf ="expenditureDangerWarningMobile"class ="arrow_box-mobile animated flash">
+          <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
+          <p style="color:black; font-family: 'Lora', serif; text-align:center;overflow-wrap:break-word; ">{{subContractorName}}'s Expenditures Have Reached Extremely High Levels, Would You Like To Contact  {{subContractorContactName}}?</p>
+          <a style = "color:cadetblue" href = "mailto:{{subContractorContactEmail}}"> Send Email</a>
+          <br>
+          <a style = "color:cadetblue" (click)="noThanks()"href = "javascript:void(0);"> No Thanks</a>
+    </div>
+  </div>
   <div class="col-sm-12 " style="text-align:center">
   <div *ngIf ="expenditureDangerWarning"class ="arrow_box animated flash">
           <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
@@ -48,13 +57,7 @@
           <br>
           <a style = "color:cadetblue" (click)="noThanks()" href = "javascript:void(0);"> No Thanks</a>
     </div>
-      <div *ngIf ="expenditureDangerWarningMobile"class ="arrow_box-mobile animated flash">
-          <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
-          <p style="color:black; font-family: 'Lora', serif; text-align:center;overflow-wrap:break-word; ">{{subContractorName}}'s Expenditures Have Reached Extremely High Levels, Would You Like To Contact  {{subContractorContactName}}?</p>
-          <a style = "color:cadetblue" href = "mailto:{{subContractorContactEmail}}"> Send Email</a>
-          <br>
-          <a style = "color:cadetblue" (click)="noThanks()"href = "javascript:void(0);"> No Thanks</a>
-    </div>
+
     <div class = "panel panel-default">
 
     <h3 class ="subcontractorlabel animated fadeIn">Name:<h4 class="subcontractorlabel animated fadeIn">{{subContractorName}}</h4></h3>
