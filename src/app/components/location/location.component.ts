@@ -4,6 +4,7 @@ import { Routes, Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpModule, Http, Headers } from '@angular/http';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 import { ClientService } from '../../services/client.service';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class LocationComponent implements OnInit {
   veritivInventory2: boolean = false;
   expenditureLoaded: boolean = false;
   expenditureLoading:boolean = false;
+  expenditureDangerWarning:boolean = false;
+  expenditureDangerWarningMobile:boolean = false;
 
   //STRING VARIABLES
 
@@ -93,7 +96,24 @@ export class LocationComponent implements OnInit {
   locationObject: Object[];
   inventory: any = [];
   
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
 
+    console.log(window.innerWidth)
+    if(window.innerWidth > 1020 && this.totalCostThisMonth >= 2000){
+
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+
+    }
+    if(window.innerWidth < 1020 && this.totalCostThisMonth >=2000){
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+
+    }
+
+  }
  
 
 
@@ -103,6 +123,12 @@ export class LocationComponent implements OnInit {
   constructor(private clientservice: ClientService, private router: Router, private dataservice: DataService, private activatedroute: ActivatedRoute) { }
 
 
+noThanks(){
+
+  this.expenditureDangerWarning = false
+  this.expenditureDangerWarningMobile = false;
+
+}
   ngOnInit() {
     console.log(this.ordered);
     console.log(this.month);
@@ -744,6 +770,18 @@ export class LocationComponent implements OnInit {
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue
         this.totalCostThisMonth = expendituresArray.reduce(reducer);
+        if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }
 
         let totalExpenditureUpdater={
 
@@ -833,6 +871,18 @@ export class LocationComponent implements OnInit {
             }
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth
@@ -903,6 +953,22 @@ export class LocationComponent implements OnInit {
                 if(this.totalCostThisMonth > 0){
 
                   this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+                    if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }else{
+
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarning = false;
+        }
 
 
                 }                
@@ -977,7 +1043,22 @@ export class LocationComponent implements OnInit {
                 if(this.totalCostThisMonth > 0){
 
                   this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+             if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
 
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }else{
+
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarning = false;
+        }
 
                 }
                 let totalExpenditureUpdater = {
@@ -1054,6 +1135,22 @@ export class LocationComponent implements OnInit {
             if(this.totalCostThisMonth > 0){
 
                 this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+           if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }else{
+
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarning = false;
+        }
 
 
                 }                
@@ -1126,6 +1223,22 @@ export class LocationComponent implements OnInit {
             }
             
             this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+           if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }else{
+
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarning = false;
+        }
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth
@@ -1190,6 +1303,22 @@ export class LocationComponent implements OnInit {
             }
             
             this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+            if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth >1020 ){
+
+          this.expenditureDangerWarning = true
+          this.expenditureDangerWarningMobile = false;
+
+        }
+                if(this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth <1020 ){
+
+          this.expenditureDangerWarningMobile = true
+          this.expenditureDangerWarning = false;
+
+        }else{
+
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarning = false;
+        }
             let totalExpenditureUpdater = {
               name : this.location,
               totalexpenditures: this.totalCostThisMonth

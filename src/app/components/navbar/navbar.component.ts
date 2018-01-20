@@ -41,8 +41,9 @@ export class NavbarComponent implements OnInit {
   weatherInfo2: boolean = false;
   weatherInfoHidden: boolean = false;
   weatherInfo3Hidden: boolean = true;
-  brandMobile:boolean = false;
-  brandFullScreen:boolean = true;
+  brandMobile: boolean = false;
+  brandFullScreen: boolean = true;
+  removeBrand:boolean = false;
 
   divUnderlineOpen: boolean = false;
   removeWeatherQuickly: boolean = false;
@@ -57,9 +58,11 @@ export class NavbarComponent implements OnInit {
 
       this.brandMobile = true;
       this.brandFullScreen = false;
+      this.removeBrand = false;
       if (!this.largestRoseLogo) {
         this.smallestRoseLogo = true;
       }
+
 
       if (this.removeDesktopWeatherInfo && !this.removeWeatherQuickly && !this.divUnderlineOpen && !this.weatherInfo2) {
 
@@ -75,10 +78,18 @@ export class NavbarComponent implements OnInit {
       console.log(this.largeRoseLogo)
       console.log(this.innerWidth)
       console.log("Smaller")
-    } else { //
+    } 
+          if(this.innerWidth> 766 && this.innerWidth < 1080){
+
+        this.brandMobile = false;
+        this.brandFullScreen = false;
+        this.removeBrand = true;
+
+      }else { //
       this.brandFullScreen = true;
       this.brandMobile = false;
       this.largeRoseLogo = true;
+      this.removeBrand = false;
       //this.removeDesktopWeatherInfo = false;
       this.removeWeatherQuickly = false;
       this.weatherInfo2 = false;
@@ -136,11 +147,22 @@ export class NavbarComponent implements OnInit {
       this.removeDesktopWeatherInfo = true;
       this.brandMobile = true;
       this.brandFullScreen = false;
+      this.removeBrand = false;
 
 
-    } else {
+    } if (document.documentElement.clientWidth > 776 && document.documentElement.clientWidth < 1079) {
+
       this.brandMobile = false;
-      this.brandFullScreen=true;
+      this.brandFullScreen = false;
+      this.removeBrand = true;
+
+    }
+
+
+    else {
+      this.brandMobile = false;
+      this.brandFullScreen = true;
+      this.removeBrand = false;
       this.largeRoseLogo = true;
       this.removeDesktopWeatherInfo = false;
 

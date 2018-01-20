@@ -196,18 +196,7 @@ position:absolute;
     margin-left: -50px !important;  /* 50% of your logo width */
     display: block;
 }
-.brand-mobile:active {
-    position: absolute;
-    color: white;
-    font-family:'Lora';
-   font-size:19px;
-   opacity:1;
-   top:22px;
-    left: 58%;
-    text-decoration:none;
-    margin-left: -50px !important;  /* 50% of your logo width */
-    display: block;
-}
+
 .brand-fullscreen {
     position: absolute;
     color: white;
@@ -220,17 +209,11 @@ position:absolute;
     margin-left: -50px !important;  /* 50% of your logo width */
     display: block;
 }
-.brand-fullscreen:active {
-    position: absolute;
-    color: white;
-    font-family:'Lora';
-   font-size:19px;
-   opacity:1;
-   top:22px;
-    left: 50%;
-    text-decoration:none;
-    margin-left: -50px !important;  /* 50% of your logo width */
-    display: block;
+
+.removebrand{
+
+    display:none;
+
 }
 
 /*

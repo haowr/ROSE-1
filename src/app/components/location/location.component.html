@@ -1,7 +1,8 @@
      <button id="openModalButton"class="hidebutton " hidden="true" backdrop ="false"data-toggle="modal" data-target="#myModal">Open Modal</button>
    <br>
-
+    
 <div class="container">
+
   <div class= "row">
 
 
@@ -40,7 +41,20 @@
 <br>
   <!-- <button style="opacity:0;"class = "btn btn-default"(click)="openPopup();">open</button>-->
   <div class="col-sm-12 " style="text-align:center">
- 
+  <div *ngIf ="expenditureDangerWarning"class ="arrow_box animated flash">
+          <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
+          <p style="color:black; font-family: 'Lora', serif; text-align:center;overflow-wrap:break-word; ">{{subContractorName}}'s Expenditures Have Reached Extremely High Levels, Would You Like To Contact  {{subContractorContactName}}?</p>
+          <a style = "color:cadetblue" href = "mailto:{{subContractorContactEmail}}"> Send Email</a>
+          <br>
+          <a style = "color:cadetblue" (click)="noThanks()" href = "javascript:void(0);"> No Thanks</a>
+    </div>
+      <div *ngIf ="expenditureDangerWarningMobile"class ="arrow_box-mobile animated flash">
+          <h4 style="color:black; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
+          <p style="color:black; font-family: 'Lora', serif; text-align:center;overflow-wrap:break-word; ">{{subContractorName}}'s Expenditures Have Reached Extremely High Levels, Would You Like To Contact  {{subContractorContactName}}?</p>
+          <a style = "color:cadetblue" href = "mailto:{{subContractorContactEmail}}"> Send Email</a>
+          <br>
+          <a style = "color:cadetblue" (click)="noThanks()"href = "javascript:void(0);"> No Thanks</a>
+    </div>
     <div class = "panel panel-default">
 
     <h3 class ="subcontractorlabel animated fadeIn">Name:<h4 class="subcontractorlabel animated fadeIn">{{subContractorName}}</h4></h3>
@@ -57,9 +71,11 @@
         <div class ="panel panel-default">
     <h3 class ="subcontractorlabel animated fadeIn">Expenditures This Month:<h4 [ngClass]="{'text-danger': totalCostThisMonth >= 2000,'text-warning':totalCostThisMonth >=1000, 'text-success':totalCostThisMonth < 1000}" class="subcontractorlabel animated fadeIn">{{totalCostThisMonth| currency}}</h4></h3>
     <div class ="placeholderforexpenditureloadingicon" *ngIf="!expenditureLoading">
+  
     </div>
     <i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoading"style="font-size:21px;"></i><span *ngIf="expenditureLoading">LOADING CHART DATA</span><i class="fa fa-cog fa-spin fa-3x fa-fw" *ngIf="expenditureLoading"style="font-size:21px;"></i>
     <span class="sr-only">Loading...</span>
+ 
     </div>
           <canvas  baseChart
       [chartType]="'bar'"
