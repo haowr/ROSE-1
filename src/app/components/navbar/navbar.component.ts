@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
   weatherInfoHidden: boolean = false;
   weatherInfo3Hidden: boolean = true;
   brandMobile:boolean = false;
-  brandFullScreen:boolean = false;
+  brandFullScreen:boolean = true;
 
   divUnderlineOpen: boolean = false;
   removeWeatherQuickly: boolean = false;
@@ -134,8 +134,13 @@ export class NavbarComponent implements OnInit {
 
       this.smallestRoseLogo = true;
       this.removeDesktopWeatherInfo = true;
+      this.brandMobile = true;
+      this.brandFullScreen = false;
+
 
     } else {
+      this.brandMobile = false;
+      this.brandFullScreen=true;
       this.largeRoseLogo = true;
       this.removeDesktopWeatherInfo = false;
 
