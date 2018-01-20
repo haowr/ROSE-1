@@ -29,6 +29,10 @@ export class LocationComponent implements OnInit {
   expenditureLoading:boolean = false;
   expenditureDangerWarning:boolean = false;
   expenditureDangerWarningMobile:boolean = false;
+  expenditureDangerWarningMobileSmall:boolean = false;
+  expenditureDangerWarningMobileSmaller:boolean = false;
+    expenditureDangerWarningMobileSmallest:boolean = false;
+
 
   //STRING VARIABLES
 
@@ -104,15 +108,48 @@ export class LocationComponent implements OnInit {
 
       this.expenditureDangerWarning = true;
       this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
 
     }
-    if(window.innerWidth < 1020 && this.totalCostThisMonth >=2000){
+    if(window.innerWidth < 1020 && window.innerWidth> 364 && this.totalCostThisMonth >=2000){
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+
+    }
+        if(window.innerWidth < 364 && this.totalCostThisMonth >=2000){
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      console.log("small")
 
     }
 
+    if(window.innerWidth < 293 && this.totalCostThisMonth >=2000){
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+            this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+
+    }
+        if(window.innerWidth < 244 && this.totalCostThisMonth >=2000){
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+            this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+            this.expenditureDangerWarningMobileSmallest = true;
+
+
+    }
   }
  
 
