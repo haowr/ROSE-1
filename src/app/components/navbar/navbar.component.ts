@@ -478,9 +478,10 @@ export class NavbarComponent implements OnInit {
       this.removeWeatherQuickly = true;
       console.log(this.removeWeatherQuickly)
       if (!this.largestRoseLogo) {
+        this.largestRoseLogo = true;
         this.smallestRoseLogo = false
         console.log("mobile")
-        this.largestRoseLogo = true;
+        
 
       } else {
         this.removeWeatherQuickly = false;
