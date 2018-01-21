@@ -261,7 +261,7 @@ export class NavbarComponent implements OnInit {
 
     else {
       this.brandMobile = false;
-      this.brandFullScreen = true;
+      this.brandFullScreen = false;
       this.removeBrand = false;
       this.largeRoseLogo = true;
       this.removeDesktopWeatherInfo = false;
@@ -269,7 +269,8 @@ export class NavbarComponent implements OnInit {
 
     }
     console.log(this.largeRoseLogo)
-
+    console.log(this.brandFullScreen)
+    console.log("brandfullscreen^")
     this.authservice.checkIfLoggedIn();
 
 
