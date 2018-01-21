@@ -184,6 +184,36 @@ position:absolute;
 
     font-family: 'Montserrat'
 }
+.brand-mobile-landscape{
+
+
+    position: absolute;
+    color: white;
+    font-family:'Lora';
+   font-size:19px;
+   opacity:1;
+   top:22px;
+    left: 53.6%;
+    text-decoration:none;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+
+}
+.brand-mobile-landscape-iphonex{
+
+
+    position: absolute;
+    color: white;
+    font-family:'Lora';
+   font-size:19px;
+   opacity:1;
+   top:22px;
+    left: 52.8%;
+    text-decoration:none;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+
+}
 .brand-mobile {
     position: absolute;
     color: white;
@@ -218,7 +248,7 @@ position:absolute;
    font-size:19px;
    opacity:1;
    top:27px;
-    left: 51.5%;
+    left: 51%;
     text-decoration:none;
     margin-left: -50px !important;  /* 50% of your logo width */
     display: block;

@@ -44,6 +44,8 @@ export class NavbarComponent implements OnInit {
   brandMobile: boolean = false;
   brandMobileIphoneX: boolean = false;
   brandFullScreen: boolean = true;
+  brandMobileLandScape: boolean = false;
+  brandMobileLandScapeIphoneX: boolean = false;
   removeBrand: boolean = false;
 
   divUnderlineOpen: boolean = false;
@@ -60,8 +62,11 @@ export class NavbarComponent implements OnInit {
       this.brandMobile = true;
       this.brandFullScreen = false;
       this.brandMobileIphoneX = false;
-
+      this.brandMobileLandScape = false;
+      this.brandMobileLandScapeIphoneX = false;
       this.removeBrand = false;
+
+
       if (!this.largestRoseLogo) {
         this.smallestRoseLogo = true;
       }
@@ -84,7 +89,7 @@ export class NavbarComponent implements OnInit {
     }
     if (this.innerWidth > 766 && this.innerWidth < 1080) {
 
-      
+
       this.brandMobile = false;
       this.brandFullScreen = false;
       this.removeBrand = true;
@@ -93,11 +98,35 @@ export class NavbarComponent implements OnInit {
       console.log("776!")
       console.log(this.smallestRoseLogo)
       this.smallestRoseLogo = false;
-
-      console.log(this.largeRoseLogo)
       this.largeRoseLogo = true;
+      console.log(this.largeRoseLogo)
+
 
     }
+    if (document.documentElement.clientWidth < 776 && document.documentElement.clientWidth > 375 && document.documentElement.clientWidth != 667) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.brandMobileIphoneX = false;
+      this.removeBrand = false;
+      this.brandMobileLandScape = true;
+      console.log("<776 > 375")
+
+
+    }
+
+    if (document.documentElement.clientWidth == 667) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+      this.brandMobileLandScapeIphoneX = true;
+      this.brandMobileLandScape = false;
+
+    }
+
     if (this.innerWidth == 375) {
 
       this.brandMobile = false;
@@ -105,21 +134,23 @@ export class NavbarComponent implements OnInit {
       this.removeBrand = false;
       this.removeDesktopWeatherInfo = true;
       this.brandMobileIphoneX = true;
+      this.brandMobileLandScape =  false;
+      this.brandMobileLandScapeIphoneX = false;
 
     }
-            if (document.documentElement.clientWidth == 360) {
+    if (document.documentElement.clientWidth == 360) {
 
       this.smallestRoseLogo = true;
       this.removeDesktopWeatherInfo = true;
       this.brandMobile = true;
       this.brandFullScreen = false;
       this.removeBrand = false;
-      this.brandMobileIphoneX = false;      
+      this.brandMobileIphoneX = false;
       console.log("360")
 
 
     }
-    if(this.innerWidth < 320){
+    if (this.innerWidth < 320) {
 
       this.brandMobile = false;
       this.brandFullScreen = false;
@@ -186,28 +217,40 @@ export class NavbarComponent implements OnInit {
       console.log(this.username);
 
     });
-    
 
-  if (document.documentElement.clientWidth > 1080) { //
+
+    if (document.documentElement.clientWidth > 1080) { //
+
       this.brandFullScreen = true;
-      console.log("listener fulscreenbrand")
       this.brandMobile = false;
       this.brandMobileIphoneX = false;
+      this.removeBrand = false;
 
       this.largeRoseLogo = true;
-      this.removeBrand = false;
-      //this.removeDesktopWeatherInfo = false;
+      this.smallestRoseLogo = false;
+
       this.removeWeatherQuickly = false;
       this.weatherInfo2 = false;
       this.divUnderlineOpen = false;
 
-      this.smallestRoseLogo = false;
-      //this.largestRoseLogo= false;
+
+      console.log("listener fulscreenbrand")
       console.log(this.largeRoseLogo)
       console.log(this.smallestRoseLogo)
     }
-    
-    if (document.documentElement.clientWidth < 766) {
+
+    if (document.documentElement.clientWidth > 766 && document.documentElement.clientWidth < 1080) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+      this.smallestRoseLogo = false;
+      this.largeRoseLogo = true;
+
+    }
+    if (document.documentElement.clientWidth < 766 && document.documentElement.clientWidth != 667) {
 
       this.smallestRoseLogo = true;
       this.removeDesktopWeatherInfo = true;
@@ -218,25 +261,26 @@ export class NavbarComponent implements OnInit {
 
 
     }
-        if (document.documentElement.clientWidth == 360) {
+    if (document.documentElement.clientWidth == 360) {
 
       this.smallestRoseLogo = true;
       this.removeDesktopWeatherInfo = true;
       this.brandMobile = true;
       this.brandFullScreen = false;
       this.removeBrand = false;
-      this.brandMobileIphoneX = false;      
+      this.brandMobileIphoneX = false;
       console.log("360")
 
 
     }
-     if (document.documentElement.clientWidth > 776 && document.documentElement.clientWidth < 1079) {
+
+    if (document.documentElement.clientWidth < 776 && document.documentElement.clientWidth > 375 && document.documentElement.clientWidth != 667) {
 
       this.brandMobile = false;
       this.brandFullScreen = false;
       this.brandMobileIphoneX = false;
-      
-      this.removeBrand = true;
+      this.brandMobileLandScape = true;
+      console.log("<776 > 375")
 
     }
 
@@ -247,9 +291,22 @@ export class NavbarComponent implements OnInit {
       this.removeBrand = false;
       this.removeDesktopWeatherInfo = true;
       this.brandMobileIphoneX = true;
+      this.brandMobileLandScapeIphoneX = false;
+      this.brandMobileLandScape = false;
 
     }
-    if(document.documentElement.clientWidth < 320){
+    if (document.documentElement.clientWidth == 667) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+      this.brandMobileLandScapeIphoneX = true;
+      this.brandMobileLandScape = false;
+
+    }
+    if (document.documentElement.clientWidth < 320) {
 
       this.brandMobile = false;
       this.brandFullScreen = false;
@@ -260,12 +317,40 @@ export class NavbarComponent implements OnInit {
     }
 
     else {
-      this.brandMobile = true;
-      this.brandFullScreen = false;
-      this.removeBrand = false;
-      this.largeRoseLogo = true;
-      this.removeDesktopWeatherInfo = false;
-      console.log("Final Condition")
+      if (this.brandMobileLandScape) {
+        this.brandMobile = false;
+        this.brandFullScreen = false;
+        this.removeBrand = false;
+        this.largeRoseLogo = true;
+        this.removeDesktopWeatherInfo = false;
+
+      } else if (this.brandMobileLandScapeIphoneX) {
+
+        this.brandMobile = false;
+        this.brandFullScreen = false;
+        this.removeBrand = false;
+        this.largeRoseLogo = true;
+        this.removeDesktopWeatherInfo = false;
+
+      } else if (document.documentElement.clientWidth> 1080){
+
+        this.brandMobile = false;
+        this.brandFullScreen = true;
+        this.removeBrand = false;
+        this.largeRoseLogo = true;
+        this.removeDesktopWeatherInfo = false;
+
+      }
+      else {
+        this.brandMobile = true;
+        this.brandFullScreen = false;
+        this.removeBrand = false;
+        this.largeRoseLogo = true;
+        this.removeDesktopWeatherInfo = false;
+        console.log("Final Condition")
+
+
+      }
 
     }
     console.log(this.largeRoseLogo)
