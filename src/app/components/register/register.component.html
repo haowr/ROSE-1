@@ -22,7 +22,7 @@
   </div>
     <div class = "form-group">
     <label>Email</label>
-    <input type ="text" [(ngModel)]="email" name="email"class = "form-control">
+    <input type ="email" [(ngModel)]="email" name="email"class = "form-control">
     <div *ngIf="emailCannotBeEmpty" class = "well well-sm">
       {{emailCannotBeEmptyMsg}}
     </div>
@@ -32,7 +32,7 @@
   </div>
     <div class = "form-group">
     <label>Password</label>
-    <input type ="text" [(ngModel)]="password" name="password"class = "form-control">
+    <input type ="password" [(ngModel)]="password" name="password"class = "form-control">
     <div *ngIf="passwordCannotBeEmpty" class = "well well-sm">
       {{passwordCannotBeEmptyMsg}}
     </div>

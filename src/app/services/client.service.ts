@@ -63,6 +63,20 @@ export class ClientService {
     )
 
   }
+  editSubContractorClientName(newclient){
+
+    console.log(newclient)
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('routes/editsubcontractorclientname', newclient,{headers:headers})
+    .map(res=>{
+
+      res.json();
+
+    })
+
+
+  }
       editSubContractorStoreNumber(subcontractor){
 
     let headers = new Headers();

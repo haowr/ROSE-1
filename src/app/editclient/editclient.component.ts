@@ -92,6 +92,7 @@ export class EditclientComponent implements OnInit {
     addSubcontractorContactPhoneConditionsNotMet: boolean = false;
     addSubcontractorContactNameConditionsNotMet: boolean = false;
     addSubcontractorLocationsConditionsNotMet: boolean = false;
+    addSubContractorLocationSuccess:boolean = false;
     addSubcontractorStoreNumbersConditionsNotMet: boolean = false;
     addSubcontractorStoreNumberConditionsMet: boolean = false;
     addSubcontractorLocationConditionsMet: boolean = false;
@@ -138,9 +139,11 @@ export class EditclientComponent implements OnInit {
     subContractorStoreNumberSuccessfullyAdded: boolean = false;
     subContractorStoreNumberAlreadyEmpty: boolean = false;
     subContractorStoreNumberFieldCannotBeEmpty: boolean = false;
+    addSubContractorLocationFieldCannotBeEmpty:boolean = false;
     subContractorLocationFieldCannotBeEmpty: boolean = false;
     subContractorLocationSuccessfullyRemoved: boolean = false;
     subContractorLocationSuccessfullyAdded: boolean = false;
+
     subContractorLocationsAlreadyEmpty: boolean = false;
     loadingNewSubContractors: boolean = false;
     clientsLoading: boolean = false;
@@ -383,6 +386,16 @@ export class EditclientComponent implements OnInit {
     editClientFunc(clientparam, name) {
         console.log(clientparam);
         console.log(name);
+
+      
+        this.clientservice.getSubContractorsOfClient(clientparam).subscribe(data =>{
+
+            console.log(data)
+
+
+        })
+
+
         this.clientNameVar = clientparam;
 
         let clientToBeEdited = {
@@ -468,6 +481,7 @@ export class EditclientComponent implements OnInit {
                 clientContactEmail: ""
 
             }
+   
             this.clientservice.getSubContractors().subscribe(data=>{
 
 
@@ -726,6 +740,17 @@ export class EditclientComponent implements OnInit {
                 clientContactEmail: ""
 
             }
+                        let newclient = {
+
+            oldname: clientparam,
+            newname: this.clientName
+
+        }
+        this.clientservice.editSubContractorClientName(newclient).subscribe(data=>{
+
+            console.log(data);
+
+        })
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
@@ -763,6 +788,12 @@ export class EditclientComponent implements OnInit {
             })
         }
 
+
+    }
+    closeModal(){
+
+ document.getElementById("btnclose").click();
+ this.areYouSure = false;
 
     }
     openRemoveSubContractorModal(client, index, subcontractor,subcontractorid) {
@@ -856,10 +887,10 @@ export class EditclientComponent implements OnInit {
         //let subcontractorLocation = [];
         if (this.subCLocations == "" || undefined) {
 
-            this.addSubcontractorLocationsConditionsNotMet = true;
+            this.addSubContractorLocationFieldCannotBeEmpty= true;
             setTimeout(() => {
 
-                this.addSubcontractorLocationsConditionsNotMet = false;
+                this.addSubContractorLocationFieldCannotBeEmpty = false;
 
             }, 2000);
 
@@ -868,10 +899,10 @@ export class EditclientComponent implements OnInit {
             console.log(this.subcontractorLocations.length)
             console.log(this.subcontractorLocations);
             this.subCLocations = "";
-            this.addSubcontractorLocationConditionsMet = true;
+            this.addSubContractorLocationSuccess = true;
             setTimeout(() => {
 
-                this.addSubcontractorLocationConditionsMet = false;
+                this.addSubContractorLocationSuccess = false;
 
             }, 2000);
         }
@@ -1255,6 +1286,12 @@ if(data.success){
 
             this.subcontractorLocations.splice(0, 1);
 
+            this.subContractorLocationSuccessfullyRemoved = true;
+            setTimeout(() => {
+
+                this.subContractorLocationSuccessfullyRemoved = false;
+
+            }, 2000)
 
         } else {
 
@@ -1317,9 +1354,6 @@ if(data.success){
     removeStoreNumberFromSubcontractorFunc(client, index, storenumbers) {
 
 
-        storenumbers.splice(storenumbers.length - 1, 1);
-        // storenumbers.push(this.subcontractorStoreNumber);
-        console.log(storenumbers);
         if (this.subcontractorStoreNumbers.length > 0) {
 
             this.subcontractorStoreNumbers.splice(this.subcontractorStoreNumber.length - 1, 1);
@@ -1327,128 +1361,16 @@ if(data.success){
 
         } else {
 
-            this.subContractorLocationsAlreadyEmpty = true;
+            this.subContractorStoreNumberAlreadyEmpty = true;
             setTimeout(() => {
 
-                this.subContractorLocationsAlreadyEmpty = false;
+                this.subContractorStoreNumberAlreadyEmpty = false;
 
             }, 2000)
 
         }
     }
-    /*
-    removeLocation() {
 
-
-        this.subContractorLocationFieldCannotBeEmpty = false;
-        this.subContractorLocationSuccessfullyAdded = false;
-        this.subContractorLocationAlreadyEmpty = false;
-        if (this.subContractor.locations.length > 0) {
-
-            this.subContractor.locations.splice(this.subContractor.locations.length - 1, 1);
-            this.subContractorLocationSuccessfullyRemoved = true;
-            setTimeout(() => {
-
-                this.subContractorLocationSuccessfullyRemoved = false;
-
-            }, 2000);
-
-        } else {
-
-            this.subContractorLocationAlreadyEmpty = true;
-            setTimeout(() => {
-
-                this.subContractorLocationAlreadyEmpty = false;
-
-            }, 2000);
-
-        }
-
-    }
-    */
-    /*
-    addLocation() {
-        this.subContractorLocationFieldCannotBeEmpty = false
-        this.subContractorLocationSuccessfullyRemoved = false
-        this.subContractorLocationAlreadyEmpty = false;
-        console.log(this.subCLocations)
-        if (this.subCLocations != "" || this.subContractor.locations.length > 0) {
-            console.log(this.subCLocations)
-
-            this.subContractor.locations.push(this.subCLocations);
-            this.subcontractorLocations.push(this.subCLocations);
-            this.subCLocations = "";
-
-
-
-            this.addLocationSuccess = true;
-            this.subContractorLocationSuccessfullyAdded = true;
-
-            setTimeout(() => {
-
-                this.addLocationSuccess = false
-                this.subContractorLocationSuccessfullyAdded = false;
-
-            }, 3000);
-
-        } else {
-
-
-            this.addLocationFailed = true;
-            this.subContractorLocationSuccessfullyAdded = false
-            this.subContractorLocationSuccessfullyRemoved = false;
-            this.subContractorLocationFieldCannotBeEmpty = true;
-
-            setTimeout(() => {
-
-                this.addLocationFailed = false;
-                this.subContractorLocationFieldCannotBeEmpty = false;
-            }, 3000);
-
-        }
-
-    }*/
-    /*
-    addStoreNumber() {
-        // this.subContractor.storenumbers = [];
-        this.subContractorLocationFieldCannotBeEmpty = false
-        this.subContractorLocationSuccessfullyRemoved = false
-        this.subContractorLocationAlreadyEmpty = false;
-        if (this.subContractorStoreNumbers != "" || undefined) {
-
-            this.subContractor.storenumbers.push(this.subContractorStoreNumbers);
-            this.subcontractorStoreNumbers.push(this.subContractorStoreNumbers);
-            console.log(this.subContractor.storenumbers);
-            this.addSubContractorStoreNumbersSuccess = true;
-            this.subContractorStoreNumberSuccessfullyAdded = true;
-            this.subContractorStoreNumbers = "";
-
-
-            setTimeout(() => {
-
-                this.addSubContractorStoreNumbersSuccess = false;
-                this.subContractorStoreNumberSuccessfullyAdded = false;
-
-
-
-            }, 3000);
-
-        } else {
-            console.log("else");
-            this.addSubContractorStoreNumbersFailed = true;
-            this.subContractorStoreNumberFieldCannotBeEmpty = true;
-
-            setTimeout(() => {
-
-                this.addSubContractorStoreNumbersFailed = false;
-                this.subContractorStoreNumberFieldCannotBeEmpty = false;
-
-            }, 3000);
-
-        }
-
-    }
-    */
     addSubcontractor(client) {
 
         let subcontractor = {

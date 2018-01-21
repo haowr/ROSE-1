@@ -44,7 +44,7 @@ export class DataService {
 
   }
 
-  increaseItemInToplineInventory(productcode){ //
+  increaseItemInToplineInventory(productcode){
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');

@@ -40,6 +40,49 @@ const SuperGen = require('../models/supergeneratorltd');
 const Sbcntrctr = require('../models/sbcntrctor');
 const SubCon = require('../models/newsubcontractor');
 
+
+router.post('/editsubcontractorclientname', (req,res)=>{
+
+    console.log(req.body)
+
+    SubCon.find({}, (err,subcontractors)=>{
+
+        if(err)throw err;
+        if(!subcontractors){
+
+            res.json({success: false, message: "Sub-Contractors Not Found..."})
+
+        }else{
+
+      
+            subcontractors.forEach( subcontractor =>{
+               
+                if(subcontractor.client == req.body.oldname){
+
+                    console.log("Its a match")
+                    console.log(subcontractor.name)
+                    subcontractor.client = req.body.newname
+                    SubCon.findOneAndUpdate({name: subcontractor.name}, {$set:{client:subcontractor.client}},{new:true},(err,subcontractor)=>{
+
+
+                        if(err)throw err;
+                        if(!subcontractor){
+                            res.json({success: false, message: subcontractor.name+" Not Found..."});
+
+                        }
+
+                    })
+
+                }
+
+            })
+            res.json({success: true, message: "Sub-Contractors Found And Updated...",subcontractors:subcontractors})
+
+        }
+
+    } )
+
+})
 //EDIT SUB-CONTRACTOR BY ID
 router.post('/removelocationfromclient', (req, res) => {
 

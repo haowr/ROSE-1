@@ -42,8 +42,9 @@ export class NavbarComponent implements OnInit {
   weatherInfoHidden: boolean = false;
   weatherInfo3Hidden: boolean = true;
   brandMobile: boolean = false;
+  brandMobileIphoneX: boolean = false;
   brandFullScreen: boolean = true;
-  removeBrand:boolean = false;
+  removeBrand: boolean = false;
 
   divUnderlineOpen: boolean = false;
   removeWeatherQuickly: boolean = false;
@@ -58,6 +59,8 @@ export class NavbarComponent implements OnInit {
 
       this.brandMobile = true;
       this.brandFullScreen = false;
+      this.brandMobileIphoneX = false;
+
       this.removeBrand = false;
       if (!this.largestRoseLogo) {
         this.smallestRoseLogo = true;
@@ -78,17 +81,47 @@ export class NavbarComponent implements OnInit {
       console.log(this.largeRoseLogo)
       console.log(this.innerWidth)
       console.log("Smaller")
-    } 
-          if(this.innerWidth> 766 && this.innerWidth < 1080){
+    }
+    if (this.innerWidth > 766 && this.innerWidth < 1080) {
 
-        this.brandMobile = false;
-        this.brandFullScreen = false;
-        this.removeBrand = true;
-        this.removeDesktopWeatherInfo = true;
-
-      }else { //
-      this.brandFullScreen = true;
+      
       this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+      console.log("776!")
+      console.log(this.smallestRoseLogo)
+      this.smallestRoseLogo = false;
+
+      console.log(this.largeRoseLogo)
+      this.largeRoseLogo = true;
+
+    }
+    if (this.innerWidth == 375) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = true;
+
+    }
+    if(this.innerWidth < 320){
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+
+    }
+    if (this.innerWidth > 1080) { //
+      this.brandFullScreen = true;
+      console.log("listener fulscreenbrand")
+      this.brandMobile = false;
+      this.brandMobileIphoneX = false;
+
       this.largeRoseLogo = true;
       this.removeBrand = false;
       //this.removeDesktopWeatherInfo = false;
@@ -141,7 +174,27 @@ export class NavbarComponent implements OnInit {
       console.log(this.username);
 
     });
+    
 
+  if (document.documentElement.clientWidth > 1080) { //
+      this.brandFullScreen = true;
+      console.log("listener fulscreenbrand")
+      this.brandMobile = false;
+      this.brandMobileIphoneX = false;
+
+      this.largeRoseLogo = true;
+      this.removeBrand = false;
+      //this.removeDesktopWeatherInfo = false;
+      this.removeWeatherQuickly = false;
+      this.weatherInfo2 = false;
+      this.divUnderlineOpen = false;
+
+      this.smallestRoseLogo = false;
+      //this.largestRoseLogo= false;
+      console.log(this.largeRoseLogo)
+      console.log(this.smallestRoseLogo)
+    }
+    
     if (document.documentElement.clientWidth < 766) {
 
       this.smallestRoseLogo = true;
@@ -149,16 +202,38 @@ export class NavbarComponent implements OnInit {
       this.brandMobile = true;
       this.brandFullScreen = false;
       this.removeBrand = false;
+      console.log("<766")
 
 
-    } if (document.documentElement.clientWidth > 776 && document.documentElement.clientWidth < 1079) {
+    }
+     if (document.documentElement.clientWidth > 776 && document.documentElement.clientWidth < 1079) {
 
       this.brandMobile = false;
       this.brandFullScreen = false;
+      this.brandMobileIphoneX = false;
+      
       this.removeBrand = true;
 
     }
 
+    if (document.documentElement.clientWidth == 375) {
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = true;
+
+    }
+    if(document.documentElement.clientWidth < 320){
+
+      this.brandMobile = false;
+      this.brandFullScreen = false;
+      this.removeBrand = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobileIphoneX = false;
+
+    }
 
     else {
       this.brandMobile = false;
@@ -166,7 +241,7 @@ export class NavbarComponent implements OnInit {
       this.removeBrand = false;
       this.largeRoseLogo = true;
       this.removeDesktopWeatherInfo = false;
-
+      console.log("Final Condition")
 
     }
     console.log(this.largeRoseLogo)
@@ -205,7 +280,7 @@ export class NavbarComponent implements OnInit {
 
 
     })
-
+    console.log(this.brandFullScreen)
     //},2000);
 
     //this.dataservice.getSubcontractors().subscribe(data=>{
