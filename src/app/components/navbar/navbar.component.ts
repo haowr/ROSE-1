@@ -260,7 +260,7 @@ export class NavbarComponent implements OnInit {
     }
 
     else {
-      this.brandMobile = false;
+      this.brandMobile = true;
       this.brandFullScreen = false;
       this.removeBrand = false;
       this.largeRoseLogo = true;
