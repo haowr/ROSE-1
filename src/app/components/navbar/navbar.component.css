@@ -262,6 +262,6 @@ position:absolute;
 
 
 .navbar{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     z-index: 999999;
 }

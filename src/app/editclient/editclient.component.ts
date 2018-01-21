@@ -1285,6 +1285,7 @@ if(data.success){
         if (this.subcontractorLocations.length > 0) {
 
             this.subcontractorLocations.splice(0, 1);
+            this.subCLocations = "";
 
             this.subContractorLocationSuccessfullyRemoved = true;
             setTimeout(() => {
@@ -1319,31 +1320,18 @@ if(data.success){
 
         } else {
             this.subcontractorStoreNumbers.push(this.subCStoreNumbers);
+            this.subCStoreNumbers = "";
             console.log(this.subcontractorStoreNumbers.length)
 
-            //storenumbers.push(this.subcontractorStoreNumber);
             console.log(storenumbers);
-            /*let storenumberObject = {
-
-                client: client,
-                index: index,
-                storenumbers: storenumbers
-
-            }
-            this.clientservice.editClientAddStoreNumberToSubContractor(storenumberObject).subscribe(data => {
-
-                console.log(data);
-            })
-
-*/
 
 
 
             this.subcontractorStoreNumber = "";
-            this.addSubcontractorStoreNumberConditionsMet = true;
+            this.subContractorStoreNumberSuccessfullyAdded = true;
             setTimeout(() => {
 
-                this.addSubcontractorStoreNumberConditionsMet = false;
+                this.subContractorStoreNumberSuccessfullyAdded = false;
 
             }, 2000);
         }
@@ -1353,11 +1341,11 @@ if(data.success){
     }
     removeStoreNumberFromSubcontractorFunc(client, index, storenumbers) {
 
-
+console.log(this.subcontractorStoreNumbers.length)
         if (this.subcontractorStoreNumbers.length > 0) {
 
             this.subcontractorStoreNumbers.splice(this.subcontractorStoreNumber.length - 1, 1);
-
+            this.subCStoreNumbers = "";
 
         } else {
 
@@ -4094,11 +4082,12 @@ if(data.success){
         if (!this.openEditSubcontractors) {
             console.log("i'mm here");
             console.log(this.openAddSubContractor)
+            this.loadingNewSubContractors = true;
 
             setTimeout(() => {
 
 
-                this.loadingNewSubContractors = true;
+                
 
                 // this.loadingClients = true;
 
@@ -4157,6 +4146,8 @@ if(data.success){
 
                         }, 1200)
 
+                    }else{
+                        this.loadingNewSubContractors = false;
                     }
                 })
 

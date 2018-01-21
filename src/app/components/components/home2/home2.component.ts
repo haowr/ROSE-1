@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../../services/weather.service';
+//import { WeatherService } from '../../../services/weather.service';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class HomeComponent2 implements OnInit {
 
 
   
-  constructor(private weatherservice:WeatherService, public authservice:AuthService, private router: Router) {
+  constructor( public authservice:AuthService, private router: Router) {
 
     
 
@@ -51,20 +51,7 @@ if(document.documentElement.clientWidth < 768){
     this.name = 'ROSE';
         
     this.authservice.checkIfLoggedIn();
-    this.weatherservice.getWeather().subscribe(data=>{
 
-      console.log(data)
-     this.weatherNow =  data.weather[0].icon;
-     this.temperatureNow = data.main.temp;
-     console.log(this.weatherNow)
-
-    })
-      this.weatherservice.getTime().subscribe(data=>{
-
-      console.log(data)
-    
-
-    })
   }
 
 }

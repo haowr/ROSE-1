@@ -322,7 +322,7 @@ export class NavbarComponent implements OnInit {
         this.brandFullScreen = false;
         this.removeBrand = false;
         this.largeRoseLogo = true;
-        this.removeDesktopWeatherInfo = false;
+        this.removeDesktopWeatherInfo = true;
 
       } else if (this.brandMobileLandScapeIphoneX) {
 
@@ -330,7 +330,7 @@ export class NavbarComponent implements OnInit {
         this.brandFullScreen = false;
         this.removeBrand = false;
         this.largeRoseLogo = true;
-        this.removeDesktopWeatherInfo = false;
+        this.removeDesktopWeatherInfo = true;
 
       } else if (document.documentElement.clientWidth> 1080){
 
@@ -339,6 +339,7 @@ export class NavbarComponent implements OnInit {
         this.removeBrand = false;
         this.largeRoseLogo = true;
         this.removeDesktopWeatherInfo = false;
+        console.log("1080")
 
       }
       else {
@@ -346,7 +347,7 @@ export class NavbarComponent implements OnInit {
         this.brandFullScreen = false;
         this.removeBrand = false;
         this.largeRoseLogo = true;
-        this.removeDesktopWeatherInfo = false;
+        this.removeDesktopWeatherInfo = true;
         console.log("Final Condition")
 
 
@@ -399,6 +400,8 @@ export class NavbarComponent implements OnInit {
 
 
     // })
+    console.log("remove desktop weather info");
+    console.log(this.removeDesktopWeatherInfo)
 
   }
   closeWeatherInfo() {
