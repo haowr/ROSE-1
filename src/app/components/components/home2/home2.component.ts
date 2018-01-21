@@ -13,6 +13,9 @@ export class HomeComponent2 implements OnInit {
   age:number;
   temperatureNow:string="";
   weatherNow:string="";
+     largeRoseLogoHome :boolean = false;
+     largestRoseLogoHome:boolean = false;
+    smallestRoseLogoHome:boolean = false;
 
 
   
@@ -44,6 +47,26 @@ if(document.documentElement.clientWidth < 768){
     },500);
     //this.flashmessage.show("You are now logged out..",{cssClass: 'alert-success',timeout: 5000});
    
+
+  }
+    closeDropdown() {
+    console.log("pressed")
+
+    if (document.documentElement.clientWidth > 768) {
+      console.log("fist condition")
+      this.largeRoseLogoHome = true;
+      this.largestRoseLogoHome = false;
+      this.smallestRoseLogoHome = false;
+
+    } else {
+
+      document.getElementById('navbar-toggle').click();
+      setTimeout(() => {
+
+
+
+      }, 500)
+    }
 
   }
 
