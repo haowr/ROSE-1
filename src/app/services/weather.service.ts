@@ -13,7 +13,7 @@ getWeather(){
   let headers = new Headers();
   headers.append('Content-type','text/plain');
   return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=Edmonton&units=metric&appid=5b7c86fa150a8f12114a0b03aa96f577',{headers:headers})
-.map(res=>
+.map(res=> 
 res.json())
   
 }
