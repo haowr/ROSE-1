@@ -107,6 +107,18 @@ export class NavbarComponent implements OnInit {
       this.brandMobileIphoneX = true;
 
     }
+            if (document.documentElement.clientWidth == 360) {
+
+      this.smallestRoseLogo = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobile = true;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.brandMobileIphoneX = false;      
+      console.log("360")
+
+
+    }
     if(this.innerWidth < 320){
 
       this.brandMobile = false;
@@ -203,6 +215,18 @@ export class NavbarComponent implements OnInit {
       this.brandFullScreen = false;
       this.removeBrand = false;
       console.log("<766")
+
+
+    }
+        if (document.documentElement.clientWidth == 360) {
+
+      this.smallestRoseLogo = true;
+      this.removeDesktopWeatherInfo = true;
+      this.brandMobile = true;
+      this.brandFullScreen = false;
+      this.removeBrand = false;
+      this.brandMobileIphoneX = false;      
+      console.log("360")
 
 
     }
