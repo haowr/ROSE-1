@@ -417,14 +417,17 @@ export class NavbarComponent implements OnInit {
 
         this.largestRoseLogo = true;
         this.smallestRoseLogo = false;
+       // console.log("here1")
 
-      } else {
+      } 
+      else if(this.largestRoseLogo && this.smallestRoseLogo == false){
 
         this.removeWeatherQuickly = false;
         this.weatherInfo2 = false;
         this.divUnderlineOpen = false;
         this.weatherInfo3Hidden = true;
         this.weatherInfoHidden = false;
+        //console.log("here")
 
         setTimeout(() => {
 
@@ -432,8 +435,8 @@ export class NavbarComponent implements OnInit {
           this.smallestRoseLogo = true;
 
         }, 300)
-
       }
+ 
 
 
     } else {
@@ -472,7 +475,7 @@ export class NavbarComponent implements OnInit {
     } else {
 
       document.getElementById('navbar-toggle').click();
-      
+
       setTimeout(() => {
 
 

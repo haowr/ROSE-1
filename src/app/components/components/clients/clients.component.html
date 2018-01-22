@@ -39,7 +39,7 @@
               <!--<div *ngFor="let location subcontractor.locations">-->
               <div *ngFor="let storenumber of subcontractor.storenumbers">
                 <div id="pullstorenumbersleft" class="col-sm-12 text-center">
-                  <a href="/clients/{{client.name}}/{{subcontractor.name}}">
+                  <a [routerLink]="['/clients',client.name,subcontractor.name]">
                     <h3 class="  subcontractor">{{storenumber}}</h3>
                   </a>
 
