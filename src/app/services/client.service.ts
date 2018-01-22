@@ -11,7 +11,6 @@ export class ClientService {
 
   constructor(public http: Http, public router: Router, public activatedroute: ActivatedRoute) {
 
-    console.log('client service loaded and initialized...');
 
 
   }
@@ -20,7 +19,7 @@ export class ClientService {
 
       let headers = new Headers();
     headers.append('Content-type','application/json')
-    return this.http.put('http://localhost:3000/routes/getlocationsofclient/'+client,{headers:headers})
+    return this.http.put('routes/getlocationsofclient/'+client,{headers:headers})
     .map(res=>
     
       res.json()
@@ -31,7 +30,7 @@ export class ClientService {
 
       let headers = new Headers();
     headers.append('Content-type','application/json')
-    return this.http.put('http://localhost:3000/routes/getsubcontractorsofclient/'+client,{headers:headers})
+    return this.http.put('routes/getsubcontractorsofclient/'+client,{headers:headers})
     .map(res=>
     
       res.json()
@@ -43,7 +42,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-type','application/json')
-    return this.http.get('http://localhost:3000/routes/getsubcontractors',{headers:headers})
+    return this.http.get('routes/getsubcontractors',{headers:headers})
     .map(res=>
     
       res.json()
@@ -52,10 +51,9 @@ export class ClientService {
   }
   getSubContractor(name){
 
-    console.log(name)
     let headers = new Headers()
     headers.append('Content-type','application/json')
-    return this.http.put('http://localhost:3000/routes/getsubcontractor/'+name, {headers:headers})
+    return this.http.put('routes/getsubcontractor/'+name, {headers:headers})
     .map(res =>
 
       res.json()
@@ -65,10 +63,9 @@ export class ClientService {
   }
   editSubContractorClientName(newclient){
 
-    console.log(newclient)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editsubcontractorclientname', newclient,{headers:headers})
+    return this.http.post('routes/editsubcontractorclientname', newclient,{headers:headers})
     .map(res=>{
 
       res.json();
@@ -81,7 +78,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-Type','application/json')
-    return this.http.post('http://localhost:3000/routes/editsubcontractorstorenumber',subcontractor,{headers:headers})
+    return this.http.post('routes/editsubcontractorstorenumber',subcontractor,{headers:headers})
     .map(res=>
 
       res.json()
@@ -92,7 +89,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-Type','application/json')
-    return this.http.post('http://localhost:3000/routes/editsubcontractorlocation',subcontractor,{headers:headers})
+    return this.http.post('routes/editsubcontractorlocation',subcontractor,{headers:headers})
     .map(res=>
 
       res.json()
@@ -103,7 +100,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-Type','application/json')
-    return this.http.post('http://localhost:3000/routes/editsubcontractorbyid',subcontractor,{headers:headers})
+    return this.http.post('routes/editsubcontractorbyid',subcontractor,{headers:headers})
     .map(res=>
 
       res.json()
@@ -111,10 +108,10 @@ export class ClientService {
 
   }
   editSubContractor(subcontractor){
-    console.log(subcontractor)
+
     let headers = new Headers();
     headers.append('Content-Type','application/json')
-    return this.http.post('http://localhost:3000/routes/editsubcontractor',subcontractor,{headers:headers})
+    return this.http.post('routes/editsubcontractor',subcontractor,{headers:headers})
     .map(res=>
 
       res.json()
@@ -123,10 +120,10 @@ export class ClientService {
   }
   addSubContractor(subcontractor){
 
-    console.log(subcontractor)
+
     let headers = new Headers()
     headers.append('Content-type','application/json')
-    return this.http.post('http://localhost:3000/routes/addsubcontractor', subcontractor, {headers:headers})
+    return this.http.post('routes/addsubcontractor', subcontractor, {headers:headers})
     .map(res =>
 
       res.json()
@@ -135,12 +132,11 @@ export class ClientService {
 
   }
     updateSubContractorInventory(subcontractor){
-    console.log(subcontractor)
 
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/updatesubcontractorinventory', subcontractor, { headers: headers })
+    return this.http.post('routes/updatesubcontractorinventory', subcontractor, { headers: headers })
       .map(res => res.json());
 
 
@@ -148,12 +144,11 @@ export class ClientService {
   }
   updateSubContractorTotalExpenditures(subcontractor){
 
-        console.log(subcontractor)
 
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/updatesubcontractortotalexpenditures', subcontractor, { headers: headers })
+    return this.http.post('routes/updatesubcontractortotalexpenditures', subcontractor, { headers: headers })
       .map(res => res.json());
 
 
@@ -165,7 +160,7 @@ export class ClientService {
     let headers = new Headers();
     
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/clients',{headers:headers})
+    return this.http.get('routes/clients',{headers:headers})
     .map(res => res.json());
 
 
@@ -173,37 +168,33 @@ export class ClientService {
 
   removeLocationFromClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/removelocationfromclient',client,{headers:headers})
+    return this.http.post('routes/removelocationfromclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
   addLocationToClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/addlocationtoclient',client,{headers:headers})
+    return this.http.post('routes/addlocationtoclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
     removeStoreNumberFromClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/removestorenumberfromclient',client,{headers:headers})
+    return this.http.post('routes/removestorenumberfromclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
     addStoreNumberToClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/addstorenumbertoclient',client,{headers:headers})
+    return this.http.post('routes/addstorenumbertoclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
@@ -213,7 +204,7 @@ export class ClientService {
       
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/removesubcontractor2/'+client,{headers:headers})
+    return this.http.put('routes/removesubcontractor2/'+client,{headers:headers})
     .map(res=> res.json());
 
 
@@ -221,10 +212,9 @@ export class ClientService {
 
   removeSubContractor(id){
 
-      console.log(id)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/removesubcontractor/'+id,{headers:headers})
+    return this.http.put('routes/removesubcontractor/'+id,{headers:headers})
     .map(res=> res.json());
 
 
@@ -232,38 +222,34 @@ export class ClientService {
 
   editClientSubContractorName(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclientsubcontractorname',client,{headers:headers})
+    return this.http.post('routes/editclientsubcontractorname',client,{headers:headers})
     .map(res=> res.json());
 
 
   }
   editClient(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient',client,{headers:headers})
+    return this.http.post('routes/editclient',client,{headers:headers})
     .map(res=> res.json());
 
   }
     editClient2(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient2',client,{headers:headers})
+    return this.http.post('routes/editclient2',client,{headers:headers})
     .map(res=> res.json());
 
   }
       editClient3(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclient3',client,{headers:headers})
+    return this.http.post('routes/editclient3',client,{headers:headers})
     .map(res=> res.json());
 
   }
@@ -272,7 +258,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclientaddstorenumbertosubcontractor', storenumber, {headers: headers})
+    return this.http.post('routes/editclientaddstorenumbertosubcontractor', storenumber, {headers: headers})
     .map(res=> res.json());
   }
     editClientRemoveStoreNumberOfSubContractor(storenumber){
@@ -280,14 +266,14 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclientremovestorenumberofsubcontractor', storenumber, {headers: headers})
+    return this.http.post('routes/editclientremovestorenumberofsubcontractor', storenumber, {headers: headers})
     .map(res=> res.json());
   }
   editClientAddSubcontractor(subcontractor){
-    console.log(subcontractor)
+
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/editclientaddsubcontractor',subcontractor,{headers:headers})
+    return this.http.post('routes/editclientaddsubcontractor',subcontractor,{headers:headers})
     .map(res=> res.json());
 
   }
@@ -295,7 +281,7 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/removeclient/'+clientname,{headers:headers})
+    return this.http.put('routes/removeclient/'+clientname,{headers:headers})
     .map(res=> res.json());
   }
 
@@ -305,17 +291,16 @@ export class ClientService {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/newclient', client, { headers: headers })
+    return this.http.post('routes/newclient', client, { headers: headers })
       .map(res => res.json());
 
   }
    updateSubContractor(subcontractor){
-    console.log(subcontractor)
 
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/updatesubcontractor', subcontractor, { headers: headers })
+    return this.http.post('routes/updatesubcontractor', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
@@ -324,7 +309,7 @@ export class ClientService {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/newsubcontractor', subcontractor, { headers: headers })
+    return this.http.post('routes/newsubcontractor', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
@@ -333,29 +318,17 @@ export class ClientService {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/newsubcontractor', { headers: headers })
+    return this.http.get('routes/newsubcontractor', { headers: headers })
       .map(res => res.json());
 
   }
-  /*getSingleSubcontractor(subcontractor){
 
-                  console.log(subcontractor);
-    let headers = new Headers();
-
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/routes/edit/newsubcontractorsingle',subcontractor,{headers:headers})
-    .map(res => res.json());
-
-
-    
-
-  }*/
     getSingleSubcontractorForInventory(subcontractor) {
-    console.log(subcontractor+"clientservice");
-    console.log(subcontractor);
+  
+
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/getsinglesubcontractoritemforinventory', subcontractor, { headers: headers })
+    return this.http.post('routes/getsinglesubcontractoritemforinventory', subcontractor, { headers: headers })
       .map(res => 
        
         res.json());
@@ -366,18 +339,17 @@ export class ClientService {
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/newclientsingle', client, { headers: headers })
+    return this.http.post('routes/newclientsingle', client, { headers: headers })
       .map(res => 
        
         res.json());
 
   }
   getSingleSubcontractor(subcontractor) {
-    console.log(subcontractor+"clientservice");
-    console.log(subcontractor);
+  
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/newsubcontractorsingle', subcontractor, { headers: headers })
+    return this.http.post('routes/newsubcontractorsingle', subcontractor, { headers: headers })
       .map(res => 
        
         res.json());
@@ -386,72 +358,65 @@ export class ClientService {
   }
     increaseSubcontractorStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsinglestorenumber', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsinglestorenumber', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
    increaseSubcontractorStoreAddress(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsinglestoreaddress', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsinglestoreaddress', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
   updateSubcontractorStoreAddress(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsingle', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsingle', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
 
   updateSubcontractor(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsingle', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsingle', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
     updateSubcontractorStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsinglestorenumberupdate', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsinglestorenumberupdate', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
     updateSubcontractorClearStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsingleclearstorenumber', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsingleclearstorenumber', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }
     updateSubcontractor2(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/routes/newsubcontractorsingle2', subcontractor, { headers: headers })
+    return this.http.put('routes/newsubcontractorsingle2', subcontractor, { headers: headers })
       .map(res => res.json());
 
   }

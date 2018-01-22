@@ -19,9 +19,8 @@ export class AuthService {
   registerUser(user) {
 
     let headers = new Headers();
-    console.log(user)
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/register', user, { headers: headers })
+    return this.http.post('routes/register', user, { headers: headers })
       .map(res => res.json());
 
   }
@@ -30,19 +29,17 @@ export class AuthService {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/routes/authenticate', user, { headers: headers })
+    return this.http.post('routes/authenticate', user, { headers: headers })
       .map(res => {
         let result = res.json();
-        //console.log(result);
-        //console.log(result.user.name);
+
         if (result.success) {
+
           this.userName = result.user.name;
           this.userSubscribable.next(result.user.name);
-          console.log(this.userName);
-          console.log(result.name);
           this.isLoggedIn = true;
 
-        }else{
+        } else {
 
           res.json();
 
@@ -50,8 +47,6 @@ export class AuthService {
         return result;
 
       })
-
-    //.do(value => console.log(value));
 
 
   }
@@ -62,7 +57,7 @@ export class AuthService {
     this.authToken = token;
     this.user = user;
   }
-  getUserData(){
+  getUserData() {
 
     return this.userName;
 
@@ -71,32 +66,27 @@ export class AuthService {
 
     if (localStorage.getItem('user') && localStorage.getItem('id_token')) {
 
-      console.log("We're Logged In!");
       let userObject = JSON.parse(localStorage.getItem('user'));
-       this.userSubscribable.next(userObject.username);
-
-      //this.userName = userObject.username;
-      console.log(this.userName);
-      console.log(userObject);
+      this.userSubscribable.next(userObject.username);
       let shabo = "bolang";
-       this.isLoggedIn = true
+      this.isLoggedIn = true
+
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.put('http://localhost:3000/routes/getusername/' + userObject, { headers: headers })
+      return this.http.put('routes/getusername/' + userObject, { headers: headers })
         .map(res =>
 
           res.json());
-      //console.log(res);
     }
     else {
-      console.log("We'reNot!");
+
     }
 
 
   }
-  loggedIn(){
+  loggedIn() {
 
-   return tokenNotExpired('id_token');
+    return tokenNotExpired('id_token');
 
 
   }
@@ -122,27 +112,24 @@ export class AuthService {
 
     let headers = new Headers();
     this.loadToken();
-    console.log(this.authToken);
-    headers.append('Authorization',this.authToken);
+    headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/getclients', { headers: headers })
-      .map(res => 
-        //console.log(res)
+    return this.http.get('routes/getclients', { headers: headers })
+      .map(res =>
         res.json());
   }
-  storeUsername(){
+  storeUsername() {
 
     let headers = new Headers();
     this.loadToken();
-    headers.append('Authorization',this.authToken);
+    headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/routes/getclients',{ headers: headers})
-    .map(res =>{
-      console.log("hello")
-      console.log(res[0].data.name);
-      this.userName = res[0].data.name;
+    return this.http.get('routes/getclients', { headers: headers })
+      .map(res => {
+      
+        this.userName = res[0].data.name;
 
-    })
+      })
 
   }
 }
