@@ -32,7 +32,6 @@
 
             <h3 *ngIf="addClientLoading && !addClientSuccess && !clientAddFailed && !areYouSure" class="animated flash">Inserting Client Into Database...</h3>
             <h3 *ngIf="addClientSuccess && !areYouSure" class="animated flash">Client Successfully Added To The Database...</h3>
-            <i *ngIf="addClientSuccess" class="fa fa-check" aria-hidden="true" style="font-size:40px"></i>
             <i *ngIf="addClientSuccess && !areYouSure" class="fa fa-check-circle animated flash" aria-hidden="true" style="font-size:40px"></i>
             <h3 *ngIf="clientAddFailed && !areYouSure" class="animated flash text-danger">Client Already Exists In The Database...</h3>
 
@@ -281,7 +280,7 @@
                   class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
                 <p *ngIf="!turnOffInstructions && !addSubContractorSuccess && !addClientSuccess &&!addClientLoading && !clientAddFailed"
                   class="text-danger"> 4. When the "Submit" tab appears, click it to continue to the "Add Sub-Contractor Form" (Must load at least
-                  one), or click, "Submit Client", to add the new client to the database...</p>
+                  one)...</p>
 
                 <h3 class="animated flash text-center" *ngIf="addClientLoading">Adding Client To Database...</h3>
 
@@ -633,6 +632,9 @@
                 <p *ngIf="!turnOnInstructions || !client.subcontractors.length" class="text-warning"> 3. Do this for all fields ( All fields must be filled in ).</p>
                 <p *ngIf="!turnOnInstructions || !client.subcontractors.length" class="text-danger"> 4. Click the"Submit" tab when finshed, then click "Add Sub Contractor", and wait for the message indicating
                   the new Sub Contractor has been added.</p>
+                  <p *ngIf="!turnOnInstructions || !client.subcontractors.length" class="text-default"> 4. When you've finished adding your sub-contractors, the click,"Yes" to add the new client to the database, otherwise
+                    click no to continue adding sub-contractors, edit client details, or exit the add client page..'
+                  </p>
                 <h3 class="animated flash text-center" *ngIf="addSubContractorLoading">Adding Sub-Contractor To Database...</h3>
 
 

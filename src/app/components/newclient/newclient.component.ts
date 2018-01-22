@@ -3464,7 +3464,7 @@ if(this.name != "" &&
  
             
             document.getElementById('btnclose').click();
-            this.areYouSure = true;
+           // this.areYouSure = true;
             this.subContractorReady = false;
           
             
@@ -3503,7 +3503,7 @@ if(this.name != "" &&
             //this.addClientFailed = false;
             this.clientAddFailed = false;
                document.getElementById('btnclose').click();
-            this.areYouSure = true;
+            //this.areYouSure = true;
 
           }, 2000);
 
