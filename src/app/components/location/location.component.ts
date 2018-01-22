@@ -107,7 +107,6 @@ export class LocationComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
 
-    console.log(window.innerWidth)
     if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = true;
@@ -120,7 +119,7 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileIphoneX = false;
 
     }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 &&  document.documentElement.clientWidth  != 360 && this.totalCostThisMonth >= 2000) {
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
       this.expenditureDangerWarning = false
       this.expenditureDangerWarningMobile = true;
@@ -142,7 +141,6 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileMedium = true
       this.expenditureDangerWarningMobileIphoneX = false;
       this.expenditureDangerWarningMobileSamsung = false;
-      console.log("small")
 
     }
     if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
@@ -155,7 +153,6 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileMedium = false;
       this.expenditureDangerWarningMobileSamsung = true;
       this.expenditureDangerWarningMobileIphoneX = false;
-      console.log("small360")
 
     }
     if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
@@ -168,7 +165,6 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileMedium = false;
       this.expenditureDangerWarningMobileSamsung = false;
       this.expenditureDangerWarningMobileIphoneX = true;
-      console.log("small375")
 
     }
     if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
@@ -181,7 +177,6 @@ export class LocationComponent implements OnInit {
       this.expenditureDangerWarningMobileMedium = false;
       this.expenditureDangerWarningMobileSamsung = false;
       this.expenditureDangerWarningMobileIphoneX = false;
-      console.log("small")
 
     }
 
@@ -211,7 +206,7 @@ export class LocationComponent implements OnInit {
 
 
     }
-    console.log( this.expenditureDangerWarningMobile )
+
   }
 
 
@@ -224,20 +219,19 @@ export class LocationComponent implements OnInit {
 
   noThanks() {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.noThanksVar = true;
+    this.expenditureDangerWarning = false
+    this.expenditureDangerWarningMobile = false;
+    this.expenditureDangerWarningMobileSmall = false;
+    this.expenditureDangerWarningMobileSmaller = false;
+    this.expenditureDangerWarningMobileSmallest = false;
+    this.expenditureDangerWarningMobileMedium = false;
+    this.expenditureDangerWarningMobileSamsung = false
+    this.expenditureDangerWarningMobileIphoneX = false;
+    this.noThanksVar = true;
 
   }
   ngOnInit() {
-    console.log(this.ordered);
-    console.log(document.documentElement.clientWidth);
+
 
     this.chartData = [
 
@@ -249,12 +243,9 @@ export class LocationComponent implements OnInit {
     this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     this.activatedroute.params.subscribe((params: Params) => {
-      console.log(params);
-      console.log(this.router.url);
-      console.log(this.router.url.slice(17, this.router.url.length));
+
       this.location = params.location
       this.client = params.client;
-      console.log(this.location);
 
       if (this.month == 1) {
 
@@ -316,7 +307,6 @@ export class LocationComponent implements OnInit {
 
       this.clientservice.getSubContractor(this.location).subscribe(data => {
 
-        console.log(data.subcontractor);
         this.singleSubContractorsArray.push(data.subcontractor)
         this.subContractorName = data.subcontractor.name
         this.subContractorContactName = data.subcontractor.contactname
@@ -325,7 +315,6 @@ export class LocationComponent implements OnInit {
         this.toplineInventoryArray = data.subcontractor.topline
         this.wescleanInventoryArray = data.subcontractor.wesclean
         this.inventory = data.subcontractor.veritivcanada
-        console.log(this.inventory)
 
         this.curexp = data.subcontractor.expcur,
           this.expjan = data.subcontractor.expjan
@@ -343,8 +332,7 @@ export class LocationComponent implements OnInit {
 
         if (data.subcontractor.date == this.month) {
 
-          console.log("Inventory Still In Service")
-          console.log(this.totalCostThisMonth)
+
 
         } else {
 
@@ -359,7 +347,6 @@ export class LocationComponent implements OnInit {
             wesclean: []
 
           }
-          console.log("Inventory Is Out Of Date")
           if (this.month == 1) {
             //data.subcontractor.ordereddec = data.subcontractor.ordered;
 
@@ -382,9 +369,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 1
 
+            data.subcontractor.date = 1
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -395,7 +381,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -423,9 +408,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 2
 
+            data.subcontractor.date = 2
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -436,7 +420,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -466,9 +449,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 3
 
+            data.subcontractor.date = 3
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -479,7 +461,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -507,9 +488,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 4
 
+            data.subcontractor.date = 4
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -520,7 +500,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -548,7 +527,6 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
             data.subcontractor.date = 5
 
             subContractorToBeUpdated.name = data.subcontractor.name
@@ -561,7 +539,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -589,9 +566,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 6
 
+            data.subcontractor.date = 6
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -602,10 +578,10 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
+
           }
           if (this.month == 7) {
 
@@ -629,9 +605,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 7
 
+            data.subcontractor.date = 7
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -642,7 +617,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -670,9 +644,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 8
 
+            data.subcontractor.date = 8
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -683,7 +656,6 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
 
 
             })
@@ -710,9 +682,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 9
 
+            data.subcontractor.date = 9
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -723,7 +694,7 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
+
 
 
             })
@@ -751,9 +722,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 10
 
+            data.subcontractor.date = 10
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -764,10 +734,9 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
-
 
             })
+
           }
           if (this.month == 11) {
 
@@ -791,9 +760,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 11;
 
+            data.subcontractor.date = 11;
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -804,10 +772,9 @@ export class LocationComponent implements OnInit {
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
-              console.log(data);
-
 
             })
+
           }
           if (this.month == 12) {
 
@@ -831,9 +798,8 @@ export class LocationComponent implements OnInit {
               data.subcontractor.veritivcanada[z].ordered = 0;
 
             }
-            //console.log(this.curexp);
-            data.subcontractor.date = 12
 
+            data.subcontractor.date = 12
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
@@ -843,8 +809,6 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
-
-              console.log(data);
 
 
             })
@@ -860,7 +824,6 @@ export class LocationComponent implements OnInit {
         for (let z = 0; z < this.toplineInventoryArray.length; z++) {
 
           expendituresArray.push(Number(this.toplineInventoryArray[z].ordered * this.toplineInventoryArray[z].price))
-          console.log(expendituresArray)
 
         }
 
@@ -871,8 +834,8 @@ export class LocationComponent implements OnInit {
         }
         for (let z = 0; z < this.wescleanInventoryArray.length; z++) {
 
-          console.log(this.wescleanInventoryArray[z].ordered)
           expendituresArray.push(Number(this.wescleanInventoryArray[z].ordered * this.wescleanInventoryArray[z].price));
+
         }
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue
@@ -890,7 +853,7 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileSamsung = false;
 
         }
-        if (document.documentElement.clientWidth < 1020 && document.documentElement.clientWidth > 364 && document.documentElement.clientWidth  != 360 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 1020 && document.documentElement.clientWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = true;
@@ -900,10 +863,10 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileMedium = false
           this.expenditureDangerWarningMobileIphoneX = false;
           this.expenditureDangerWarningMobileSamsung = false;
-          console.log("WARNING MOBILE TRUE")
+
 
         }
-        if (document.documentElement.clientWidth< 532 && this.totalCostThisMonth >= 2000) {
+        if (document.documentElement.clientWidth < 532 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
@@ -913,7 +876,7 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileMedium = true
           this.expenditureDangerWarningMobileSamsung = false;
           this.expenditureDangerWarningMobileIphoneX = false;
-          console.log("small532")
+
 
         }
         if (document.documentElement.clientWidth === 360 && this.totalCostThisMonth >= 2000) {
@@ -926,22 +889,20 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileMedium = false;
           this.expenditureDangerWarningMobileSamsung = true;
           this.expenditureDangerWarningMobileIphoneX = false;
-          console.log("small360")
+
 
         }
         if (document.documentElement.clientWidth === 375 && this.totalCostThisMonth >= 2000) {
 
           this.expenditureDangerWarning = false
           this.expenditureDangerWarningMobile = false;
-
           this.expenditureDangerWarningMobileSmall = false;
           this.expenditureDangerWarningMobileSmaller = false;
           this.expenditureDangerWarningMobileSmallest = false;
           this.expenditureDangerWarningMobileMedium = false;
           this.expenditureDangerWarningMobileSamsung = false;
           this.expenditureDangerWarningMobileIphoneX = true;
-          console.log("small375")
-          console.log(this.expenditureDangerWarningMobile)
+
 
         }
         if (document.documentElement.clientWidth < 359 && this.totalCostThisMonth >= 2000) {
@@ -952,7 +913,7 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobileSmaller = false;
           this.expenditureDangerWarningMobileSmallest = false;
           this.expenditureDangerWarningMobileMedium = false;
-          console.log("small")
+
 
         }
 
@@ -979,20 +940,7 @@ export class LocationComponent implements OnInit {
 
 
         }
-        console.log(this.expenditureDangerWarningMobile)
-  /*      if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
-
-        }
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
-
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
-
-        }
-        */
 
         let totalExpenditureUpdater = {
 
@@ -1000,12 +948,15 @@ export class LocationComponent implements OnInit {
           totalexpenditures: this.totalCostThisMonth
 
         }
+
         this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-          console.log(data)
+
+
 
         })
-        console.log(this.totalCostThisMonth)
+
+
         this.curexp = this.totalCostThisMonth
         this.chartData = [
 
@@ -1021,33 +972,23 @@ export class LocationComponent implements OnInit {
 
     });
 
-    console.log(this.url);
+
 
     this.activatedroute.params.subscribe((params: Params) => {
 
-      console.log(params);
-      console.log(params.location);
+
       this.location = params.location;
       this.client = params.client;
 
     })
 
 
-    console.log("HELLO!")
+
     let locationObject = {
 
       subcontractor: this.location
 
     }
-    /* this.clientservice.getSingleSubcontractor(locationObject).subscribe(subcontractor => {
- 
-       console.log(subcontractor.subcontractor[0]);
-       console.log(subcontractor.subcontractor[0].veritivcanada);
-       this.subcontractorObject = subcontractor.subcontractor[0];
-       //this.inventory = subcontractor.subcontractor[0].veritivcanada;
- 
- 
-     })*/
 
 
   }
@@ -1070,9 +1011,9 @@ export class LocationComponent implements OnInit {
 
 
       if (this.toplineInventoryArray[z].productcode == productcode) {
-        //console.log(this.inventory[z])
+
         this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered + 1;
-        // console.log(this.inventory[z])
+
         let subcontractor = {
 
           name: this.location,
@@ -1082,9 +1023,9 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-          console.log("i'm here")
           this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
@@ -1096,13 +1037,13 @@ export class LocationComponent implements OnInit {
 
         }
         let totalExpenditureUpdater = {
+
           name: this.location,
           totalexpenditures: this.totalCostThisMonth
 
         }
         this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-          console.log(data)
           this.expenditureLoading = false;
           this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
@@ -1119,7 +1060,6 @@ export class LocationComponent implements OnInit {
 
         this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-          console.log(data);
           this.totalCostThisMonth = data.subcontractor.totalexpenditures;
           this.toplineInventoryArray = data.subcontractor.topline;
 
@@ -1165,6 +1105,7 @@ export class LocationComponent implements OnInit {
           if (this.totalCostThisMonth > 0) {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+
             if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
               this.expenditureDangerWarning = true
@@ -1185,13 +1126,14 @@ export class LocationComponent implements OnInit {
 
           }
           let totalExpenditureUpdater = {
+
             name: this.location,
             totalexpenditures: this.totalCostThisMonth
 
           }
           this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-            console.log(data)
+
             this.expenditureLoading = false;
             this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
@@ -1208,7 +1150,6 @@ export class LocationComponent implements OnInit {
 
           this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-            console.log(data);
             this.inventory = data.subcontractor.veritivcanada
 
           })
@@ -1222,7 +1163,6 @@ export class LocationComponent implements OnInit {
   }
   decreaseToplineInventory(ordered, supplier, price, productcode, index) {
 
-    console.log("clicked");
     let productToBeModified = {
 
       name: this.location,
@@ -1238,8 +1178,8 @@ export class LocationComponent implements OnInit {
 
 
       if (this.toplineInventoryArray[z].productcode == productcode) {
-        console.log(this.inventory[z])
-        console.log(this.toplineInventoryArray[z].ordered)
+
+
         if (this.toplineInventoryArray[z].ordered > 0) {
 
           this.toplineInventoryArray[z].ordered = this.toplineInventoryArray[z].ordered - 1;
@@ -1255,6 +1195,7 @@ export class LocationComponent implements OnInit {
           if (this.totalCostThisMonth > 0) {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+
             if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
               this.expenditureDangerWarning = true
@@ -1274,13 +1215,13 @@ export class LocationComponent implements OnInit {
 
           }
           let totalExpenditureUpdater = {
+
             name: this.location,
             totalexpenditures: this.totalCostThisMonth
 
           }
           this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-            console.log(data)
             this.expenditureLoading = false;
             this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
@@ -1297,7 +1238,6 @@ export class LocationComponent implements OnInit {
 
           this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-            console.log(data);
             this.toplineInventoryArray = data.subcontractor.topline
 
           })
@@ -1327,11 +1267,12 @@ export class LocationComponent implements OnInit {
 
     }
     this.expenditureLoading = true;
+
     for (let z = 0; z < this.wescleanInventoryArray.length; z++) {
 
 
       if (this.wescleanInventoryArray[z].productcode == productcode) {
-        console.log(this.inventory[z])
+
         if (this.wescleanInventoryArray[z].ordered > 0) {
 
           this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered - 1;
@@ -1347,13 +1288,14 @@ export class LocationComponent implements OnInit {
           if (this.totalCostThisMonth > 0) {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
+
             if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
               this.expenditureDangerWarning = true
               this.expenditureDangerWarningMobile = false;
 
             }
-                 if (this.totalCostThisMonth < 2000 && document.documentElement.clientWidth > 1020) {
+            if (this.totalCostThisMonth < 2000 && document.documentElement.clientWidth > 1020) {
 
               this.expenditureDangerWarning = false;
               this.expenditureDangerWarningMobile = false;
@@ -1373,6 +1315,7 @@ export class LocationComponent implements OnInit {
 
           }
           let totalExpenditureUpdater = {
+
             name: this.location,
             totalexpenditures: this.totalCostThisMonth
 
@@ -1380,8 +1323,8 @@ export class LocationComponent implements OnInit {
 
           this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-            console.log(data)
             this.expenditureLoading = false;
+
             this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
             this.curexp = this.totalCostThisMonth;
@@ -1397,7 +1340,6 @@ export class LocationComponent implements OnInit {
 
           this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-            console.log(data);
             this.wescleanInventoryArray = data.subcontractor.wesclean
 
           })
@@ -1429,9 +1371,9 @@ export class LocationComponent implements OnInit {
 
 
       if (this.wescleanInventoryArray[z].productcode == productcode) {
-        console.log(this.inventory[z])
+
         this.wescleanInventoryArray[z].ordered = this.wescleanInventoryArray[z].ordered + 1;
-        console.log(this.inventory[z])
+
         let subcontractor = {
 
           name: this.location,
@@ -1441,35 +1383,29 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
-        console.log(this.totalCostThisMonth)
+
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
-          console.log("ive run")
-          console.log(this.totalCostThisMonth)
-          console.log(document.documentElement.clientWidth)
-   this.expenditureDangerWarning = true
+
+          this.expenditureDangerWarning = true
           this.expenditureDangerWarningMobile = false;
 
         }
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
-         console.log("ive run")
-          console.log(this.totalCostThisMonth)
-          console.log(document.documentElement.clientWidth)
+
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        }/* else {
+        }
 
-          this.expenditureDangerWarningMobile = false;
-          this.expenditureDangerWarning = false;
-        }*/
         let totalExpenditureUpdater = {
+
           name: this.location,
           totalexpenditures: this.totalCostThisMonth
 
         }
         this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-          console.log(data)
+
           this.expenditureLoading = false;
           this.totalCostThisMonth = data.subcontractor.totalexpenditures;
           this.curexp = this.totalCostThisMonth;
@@ -1484,7 +1420,6 @@ export class LocationComponent implements OnInit {
         })
         this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-          console.log(data);
           this.wescleanInventoryArray = data.subcontractor.wesclean
 
         })
@@ -1508,15 +1443,16 @@ export class LocationComponent implements OnInit {
       subcontractorarray: this.singleSubContractorsArray
 
     }
-    console.log(productcode)
+
     this.expenditureLoading = true;
+
     for (let z = 0; z < this.inventory.length; z++) {
 
 
       if (this.inventory[z].productcode == productcode) {
-        console.log(this.inventory[z])
+
         this.inventory[z].ordered = this.inventory[z].ordered + 1;
-        console.log(this.inventory[z])
+
         let subcontractor = {
 
           name: this.location,
@@ -1526,6 +1462,7 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+
         if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
           this.expenditureDangerWarning = true
@@ -1537,19 +1474,16 @@ export class LocationComponent implements OnInit {
           this.expenditureDangerWarningMobile = true
           this.expenditureDangerWarning = false;
 
-        }/* else {
+        }
 
-          this.expenditureDangerWarningMobile = false;
-          this.expenditureDangerWarning = false;
-        }*/
         let totalExpenditureUpdater = {
           name: this.location,
           totalexpenditures: this.totalCostThisMonth
 
         }
+
         this.clientservice.updateSubContractorTotalExpenditures(totalExpenditureUpdater).subscribe(data => {
 
-          console.log(data)
           this.expenditureLoading = false;
           this.totalCostThisMonth = data.subcontractor.totalexpenditures;
 
@@ -1565,9 +1499,6 @@ export class LocationComponent implements OnInit {
         })
         this.clientservice.updateSubContractorInventory(subcontractor).subscribe(data => {
 
-          console.log(data);
-          //this.totalCostThisMonth
-          //this.totalCostThisMonth = data.subcontactor.totalexpenditures;
           this.inventory = data.subcontractor.veritivcanada;
 
 
@@ -1577,154 +1508,33 @@ export class LocationComponent implements OnInit {
 
     }
 
-    /*  this.clientservice.updateSubContractorInventory().subscribe(data=>{
-  
-        this.inventory
-  
-      })
-      this.clientservice.updateSubContractor()
-      this.expenditureLoaded = true;
-      setTimeout(() => {
-        this.curexp = 0;
-        this.chartData = [
-  
-          { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-  
-  
-        ];
-        this.totalCostThisMonth = Number(price) + this.totalCostThisMonth;
-        this.curexp = this.totalCostThisMonth;
-        this.chartData = [
-  
-          { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-  
-  
-        ];
-        this.expenditureLoaded = false;
-      }, 2000);
-      console.log("PRODUCTCODE")
-      console.log(productcode);
-      console.log("SINGLESUBCONTRACTORSARRAY");
-      console.log(this.singleSubContractorsArray)
-  
-      for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
-  
-        if (this.singleSubContractorsArray[z].name == this.location) {
-  
-          console.log(this.location);
-          console.log(this.singleSubContractorsArray[z].veritivcanada);
-          for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
-            console.log(d);
-            // console.log(console.log(this.singleSubContractorsArray[z].topline[d].productcode));
-  
-            if (this.singleSubContractorsArray[z].veritivcanada[d].productcode == productcode) {
-  
-              console.log(this.singleSubContractorsArray[z].veritivcanada[d]);
-              this.singleSubContractorsArray[z].veritivcanada[d].ordered = this.singleSubContractorsArray[z].veritivcanada[d].ordered + 1;
-              console.log(this.singleSubContractorsArray[z].veritivcanada[d].ordered);
-              this.dataservice.increaseItemInVeritivCanadaInventory(productToBeModified)
-                .subscribe(data => {
-                  console.log("DATA!");
-                  console.log(data);
-                  console.log(this.singleSubContractorsArray)
-                  let totalCostThisMonthArray = [];
-                  for (let z = 0; z < this.singleSubContractorsArray.length; z++) {
-                    console.log(z)
-  
-  
-                    this.singleSubContractorsArray[z].topline[32].price = 9.99;
-                    this.singleSubContractorsArray[z].topline[34].price = 9.99;
-                    if (this.singleSubContractorsArray[z].name == this.location) {
-  
-                      for (let d = 0; d < this.singleSubContractorsArray[z].topline.length; d++) {
-                        console.log(d)
-                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].topline[d].ordered * this.singleSubContractorsArray[z].topline[d].price);
-  
-  
-  
-                      }
-                      for (let d = 0; d < this.singleSubContractorsArray[z].wesclean.length; d++) {
-                        console.log(d)
-                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].wesclean[d].ordered * this.singleSubContractorsArray[z].wesclean[d].price);
-  
-  
-  
-                      }
-                      for (let d = 0; d < this.singleSubContractorsArray[z].veritivcanada.length; d++) {
-                        console.log(d)
-                        totalCostThisMonthArray.push(this.singleSubContractorsArray[z].veritivcanada[d].ordered * this.singleSubContractorsArray[z].veritivcanada[d].price);
-  
-  
-  
-                      }
-                      console.log(totalCostThisMonthArray);
-                    }
-  
-  
-                    if (totalCostThisMonthArray.length > 0) {
-                      let reducer = (accumulator, currentValue) => accumulator + currentValue;
-                      this.totalCostThisMonth = totalCostThisMonthArray.reduce(reducer);
-  
-                      console.log(this.totalCostThisMonth);
-  
-                    }
-  
-  
-  
-                    this.curexp = this.totalCostThisMonth;
-                    //this.expenditureLoaded = false;
-                    console.log("done");
-                    this.chartData = [
-  
-                      { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
-  
-  
-                    ];
-                    console.log(this.totalCostThisMonth);
-  
-  
-                  }
-  
-                });
-            }
-  
-          }
-        }
-  
-  
-      }
-      */
   }
 
   openToplineInventoryok() {
 
 
     if (!this.toplineInventory2) {
+
       this.toplineInventory2 = true;
       this.wescleanInventory2 = false;
       this.veritivInventory2 = false;
-      console.log(this.toplineInventory2)
-      console.log(this.wescleanInventory2)
-      console.log(this.veritivInventory2);
 
     } else {
+
       this.toplineInventory2 = false
-      console.log(this.toplineInventory2)
-      console.log(this.wescleanInventory2)
-      console.log(this.veritivInventory2);
+
     }
 
   };
 
   openWescleanInventory() {
-    console.log("clicked");
 
     if (!this.wescleanInventory2) {
 
       this.wescleanInventory2 = true;
       this.veritivInventory2 = false;
       this.toplineInventory2 = false;
-      console.log(this.veritivInventory2)
+
     } else {
 
       this.wescleanInventory2 = false;
@@ -1733,13 +1543,18 @@ export class LocationComponent implements OnInit {
 
   };
   openVeritivInventory() {
-    console.log("clicked");
+
+
     if (!this.veritivInventory2) {
+
       this.veritivInventory2 = true;
       this.wescleanInventory2 = false;
       this.toplineInventory2 = false;
+
     } else {
+
       this.veritivInventory2 = false;
+
     }
 
 

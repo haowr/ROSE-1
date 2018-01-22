@@ -11,7 +11,6 @@ export class ClientService {
 
   constructor(public http: Http, public router: Router, public activatedroute: ActivatedRoute) {
 
-    console.log('client service loaded and initialized...');
 
 
   }
