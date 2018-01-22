@@ -479,11 +479,11 @@ export class NavbarComponent implements OnInit {
       console.log(this.removeWeatherQuickly)
       if (!this.largestRoseLogo) {
         this.largestRoseLogo = true;
-           setTimeout(() => {
+         //  setTimeout(() => {
 
           this.smallestRoseLogo = false;
           //this.removeWeatherQuickly = false;
-        }, 300)
+      //  }, 300)
         console.log("mobile")
         
 
