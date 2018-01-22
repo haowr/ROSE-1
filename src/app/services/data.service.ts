@@ -73,7 +73,7 @@ export class DataService {
   }
   //GENERAL INCREASE/DECREASE ITEM IN INVENTORY
 
-  increaseItemInInventory(productcode){
+  increaseItemInInventory(productcode){ 
     console.log(productcode);
     let headers = new Headers();
     headers.append('Content-type','application/json');
