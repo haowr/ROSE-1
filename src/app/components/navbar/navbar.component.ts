@@ -75,17 +75,14 @@ export class NavbarComponent implements OnInit {
       if (this.removeDesktopWeatherInfo && !this.removeWeatherQuickly && !this.divUnderlineOpen && !this.weatherInfo2) {
 
         this.removeDesktopWeatherInfo = true;
-        //this.weatherInfo3Hidden = true;
         this.removeWeatherQuickly = false;;
         this.divUnderlineOpen = false;
         this.weatherInfo2 = false;
+
       }
+
       this.removeDesktopWeatherInfo = true;
 
-      // this.removeWeatherQuickly = false;
-      console.log(this.largeRoseLogo)
-      console.log(this.innerWidth)
-      console.log("Smaller")
     }
     if (this.innerWidth > 766 && this.innerWidth < 1080) {
 
@@ -95,11 +92,8 @@ export class NavbarComponent implements OnInit {
       this.removeBrand = true;
       this.removeDesktopWeatherInfo = true;
       this.brandMobileIphoneX = false;
-      console.log("776!")
-      console.log(this.smallestRoseLogo)
       this.smallestRoseLogo = false;
       this.largeRoseLogo = true;
-      console.log(this.largeRoseLogo)
 
 
     }
@@ -110,7 +104,6 @@ export class NavbarComponent implements OnInit {
       this.brandMobileIphoneX = false;
       this.removeBrand = false;
       this.brandMobileLandScape = true;
-      console.log("<776 > 375")
 
 
     }
@@ -134,7 +127,7 @@ export class NavbarComponent implements OnInit {
       this.removeBrand = false;
       this.removeDesktopWeatherInfo = true;
       this.brandMobileIphoneX = true;
-      this.brandMobileLandScape =  false;
+      this.brandMobileLandScape = false;
       this.brandMobileLandScapeIphoneX = false;
 
     }
@@ -146,7 +139,6 @@ export class NavbarComponent implements OnInit {
       this.brandFullScreen = false;
       this.removeBrand = false;
       this.brandMobileIphoneX = false;
-      console.log("360")
 
 
     }
@@ -159,31 +151,24 @@ export class NavbarComponent implements OnInit {
       this.brandMobileIphoneX = false;
 
     }
-    if (this.innerWidth > 1080) { //
-      this.brandFullScreen = true;
-      console.log("listener fulscreenbrand")
-      this.brandMobile = false;
-      this.brandMobileIphoneX = false;
+    if (this.innerWidth > 1080) {
 
+      this.brandFullScreen = true;
+      this.brandMobile = false;
+      this.brandMobileIphoneX = false
       this.largeRoseLogo = true;
       this.removeBrand = false;
-      //this.removeDesktopWeatherInfo = false;
       this.removeWeatherQuickly = false;
       this.weatherInfo2 = false;
       this.divUnderlineOpen = false;
-
       this.smallestRoseLogo = false;
-      //this.largestRoseLogo= false;
-      console.log(this.largeRoseLogo)
-      console.log(this.smallestRoseLogo)
+
     }
-    console.log("POLLYS")
-    console.log(this.innerWidth)
-    console.log(this.largeRoseLogo);
+
   }
 
   constructor(public authservice: AuthService,
-    //private flashmessage: FlashMessagesService,
+
     private router: Router,
     private dataservice: DataService,
     private clientservice: ClientService,
@@ -194,12 +179,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.divUnderlineOpen)
-    console.log(this.removeWeatherQuickly)
 
     this.weatherservice.getWeather().subscribe(data => {
 
-      console.log(data)
       this.weatherNow = data.weather[0].icon;
       this.temperatureNow = data.main.temp;
       this.temperatureHigh = data.main.temp_max;
@@ -209,12 +191,9 @@ export class NavbarComponent implements OnInit {
     })
 
     this.username = this.authservice.userName;
-    console.log(this.authservice.getUserData());
     this.authservice.userSubscribable.subscribe(value => {
-      console.log("SHADO");
-      console.log(value);
+
       this.username = value;
-      console.log(this.username);
 
     });
 
@@ -225,18 +204,12 @@ export class NavbarComponent implements OnInit {
       this.brandMobile = false;
       this.brandMobileIphoneX = false;
       this.removeBrand = false;
-
       this.largeRoseLogo = true;
       this.smallestRoseLogo = false;
-
       this.removeWeatherQuickly = false;
       this.weatherInfo2 = false;
       this.divUnderlineOpen = false;
 
-
-      console.log("listener fulscreenbrand")
-      console.log(this.largeRoseLogo)
-      console.log(this.smallestRoseLogo)
     }
 
     if (document.documentElement.clientWidth > 766 && document.documentElement.clientWidth < 1080) {
@@ -257,7 +230,6 @@ export class NavbarComponent implements OnInit {
       this.brandMobile = true;
       this.brandFullScreen = false;
       this.removeBrand = false;
-      console.log("<766")
 
 
     }
@@ -269,8 +241,6 @@ export class NavbarComponent implements OnInit {
       this.brandFullScreen = false;
       this.removeBrand = false;
       this.brandMobileIphoneX = false;
-      console.log("360")
-
 
     }
 
@@ -280,7 +250,6 @@ export class NavbarComponent implements OnInit {
       this.brandFullScreen = false;
       this.brandMobileIphoneX = false;
       this.brandMobileLandScape = true;
-      console.log("<776 > 375")
 
     }
 
@@ -332,76 +301,51 @@ export class NavbarComponent implements OnInit {
         this.largeRoseLogo = true;
         this.removeDesktopWeatherInfo = true;
 
-      } else if (document.documentElement.clientWidth> 1080){
+      } else if (document.documentElement.clientWidth > 1080) {
 
         this.brandMobile = false;
         this.brandFullScreen = true;
         this.removeBrand = false;
         this.largeRoseLogo = true;
         this.removeDesktopWeatherInfo = false;
-        console.log("1080")
 
       }
       else {
+
         this.brandMobile = true;
         this.brandFullScreen = false;
         this.removeBrand = false;
         this.largeRoseLogo = true;
         this.removeDesktopWeatherInfo = true;
-        console.log("Final Condition")
-
 
       }
 
     }
-    console.log(this.largeRoseLogo)
-    console.log(this.brandFullScreen)
-    console.log("brandfullscreen^")
+
+
     this.authservice.checkIfLoggedIn();
 
 
     this.activatedroute.params.subscribe((params: Params) => {
 
-      console.log(params);
-      console.log(params.location);
-      console.log(this.router.url);
-      console.log(this.router.url.slice(16, this.router.url.length));
+
       this.location = this.router.url.slice(16, this.router.url.length);
-      console.log(this.location);
 
-
-      console.log("hello from navbar");
-      //setInterval(()=>{
       this.userName = this.authservice.userName;
       this.authservice.loadToken();
-      console.log(this.authservice.authToken);
+
       if (this.authservice.authToken) {
 
         this.loggedIn = true;
 
       } else {
+
         this.loggedIn = false;
+
       }
 
-
-
-
-
-
-
-
     })
-    console.log(this.brandFullScreen)
-    //},2000);
 
-    //this.dataservice.getSubcontractors().subscribe(data=>{
-
-    // console.log(data);
-
-
-    // })
-    console.log("remove desktop weather info");
-    console.log(this.removeDesktopWeatherInfo)
 
   }
   closeWeatherInfo() {
@@ -410,26 +354,21 @@ export class NavbarComponent implements OnInit {
     this.divUnderlineOpen = false;
     this.weatherInfo3Hidden = true;
     this.weatherInfoHidden = false;
-    console.log(this.weatherInfo2)
 
 
   }
   openWeatherInfo() {
-    console.log("pressed")
+
     if (!this.weatherInfoDesktop && document.documentElement.clientWidth > 768) {
+
       this.removeDesktopWeatherInfo = false;
       this.weatherInfoDesktop = true;
-
-      //console.log(this.weatherInfo)
-      //console.log(this.innerWidth)
 
     }
     else {
 
       this.weatherInfoDesktop = false;
-      // console.log(this.weatherInfo)
-      console.log(this.innerWidth)
-      console.log(document.documentElement.clientWidth)
+
     }
 
     if (!this.weatherInfo2 && document.documentElement.clientWidth < 768) {
@@ -438,56 +377,49 @@ export class NavbarComponent implements OnInit {
       this.divUnderlineOpen = true;
       this.weatherInfo3Hidden = false;
       this.weatherInfoHidden = false;
-      //this.removeWeatherQuickly=true;
-      console.log(this.weatherInfo2)
-      console.log(this.divUnderlineOpen)
+
     } else {
 
       this.weatherInfo2 = false;
       this.divUnderlineOpen = false;
       this.weatherInfo3Hidden = true;
       this.weatherInfoHidden = false;
-      console.log(this.weatherInfo2)
+
     }
   }
 
   ngAfterViewInit() {
 
     this.cdRef.detectChanges();
-    console.log("CHAAAAAANGES")
 
     if (document.documentElement.clientWidth < 766) {
 
-      console.log("smaller")
     }
+
   }
   closeNavbar() {
+
     if (document.documentElement.clientWidth < 766) {
+
       document.getElementById("navbar-toggle").click();
 
     }
-    //document.getElementByClassName("navbar-toggle").click();
 
-    console.log(document.documentElement.clientWidth)
 
   }
   loadLargeRoseLogo() {
 
     if (document.documentElement.clientWidth < 766) {
-      console.log("pressed")
-      this.removeWeatherQuickly = true;
-      console.log(this.removeWeatherQuickly)
-      if (!this.largestRoseLogo) {
-        this.largestRoseLogo = true;
-         //  setTimeout(() => {
 
-          this.smallestRoseLogo = false;
-          //this.removeWeatherQuickly = false;
-      //  }, 300)
-        console.log("mobile")
-        
+      this.removeWeatherQuickly = true;
+
+      if (!this.largestRoseLogo) {
+
+        this.largestRoseLogo = true;
+        this.smallestRoseLogo = false;
 
       } else {
+
         this.removeWeatherQuickly = false;
         this.weatherInfo2 = false;
         this.divUnderlineOpen = false;
@@ -498,15 +430,17 @@ export class NavbarComponent implements OnInit {
 
           this.largestRoseLogo = false;
           this.smallestRoseLogo = true;
-          //this.removeWeatherQuickly = false;
+
         }, 300)
 
       }
 
 
     } else {
+
       this.smallestRoseLogo = true;
       this.largeRoseLogo = false;
+
     }
 
   }
@@ -514,35 +448,23 @@ export class NavbarComponent implements OnInit {
 
 
     this.authservice.logOut();
+
     if (document.documentElement.clientWidth < 768) {
 
       document.getElementById('navbar-toggle').click();
 
     }
 
-    console.log("pressed")
-    // this.logOutSuccessful = true;
-    //document.getElementById("navbar-toggle").click();
-
-
     this.username = "";
-    // setTimeout(()=>{
-
-    // this.logOutSuccessful = false;
     this.router.navigate(['/']);
-    // return false;
-
-    /// },500);
-    //this.flashmessage.show("You are now logged out..",{cssClass: 'alert-success',timeout: 5000});
-
 
   }
 
   closeDropdown() {
-    console.log("pressed")
+
 
     if (document.documentElement.clientWidth > 768) {
-      console.log("fist condition")
+
       this.largeRoseLogo = true;
       this.largestRoseLogo = false;
       this.smallestRoseLogo = false;
@@ -550,6 +472,7 @@ export class NavbarComponent implements OnInit {
     } else {
 
       document.getElementById('navbar-toggle').click();
+      
       setTimeout(() => {
 
 

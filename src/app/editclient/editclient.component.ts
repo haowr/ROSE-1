@@ -45,17 +45,17 @@ export class EditclientComponent implements OnInit {
     subCLocations: string = "";
     subCStoreNumbers: string = "";
     subCLocations2: string = "";
-    subCStoreNumbers2:string = "";
-    subcontractorLocations2: string[]=[];
-    subcontractorStoreNumbers2: string[]=[];
+    subCStoreNumbers2: string = "";
+    subcontractorLocations2: string[] = [];
+    subcontractorStoreNumbers2: string[] = [];
     //subContractorStoreNumbers
     //subContractorStoreNumbers: string = "";
     indexVar: any = 0;
     clientVar: string = "";
-    subContractorIdVar:string ="";
+    subContractorIdVar: string = "";
     fieldVar: string = "";
     subContractorVar: string = "";
-    subContractorNameVar:string = "";
+    subContractorNameVar: string = "";
     clientNameVar: string = "";
     clientNameVar2: string = "";
     indexToBeRemoved: string = "";
@@ -92,7 +92,7 @@ export class EditclientComponent implements OnInit {
     addSubcontractorContactPhoneConditionsNotMet: boolean = false;
     addSubcontractorContactNameConditionsNotMet: boolean = false;
     addSubcontractorLocationsConditionsNotMet: boolean = false;
-    addSubContractorLocationSuccess:boolean = false;
+    addSubContractorLocationSuccess: boolean = false;
     addSubcontractorStoreNumbersConditionsNotMet: boolean = false;
     addSubcontractorStoreNumberConditionsMet: boolean = false;
     addSubcontractorLocationConditionsMet: boolean = false;
@@ -139,7 +139,7 @@ export class EditclientComponent implements OnInit {
     subContractorStoreNumberSuccessfullyAdded: boolean = false;
     subContractorStoreNumberAlreadyEmpty: boolean = false;
     subContractorStoreNumberFieldCannotBeEmpty: boolean = false;
-    addSubContractorLocationFieldCannotBeEmpty:boolean = false;
+    addSubContractorLocationFieldCannotBeEmpty: boolean = false;
     subContractorLocationFieldCannotBeEmpty: boolean = false;
     subContractorLocationSuccessfullyRemoved: boolean = false;
     subContractorLocationSuccessfullyAdded: boolean = false;
@@ -218,19 +218,17 @@ export class EditclientComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log("getClients");
-        console.log(this.openEditForm)
+
         this.clientsLoading = true;
 
-        //this.openIndividualSubContractor(index);
+
         this.clientservice.getClients().subscribe(data => {
 
-            console.log(data);
+
             this.clientsLoading = false;
             this.clientsArray = data.clients;
 
-            console.log("this.clientsArray");
-            console.log(this.clientsArray);
+
 
             for (let i = 0; i < this.clientsArray.length; i++) {
 
@@ -238,31 +236,28 @@ export class EditclientComponent implements OnInit {
 
 
             }
-            console.log(this.clientsArray);
             for (let i = 0; i < data.clients.length; i++) {
 
                 this.subcontractorsArray[i] = data.clients[i].subcontractors;
 
-
-
             }
-            console.log("this.subcontractorsArray");
-            console.log(this.subcontractorsArray);
+
+
             for (let z = 0; z < this.subcontractorsArray.length; z++) {
 
                 for (let d = 0; d < this.subcontractorsArray[z].length; d++)
                     this.subcontractorsArray[z][d][d] = d * 34567
-                console.log(this.subcontractorsArray[z])
 
             }
         })
 
     }
     openNextTab(id, input) {
-        console.log(input)
-        console.log(id)
+
         document.getElementById(id).click();
+
         if (input != undefined) {
+
             setTimeout(() => {
 
                 document.getElementById(input).focus();
@@ -275,40 +270,19 @@ export class EditclientComponent implements OnInit {
     }
     openEditFormFunc(index) {
 
-        //this.indexVar = index;
-        console.log(this.indexVar)
-        console.log(index)
-        console.log("this.openEditForm")
-        console.log(this.openEditForm)
-        console.log("this.eFormReady")
-        console.log(this.eFormReady)
-        console.log("this.addSubContractorFormReady")
-        console.log(this.addSubContractorFormReady)
-        console.log("this.openAddSubContractor")
-        console.log(this.openAddSubContractor)
 
         if (!this.openEditForm) {
-            console.log("firstcondition")
+
             this.indexVar = index;
             this.openEditForm = true;
             this.eFormReady = true
             this.editFormReady = true;
             setTimeout(() => {
-                // document.getElementById('nameform').focus();
-                //document.getElementById("clientnametab").click();
-
 
             }, 300)
 
         } else if (this.openEditForm && this.addSubContractorFormReady) {
-            console.log("OY")
-            //this.openEditForm = true;
 
-            /*setTimeout(() => {
-                document.getElementById('nameform').focus();
-                document.getElementById("clientnametab").click();
-
-            }, 300)*/
             this.returnToClientForm = false;
             this.addSubContractorFormReady = false;
             setTimeout(() => {
@@ -316,17 +290,6 @@ export class EditclientComponent implements OnInit {
                 this.eScFormReady = false;
                 this.eFormReady = true
                 this.editFormReady = true;
-                console.log(this.indexVar)
-                console.log("this.openEditForm")
-                console.log(this.openEditForm)
-                console.log("this.eFormReady")
-                console.log(this.eFormReady)
-                console.log("this.addSubContractorFormReady")
-                console.log(this.addSubContractorFormReady)
-                console.log("this.eScFormReady")
-                console.log(this.eScFormReady)
-                console.log("this.openAddSubContractor")
-                console.log(this.openAddSubContractor)
 
 
             }, 400)
@@ -334,20 +297,18 @@ export class EditclientComponent implements OnInit {
 
         } else if (this.openEditForm && this.openEditSubcontractors) {
 
-            //this.openEditForm = true;
-            console.log('im here')
-            this.returnToClientForm = false
 
+            this.returnToClientForm = false
             this.editSubContractorFormReady = false;
+
             setTimeout(() => {
 
                 this.eScFormReady = false;
                 this.openEditSubcontractors = false
                 this.eFormReady = true
                 this.editFormReady = true;
+
                 setTimeout(() => {
-                    // document.getElementById('nameform').focus();
-                    // document.getElementById("clientnametab").click();
 
 
                 }, 300)
@@ -357,19 +318,18 @@ export class EditclientComponent implements OnInit {
 
         }
         else {
-            console.log("final condition")
+
             if (this.indexVar != index) {
 
-                console.log("no matcho")
                 this.eFormReady = true
-                // this.slideOutForm = true
                 this.openEditForm = true
-                // this.openEditSubcontractors = true;
                 this.indexVar = index;
+
             } else {
 
                 this.editFormReady = false;
                 this.slideOutForm = true
+
                 setTimeout(() => {
 
                     this.eFormReady = false;
@@ -384,13 +344,10 @@ export class EditclientComponent implements OnInit {
         }
     }
     editClientFunc(clientparam, name) {
-        console.log(clientparam);
-        console.log(name);
 
-      
-        this.clientservice.getSubContractorsOfClient(clientparam).subscribe(data =>{
 
-            console.log(data)
+        this.clientservice.getSubContractorsOfClient(clientparam).subscribe(data => {
+
 
 
         })
@@ -411,6 +368,7 @@ export class EditclientComponent implements OnInit {
         if (this.clientName == "" || undefined) {
 
             this.clientNameIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientNameIsEmpty = false;
@@ -421,6 +379,7 @@ export class EditclientComponent implements OnInit {
 
 
             this.clientPhoneNumberIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientPhoneNumberIsEmpty = false;
@@ -431,6 +390,7 @@ export class EditclientComponent implements OnInit {
 
 
             this.clientEmailAddressIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientEmailAddressIsEmpty = false;
@@ -440,24 +400,29 @@ export class EditclientComponent implements OnInit {
 
 
             this.clientContactNameIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientContactNameIsEmpty = false;
 
             }, 2000)
+
         } if (this.clientContactPhone == "" || undefined) {
 
 
             this.clientContactPhoneIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientContactPhoneIsEmpty = false;
 
             }, 2000)
+
         } if (this.clientContactEmail == "" || undefined) {
 
 
             this.clientContactEmailIsEmpty = true;
+
             setTimeout(() => {
 
                 this.clientContactEmailIsEmpty = false;
@@ -470,6 +435,7 @@ export class EditclientComponent implements OnInit {
 
 
             this.editClientLoading = true;
+
             let clientToBeEdited = {
                 name: name,
                 client: clientparam,
@@ -481,17 +447,15 @@ export class EditclientComponent implements OnInit {
                 clientContactEmail: ""
 
             }
-   
-            this.clientservice.getSubContractors().subscribe(data=>{
+
+            this.clientservice.getSubContractors().subscribe(data => {
 
 
-                console.log(data)
 
             })
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
-                console.log(data);
                 if (data.success) {
 
 
@@ -499,7 +463,6 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -542,7 +505,7 @@ export class EditclientComponent implements OnInit {
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
-                console.log(data);
+
                 if (data.success) {
 
 
@@ -550,7 +513,6 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -592,15 +554,11 @@ export class EditclientComponent implements OnInit {
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
-                console.log(data);
                 if (data.success) {
-
-
 
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -609,8 +567,8 @@ export class EditclientComponent implements OnInit {
                         this.clientContactPhone = '';
                         this.clientContactEmail = '';
                         this.editClientLoading = false;
-
                         this.editClientSuccess = true;
+
                         setTimeout(() => {
 
                             this.editClientSuccess = false;
@@ -642,15 +600,11 @@ export class EditclientComponent implements OnInit {
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
 
-                console.log(data);
+
                 if (data.success) {
-
-
-
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -661,6 +615,7 @@ export class EditclientComponent implements OnInit {
                         this.editClientLoading = false;
 
                         this.editClientSuccess = true;
+
                         setTimeout(() => {
 
                             this.editClientSuccess = false;
@@ -692,16 +647,10 @@ export class EditclientComponent implements OnInit {
             }
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
-
-                console.log(data);
                 if (data.success) {
-
-
-
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -740,29 +689,22 @@ export class EditclientComponent implements OnInit {
                 clientContactEmail: ""
 
             }
-                        let newclient = {
+            let newclient = {
 
-            oldname: clientparam,
-            newname: this.clientName
+                oldname: clientparam,
+                newname: this.clientName
 
-        }
-        this.clientservice.editSubContractorClientName(newclient).subscribe(data=>{
+            }
+            this.clientservice.editSubContractorClientName(newclient).subscribe(data => {
 
-            console.log(data);
 
-        })
+            })
             this.clientservice.editClient(clientToBeEdited).subscribe(data => {
 
-
-                console.log(data);
                 if (data.success) {
-
-
-
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
                         this.clientsArray = data.clients;
                         this.clientName = '';
                         this.clientPhoneNumber = '';
@@ -790,13 +732,15 @@ export class EditclientComponent implements OnInit {
 
 
     }
-    closeModal(){
 
- document.getElementById("btnclose").click();
- this.areYouSure = false;
+    closeModal() {
+
+        document.getElementById("btnclose").click();
+        this.areYouSure = false;
 
     }
-    openRemoveSubContractorModal(client, index, subcontractor,subcontractorid) {
+
+    openRemoveSubContractorModal(client, index, subcontractor, subcontractorid) {
 
         this.clientVar = client;
         this.indexToBeRemoved = index;
@@ -821,63 +765,44 @@ export class EditclientComponent implements OnInit {
 
 
         }
-        console.log(clientToBeEdited)
         this.removingSubContractor = true;
         this.clientservice.editClient3(clientToBeEdited).subscribe(data => {
 
             if (data.success) {
 
-                //document.getElementById("btnclose").click();
 
-                this.clientservice.removeSubContractor(this.subContractorIdVar).subscribe(data=>{
+                this.clientservice.removeSubContractor(this.subContractorIdVar).subscribe(data => {
 
-                    if(data.success){
+                    if (data.success) {
 
                         this.removingSubContractor = false;
-                this.removalComplete = true;
-                setTimeout(() => {
+                        this.removalComplete = true;
+                        
+                        setTimeout(() => {
 
-                    this.removalComplete = false;
+                            this.removalComplete = false;
 
-                    document.getElementById("btnclose").click();
-                    this.clientservice.getClients().subscribe(data => {
+                            document.getElementById("btnclose").click();
 
-                        console.log(data.clients)
-                        for (let i = 0; i < data.clients.length; i++) {
+                            this.clientservice.getClients().subscribe(data => {
 
-                            this.subcontractorsArray[i] = data.clients[i].subcontractors;
+                                for (let i = 0; i < data.clients.length; i++) {
 
-
-                        }
-                        this.openIndividualAddSubContractorBoolean = false;
-
-                    })
+                                    this.subcontractorsArray[i] = data.clients[i].subcontractors;
 
 
+                                }
+                                this.openIndividualAddSubContractorBoolean = false;
 
+                            })
 
-
-
-
-                }, 2000);
-
-
-
+                        }, 2000);
 
                     }
 
-
                 })
 
-                
-
             }
-
-
-
-            console.log("this.subcontractorsArray");
-            console.log(this.subcontractorsArray);
-
 
         })
 
@@ -887,7 +812,7 @@ export class EditclientComponent implements OnInit {
         //let subcontractorLocation = [];
         if (this.subCLocations == "" || undefined) {
 
-            this.addSubContractorLocationFieldCannotBeEmpty= true;
+            this.addSubContractorLocationFieldCannotBeEmpty = true;
             setTimeout(() => {
 
                 this.addSubContractorLocationFieldCannotBeEmpty = false;
@@ -895,11 +820,11 @@ export class EditclientComponent implements OnInit {
             }, 2000);
 
         } else {
+
             this.subcontractorLocations.push(this.subCLocations);
-            console.log(this.subcontractorLocations.length)
-            console.log(this.subcontractorLocations);
             this.subCLocations = "";
             this.addSubContractorLocationSuccess = true;
+
             setTimeout(() => {
 
                 this.addSubContractorLocationSuccess = false;
@@ -908,372 +833,354 @@ export class EditclientComponent implements OnInit {
         }
 
     }
-    permaAddLocationToSubcontractorFunc(index,id,locations,addlocation,client,subcontractorname){
+    permaAddLocationToSubcontractorFunc(index, id, locations, addlocation, client, subcontractorname) {
 
         this.subcontractorLocations2.push(this.subCLocations2);
-        console.log(this.subCLocations2)
-        console.log(index)
-        if(this.subCLocations2 != ""){
 
-            this.editSubContractorLoading= true;
-        let subcontractor = {
+        if (this.subCLocations2 != "") {
 
-            index:index,
-            id:id,
-            subclocations2: this.subCLocations2,
-            addlocation: true
+            this.editSubContractorLoading = true;
+            let subcontractor = {
 
-        }
-        let clientsubcontractor = {
+                index: index,
+                id: id,
+                subclocations2: this.subCLocations2,
+                addlocation: true
 
-            subcontractorname: subcontractorname,
-            client:client,
-            subclocations2: this.subCLocations2,
-            addlocation:true
-        }
-        this.clientservice.addLocationToClient(clientsubcontractor).subscribe(data=>{
+            }
+            let clientsubcontractor = {
 
-
-            if(data.success){
-
-                     this.clientservice.editSubContractorLocation(subcontractor).subscribe(data=>{
+                subcontractorname: subcontractorname,
+                client: client,
+                subclocations2: this.subCLocations2,
+                addlocation: true
+            }
+            this.clientservice.addLocationToClient(clientsubcontractor).subscribe(data => {
 
 
-                          this.clientservice.getLocationsOfClient(client).subscribe(data => {
+                if (data.success) {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
+                    this.clientservice.editSubContractorLocation(subcontractor).subscribe(data => {
+
+
+                        this.clientservice.getLocationsOfClient(client).subscribe(data => {
+
+ 
                             this.editSubContractorLoading = false;
                             this.subcontractorsArray[index] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[index].length; z++){
 
-                                    this.subcontractorsArray[index][z][z] = z * 34567
+                            for (let z = 0; z < this.subcontractorsArray[index].length; z++) {
+
+                                this.subcontractorsArray[index][z][z] = z * 34567
 
                             }
-                                                        console.log(this.subcontractorsArray)
 
                             this.editSubContractorSuccess = true;
-                            this.subCLocations2="";
-                            setTimeout(function() {
+                            this.subCLocations2 = "";
+
+                            setTimeout(function () {
                                 this.editSubContractorSuccess = false;
                             }, 2000);
 
                         })
 
-        })
+                    })
 
-            }
-            
-        })
-           /*    */
+                }
+
+            })
+            /*    */
 
 
-        }else{
+        } else {
 
             this.subContractorLocationFieldCannotBeEmpty = true;
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 this.subContractorLocationFieldCannotBeEmpty = false
 
-            },2000)
+            }, 2000)
         }
 
     }
-       permaAddStoreNumberToSubcontractorFunc(index,id,locations,addlocation,client,subcontractorname){
+    permaAddStoreNumberToSubcontractorFunc(index, id, locations, addlocation, client, subcontractorname) {
 
         this.subcontractorLocations2.push(this.subCLocations2);
-        console.log(this.subCLocations2)
-        console.log(index)
 
-        if(this.subCStoreNumbers2 != ""){
+        if (this.subCStoreNumbers2 != "") {
 
-        this.editSubContractorLoading = true;
-                let clientsubcontractor = {
+            this.editSubContractorLoading = true;
+            let clientsubcontractor = {
 
-            subcontractorname: subcontractorname,
-            client:client,
-            subcstorenumbers2: this.subCStoreNumbers2,
-            addstorenumber:true
-        }
+                subcontractorname: subcontractorname,
+                client: client,
+                subcstorenumbers2: this.subCStoreNumbers2,
+                addstorenumber: true
+            }
 
-        let subcontractor = {
+            let subcontractor = {
 
-            index:index,
-            id:id,
-            subcstorenumbers2: this.subCStoreNumbers2,
-            addstorenumber: true
+                index: index,
+                id: id,
+                subcstorenumbers2: this.subCStoreNumbers2,
+                addstorenumber: true
 
-        }
-                this.clientservice.addStoreNumberToClient(clientsubcontractor).subscribe(data=>{
-console.log(data)
-if(data.success){
+            }
+            this.clientservice.addStoreNumberToClient(clientsubcontractor).subscribe(data => {
 
-                this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data=>{
+                if (data.success) {
+
+                    this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data => {
 
 
-                          this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
+                        this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
+             
                             this.subCStoreNumbers2 = ""
                             this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[index] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[index].length; z++){
 
-                                    this.subcontractorsArray[index][z][z] = z * 34567
+                            this.subcontractorsArray[index] = data.subcontractors
+
+                            for (let z = 0; z < this.subcontractorsArray[index].length; z++) {
+
+                                this.subcontractorsArray[index][z][z] = z * 34567
 
                             }
-                                                        console.log(this.subcontractorsArray)
-                        this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                            this.editSubContractorSuccess = true;
+                            this.subCStoreNumbers2 = "";
 
-                        },2000)
-                            
+                            setTimeout(() => {
+                                this.editSubContractorSuccess = false;
+
+                            }, 2000)
+
 
                         })
 
-        })
-}
+                    })
+                }
 
-                })
+            })
 
 
 
-        }else{
+        } else {
 
             this.subContractorStoreNumberFieldCannotBeEmpty = true;
-            setTimeout(()=>{
+
+            setTimeout(() => {
 
                 this.subContractorStoreNumberFieldCannotBeEmpty = false
 
-            },2000)
+            }, 2000)
         }
 
     }
-        permaRemoveStoreNumberFromSubcontractorFunc(index,id,storenumbers,removelocation,client,subcontractorname){
+    permaRemoveStoreNumberFromSubcontractorFunc(index, id, storenumbers, removelocation, client, subcontractorname) {
 
-        console.log(index)
-        console.log(id)
-       
-        console.log(removelocation)
-        if(storenumbers.length>0){
+        if (storenumbers.length > 0) {
             this.editSubContractorLoading = true;
-            storenumbers.splice(storenumbers.length-1,1);
-                    let subcontractor={
+            storenumbers.splice(storenumbers.length - 1, 1);
+            let subcontractor = {
 
-            index:index,
-            id:id,
-            storenumbers:storenumbers,
-            removestorenumber:true
+                index: index,
+                id: id,
+                storenumbers: storenumbers,
+                removestorenumber: true
 
-        }
-        let clientsubcontractor = {
+            }
+            let clientsubcontractor = {
 
-            subcontractorname: subcontractorname,
-            client:client,
-            subcstorenumbers2: this.subCStoreNumbers2,
-            removestorenumber:true
-        }
-        this.clientservice.removeStoreNumberFromClient(clientsubcontractor).subscribe(data=>{
+                subcontractorname: subcontractorname,
+                client: client,
+                subcstorenumbers2: this.subCStoreNumbers2,
+                removestorenumber: true
+            }
+            this.clientservice.removeStoreNumberFromClient(clientsubcontractor).subscribe(data => {
 
-            if(data.success){
-        this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data=>{
+                if (data.success) {
+                    this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data => {
 
 
-                          this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
+                        this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
+  
                             this.subCStoreNumbers2 = ""
                             this.editSubContractorLoading = false;
-                            
                             this.subcontractorsArray[index] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[index].length; z++){
 
-                                    this.subcontractorsArray[index][z][z] = z * 34567
+                            for (let z = 0; z < this.subcontractorsArray[index].length; z++) {
+
+                                this.subcontractorsArray[index][z][z] = z * 34567
 
                             }
-                                                        console.log(this.subcontractorsArray)
+
+                            this.editSubContractorLoading = false;
+                            this.editSubContractorSuccess = true;
+                            this.subCStoreNumbers2 = "";
+
+                            setTimeout(() => {
+                                this.editSubContractorSuccess = false;
+
+                            }, 2000)
+
+
+                        })
+
+
+                        setTimeout(() => {
+
+
+                            this.editSubContractorSuccess = false;
+
+                        }, 2000)
+                    })
+
+                } else {
+
+                    storenumbers = [];
+                    let subcontractor = {
+
+                        index: index,
+                        id: id,
+                        storenumbers: storenumbers,
+                        removestorenumber: true
+
+                    }
+                    this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data => {
+
+                        this.subCStoreNumbers2 = "";
                         this.editSubContractorLoading = false;
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
-
-                        },2000)
-                            
-
-                        })
-           
-
-            setTimeout(()=>{
+                        this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
 
-                this.editSubContractorSuccess = false;
-            },2000)
-        })
-
-            }else{
-
-                            storenumbers=[];
-                   let subcontractor={
-
-            index:index,
-            id:id,
-            storenumbers:storenumbers,
-            removestorenumber:true
-
-        }
-        this.clientservice.editSubContractorStoreNumber(subcontractor).subscribe(data=>{
-
-            console.log(data)
-            console.log(data)
-            this.subCStoreNumbers2 = "";
-            this.editSubContractorLoading = false;
-            this.editSubContractorSuccess = true;
-                                        this.subCStoreNumbers2="";
-
-                          this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
-
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
                             this.subCStoreNumbers2 = ""
                             this.editSubContractorLoading = false;
-                            
                             this.subcontractorsArray[index] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[index].length; z++){
 
-                                    this.subcontractorsArray[index][z][z] = z * 34567
+                            for (let z = 0; z < this.subcontractorsArray[index].length; z++) {
+
+                                this.subcontractorsArray[index][z][z] = z * 34567
 
                             }
-                                                        console.log(this.subcontractorsArray)
-                        this.editSubContractorLoading = false
-                        this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                            this.editSubContractorLoading = false
+                            this.editSubContractorSuccess = true;
+                            this.subCStoreNumbers2 = "";
 
-                        },2000)
-                            
+                            setTimeout(() => {
+
+                                this.editSubContractorSuccess = false;
+
+                            }, 2000)
+
 
                         })
 
-        })
-            }
-            
-        })
+                    })
+                }
+
+            })
 
 
-        }else{
+        } else {
 
-            this.subContractorLocationsAlreadyEmpty =true;
-            setTimeout(()=>{
+            this.subContractorLocationsAlreadyEmpty = true;
+
+            setTimeout(() => {
 
 
-                this.subContractorLocationsAlreadyEmpty= false;
+                this.subContractorLocationsAlreadyEmpty = false;
 
             })
 
         }
 
     }
-    
-    permaRemoveLocationFromSubcontractorFunc(index,id,locations,removelocation,client,subcontractorname){
 
-        console.log(index)
-        console.log(id)
-        console.log(locations)
-        console.log(removelocation)
-        if(locations.length>0){
+    permaRemoveLocationFromSubcontractorFunc(index, id, locations, removelocation, client, subcontractorname) {
+
+
+        if (locations.length > 0) {
+
             this.editSubContractorLoading = true;
-            locations.splice(locations.length-1,1);
-                    let subcontractor={
+            locations.splice(locations.length - 1, 1);
+            let subcontractor = {
 
-            index:index,
-            id:id,
-            locations:locations,
-            removelocation:true
-
-        }
-                let clientsubcontractor = {
-
-            subcontractorname: subcontractorname,
-            client:client,
-            subcstorenumbers2: this.subCStoreNumbers2,
-            removelocation:true
-        }
-        this.clientservice.removeLocationFromClient(clientsubcontractor).subscribe(data=>{
-            if(data.success){
-
-        this.clientservice.editSubContractorLocation(subcontractor).subscribe(data=>{
-
-
-            console.log(data)
-            this.subCLocations2= "";
-            this.editSubContractorLoading = false;
-            this.editSubContractorSuccess = true;
-            setTimeout(()=>{
-
-                this.editSubContractorSuccess= false;
-            },2000);
-
-        })
-
-            }else{
-
-            locations=[];
-                   let subcontractor={
-
-            index:index,
-            id:id,
-            locations:locations,
-            removelocation:true
-
-        }
-        this.clientservice.editSubContractorLocation(subcontractor).subscribe(data=>{
-
-            console.log(data)
-        
-             console.log(data)
-            this.subCStoreNumbers2 = "";
-            this.editSubContractorLoading = false;
-            this.editSubContractorSuccess = true;
-            setTimeout(()=>{
-
-
-                this.editSubContractorSuccess = false;
-            },2000)
-
-        })
+                index: index,
+                id: id,
+                locations: locations,
+                removelocation: true
 
             }
+            let clientsubcontractor = {
 
-        })
-        }else{
+                subcontractorname: subcontractorname,
+                client: client,
+                subcstorenumbers2: this.subCStoreNumbers2,
+                removelocation: true
+            }
+            this.clientservice.removeLocationFromClient(clientsubcontractor).subscribe(data => {
+                if (data.success) {
 
-            this.subContractorLocationsAlreadyEmpty =true;
-            setTimeout(()=>{
+                    this.clientservice.editSubContractorLocation(subcontractor).subscribe(data => {
 
 
-                this.subContractorLocationsAlreadyEmpty= false;
+                        this.subCLocations2 = "";
+                        this.editSubContractorLoading = false;
+                        this.editSubContractorSuccess = true;
+
+                        setTimeout(() => {
+
+                            this.editSubContractorSuccess = false;
+
+                        }, 2000);
+
+                    })
+
+                } else {
+
+                    locations = [];
+
+                    let subcontractor = {
+
+                        index: index,
+                        id: id,
+                        locations: locations,
+                        removelocation: true
+
+                    }
+                    this.clientservice.editSubContractorLocation(subcontractor).subscribe(data => {
+
+           
+                        this.subCStoreNumbers2 = "";
+                        this.editSubContractorLoading = false;
+                        this.editSubContractorSuccess = true;
+
+                        setTimeout(() => {
+
+
+                            this.editSubContractorSuccess = false;
+                            
+                        }, 2000)
+
+                    })
+
+                }
+
+            })
+        } else {
+
+            this.subContractorLocationsAlreadyEmpty = true;
+
+            setTimeout(() => {
+
+
+                this.subContractorLocationsAlreadyEmpty = false;
 
             })
 
@@ -1286,8 +1193,8 @@ if(data.success){
 
             this.subcontractorLocations.splice(0, 1);
             this.subCLocations = "";
-
             this.subContractorLocationSuccessfullyRemoved = true;
+
             setTimeout(() => {
 
                 this.subContractorLocationSuccessfullyRemoved = false;
@@ -1297,6 +1204,7 @@ if(data.success){
         } else {
 
             this.subContractorLocationsAlreadyEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorLocationsAlreadyEmpty = false;
@@ -1307,11 +1215,12 @@ if(data.success){
 
     }
     addStoreNumberToSubcontractorFunc(client, index, storenumbers) {
-        //this.subcontractorStoreNumbers = [];
-        console.log(storenumbers);
+
+
         if (this.subCStoreNumbers == "" || undefined) {
 
             this.subContractorStoreNumberFieldCannotBeEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorStoreNumberFieldCannotBeEmpty = false;
@@ -1319,16 +1228,12 @@ if(data.success){
             }, 2000);
 
         } else {
+
             this.subcontractorStoreNumbers.push(this.subCStoreNumbers);
             this.subCStoreNumbers = "";
-            console.log(this.subcontractorStoreNumbers.length)
-
-            console.log(storenumbers);
-
-
-
             this.subcontractorStoreNumber = "";
             this.subContractorStoreNumberSuccessfullyAdded = true;
+
             setTimeout(() => {
 
                 this.subContractorStoreNumberSuccessfullyAdded = false;
@@ -1336,12 +1241,10 @@ if(data.success){
             }, 2000);
         }
 
-        console.log(this.subcontractorStoreNumbers)
 
     }
     removeStoreNumberFromSubcontractorFunc(client, index, storenumbers) {
 
-console.log(this.subcontractorStoreNumbers.length)
         if (this.subcontractorStoreNumbers.length > 0) {
 
             this.subcontractorStoreNumbers.splice(this.subcontractorStoreNumber.length - 1, 1);
@@ -1350,6 +1253,7 @@ console.log(this.subcontractorStoreNumbers.length)
         } else {
 
             this.subContractorStoreNumberAlreadyEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorStoreNumberAlreadyEmpty = false;
@@ -3775,6 +3679,7 @@ console.log(this.subcontractorStoreNumbers.length)
         if (this.subContractorPhoneNumber == "" || undefined) {
 
             this.addSubContractorPhoneNumberEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorPhoneNumberEmpty = false;
@@ -3786,6 +3691,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             this.addSubContractorNameEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorNameEmpty = false;
@@ -3797,6 +3703,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             this.addSubContractorEmailAddressEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorEmailAddressEmpty = false;
@@ -3808,6 +3715,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             this.addSubContractorContactPhoneEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorContactPhoneEmpty = false;
@@ -3819,6 +3727,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             this.addSubContractorContactNameEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorContactNameEmpty = false;
@@ -3830,6 +3739,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             this.addSubContractorContactEmailEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorContactEmailEmpty = false;
@@ -3838,7 +3748,9 @@ console.log(this.subcontractorStoreNumbers.length)
 
         }
         if (this.subcontractorStoreNumbers.length < 1) {
+
             this.addSubContractorStoreNumbersEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorStoreNumbersEmpty = false;
@@ -3849,6 +3761,7 @@ console.log(this.subcontractorStoreNumbers.length)
         if (this.subcontractorLocations.length < 1) {
 
             this.addSubContractorLocationsEmpty = true;
+
             setTimeout(() => {
 
                 this.addSubContractorLocationsEmpty = false;
@@ -3865,13 +3778,12 @@ console.log(this.subcontractorStoreNumbers.length)
             (this.subcontractorStoreNumbers.length > 0) &&
             (this.subcontractorLocations.length > 0)
         ) {
-            console.log("allconditionsmet");
             this.addSubContractorLoading = true;
 
             this.clientservice.editClientAddSubcontractor(subcontractor).subscribe(data => {
 
-                console.log(data)
                 if (data.success) {
+
                     this.clientservice.addSubContractor(subcontractor).subscribe(data => {
 
 
@@ -3884,6 +3796,7 @@ console.log(this.subcontractorStoreNumbers.length)
                         this.addSubContractorLoading = false;
                         this.allSubcontractorConditionsMet = true;
                         this.addSubContractorSuccess = true;
+
                         setTimeout(() => {
 
                             this.allSubcontractorConditionsMet = false;
@@ -3902,8 +3815,9 @@ console.log(this.subcontractorStoreNumbers.length)
 
             })
         } else {
-            console.log("addSubContractorWorking");
+
             this.allSubcontractorConditionsNotMet = true;
+
             setTimeout(() => {
 
                 this.allSubcontractorConditionsNotMet = false;
@@ -3912,8 +3826,6 @@ console.log(this.subcontractorStoreNumbers.length)
 
         }
 
-        console.log(subcontractor);
-
 
     }
     removeStoreNumber2() {
@@ -3921,18 +3833,17 @@ console.log(this.subcontractorStoreNumbers.length)
         this.subContractorStoreNumberFieldCannotBeEmpty = false;
         this.subContractorStoreNumberSuccessfullyAdded = false;
         this.subContractorStoreNumberAlreadyEmpty = false;
+
         if (this.subContractor.storenumbers.length > 0) {
+
             this.subContractor.storenumbers.splice(this.subcontractorStoreNumbers.length - 1, 1);
             this.subContractorStoreNumberSuccessfullyRemoved = true;
+
             setTimeout(() => {
 
                 this.subContractorStoreNumberSuccessfullyRemoved = false;
 
             }, 1000);
-            console.log(this.subcontractorStoreNumbers);
-
-
-
 
         } else {
 
@@ -3947,37 +3858,30 @@ console.log(this.subcontractorStoreNumbers.length)
     }
 
     openAddSubcontractorsFunc(index) {
+
         this.addSubContractorIndexVar = index;
         this.returnToClientForm = true;
-        console.log(index);
-        console.log(this.openAddSubContractor)
-        console.log(this.addSubContractorFormReady)
-        console.log("this.editFormReady")
-        console.log(this.editFormReady)
+
         if (!this.openAddSubContractor) {
 
             if (!this.openAddSubContractor && this.openEditSubcontractors) {
+
                 this.editSubContractorFormReady = false
+
                 setTimeout(() => {
 
                     this.openEditSubcontractors = false;
-
-
                     this.eScFormReady = true;
                     this.openAddSubContractor = true;
-
                     this.openIndividualAddSubContractorBoolean = true;
                     this.addSubContractorFormReady = true;
 
                 }, 400)
 
-
-
-
-
             }
 
             this.editFormReady = false;
+
             setTimeout(() => {
 
                 this.eFormReady = false;
@@ -3985,14 +3889,6 @@ console.log(this.subcontractorStoreNumbers.length)
                 this.openAddSubContractor = true;
                 this.openIndividualAddSubContractorBoolean = true;
                 this.addSubContractorFormReady = true;
-                console.log("eFormReady")
-                console.log(this.eFormReady)
-                console.log("editSubContractorFormReady")
-                console.log(this.editSubContractorFormReady)
-                console.log(this.addSubContractorFormReady)
-
-                //   document.getElementById("editsubcontractornametab").click();
-
 
             }, 400);
 
@@ -4002,12 +3898,14 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             }, 700)
+
         } else if (!this.openAddSubContractor && this.openEditSubcontractors) {
 
 
         } else if (this.openAddSubContractor) {
 
             this.editFormReady = false;
+
             setTimeout(() => {
 
                 this.eFormReady = false;
@@ -4016,6 +3914,7 @@ console.log(this.subcontractorStoreNumbers.length)
 
 
             }, 400)
+
             setTimeout(() => {
 
                 document.getElementById("editsubcontractornametab").click();
@@ -4026,50 +3925,33 @@ console.log(this.subcontractorStoreNumbers.length)
 
         }
         else {
-            //this.editFormReady = false;
 
-
-            // this.eFormReady = false;
             this.addSubContractorFormReady = false;
 
-
-
             setTimeout(() => {
+
                 this.eScFormReady = false;
                 this.openAddSubContractor = false;
                 this.openIndividualAddSubContractorBoolean = false;
                 this.eFormReady = true;
                 this.editFormReady = true;
 
-
-
-                console.log("eFormReady")
-                console.log(this.eFormReady)
-                console.log("editSubContractorFormReady")
-                console.log(this.addSubContractorFormReady)
-                console.log("this.openAddSubContractor")
-                console.log(this.openAddSubContractor)
-
             }, 400)
+
             setTimeout(() => {
-               // document.getElementById('nameform').focus();
+
                 document.getElementById("clientnametab").click();
 
             }, 700)
 
         }
-        console.log(this.openAddSubContractor)
 
     }
     openEditSubcontractorsFunc(index, client) {
+
         this.returnToClientForm = true;
         this.editSubContractorIndexVar = index;
-        console.log(index)
-        console.log(client)
-        console.log(this.editSubContractorIndexVar)
         this.indexVar = index
-
-
         this.subContractorName = "";
         this.subContractorEmailAddress = "";
         this.subContractorPhoneNumber = "";
@@ -4080,40 +3962,23 @@ console.log(this.subcontractorStoreNumbers.length)
         this.subCStoreNumbers = "";
 
         if (!this.openEditSubcontractors) {
-            console.log("i'mm here");
-            console.log(this.openAddSubContractor)
+            
+
             this.loadingNewSubContractors = true;
 
             setTimeout(() => {
 
-
-                
-
-                // this.loadingClients = true;
-
-
-                console.log("add Subcontractors was opened");
-
                 this.clientservice.getClients().subscribe(data => {
 
-                    console.log(data);
 
                     if (data.success) {
-                        console.log
-
-                        console.log(this.editSubContractorFormReady)
-
-                        console.log(this.editSubContractorFormReady)
-
-
+    
 
                         this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
+
                             this.subcontractorsArray[index] = data.subcontractors
+
                             for (let z = 0; z < this.subcontractorsArray[index].length; z++) {
 
                                 this.subcontractorsArray[index][z][z] = z * 34567
@@ -4121,34 +3986,31 @@ console.log(this.subcontractorStoreNumbers.length)
                             }
 
                         })
-    
 
-                        // this.editFormReady =false;
-                        //this.eScFormReady = true;
-                        //this.editSubContractorFormReady = true;
+
+              
                         this.editFormReady = false;
                         this.loadingNewSubContractors = false;
                         this.loadingClients = false;
                         this.addSubContractorFormReady = false;   // CLOSE ADD SUBCONTRACTOR FORM SLIDE AWAY
-
-                        console.log(this.openEditSubcontractors)
-
                         this.openIndividualAddSubContractorBoolean = true;
 
                         setTimeout(() => {
+
                             this.openAddSubContractor = false;      //REMOVE ADD SUBCONTRACTOR FORM FROM DOM...
                             this.eScFormReady = false;
-
                             this.eFormReady = false;
                             this.openEditSubcontractors = true;
                             this.editSubContractorFormReady = true;
-                            console.log("settimeout")
 
                         }, 1200)
 
-                    }else{
+                    } else {
+
                         this.loadingNewSubContractors = false;
+
                     }
+
                 })
 
             }, 800)
@@ -4157,85 +4019,62 @@ console.log(this.subcontractorStoreNumbers.length)
 
              (!this.openEditSubcontractors && this.addSubContractorFormReady) {
 
-            console.log("else if ")
+
             this.addSubContractorFormReady = false
-            console.log(this.openEditSubcontractors)
+
             setTimeout(() => {
+
                 this.eScFormReady = false;
                 this.openAddSubContractor = false;
                 this.openIndividualAddSubContractorBoolean = false
                 this.loadingNewSubContractors = true;
                 this.loadingClients = true;
-
-                console.log("add Subcontractors was opened");
-
                 this.editFormReady = false;
 
                 setTimeout(() => {
-                    console.log("settimeout")
-
+       
                     this.eFormReady = false
                     this.openEditSubcontractors = true;
 
                 }, 400)
-                //this.openAddSubContractor = false;
 
             }, 400)
 
         }
-        //this.openEditSubcontractors = true;
-
-        //this.openIndividualSubContractorBoolean = true;
 
         else if (!this.openEditSubcontractors && this.openAddSubContractor) {
 
-            console.log("ADDSUBCONTRACTORISOPEN")
 
-            //this.openIndividualSubContractorBoolean = false;
         }
         else {
-            console.log("last condition")
+
             this.editSubContractorFormReady = false
+
             setTimeout(() => {
 
-                // this.editSubContractorFormReady = true;
-                //this.eScFormReady = false;
-                this.openEditSubcontractors = false;
 
+                this.openEditSubcontractors = false;
                 this.openIndividualAddSubContractorBoolean = false;
                 this.eFormReady = true;
                 this.editFormReady = true;
 
 
             }, 400)
+            
             setTimeout(() => {
-               // document.getElementById('nameform').focus();
-               // document.getElementById("clientnametab").click();
 
 
             }, 700)
 
         }
-        console.log(index)
-        console.log(this.openEditForm);
-        console.log(this.indexVar);
-        console.log(this.openEditSubcontractors)
-        console.log(this.editSubContractorIndexVar
-        )
+
 
     }
     editSubContractorFunc(client, item, index, clientindex, field, id) {
-        console.log(this.subContractorName2);
-        console.log(this.subContractorName)
-        console.log(item);
-        console.log(field);
-        console.log(id)
-        console.log(index)
-        console.log()
-        console.log("editSubContractorFunc");
+
         this.fieldVar = field;
         this.subContractorNameVar = item;
-        this.clientNameVar2=client;
+        this.clientNameVar2 = client;
 
         if (field == "name" && this.subContractorName != "") {
 
@@ -4256,152 +4095,73 @@ console.log(this.subcontractorStoreNumbers.length)
                 subContractorContactEmail: ""
 
             }
-            console.log(clientToBeEdited2);
+        
             this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
-
-                console.log(data)
-                if (data.success) {
-                    this.clientservice.getClients().subscribe(data=>{
-
-                        console.log(data.clients)
-                      /*  for(let z=0;z<data.clients.length;z++){
-
-
-                            for(let d=0;d<data.clients[z].subcontractors.length;d++){
-
-                                if(data.clients[z].subcontractors[d].name == item){
-
-                                    data.clients[z].subcontractors[d].name =
-
-                                }
-
-
-                            }
-
-                        }*/
-                        data.clients.forEach(client =>{
-
-                            console.log(client)
-                            client.subcontractors.forEach(subcontractor=> {
-                                console.log(subcontractor)
-                                if(subcontractor.name == item){
-                                    console.log("IT MATCHED")
-                                    console.log(subcontractor.name)
-                                    console.log(item)
-                                    console.log(this.subContractorName)
-                                    subcontractor.name = this.subContractorName
-                                    console.log(subcontractor)
-                                   console.log("data.clients[clientindex].subcontractors")
-                                   console.log(data.clients[clientindex].subcontractors)
-                        let clientToBeEdited = {
-
-                            client: this.clientNameVar2,
-                            subcontractors: data.clients[clientindex].subcontractors
-
-                        }
-                        
-                        this.clientservice.editClientSubContractorName(clientToBeEdited).subscribe(data=>{
-
-                            console.log(data);
-
-                        })
-
-                                }
-
-                            })
-                        })
-                        console.log(data.clients[clientindex])
-
-
-                    })
-
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
-  console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[index] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< data.subcontractors.length; z++){
-
-                                  data.subcontractors[z][z] = z * 34567
-
-                            }
-                                this.subcontractorsArray[clientindex]= data.subcontractors
-                                                        console.log(this.subcontractorsArray)
-                        this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
-
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
-
-                        },2000)
-                            
-
-                        
-                            
-
-                })
-
-
-                }
-
-            })
-           /* this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
 
                 if (data.success) {
 
                     this.clientservice.getClients().subscribe(data => {
 
-                        console.log(data);
-                        this.editSubContractorSuccess = true;
-                        console.log("this.editSubContractorSuccess");
-                        console.log(this.editSubContractorSuccess);
-                        this.editSubContractorLoading = false;
-                        this.loadingEditIcon = false;
-                        setTimeout(() => {
+                        data.clients.forEach(client => {
 
-                            this.clientsArray = data.clients;
-                            this.subContractorName = "";
-                            this.subContractorEmailAddress = "";
-                            this.subContractorPhoneNumber = "";
-                            this.subContractorContactEmail = "";
-                            this.subContractorContactPhone = "";
-                            this.subContractorContactName = "";
+                            client.subcontractors.forEach(subcontractor => {
 
-                            for (let i = 0; i < data.clients.length; i++) {
+                                if (subcontractor.name == item) {
+              
+                                    subcontractor.name = this.subContractorName
+                     
+                                    let clientToBeEdited = {
 
-                                this.subcontractorsArray[i] = data.clients[i].subcontractors;
+                                        client: this.clientNameVar2,
+                                        subcontractors: data.clients[clientindex].subcontractors
+
+                                    }
+
+                                    this.clientservice.editClientSubContractorName(clientToBeEdited).subscribe(data => {
 
 
+                                    })
 
-                            }
-                            console.log("this.subcontractorsArray");
-                            console.log(this.subcontractorsArray);
-                            for (let z = 0; z < this.subcontractorsArray.length; z++) {
+                                }
 
-                                for (let d = 0; d < this.subcontractorsArray[z].length; d++)
-                                    this.subcontractorsArray[z][d][d] = d * 34567
-                                console.log(this.subcontractorsArray[z])
+                            })
+                        })
 
-                            }
-                            this.editSubContractorSuccess = false;
-
-                        }, 1500);
 
                     })
 
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
+     
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[index] = data.subcontractors
 
+                        for (let z = 0; z < data.subcontractors.length; z++) {
+
+                            data.subcontractors[z][z] = z * 34567
+
+                        }
+
+                        this.subcontractorsArray[clientindex] = data.subcontractors
+                        this.editSubContractorSuccess = true;
+                        this.subCStoreNumbers2 = "";
+
+                        setTimeout(() => {
+
+                            this.editSubContractorSuccess = false;
+
+                        }, 2000)
+
+                    })
 
                 }
 
-            })*/
+            })
+    
         } else {
 
             this.subContractorNameEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorNameEmpty = false;
@@ -4428,39 +4188,35 @@ console.log(this.subcontractorStoreNumbers.length)
                 subContractorContactEmail: ""
 
             }
-            console.log(clientToBeEdited2);
-     this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
-                console.log(data)
+            this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
+
                 if (data.success) {
 
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[clientindex] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[clientindex].length; z++){
 
-                                    this.subcontractorsArray[clientindex][z][z] = z * 34567
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[clientindex] = data.subcontractors
 
-                            }
-                                                        console.log(this.subcontractorsArray)
+                        for (let z = 0; z < this.subcontractorsArray[clientindex].length; z++) {
+
+                            this.subcontractorsArray[clientindex][z][z] = z * 34567
+
+                        }
+
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                        setTimeout(() => {
 
-                        },2000)
-                            
+                            this.editSubContractorSuccess = false;
 
-                })
+                        }, 2000)
+
+
+                    })
 
 
                 }
@@ -4473,15 +4229,16 @@ console.log(this.subcontractorStoreNumbers.length)
         } else {
 
             this.subContractorEmailAddressEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorEmailAddressEmpty = false;
 
             }, 2000)
+
         }
         if (field == "phonenumber" && this.subContractorPhoneNumber != "") {
 
-            console.log("phonenumber");
             this.editSubContractorLoading = true;
             this.loadingEditIcon = true;
 
@@ -4499,46 +4256,42 @@ console.log(this.subcontractorStoreNumbers.length)
                 subContractorContactEmail: ""
 
             }
-            console.log(clientToBeEdited2);
-     this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
-                console.log(data)
+            this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
+
                 if (data.success) {
 
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[clientindex] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[clientindex].length; z++){
+               
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[clientindex] = data.subcontractors
 
-                                    this.subcontractorsArray[clientindex][z][z] = z * 34567
+                        for (let z = 0; z < this.subcontractorsArray[clientindex].length; z++) {
 
-                            }
-                                                        console.log(this.subcontractorsArray)
+                            this.subcontractorsArray[clientindex][z][z] = z * 34567
+
+                        }
+
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                        setTimeout(() => {
 
-                        },2000)
-                            
-                })
+                            this.editSubContractorSuccess = false;
 
+                        }, 2000)
 
+                    })
                 }
 
             })
+
         } else {
 
             this.subContractorPhoneNumberEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorPhoneNumberEmpty = false;
@@ -4546,6 +4299,7 @@ console.log(this.subcontractorStoreNumbers.length)
             }, 2000)
 
         }
+
         if (field == "contactname" && this.subContractorContactName != "") {
 
             this.editSubContractorLoading = true;
@@ -4567,37 +4321,32 @@ console.log(this.subcontractorStoreNumbers.length)
             }
             this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
-                console.log(data)
                 if (data.success) {
 
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[clientindex] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[clientindex].length; z++){
+               
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[clientindex] = data.subcontractors
 
-                                    this.subcontractorsArray[clientindex][z][z] = z * 34567
+                        for (let z = 0; z < this.subcontractorsArray[clientindex].length; z++) {
 
-                            }
-                                                        console.log(this.subcontractorsArray)
+                            this.subcontractorsArray[clientindex][z][z] = z * 34567
+
+                        }
+
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                        setTimeout(() => {
 
-                        },2000)
-                            
+                            this.editSubContractorSuccess = false;
 
-                })
+                        }, 2000)
 
+
+                    })
 
                 }
 
@@ -4606,6 +4355,7 @@ console.log(this.subcontractorStoreNumbers.length)
         } else {
 
             this.subContractorContactNameEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorContactNameEmpty = false;
@@ -4632,40 +4382,34 @@ console.log(this.subcontractorStoreNumbers.length)
                 subContractorContactEmail: ""
 
             }
-            console.log(clientToBeEdited2);
-             this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
-                console.log(data)
+            this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
+
                 if (data.success) {
 
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[clientindex] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[clientindex].length; z++){
+ 
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[clientindex] = data.subcontractors
 
-                                    this.subcontractorsArray[clientindex][z][z] = z * 34567
+                        for (let z = 0; z < this.subcontractorsArray[clientindex].length; z++) {
 
-                            }
-                                                        console.log(this.subcontractorsArray)
+                            this.subcontractorsArray[clientindex][z][z] = z * 34567
+
+                        }
+
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                        setTimeout(() => {
 
-                        },2000)
-                            
+                            this.editSubContractorSuccess = false;
 
-                })
+                        }, 2000)
 
+                    })
 
                 }
 
@@ -4674,13 +4418,16 @@ console.log(this.subcontractorStoreNumbers.length)
         } else {
 
             this.subContractorContactPhoneEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorContactPhoneEmpty = false;
 
             }, 2000)
+
         }
         if (field == "contactemail" && this.subContractorContactEmail != "") {
+
             this.editSubContractorLoading = true;
             this.loadingEditIcon = true;
 
@@ -4698,39 +4445,35 @@ console.log(this.subcontractorStoreNumbers.length)
                 subContractorContactEmail: this.subContractorContactEmail
 
             }
-            console.log(clientToBeEdited2);
+
             this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
-                console.log(data)
                 if (data.success) {
 
-                    this.clientservice.getSubContractorsOfClient(client).subscribe(data=>{
+                    this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-                            console.log(data)
-                            console.log(this.subcontractorsArray[index])
-                            console.log(this.subcontractorsArray)
-                            console.log(data.subcontractors)
-                            this.subCStoreNumbers2 = ""
-                            this.editSubContractorLoading = false;
-                            
-                            this.subcontractorsArray[clientindex] = data.subcontractors
-                            console.log(this.subcontractorsArray)
-                            for(let z=0; z< this.subcontractorsArray[clientindex].length; z++){
 
-                                    this.subcontractorsArray[clientindex][z][z] = z * 34567
+                        this.subCStoreNumbers2 = ""
+                        this.editSubContractorLoading = false;
+                        this.subcontractorsArray[clientindex] = data.subcontractors
 
-                            }
-                                                        console.log(this.subcontractorsArray)
+                        for (let z = 0; z < this.subcontractorsArray[clientindex].length; z++) {
+
+                            this.subcontractorsArray[clientindex][z][z] = z * 34567
+
+                        }
+
                         this.editSubContractorSuccess = true;
-                                                    this.subCStoreNumbers2="";
+                        this.subCStoreNumbers2 = "";
 
-                        setTimeout(()=>{
-                            this.editSubContractorSuccess= false;
+                        setTimeout(() => {
 
-                        },2000)
-                            
+                            this.editSubContractorSuccess = false;
 
-                })
+                        }, 2000)
+
+
+                    })
 
 
                 }
@@ -4740,6 +4483,7 @@ console.log(this.subcontractorStoreNumbers.length)
         } else {
 
             this.subContractorContactEmailEmpty = true;
+
             setTimeout(() => {
 
                 this.subContractorContactEmailEmpty = false;
@@ -4748,102 +4492,57 @@ console.log(this.subcontractorStoreNumbers.length)
 
         }
 
-        console.log(client);
-        console.log(item);
-        console.log(index);
-
-        /*
-                this.clientservice.editClient2(clientToBeEdited2).subscribe(data => {
-        
-                    if (data.success) {
-        
-                        this.clientservice.getClients().subscribe(data => {
-        
-                            console.log(data);
-                            this.clientsArray = data.clients;
-                            this.subContractorName = "";
-                            this.subContractorEmailAddress = "";
-                            this.subContractorPhoneNumber = "";
-                            this.subContractorContactEmail = "";
-                            this.subContractorContactPhone = "";
-                            this.subContractorContactName = "";
-        
-                            for (let i = 0; i < data.clients.length; i++) {
-        
-                                this.subcontractorsArray[i] = data.clients[i].subcontractors;
-        
-        
-        
-                            }
-                            console.log("this.subcontractorsArray");
-                            console.log(this.subcontractorsArray);
-                            for (let z = 0; z < this.subcontractorsArray.length; z++) {
-        
-                                for (let d = 0; d < this.subcontractorsArray[z].length; d++)
-                                    this.subcontractorsArray[z][d][d] = d * 34567
-                                console.log(this.subcontractorsArray[z])
-        
-                            }
-                        })
-                        this.editSubContractorLoading = false;
-                        this.loadingEditIcon = false;
-        
-                    }
-        
-                })*/
-
     }
     openIndividualAddSubContractor(index) {
 
         this.individualAddSubContractorIndexVar = index;
         this.openIndividualAddSubContractorBoolean = false;
+
         if (!this.openIndividualAddSubContractorBoolean) {
 
             this.openIndividualAddSubContractorBoolean = true;
             this.openIndividualAddSubContractorToggle = index;
             this.individualAddSubContractorIndexVar = index;
+
         } else if (this.openIndividualAddSubContractorBoolean && this.individualAddSubContractorIndexVar == index) {
 
             this.openIndividualAddSubContractorBoolean = false;
+
         } else {
+
             this.openIndividualAddSubContractorBoolean = false;
             this.openIndividualAddSubContractorBoolean = true;
             this.openIndividualSubContractorToggle = index;
             this.individualAddSubContractorIndexVar = index;
+
         }
 
     }
     openIndividualSubContractor(index) {
 
-        console.log(index);
-        console.log(this.openEditSubcontractors)
+
         this.individualSubContractorIndexVar = index;
         this.openIndividualSubContractorToggle = index
-        // this.openIndividualSubContractorBoolean = false;
+
 
         if (!this.openIndividualSubContractorBoolean) {
+
             this.openIndividualSubContractorBoolean = true
             this.openEditSubcontractors = true;
             this.openIndividualSubContractorToggle = index;
             this.individualAddSubContractorIndexVar = index;
-            console.log("firstCondiaiton")
-            console.log(this.openIndividualSubContractorBoolean);
+ 
 
         } else if (this.openIndividualSubContractorBoolean && this.individualAddSubContractorIndexVar == index) {
-            this.openIndividualSubContractorBoolean = false;
 
-            //this.openEditSubcontractors = false;
-            console.log(this.openEditSubcontractors)
-            console.log(this.individualAddSubContractorIndexVar)
-            console.log("here i am1");
+            this.openIndividualSubContractorBoolean = false;
 
         } else {
-            this.openIndividualSubContractorBoolean = false;
 
+            this.openIndividualSubContractorBoolean = false;
             this.openIndividualSubContractorBoolean = true;
             this.individualAddSubContractorIndexVar = index;
-            console.log("lastcondition")
-            //this.openIndividualSubContractorToggle = index;
+
         }
 
     }

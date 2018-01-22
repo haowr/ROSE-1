@@ -14,7 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
-  
+
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
@@ -23,20 +23,20 @@ export class ClientsComponent implements OnInit {
   client: string;
   public url: string = "";
   public clientList: string[];
-  showLocations:boolean = false;
-  clientsLoading:boolean = false;
+  showLocations: boolean = false;
+  clientsLoading: boolean = false;
   address: Address;
   clients: Clients;
   user: Object;
   clientsArray: string[];
   clientArray: Object[];
-  subConArrayOfObjects:Object[];
-  storeNumberArrayOfArrays=[];
-  locationsArrayOfArrays =[];
-  storeNumberNLocationArray =[]
-  locationsArray: string[] =[];
-  subcontractorsArray:string[]=[];
-  subcontractorArrayOfObjects:object[]=[];
+  subConArrayOfObjects: Object[];
+  storeNumberArrayOfArrays = [];
+  locationsArrayOfArrays = [];
+  storeNumberNLocationArray = []
+  locationsArray: string[] = [];
+  subcontractorsArray: string[] = [];
+  subcontractorArrayOfObjects: object[] = [];
 
   clientsArrayOfObjects: Object[];
   locationsArrayOfObjects: Object;
@@ -54,23 +54,19 @@ export class ClientsComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private activatedroute: ActivatedRoute,
-    private clientservice:ClientService,
+    private clientservice: ClientService,
     private router: Router,
     private http: HttpModule,
     private authservice: AuthService) {
-    console.log(" Clients Constructor has run..");
   }
 
 
   ngOnInit() {
-    console.log("ngOnInit has run...");
-    console.log(this.dataService.globalData);
+
     this.clientsLoading = true;
     this.url = this.router.url;
-        this.activatedroute.params.subscribe((params: Params) => {
+    this.activatedroute.params.subscribe((params: Params) => {
 
-      console.log(params);
-      console.log(params.location);
       this.location = params.location;
       this.client = params.client;
 
@@ -79,120 +75,53 @@ export class ClientsComponent implements OnInit {
     this.authservice.getClients().subscribe(profile => {
 
       this.user = profile.user;
-      console.log(this.user);
 
     },
-    err =>{
+      err => {
 
-      console.log(err);
-      return false;
+        return false;
 
 
-    })
-  
-    console.log(this.router.url);
- 
-  
-    this.clientservice.getClients().subscribe(clients =>{
+      })
 
-      console.log(clients);
+
+
+    this.clientservice.getClients().subscribe(clients => {
+
       this.clientsLoading = false;
-      this.clientArray =clients.clients ;
-
-      console.log("THIS.CLIENTARRAY");
-      console.log(this.clientArray);
-      console.log(clients.clients[0])
-      console.log(clients.clients[0].subcontractors.length)
-      for(let z =0; z<clients.clients.length; z++){
-        console.log(z)
-        console.log(clients.clients[z]);
-         //this.clientArray[this.clientArray.length-1] = clients.clients[z];
-          //if(clients.clients[z].name == this.client ){
-                  this.subcontractorArrayOfObjects[z]=clients.clients[z].subcontractors;
-              console.log(this.subcontractorArrayOfObjects);
-        
-           for(let d = 0; d<clients.clients[z].subcontractors.length;d++){
-
-            console.log(d);
-            console.log(clients.clients[z].subcontractors[d].storenumbers);
-            this.storeNumberArrayOfArrays.push(clients.clients[z].subcontractors[d].storenumbers)
-            this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].storenumbers)
-            this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].locations);
-            this.locationsArrayOfArrays.push(clients.clients[z].subcontractors[d].locations);
-            console.log(this.storeNumberArrayOfArrays)
-            
-              }
-             // console.log(this.storeNumberArrayOfArrays)
-/*
-            for(let d =0; d>clients.clients[z].length; d++){
-        
-              this.subcontractorsArray.push(clients.clients[z].subcontractors[d].name)
-              
-              for(let s =0; s> clients.clients[z].subcontractors[d].length;s++){
-
-                this.locationsArray.push(clients.clients[z].subcontractors[d].locations[s])
+      this.clientArray = clients.clients;
 
 
-              }
+      for (let z = 0; z < clients.clients.length; z++) {
 
-            }
-            */
+        this.subcontractorArrayOfObjects[z] = clients.clients[z].subcontractors;
 
-          
+        for (let d = 0; d < clients.clients[z].subcontractors.length; d++) {
+
+          this.storeNumberArrayOfArrays.push(clients.clients[z].subcontractors[d].storenumbers)
+          this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].storenumbers)
+          this.storeNumberNLocationArray.push(clients.clients[z].subcontractors[d].locations);
+          this.locationsArrayOfArrays.push(clients.clients[z].subcontractors[d].locations);
+
+        }
+ 
 
       }
 
-         
-
-/*y
-      for(let i =0; i<clients.clients[0].subcontractors.length;i++){
-        console.log(clients.clients[i]);
-
-       // this.locationsArray.push(clients.clients[0].subconractors[i].locations[i]);
-       for(let j=0; j< clients.clients[0].subcontractors[i].locations.length;j++){
-
-        this.locationsArray.push(clients.clients[0].subcontractors[i].locations[j]);
-       }
-
-      }
-      for(let i =0; i<clients.clients[0].subcontractors.length;i++){
-
-
-        
-
-          this.subcontractorsArray.push(clients.clients[0].subcontractors[i].name);
-
-        
-
-      }
-         for(let i =0; i<clients.clients[0].subcontractors.length;i++){
-
-
-        
-
-          this.subcontractorArrayOfObjects.push(clients.clients[0].subcontractors[i]);
-
-        
-
-         }*/
-
-      console.log(this.subcontractorsArray.length);
-      console.log(this.locationsArray.length)
-      console.log(this.subcontractorArrayOfObjects);
     })
+
     this.dataService.getClients().subscribe(clients => {
 
-      console.log(clients.clients);
       this.clientList = clients.clients;
-      console.log(this.clientList);
 
     });
 
 
-    // subscribe to router event
+
     this.activatedroute.params.subscribe((params: Params) => {
+
       let userId = params['clients'];
-      console.log(userId);
+
     });
 
     this.locationsArrayOfObjects = [{
@@ -203,14 +132,6 @@ export class ClientsComponent implements OnInit {
 
     }]
 
-    //this.clientsObject = {
-
-    //1: "Loblaws",
-    //2: "Sobeys",
-    //3: "Quebecor"
-
-
-    //}
 
 
     this.address = {
@@ -221,7 +142,7 @@ export class ClientsComponent implements OnInit {
 
     }
     this.clientsArray = ['Loblaws', 'Sobeys', 'Quebecor'];
-    //this.Locations =[  "1502(RCSS)","1691(RCLS)"];
+
     this.clientsArrayOfObjects = [
       {
 
@@ -238,26 +159,14 @@ export class ClientsComponent implements OnInit {
 
 
       }
-      /* {
- 
-         1: "Loblaws",
-         2: "Sobeys",
-         3: "Quebecor"
-       },
-       {
-         1: "Loblaws",
-         2: "Sobeys",
-         3: "Quebecor"
-       }
- */
 
 
     ]
   }
-showLocationsFunc(index){
-  console.log(index);
+  showLocationsFunc(index) {
 
-}
+
+  }
 
 }
 
@@ -276,10 +185,3 @@ interface Clients {
 
 
 }
-/*interface Locations {
-
-  1: "1502(RCSS)",
-  2: "1691(RCLS)"
-
-}
-*/
