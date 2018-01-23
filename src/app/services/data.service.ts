@@ -11,7 +11,7 @@ export class DataService {
 
 
   constructor(public http: Http, public router: Router, public activatedroute: ActivatedRoute) {
-    
+
   }
 
   ngOnInit() {

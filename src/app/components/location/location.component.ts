@@ -1023,19 +1023,108 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+        
+    if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-        }
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-        }
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+
+
         let totalExpenditureUpdater = {
 
           name: this.location,
@@ -1106,22 +1195,118 @@ export class LocationComponent implements OnInit {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarning = true
-              this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-            }
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarningMobile = true
-              this.expenditureDangerWarning = false;
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-            } else {
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarningMobile = false;
-              this.expenditureDangerWarning = false;
-            }
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if(this.totalCostThisMonth < 2000){
+
+      this.expenditureDangerWarning = false;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
 
 
           }
@@ -1196,22 +1381,119 @@ export class LocationComponent implements OnInit {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
 
-              this.expenditureDangerWarning = true
-              this.expenditureDangerWarningMobile = false;
+   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-            }
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-              this.expenditureDangerWarningMobile = true
-              this.expenditureDangerWarning = false;
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-            } else {
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-              this.expenditureDangerWarningMobile = false;
-              this.expenditureDangerWarning = false;
-            }
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if(this.totalCostThisMonth < 2000){
+
+      this.expenditureDangerWarning = false;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
 
           }
           let totalExpenditureUpdater = {
@@ -1289,29 +1571,118 @@ export class LocationComponent implements OnInit {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarning = true
-              this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-            }
-            if (this.totalCostThisMonth < 2000 && document.documentElement.clientWidth > 1020) {
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarning = false;
-              this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-            }
-            if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarningMobile = true
-              this.expenditureDangerWarning = false;
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-            } else {
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-              this.expenditureDangerWarningMobile = false;
-              this.expenditureDangerWarning = false;
-            }
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if(this.totalCostThisMonth < 2000){
+
+      this.expenditureDangerWarning = false;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
 
           }
           let totalExpenditureUpdater = {
@@ -1383,19 +1754,105 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+ if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-        }
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-        }
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
 
         let totalExpenditureUpdater = {
 
@@ -1462,20 +1919,105 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
+ if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth > 1020) {
+      this.expenditureDangerWarning = true;
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
 
-          this.expenditureDangerWarning = true
-          this.expenditureDangerWarningMobile = false;
+    }
+    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-        }
-        if (this.totalCostThisMonth >= 2000 && document.documentElement.clientWidth < 1020) {
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = true;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
-          this.expenditureDangerWarningMobile = true
-          this.expenditureDangerWarning = false;
+    }
+    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-        }
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = true
+      this.expenditureDangerWarningMobileIphoneX = false;
+      this.expenditureDangerWarningMobileSamsung = false;
 
+    }
+    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = true;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = true;
+
+    }
+    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = true;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false;
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+    }
+
+    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = true;
+      this.expenditureDangerWarningMobileSmallest = false;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
+    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+      this.expenditureDangerWarning = false
+      this.expenditureDangerWarningMobile = false;
+      this.expenditureDangerWarningMobileSmall = false;
+      this.expenditureDangerWarningMobileSmaller = false;
+      this.expenditureDangerWarningMobileSmallest = true;
+      this.expenditureDangerWarningMobileMedium = false;
+      this.expenditureDangerWarningMobileSamsung = false
+      this.expenditureDangerWarningMobileIphoneX = false;
+
+
+    }
         let totalExpenditureUpdater = {
           name: this.location,
           totalexpenditures: this.totalCostThisMonth

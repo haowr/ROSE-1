@@ -11,7 +11,6 @@ export class ClientService {
 
   constructor(public http: Http, public router: Router, public activatedroute: ActivatedRoute) {
 
-    console.log('client service loaded and initialized...');
 
 
   }
@@ -52,7 +51,6 @@ export class ClientService {
   }
   getSubContractor(name){
 
-    console.log(name)
     let headers = new Headers()
     headers.append('Content-type','application/json')
     return this.http.put('routes/getsubcontractor/'+name, {headers:headers})
@@ -65,7 +63,6 @@ export class ClientService {
   }
   editSubContractorClientName(newclient){
 
-    console.log(newclient)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/editsubcontractorclientname', newclient,{headers:headers})
@@ -111,7 +108,7 @@ export class ClientService {
 
   }
   editSubContractor(subcontractor){
-    console.log(subcontractor)
+
     let headers = new Headers();
     headers.append('Content-Type','application/json')
     return this.http.post('routes/editsubcontractor',subcontractor,{headers:headers})
@@ -123,7 +120,7 @@ export class ClientService {
   }
   addSubContractor(subcontractor){
 
-    console.log(subcontractor)
+
     let headers = new Headers()
     headers.append('Content-type','application/json')
     return this.http.post('routes/addsubcontractor', subcontractor, {headers:headers})
@@ -135,7 +132,6 @@ export class ClientService {
 
   }
     updateSubContractorInventory(subcontractor){
-    console.log(subcontractor)
 
     let headers = new Headers();
 
@@ -148,7 +144,6 @@ export class ClientService {
   }
   updateSubContractorTotalExpenditures(subcontractor){
 
-        console.log(subcontractor)
 
     let headers = new Headers();
 
@@ -173,7 +168,6 @@ export class ClientService {
 
   removeLocationFromClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/removelocationfromclient',client,{headers:headers})
@@ -182,7 +176,6 @@ export class ClientService {
   }
   addLocationToClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/addlocationtoclient',client,{headers:headers})
@@ -191,7 +184,6 @@ export class ClientService {
   }
     removeStoreNumberFromClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/removestorenumberfromclient',client,{headers:headers})
@@ -200,7 +192,6 @@ export class ClientService {
   }
     addStoreNumberToClient(client){
 
-  console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/addstorenumbertoclient',client,{headers:headers})
@@ -221,7 +212,6 @@ export class ClientService {
 
   removeSubContractor(id){
 
-      console.log(id)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('routes/removesubcontractor/'+id,{headers:headers})
@@ -232,7 +222,6 @@ export class ClientService {
 
   editClientSubContractorName(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/editclientsubcontractorname',client,{headers:headers})
@@ -242,7 +231,6 @@ export class ClientService {
   }
   editClient(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/editclient',client,{headers:headers})
@@ -251,7 +239,6 @@ export class ClientService {
   }
     editClient2(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/editclient2',client,{headers:headers})
@@ -260,7 +247,6 @@ export class ClientService {
   }
       editClient3(client){
 
-    console.log(client)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('routes/editclient3',client,{headers:headers})
@@ -284,7 +270,7 @@ export class ClientService {
     .map(res=> res.json());
   }
   editClientAddSubcontractor(subcontractor){
-    console.log(subcontractor)
+
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     return this.http.post('routes/editclientaddsubcontractor',subcontractor,{headers:headers})
@@ -310,7 +296,6 @@ export class ClientService {
 
   }
    updateSubContractor(subcontractor){
-    console.log(subcontractor)
 
     let headers = new Headers();
 
@@ -337,22 +322,10 @@ export class ClientService {
       .map(res => res.json());
 
   }
-  /*getSingleSubcontractor(subcontractor){
 
-                  console.log(subcontractor);
-    let headers = new Headers();
-
-    headers.append('Content-Type','application/json');
-    return this.http.post('routes/edit/newsubcontractorsingle',subcontractor,{headers:headers})
-    .map(res => res.json());
-
-
-    
-
-  }*/
     getSingleSubcontractorForInventory(subcontractor) {
-    console.log(subcontractor+"clientservice");
-    console.log(subcontractor);
+  
+
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     return this.http.post('routes/getsinglesubcontractoritemforinventory', subcontractor, { headers: headers })
@@ -373,8 +346,7 @@ export class ClientService {
 
   }
   getSingleSubcontractor(subcontractor) {
-    console.log(subcontractor+"clientservice");
-    console.log(subcontractor);
+  
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     return this.http.post('routes/newsubcontractorsingle', subcontractor, { headers: headers })
@@ -386,7 +358,6 @@ export class ClientService {
   }
     increaseSubcontractorStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -396,7 +367,6 @@ export class ClientService {
   }
    increaseSubcontractorStoreAddress(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -406,7 +376,6 @@ export class ClientService {
   }
   updateSubcontractorStoreAddress(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -417,7 +386,6 @@ export class ClientService {
 
   updateSubcontractor(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -427,7 +395,6 @@ export class ClientService {
   }
     updateSubcontractorStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -437,7 +404,6 @@ export class ClientService {
   }
     updateSubcontractorClearStoreNumber(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -447,7 +413,6 @@ export class ClientService {
   }
     updateSubcontractor2(subcontractor) {
 
-    console.log(subcontractor);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
