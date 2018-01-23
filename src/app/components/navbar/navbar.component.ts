@@ -324,8 +324,8 @@ export class NavbarComponent implements OnInit {
 
 
     this.authservice.checkIfLoggedIn();
-
-
+    
+    console.log(this.authservice.loggedIn())
     this.activatedroute.params.subscribe((params: Params) => {
 
 
