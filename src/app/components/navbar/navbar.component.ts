@@ -286,6 +286,7 @@ export class NavbarComponent implements OnInit {
     }
 
     else {
+      
       if (this.brandMobileLandScape) {
         this.brandMobile = false;
         this.brandFullScreen = false;

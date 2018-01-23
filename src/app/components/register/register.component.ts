@@ -15,34 +15,34 @@ export class RegisterComponent implements OnInit {
   username: string = "";
   email: string = "";
   password: string = "";
-  errorMessage:string = "";
+  errorMessage: string = "";
   passwordCannotBeEmptyMsg: string = "Password Field Cannot Be Empty...";
   emailCannotBeEmptyMsg: string = "Email Field Cannot Be Empty...";
   usernameCannotBeEmptyMsg: string = "Username Field Cannot Be Empty...";
   nameCannotBeEmptyMsg: string = "Name Field Cannot Be Empty...";
-  unSuccessfulRegistrationMsg:string = "Registration Unsuccessful..."
-  successfulRegistrationMsg:string = "Registration Successful"
-  invalidEmailMsg:string = "Invalid Email...";
-  nameCannotBeEmpty:boolean = false;
-  emailCannotBeEmpty:boolean = false;
-  usernameCannotBeEmpty:boolean = false;
-  passwordCannotBeEmpty:boolean = false;
-  loadingRegistration:boolean = false;
-  validEmail:boolean = false;
-  invalidEmail:boolean = false;
-  registrationFailed:boolean = false;
-  registrationSuccess:boolean = false;
+  unSuccessfulRegistrationMsg: string = "Registration Unsuccessful..."
+  successfulRegistrationMsg: string = "Registration Successful"
+  invalidEmailMsg: string = "Invalid Email...";
+  nameCannotBeEmpty: boolean = false;
+  emailCannotBeEmpty: boolean = false;
+  usernameCannotBeEmpty: boolean = false;
+  passwordCannotBeEmpty: boolean = false;
+  loadingRegistration: boolean = false;
+  validEmail: boolean = false;
+  invalidEmail: boolean = false;
+  registrationFailed: boolean = false;
+  registrationSuccess: boolean = false;
 
 
   constructor(private validateservice: ValidateService,
-              private authservice: AuthService, private router: Router ) { }
+    private authservice: AuthService, private router: Router) { }
 
   ngOnInit() {
 
 
   }
-  onRegisterSubmit(){
-    const user= {
+  onRegisterSubmit() {
+    const user = {
 
       name: this.name,
       username: this.username,
@@ -51,114 +51,115 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    if(this.name == ""){
+    if (this.name == "") {
 
       this.nameCannotBeEmpty = true;
-      setTimeout(()=> {
+      setTimeout(() => {
 
-          this.nameCannotBeEmpty = false;
+        this.nameCannotBeEmpty = false;
 
       }, 2000);
 
     }
-    if(this.email == ""){
+    if (this.email == "") {
 
       this.emailCannotBeEmpty = true;
-      setTimeout(()=> {
+      setTimeout(() => {
 
-          this.emailCannotBeEmpty = false;
+        this.emailCannotBeEmpty = false;
 
       }, 2000);
     }
-    if(this.username == ""){
+    if (this.username == "") {
       this.usernameCannotBeEmpty = true;
-      setTimeout(()=> {
+      setTimeout(() => {
 
-          this.usernameCannotBeEmpty = false;
+        this.usernameCannotBeEmpty = false;
 
       }, 2000);
 
     }
-    if(this.password == ""){
+    if (this.password == "") {
 
       this.passwordCannotBeEmpty = true;
-      setTimeout(()=> {
+      setTimeout(() => {
 
-          this.passwordCannotBeEmpty = false;
+        this.passwordCannotBeEmpty = false;
 
       }, 2000);
     }
-   if(!this.validateservice.validateEmail(user.email)){
+    if (!this.validateservice.validateEmail(user.email)) {
       //this.flashmessages.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       this.invalidEmail = true;
-      setTimeout(()=>{
+      setTimeout(() => {
 
         this.invalidEmail = false;
-      },2000)
+      }, 2000)
       //return false;
-    }else{
+    } else {
       this.validEmail = true;
     }
 
-    if(this.name !== "" &&
-       this.email !== "" &&
-       this.password !== "" &&
-       this.username !== "" &&
-        this.validEmail){
+    if (this.name !== "" &&
+      this.email !== "" &&
+      this.password !== "" &&
+      this.username !== "" &&
+      this.validEmail) {
 
 
-       this.loadingRegistration = true;
-       // Register user
-    this.authservice.registerUser(user).subscribe(data => {
-      if(data.success){
-       // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
-        this.loadingRegistration = false;
-        this.registrationSuccess = true;
-        setTimeout(()=>{
+      this.loadingRegistration = true;
+      // Register user
+      this.authservice.registerUser(user).subscribe(data => {
+        if (data.success) {
+          // this.flashmessages.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
+          this.loadingRegistration = false;
+          this.registrationSuccess = true;
+          setTimeout(() => {
 
-          this.registrationSuccess = false;
-          this.router.navigate(['/login']);
+            this.registrationSuccess = false;
+            this.router.navigate(['/login']);
 
-        },2000)
-        
-      } else {
-       // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
-       this.loadingRegistration = false;
-       this.registrationFailed = true;
-       console.log(data)
-       if(data.err.code == 11000){
+          }, 2000)
+
+        } else {
+          // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+          this.loadingRegistration = false;
+          this.registrationFailed = true;
+          console.log(data)
+          if (data.err.code == 11000) {
 
 
-        this.errorMessage = "User Already Exists";
+            this.errorMessage = "User Already Exists";
 
-       }else{
+          } else {
 
-         this.errorMessage = "Registration Failed";
-       }
-       setTimeout(()=>{
+            this.errorMessage = "Registration Failed";
+          }
+          setTimeout(() => {
 
-        this.registrationFailed = false;
-        this.name = "";
-        this.email = "";
-        this.password ="";
-        this.username = "";
+            this.registrationFailed = false;
+            this.name = "";
+            this.email = "";
+            this.password = "";
+            this.username = "";
 
-       },2000)
-        //this.router.navigate(['/register']);
-      }
-    });
-       }
-     // Required Fields
-    if(!this.validateservice.validateRegister(user)){
-     // this.flashmessages.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
+          }, 2000)
+          //this.router.navigate(['/register']);
+        }
+      });
+    }
+    // Required Fields
+    if (!this.validateservice.validateRegister(user)) {
+      // this.flashmessages.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
     // Validate Email
-    if(!this.validateservice.validateEmail(user.email)){
+    if (!this.validateservice.validateEmail(user.email)) {
       //this.flashmessages.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
 
-  }}
+  }
+}

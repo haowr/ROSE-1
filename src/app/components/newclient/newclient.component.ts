@@ -46,9 +46,7 @@ export class NewclientComponent implements OnInit {
     subContractorPhoneNumber: any = "";
     subContractorLocations: string = "";
     subContractorStoreNumbers: string = "";
-
     subCLocations: string = "";
-
     storenumber: string = "";
     subcontractors: string = "";
     name: string = "";
@@ -58,6 +56,32 @@ export class NewclientComponent implements OnInit {
     emailaddress: string = "";
     phonenumber: any = "";
     location: string = "";
+    addNameSuccessMsg: string = "Name Successfully Added To the Database";
+    addNameFailedMsg: string = "Name Field Must Not Be Empty...";
+    addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
+    addContactNameFailedMsg: string = "ContactName Field Must Not Be Empty...";
+    addContactPhoneSuccessMsg: string = "Contact Phone Successfully Added To the Database";
+    addContactPhoneFailedMsg: string = "ContactPhone Field Must Not Be Empty...";
+    addContactEmailSuccessMsg: string = "Contact Email Successfully Added To the Database";
+    addContactEmailFailedMsg: string = "Contact Email Field Must Not Be Empty...";
+    addEmailAddressSuccessMsg: string = "Email Address Successfully Added To the Database";
+    addEmailAddressFailedMsg: string = "Email Address Field Must Not Be Empty...";
+    addPhoneNumberSuccessMsg: string = "Phone Number Successfully Added To the Database";
+    addPhoneNumberFailedMsg: string = "Phone Number Field Must Not Be Empty...";
+    addLocationSuccessMsg: string = "Store Location Successfully Loaded";
+    addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
+    addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
+    addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
+    addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
+    addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
+    locationaddedmsg: string = "Location Added";
+    locationNoInput: string = "Field must not be empty...";
+    subcontractorNoInput: string = "Field must not be empty...";
+    subcontractorNameNoInput: string = "Field must not be empty...";
+    clientAddSuccessMsg: string = "Client Successfully Added To The Database..";
+    clientAddFailedMsg: string = "Client Already Exists In The Database...";
+
+
     date = new Date();
     dateNow = this.date.getDate()
     month = this.date.getMonth() + 1;
@@ -100,24 +124,6 @@ export class NewclientComponent implements OnInit {
     imReady: boolean = false;
     areYouSure: boolean = false;
     formLoading: boolean = false;
-    addNameSuccessMsg: string = "Name Successfully Added To the Database";
-    addNameFailedMsg: string = "Name Field Must Not Be Empty...";
-    addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
-    addContactNameFailedMsg: string = "ContactName Field Must Not Be Empty...";
-    addContactPhoneSuccessMsg: string = "Contact Phone Successfully Added To the Database";
-    addContactPhoneFailedMsg: string = "ContactPhone Field Must Not Be Empty...";
-    addContactEmailSuccessMsg: string = "Contact Email Successfully Added To the Database";
-    addContactEmailFailedMsg: string = "Contact Email Field Must Not Be Empty...";
-    addEmailAddressSuccessMsg: string = "Email Address Successfully Added To the Database";
-    addEmailAddressFailedMsg: string = "Email Address Field Must Not Be Empty...";
-    addPhoneNumberSuccessMsg: string = "Phone Number Successfully Added To the Database";
-    addPhoneNumberFailedMsg: string = "Phone Number Field Must Not Be Empty...";
-    addLocationSuccessMsg: string = "Store Location Successfully Loaded";
-    addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
-    addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
-    addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
-    addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
-    addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
 
     subContractorStoreNumberSuccessfullyRemoved: boolean = false;
     subContractorStoreNumberSuccessfullyAdded: boolean = false;
@@ -127,7 +133,6 @@ export class NewclientComponent implements OnInit {
     subContractorLocationSuccessfullyRemoved: boolean = false;
     subContractorLocationSuccessfullyAdded: boolean = false;
     subContractorLocationAlreadyEmpty: boolean = false;
-
     addSubContractorNameEmpty: boolean = false;
     addSubContractorEmailAddressEmpty: boolean = false;
     addSubContractorPhoneNumberEmpty: boolean = false;
@@ -136,27 +141,15 @@ export class NewclientComponent implements OnInit {
     addSubContractorContactEmailEmpty: boolean = false;
     addSubContractorLocationsEmpty: boolean = false;
     addSubContractorStoreNumbersEmpty: boolean = false;
-
-    //location: boolean = false;
     locationNotInput: boolean = false;
     clientAddSuccess: boolean = false;
-    //addClientSuccess:boolean = false;
     addSubContractorSuccess: boolean = false;
     clientAddFailed: boolean = false;
     clientFormOpen: boolean = false;
     newSubContractorFormOpen: boolean = false;
-
     subcontractorAdded: boolean = false;
     subcontractorNotInput: boolean = false;
     subcontractorNameNotInput: boolean = false;
-
-
-    locationaddedmsg: string = "Location Added";
-    locationNoInput: string = "Field must not be empty...";
-    subcontractorNoInput: string = "Field must not be empty...";
-    subcontractorNameNoInput: string = "Field must not be empty...";
-    clientAddSuccessMsg: string = "Client Successfully Added To The Database..";
-    clientAddFailedMsg: string = "Client Already Exists In The Database...";
 
 
 
