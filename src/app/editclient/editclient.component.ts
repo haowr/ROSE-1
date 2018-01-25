@@ -15,8 +15,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class EditclientComponent implements OnInit {
     trackByIndex(index: number, obj: any): any { return index; }
 
-    clientsArray: Object[] = [];
-    subcontractorsArray = [];
+
     clientName: string = "";
     clientPhoneNumber: string = "";
     clientEmailAddress: string = "";
@@ -38,19 +37,6 @@ export class EditclientComponent implements OnInit {
     subcontractorContactEmail: string = "";
     subcontractorLocation: string = "";
     subcontractorStoreNumber: string = "";
-    subcontractorLocations: string[] = [];
-    subcontractorStoreNumbers: string[] = [];
-    individualSubContractorIndexVar: string = "";
-    individualAddSubContractorIndexVar: string = "";
-    subCLocations: string = "";
-    subCStoreNumbers: string = "";
-    subCLocations2: string = "";
-    subCStoreNumbers2: string = "";
-    subcontractorLocations2: string[] = [];
-    subcontractorStoreNumbers2: string[] = [];
-    //subContractorStoreNumbers
-    //subContractorStoreNumbers: string = "";
-    indexVar: any = 0;
     clientVar: string = "";
     subContractorIdVar: string = "";
     fieldVar: string = "";
@@ -61,9 +47,62 @@ export class EditclientComponent implements OnInit {
     indexToBeRemoved: string = "";
     editSubContractorIndexVar: string = "";
     addSubContractorIndexVar: string = "";
+    addNameSuccessMsg: string = "Name Successfully Added To the Database";
+    addNameFailedMsg: string = "Name Field Must Not Be Empty...";
+    addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
+    addContactNameFailedMsg: string = "ContactName Field Must Not Be Empty...";
+    addContactPhoneSuccessMsg: string = "Contact Phone Successfully Added To the Database";
+    addContactPhoneFailedMsg: string = "ContactPhone Field Must Not Be Empty...";
+    addContactEmailSuccessMsg: string = "Contact Email Successfully Added To the Database";
+    addContactEmailFailedMsg: string = "Contact Email Field Must Not Be Empty...";
+    addEmailAddressSuccessMsg: string = "Email Address Successfully Added To the Database";
+    addEmailAddressFailedMsg: string = "Email Address Field Must Not Be Empty...";
+    addPhoneNumberSuccessMsg: string = "Phone Number Successfully Added To the Database";
+    addPhoneNumberFailedMsg: string = "Phone Number Field Must Not Be Empty...";
+    addLocationSuccessMsg: string = "Store Location Successfully Loaded";
+    addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
+    addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
+    addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
+    addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
+    addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
+    clientNameIsEmptyMsg: string = "Field Must Not Be Empty...";
+    clientPhoneNumberIsEmptyMsg: string = "Field Must Not Be Empty...";
+    clientEmailAddressIsEmptyMsg: string = "Field Must Not Be Empty...";
+    clientContactNameIsEmptyMsg: string = "Field Must Not Be Empty...";
+    clientContactPhoneIsEmptyMsg: string = "Field Must Not Be Empty...";
+    clientContactEmailIsEmptyMsg: string = "Field Must Not Be Empty...";
+    addSubcontractorNameConditionsNotMetMsg: string = "A Subcontractor Name Must Be Input...";
+    addSubcontractorEmailAddressConditionsNotMetMsg: string = "A Subcontractor Email Address Must Be Input..";
+    addSubcontractorPhoneNumberConditionsNotMetMsg: string = "A Subcontractor Phone Number Must Be Input...";
+    addSubcontractorContactNameConditionsNotMetMsg: string = "A Subcontractor Contact Name Must Be Input...";
+    addSubcontractorContactEmailConditionsNotMetMsg: string = "A Subcontractor Contact Email Must Be Input...";
+    addSubcontractorContactPhoneConditionsNotMetMsg: string = "A Subcontractor Contact Phone Must Be Input...";
+    addSubcontractorStoreNumbersConditionsNotMetMsg: string = "A Store Number Must Be Input And Loaded...";
+    addSubcontractorLocationsConditionsNotMetMsg: string = "A Location Must Be Input And Loaded...";
+    addSubcontractorStoreNumberConditionsMetMsg: string = "Store Number Successfully Loaded...";
+    addSubcontractorLocationConditionsMetMsg: string = "Location Successfully Loaded...";
+    allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
+    allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
+    subCLocations: string = "";
+    subCStoreNumbers: string = "";
+    subCLocations2: string = "";
+    subCStoreNumbers2: string = "";
+    individualSubContractorIndexVar: string = "";
+    individualAddSubContractorIndexVar: string = "";
+
+    clientsArray: Object[] = [];
+    subcontractorsArray = [];
+    subcontractorLocations: string[] = [];
+    subcontractorStoreNumbers: string[] = [];
+    subcontractorLocations2: string[] = [];
+    subcontractorStoreNumbers2: string[] = [];
+
+    indexVar: any = 0;
+
     date = new Date();
     dateNow = this.date.getDate()
     month = this.date.getMonth() + 1;
+
     editSubContractorLoading = false;
     loadingClients = false;
     clientNameIsEmpty: boolean = false;
@@ -96,7 +135,6 @@ export class EditclientComponent implements OnInit {
     addSubcontractorStoreNumbersConditionsNotMet: boolean = false;
     addSubcontractorStoreNumberConditionsMet: boolean = false;
     addSubcontractorLocationConditionsMet: boolean = false;
-
     addNewSubContractor: boolean = false;
     addNameSuccess: boolean = false;
     addNameFailed: boolean = false;
@@ -117,7 +155,6 @@ export class EditclientComponent implements OnInit {
     addSubContractorStoreNumbersFailed: boolean = false;
     addSubContractorStoreNumbersSuccess: boolean = false;
     addSubContractorSuccess: boolean = false;
-
     subContractorNameEmpty: boolean = false;
     subContractorEmailAddressEmpty: boolean = false;
     subContractorPhoneNumberEmpty: boolean = false;
@@ -143,7 +180,6 @@ export class EditclientComponent implements OnInit {
     subContractorLocationFieldCannotBeEmpty: boolean = false;
     subContractorLocationSuccessfullyRemoved: boolean = false;
     subContractorLocationSuccessfullyAdded: boolean = false;
-
     subContractorLocationsAlreadyEmpty: boolean = false;
     loadingNewSubContractors: boolean = false;
     clientsLoading: boolean = false;
@@ -158,46 +194,6 @@ export class EditclientComponent implements OnInit {
     returnToClientForm: boolean = false;
     removingSubContractor: boolean = false;
     removalComplete: boolean = false;
-
-    addNameSuccessMsg: string = "Name Successfully Added To the Database";
-    addNameFailedMsg: string = "Name Field Must Not Be Empty...";
-    addContactNameSuccessMsg: string = "Contact Name Successfully Added To the Database";
-    addContactNameFailedMsg: string = "ContactName Field Must Not Be Empty...";
-    addContactPhoneSuccessMsg: string = "Contact Phone Successfully Added To the Database";
-    addContactPhoneFailedMsg: string = "ContactPhone Field Must Not Be Empty...";
-    addContactEmailSuccessMsg: string = "Contact Email Successfully Added To the Database";
-    addContactEmailFailedMsg: string = "Contact Email Field Must Not Be Empty...";
-    addEmailAddressSuccessMsg: string = "Email Address Successfully Added To the Database";
-    addEmailAddressFailedMsg: string = "Email Address Field Must Not Be Empty...";
-    addPhoneNumberSuccessMsg: string = "Phone Number Successfully Added To the Database";
-    addPhoneNumberFailedMsg: string = "Phone Number Field Must Not Be Empty...";
-    addLocationSuccessMsg: string = "Store Location Successfully Loaded";
-    addLocationFailedMsg: string = "Store Location Field Must Not Be Empty...";
-    addSubcontractorSuccessMsg: string = "Subcontractor Successfully Loaded...";
-    addSubcontractorFailedMsg: string = "All Subcontractor Fields Must Be Input...";
-    addSubContractorStoreNumbersSuccessMsg: string = "Store Number Successfully Loaded...";
-    addSubContractorStoreNumbersFailedMsg: string = "Store Number Field Cannot Be Empty..."
-
-
-    clientNameIsEmptyMsg: string = "Field Must Not Be Empty...";
-    clientPhoneNumberIsEmptyMsg: string = "Field Must Not Be Empty...";
-    clientEmailAddressIsEmptyMsg: string = "Field Must Not Be Empty...";
-    clientContactNameIsEmptyMsg: string = "Field Must Not Be Empty...";
-    clientContactPhoneIsEmptyMsg: string = "Field Must Not Be Empty...";
-    clientContactEmailIsEmptyMsg: string = "Field Must Not Be Empty...";
-    addSubcontractorNameConditionsNotMetMsg: string = "A Subcontractor Name Must Be Input...";
-    addSubcontractorEmailAddressConditionsNotMetMsg: string = "A Subcontractor Email Address Must Be Input..";
-    addSubcontractorPhoneNumberConditionsNotMetMsg: string = "A Subcontractor Phone Number Must Be Input...";
-    addSubcontractorContactNameConditionsNotMetMsg: string = "A Subcontractor Contact Name Must Be Input...";
-    addSubcontractorContactEmailConditionsNotMetMsg: string = "A Subcontractor Contact Email Must Be Input...";
-    addSubcontractorContactPhoneConditionsNotMetMsg: string = "A Subcontractor Contact Phone Must Be Input...";
-    addSubcontractorStoreNumbersConditionsNotMetMsg: string = "A Store Number Must Be Input And Loaded...";
-    addSubcontractorLocationsConditionsNotMetMsg: string = "A Location Must Be Input And Loaded...";
-    addSubcontractorStoreNumberConditionsMetMsg: string = "Store Number Successfully Loaded...";
-
-    addSubcontractorLocationConditionsMetMsg: string = "Location Successfully Loaded...";
-    allSubcontractorConditionsNotMetMsg: string = "Please Completely Fill In Form...";
-    allSubcontractorConditionsMetMsg: string = "Subcontractor Successfully Added...";
 
     subContractor = {
 
@@ -777,7 +773,7 @@ export class EditclientComponent implements OnInit {
 
                         this.removingSubContractor = false;
                         this.removalComplete = true;
-                        
+
                         setTimeout(() => {
 
                             this.removalComplete = false;
@@ -865,7 +861,7 @@ export class EditclientComponent implements OnInit {
 
                         this.clientservice.getLocationsOfClient(client).subscribe(data => {
 
- 
+
                             this.editSubContractorLoading = false;
                             this.subcontractorsArray[index] = data.subcontractors
 
@@ -935,7 +931,7 @@ export class EditclientComponent implements OnInit {
 
                         this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-             
+
                             this.subCStoreNumbers2 = ""
                             this.editSubContractorLoading = false;
 
@@ -1005,7 +1001,7 @@ export class EditclientComponent implements OnInit {
 
                         this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-  
+
                             this.subCStoreNumbers2 = ""
                             this.editSubContractorLoading = false;
                             this.subcontractorsArray[index] = data.subcontractors
@@ -1156,7 +1152,7 @@ export class EditclientComponent implements OnInit {
                     }
                     this.clientservice.editSubContractorLocation(subcontractor).subscribe(data => {
 
-           
+
                         this.subCStoreNumbers2 = "";
                         this.editSubContractorLoading = false;
                         this.editSubContractorSuccess = true;
@@ -1165,7 +1161,7 @@ export class EditclientComponent implements OnInit {
 
 
                             this.editSubContractorSuccess = false;
-                            
+
                         }, 2000)
 
                     })
@@ -3962,7 +3958,7 @@ export class EditclientComponent implements OnInit {
         this.subCStoreNumbers = "";
 
         if (!this.openEditSubcontractors) {
-            
+
 
             this.loadingNewSubContractors = true;
 
@@ -3972,7 +3968,7 @@ export class EditclientComponent implements OnInit {
 
 
                     if (data.success) {
-    
+
 
                         this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
@@ -3988,7 +3984,7 @@ export class EditclientComponent implements OnInit {
                         })
 
 
-              
+
                         this.editFormReady = false;
                         this.loadingNewSubContractors = false;
                         this.loadingClients = false;
@@ -4032,7 +4028,7 @@ export class EditclientComponent implements OnInit {
                 this.editFormReady = false;
 
                 setTimeout(() => {
-       
+
                     this.eFormReady = false
                     this.openEditSubcontractors = true;
 
@@ -4060,7 +4056,7 @@ export class EditclientComponent implements OnInit {
 
 
             }, 400)
-            
+
             setTimeout(() => {
 
 
@@ -4095,7 +4091,7 @@ export class EditclientComponent implements OnInit {
                 subContractorContactEmail: ""
 
             }
-        
+
             this.clientservice.editSubContractorById(clientToBeEdited2).subscribe(data => {
 
                 if (data.success) {
@@ -4107,9 +4103,9 @@ export class EditclientComponent implements OnInit {
                             client.subcontractors.forEach(subcontractor => {
 
                                 if (subcontractor.name == item) {
-              
+
                                     subcontractor.name = this.subContractorName
-                     
+
                                     let clientToBeEdited = {
 
                                         client: this.clientNameVar2,
@@ -4131,7 +4127,7 @@ export class EditclientComponent implements OnInit {
                     })
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
-     
+
                         this.subCStoreNumbers2 = ""
                         this.editSubContractorLoading = false;
                         this.subcontractorsArray[index] = data.subcontractors
@@ -4157,7 +4153,7 @@ export class EditclientComponent implements OnInit {
                 }
 
             })
-    
+
         } else {
 
             this.subContractorNameEmpty = true;
@@ -4263,7 +4259,7 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-               
+
                         this.subCStoreNumbers2 = ""
                         this.editSubContractorLoading = false;
                         this.subcontractorsArray[clientindex] = data.subcontractors
@@ -4325,7 +4321,7 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
-               
+
                         this.subCStoreNumbers2 = ""
                         this.editSubContractorLoading = false;
                         this.subcontractorsArray[clientindex] = data.subcontractors
@@ -4389,7 +4385,7 @@ export class EditclientComponent implements OnInit {
 
                     this.clientservice.getSubContractorsOfClient(client).subscribe(data => {
 
- 
+
                         this.subCStoreNumbers2 = ""
                         this.editSubContractorLoading = false;
                         this.subcontractorsArray[clientindex] = data.subcontractors
@@ -4531,7 +4527,7 @@ export class EditclientComponent implements OnInit {
             this.openEditSubcontractors = true;
             this.openIndividualSubContractorToggle = index;
             this.individualAddSubContractorIndexVar = index;
- 
+
 
         } else if (this.openIndividualSubContractorBoolean && this.individualAddSubContractorIndexVar == index) {
 

@@ -26,12 +26,12 @@ export class NavbarComponent implements OnInit {
   temperatureHigh: string = "";
   temperatureLow: string = "";
   temperatureNow: string = ""
-  pendingRequest: boolean = false;
+  logoutSuccessMsg: string = "You Have Been Succcessfully Logged Out...";
   userName: string;
   username: any;
   location: string;
-  inventory: Object[];
-  logoutSuccessMsg: string = "You Have Been Succcessfully Logged Out...";
+
+  pendingRequest: boolean = false;
   logOutSuccessful: boolean = false;
   loggedIn: boolean = true;
   smallestRoseLogo: boolean = false;
@@ -47,13 +47,15 @@ export class NavbarComponent implements OnInit {
   brandMobileLandScape: boolean = false;
   brandMobileLandScapeIphoneX: boolean = false;
   removeBrand: boolean = false;
-
   divUnderlineOpen: boolean = false;
   removeWeatherQuickly: boolean = false;
   removeDesktopWeatherInfo: boolean = false;
+
   subcontractorObject: Object;
+  inventory: Object[];
   subContractorArray: Object[];
   arrayOfOrderedItems: Number[];
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;

@@ -124,7 +124,6 @@ export class NewclientComponent implements OnInit {
     imReady: boolean = false;
     areYouSure: boolean = false;
     formLoading: boolean = false;
-
     subContractorStoreNumberSuccessfullyRemoved: boolean = false;
     subContractorStoreNumberSuccessfullyAdded: boolean = false;
     subContractorStoreNumberAlreadyEmpty: boolean = false;

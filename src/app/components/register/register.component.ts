@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   unSuccessfulRegistrationMsg: string = "Registration Unsuccessful..."
   successfulRegistrationMsg: string = "Registration Successful"
   invalidEmailMsg: string = "Invalid Email...";
+  
   nameCannotBeEmpty: boolean = false;
   emailCannotBeEmpty: boolean = false;
   usernameCannotBeEmpty: boolean = false;
@@ -122,10 +123,10 @@ export class RegisterComponent implements OnInit {
           }, 2000)
 
         } else {
-          // this.flashmessages.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+
           this.loadingRegistration = false;
           this.registrationFailed = true;
-          console.log(data)
+
           if (data.err.code == 11000) {
 
 
@@ -144,22 +145,23 @@ export class RegisterComponent implements OnInit {
             this.username = "";
 
           }, 2000)
-          //this.router.navigate(['/register']);
+
         }
       });
     }
     // Required Fields
     if (!this.validateservice.validateRegister(user)) {
-      // this.flashmessages.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
+
       return false;
+
     }
 
     // Validate Email
     if (!this.validateservice.validateEmail(user.email)) {
-      //this.flashmessages.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
-      return false;
-    }
 
+      return false;
+
+    }
 
   }
 }

@@ -21,24 +21,23 @@ export class LoginComponent implements OnInit {
   errorMsg: String;
   successfulLoginMsg: string = "Login Successful...";
   unSuccessfulLoginMsg: string = "Login Unsuccessful...";
+  userNameCannotBeEmptyMsg: string = "Username Cannot Be Empty..."
+  passwordCannotBeEmptyMsg: string = "Password Cannot Be Empty..."
+
   successfulLogin: boolean = false;
   unSuccessfulLogin: boolean = false;
-  userNameCannotBeEmpty:boolean = false;
-  passwordCannotBeEmpty:boolean = false;
-  loadingLogin:boolean = false;
-  userNameCannotBeEmptyMsg:string = "Username Cannot Be Empty..."
-  passwordCannotBeEmptyMsg:string = "Password Cannot Be Empty..."
+  userNameCannotBeEmpty: boolean = false;
+  passwordCannotBeEmpty: boolean = false;
+  loadingLogin: boolean = false;
 
   constructor(private authservice: AuthService, private router: Router) { }
 
   ngOnInit() {
 
-    console.log("WELL DID YOU FUKKN LOAD??");
   }
 
   onLoginSubmit() {
 
-    console.log(this.username);
     const user = {
       username: this.username,
       password: this.password
@@ -46,94 +45,74 @@ export class LoginComponent implements OnInit {
 
     }
 
-    if(this.username == ""){
+    if (this.username == "") {
       this.loadingLogin = false;
       this.userNameCannotBeEmpty = true;
-      setTimeout(()=>{
+      setTimeout(() => {
 
 
         this.userNameCannotBeEmpty = false;
 
-      },2000);
+      }, 2000);
 
     }
-     if( this.password == ""){
+    if (this.password == "") {
       this.loadingLogin = false;
-      this.passwordCannotBeEmpty =true;
-      setTimeout(()=>{
+      this.passwordCannotBeEmpty = true;
+      setTimeout(() => {
 
-        this.passwordCannotBeEmpty  = false;
+        this.passwordCannotBeEmpty = false;
 
-      },2000)
-
-    }
-
-    if(this.password !== "" && this.username!== ""){
-    this.loadingLogin = true;
-
-
-        this.authservice.authenticateUser(user).subscribe(data => {
-
-      console.log(data);
-      if (data.success) {
-        this.loadingLogin = false;
-        this.successfulLogin = true;
-        this.authservice.storeUserData(data.token, user);
-        this.authservice.updateGlobalUsername(data.name);
-        this.userName = this.authservice.userName
-        this.authservice.storeUsername();
-        //this.userName = username;
-        //return this.userName;
-
-
-        //this.flashmessage.show("You are now logged in...", { cssClass: 'alert-success', timeout: 5000 });
-        setTimeout(() => {
-
-          this.successfulLogin = false;
-
-
-        }, 2000);
-        setTimeout(() => {
-          //this.addNameSuccess = false;
-          // this.router.navigateByUrl('/edit/newsubcontractor');
-          this.router.navigate(['/clients']);
-
-
-        }, 3000);
-
-      } else {
-        console.log("failed login");
-        console.log(data)
-        this.loadingLogin = false;
-        this.errorMsg = data.message;
-        this.unSuccessfulLogin = true;
-
-        setTimeout(() => {
-
-          this.unSuccessfulLogin = false;
-
-
-        }, 3000);
-        setTimeout(() => {
-          //this.addNameSuccess = false;
-          // this.router.navigateByUrl('/edit/newsubcontractor');
-
-          // this.router.navigate(['/clients']);
-
-
-        }, 2000);
-        //this.flashmessage.show(data.message, { cssClass: 'alert-danger', timeout: 5000 });
-        //this.router.navigate(['/login']);
-      }
-
-    })
-
+      }, 2000)
 
     }
 
+    if (this.password !== "" && this.username !== "") {
+      this.loadingLogin = true;
 
-  
 
+      this.authservice.authenticateUser(user).subscribe(data => {
+
+        if (data.success) {
+          this.loadingLogin = false;
+          this.successfulLogin = true;
+          this.authservice.storeUserData(data.token, user);
+          this.authservice.updateGlobalUsername(data.name);
+          this.userName = this.authservice.userName
+          this.authservice.storeUsername();
+
+          setTimeout(() => {
+
+            this.successfulLogin = false;
+
+
+          }, 2000);
+          setTimeout(() => {
+
+            this.router.navigate(['/clients']);
+
+
+          }, 3000);
+
+        } else {
+
+          this.loadingLogin = false;
+          this.errorMsg = data.message;
+          this.unSuccessfulLogin = true;
+
+          setTimeout(() => {
+
+            this.unSuccessfulLogin = false;
+
+
+          }, 3000);
+
+
+        }
+
+      })
+
+    }
 
   }
 
