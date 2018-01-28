@@ -432,12 +432,12 @@ export class NavbarComponent implements OnInit {
         this.weatherInfoHidden = false;
         //console.log("here")
 
-        setTimeout(() => {
+       // setTimeout(() => {
 
           this.largestRoseLogo = false;
           this.smallestRoseLogo = true;
 
-        }, 300)
+        //}, 300)
       }
  
 
