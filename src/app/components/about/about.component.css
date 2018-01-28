@@ -22,7 +22,8 @@ body, html{
 .pimg1{
 
     background-image:url('../assets/backgroundsmall.jpg');
-    min-height:400px;
+       min-height:640px;
+
 
 }
 .pimg2{
