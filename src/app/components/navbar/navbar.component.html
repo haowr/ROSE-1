@@ -18,6 +18,21 @@
     <div class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav">
+        <li *ngIf="!authservice.loggedIn()" class="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle" (click)="closeWeatherInfo()" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+
+
+            <li class="divider"></li>
+            <!--(click)="closeNavbar()" -->
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/']">Home</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/about']">About Us</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/services']">Services</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/employment']">Employment</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/contact']">Contact Us!</a></li>
+
+          </ul>
+        </li>
 
         <li *ngIf="authservice.loggedIn()" class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" (click)="closeWeatherInfo()" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>

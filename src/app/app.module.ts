@@ -27,10 +27,18 @@ import { ManagementComponent } from './components/management/management.componen
 import { RemoveclientComponent } from './components/removeclient/removeclient.component';
 import { EditComponent } from './edit/edit.component';
 import { EditclientComponent } from './editclient/editclient.component';
+import { AboutComponent } from './components/about/about.component';
+import { ServiceComponent } from './components/service/service.component';
+import { EmploymentComponent } from './components/employment/employment.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
 
   { path: '', component: HomeComponent2 },
+  { path: 'about', component: AboutComponent},
+  { path: 'services',component: ServiceComponent},
+  { path: 'employment', component: EmploymentComponent},
+  { path: 'contact', component: ContactComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'clients',component:ClientsComponent,
@@ -66,7 +74,11 @@ const appRoutes: Routes = [
     ManagementComponent,
     RemoveclientComponent,
     EditComponent,
-    EditclientComponent
+    EditclientComponent,
+    AboutComponent,
+    EmploymentComponent,
+    ContactComponent,
+    ServiceComponent
     
   ],
   imports: [
