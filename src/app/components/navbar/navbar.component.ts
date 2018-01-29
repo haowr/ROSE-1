@@ -437,7 +437,7 @@ export class NavbarComponent implements OnInit {
           this.largestRoseLogo = false;
           this.smallestRoseLogo = true;
 
-        }, 190)
+        }, 300)
       }
  
 
