@@ -48,6 +48,9 @@ this.loadingEmail = false;
 }else{
 this.loadingEmail = false;
   this.emailFailed = true;
+    this.email = "";
+  this.name = "";
+  this.content = "";
   setTimeout(()=>{
 
     this.emailFailed = false;
