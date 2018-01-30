@@ -46,7 +46,7 @@ this.loadingEmail = false;
     this.weWillGetBackToYou = false;
   },3000)
 }else{
-
+this.loadingEmail = false;
   this.emailFailed = true;
   setTimeout(()=>{
 
