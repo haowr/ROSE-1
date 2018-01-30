@@ -185,6 +185,7 @@ export class NavbarComponent implements OnInit {
     this.weatherservice.getWeather().subscribe(data => {
 
       this.weatherNow = data.weather[0].icon;
+      console.log(this.weatherNow)
       this.temperatureNow = data.main.temp;
       this.temperatureHigh = data.main.temp_max;
       this.temperatureLow = data.main.temp_min;
