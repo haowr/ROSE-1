@@ -16,9 +16,9 @@
     </div>
 
     <div  class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
-<a id="moveitemleft2" [routerLink]="['/']"><img src="../assets/img/bottomhalfrose.png"></a>
-<br>
-<br><p id="moveitemleft3"style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">  | Rose</p>
+<a  [hidden]="!smallestRoseLogo && !largestRoseLogo"id="moveitemleft2" [routerLink]="['/']"><img src="../assets/img/bottomhalfrose.png"></a>
+<br [hidden]="!smallestRoseLogo && !largestRoseLogo">
+<br [hidden]="!smallestRoseLogo && !largestRoseLogo"><p [hidden]="!smallestRoseLogo && !largestRoseLogo" id="moveitemleft3"style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">  | Rose</p>
       <ul class="nav navbar-nav">
         <li *ngIf="!authservice.loggedIn()" class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" (click)="closeWeatherInfo()" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
