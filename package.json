@@ -17,8 +17,8 @@
     "npm": "~3.10.5"
   },
   "dependencies": {
+    " @angular-devkit/core": "*",
     "@angular/animations": "^5.0.0",
-   " @angular-devkit/core":"*",
     "@angular/cli": "1.6.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -39,6 +39,7 @@
     "jsonwebtoken": "*",
     "mongoose": "*",
     "ng2-charts": "^1.6.0",
+    "nodemailer": "^4.4.2",
     "passport": "*",
     "passport-jwt": "*",
     "rxjs": "^5.5.2",

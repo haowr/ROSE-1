@@ -13,19 +13,58 @@
         </div>
         <section class = "section section-dark">
             
-            <h2 style="text-decoration:underline;"> Improve employee morale  </h2>
-            <a style="text-decoration:none;  color:#666;" href = "https://github.com/ohrha/ROSE"> <p>Employee productivity has been shown to increase in a clean building</p>
-<p>Cleanliness equates to employee happiness and reduced employee turnover</p></a>
-<!--
-            <h2> Zaid | زيد </h2>
-            <h3></h3>
-            <h3> Growth, Abundance, One who makes progress</h3>
-            <p style="font-size:14px;">     My name is Zaid Darryl Samuel, and the meaning of my first name perfectly encapsulates my relationship with technology.I appreciate, and seek to develop
-                tools that help people to grow, that empower them towards abundance, and which can be used as a tool through which their own individual goals and destiny may be forged.</p>
-            <p style="font-size:14px;"> I truly believe that technology, and especially computer/web technology has the ability to free humanity from its shackles, the greatest of which being ignorance.</p>
-            <p style="font-size:14px;"> Please have a look at some of the more robust projects i have worked on during my self-directed Html, JQuery, CSS, Bootstrap, AngularJs, Angular, MongoDb, Nodejs, Express,(and more!), educational path. iI am only at the beginning of my journey into full-stack web development, but i 
-                already am confident i can provide great value and passion to your company, and projects.</p>
--->
+           
+
+<form (click)="sendEmail()"   class="form-horizontal">
+  <fieldset>
+
+    <legend>Contact:</legend>
+        <div class="form-group">
+      <label for="inputName" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input type="text" [(ngModel)]="name" name="name"class="form-control" id="inputName" placeholder="Name">
+     
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="text"[(ngModel)]="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <!--<div class="form-group">
+      <label for="inputComment" class="col-lg-2 control-label">Comment</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputComment" placeholder="Password">
+     
+      </div>
+    </div>-->
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+      <div class="col-lg-10">
+        <textarea class="form-control"[(ngModel)]="content"name="content"rows="3" id="textArea"></textarea>
+      </div>
+    </div>
+    
+    
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <div *ngIf="loadingEmail" style="background-color:white;" class = "jumbotron text-center">
+  <i style ="font-size:22px;"class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+
+<span class="sr-only">Loading...</span>
+</div>
+    <div *ngIf="weWillGetBackToYou" >
+        <h3 style="color:black;"> Thanks for your interest, we'll get back to you soon!</h3>
+    </div>
+  </fieldset>
+</form>
+
+            
         </section>
                 <div class = "pimg2">
             <!--<div class = "ptext">

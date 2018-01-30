@@ -384,6 +384,17 @@ export class ClientService {
 
   }
 
+ sendEmail(email){
+
+ let headers = new Headers();
+ headers.append('Content-Type','application/json');
+ return this.http.post('http://localhost:3000/routes/sendemail', email, {headers:headers})
+ .map(res =>res.json()
+ )
+
+
+
+ }
   updateSubcontractor(subcontractor) {
 
     let headers = new Headers();

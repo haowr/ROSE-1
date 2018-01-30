@@ -39,11 +39,41 @@ const SubContractorInventory = require('../models/subcontractor');
 const SuperGen = require('../models/supergeneratorltd');
 const Sbcntrctr = require('../models/sbcntrctor');
 const SubCon = require('../models/newsubcontractor');
+const nodemailer = require('nodemailer');
+var client = nodemailer.createTransport({
+        service: "Gmail",
+    auth: {
+        user: "trigramthree@gmail.com",
+        pass: "2chuva2ed"
+    }
+});
 
+router.post('/sendemail', (req,res)=>{
+
+console.log(req.body)
+let email = {
+
+    from: req.body.name,
+    to: 'trigramthree@gmail.com',
+    subject:'Inquiry',
+    text:"This inquiry is from "+req.body.name+" from the email "+req.body.email+":"+req.body.content
+}
+client.sendMail(email, (err,info)=>{
+
+    if(err){
+        res.json({err:err})
+    }else{
+        res.json({info:info, success: true})
+    }
+
+})
+  
+})
 
 router.post('/editsubcontractorclientname', (req,res)=>{
 
     console.log(req.body)
+    
 
     SubCon.find({}, (err,subcontractors)=>{
 
