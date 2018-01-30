@@ -12,6 +12,7 @@ export class ContactComponent implements OnInit {
   email:string="";
   content:string="";
   weWillGetBackToYou:boolean = false;
+  emailFailed:boolean = false;
   loadingEmail:boolean = false;
 
   constructor(private clientservice:ClientService) { }
@@ -43,6 +44,13 @@ this.loadingEmail = false;
   setTimeout(()=>{
 
     this.weWillGetBackToYou = false;
+  },3000)
+}else{
+
+  this.emailFailed = true;
+  setTimeout(()=>{
+
+    this.emailFailed = false;
   },3000)
 }
     })
