@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a id="moveitemleft" *ngIf="largeRoseLogo  && !largestRoseLogo && !smallestRoseLogo" [routerLink]="['/']"><img style="position:fixed; z-index:1000000;"*ngIf="largeRoseLogo && !largestRoseLogo && !smallestRoseLogo"  src="../assets/img/roselogosmallerhalf.png"></a>
-      <a id="moveitemleft"  [routerLink]="['/']"><img style="position:fixed;z-index:1000000;"[hidden]="!smallestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
+      <a id="moveitemleft"  [routerLink]="['/']"><img style="position:fixed;z-index:1000000;"[hidden]="!smallestRoseLogo && !largestRoseLogo" src="../assets/img/roselogosmallest.png"></a>
 
-      <a style="color:white; text-decoration:none;"(click)="closeDropdown()" id="moveitemleft"  [routerLink]="['/']"><img [hidden]="!largestRoseLogo "style="position:fixed; z-index:1000000;" src="../assets/img/roselogosmaller.png"><br><br><br><br><br><p [hidden]="!largestRoseLogo "style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">      | Rose</p></a>
-      <button type="button" (click)="loadLargeRoseLogo()" id="navbar-toggle" class="navbar-toggle collapsed" data-toggle="collapse"
+      <!--<a style="color:white; text-decoration:none;"(click)="closeDropdown()" id="moveitemleft"  [routerLink]="['/']"><img [hidden]="!largestRoseLogo "style="position:fixed; z-index:1000000;" src="../assets/img/roselogosmaller.png"><br><br><br><br><br><p [hidden]="!largestRoseLogo "style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">      | Rose</p></a>-->
+      <button type="button" (click)="loadLargeRoseLogo()" id="navbar-toggle" class="navbar-toggle collapsed"  data-toggle="collapse"
         data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -15,8 +15,10 @@
 
     </div>
 
-    <div class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
-
+    <div  class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
+<a id="moveitemleft2" [routerLink]="['/']"><img src="../assets/img/bottomhalfrose.png"></a>
+<br>
+<br><p id="moveitemleft3"style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">  | Rose</p>
       <ul class="nav navbar-nav">
         <li *ngIf="!authservice.loggedIn()" class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" (click)="closeWeatherInfo()" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>

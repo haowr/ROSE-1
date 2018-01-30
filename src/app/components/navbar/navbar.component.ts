@@ -443,7 +443,7 @@ export class NavbarComponent implements OnInit {
 
 
     } else {
-
+   // console.log("final condition")
       this.smallestRoseLogo = true;
       this.largeRoseLogo = false;
 
