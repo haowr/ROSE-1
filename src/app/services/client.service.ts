@@ -388,7 +388,7 @@ export class ClientService {
 
  let headers = new Headers();
  headers.append('Content-Type','application/json');
- return this.http.post('http://localhost:3000/routes/sendemail', email, {headers:headers})
+ return this.http.post('routes/sendemail', email, {headers:headers})
  .map(res =>res.json()
  )
 
