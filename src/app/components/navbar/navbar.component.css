@@ -32,13 +32,13 @@ transition:1s;
         top:100px;
         position: absolute;
         background: #ffffff;
-        border: 1px solid #719ECE;
+        border: 1px solid black;
         width: 200px;
         height: 200px;
         border-radius: 3px;
-        -webkit-filter: drop-shadow(0 1px 10px rgba(113,158,206,0.8));
-        -moz-box-shadow: 0 1px 10px rgba(113,158,206,0.8);
-        filter: drop-shadow(0 1px 10px rgba(113,158,206,0.8));
+        -webkit-filter: drop-shadow(0 1px 10px rgba(0,0,0,0.8));
+        -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.8);
+        filter: drop-shadow(0 1px 10px rgba(0,0,0,0.8));
     }
     .arrow_box:after, 
     .arrow_box:before {
@@ -60,7 +60,7 @@ transition:1s;
     }
     .arrow_box:before {
         border-color: rgba(113, 158, 206, 0);
-        border-bottom-color: #719ECE;
+        border-bottom-color: black;
         border-width: 20px;
         left: 22%;
         margin-left: -20px;
