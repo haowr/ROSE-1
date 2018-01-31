@@ -16,9 +16,9 @@
     </div>
 
     <div  class="collapse navbar-collapse movemenuright" id="bs-example-navbar-collapse-1">
-<a  [hidden]="!smallestRoseLogo && !largestRoseLogo"id="moveitemleft2" [routerLink]="['/']"><img src="../assets/img/bottomhalfrose.png"></a>
-<br [hidden]="!smallestRoseLogo && !largestRoseLogo">
-<br [hidden]="!smallestRoseLogo && !largestRoseLogo"><p [hidden]="!smallestRoseLogo && !largestRoseLogo" id="moveitemleft3"style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">  | Rose</p>
+    <a  [hidden]="!smallestRoseLogo && !largestRoseLogo"id="moveitemleft2" [routerLink]="['/']"><img src="../assets/img/bottomhalfrose.png"></a>
+    <br [hidden]="!smallestRoseLogo && !largestRoseLogo">
+    <br [hidden]="!smallestRoseLogo && !largestRoseLogo"><p [hidden]="!smallestRoseLogo && !largestRoseLogo" id="moveitemleft3"style=" color:white;font-size:20px;font-family: 'Lora', sans-serif; padding-left:21px;">  | Rose</p>
       <ul class="nav navbar-nav">
         <li *ngIf="!authservice.loggedIn()" class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" (click)="closeWeatherInfo()" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
@@ -42,7 +42,7 @@
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/']">Home</a></li>
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/about']">About Us</a></li>
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/services']">Services</a></li>
-            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/contact']">Contact Us!</a></li>
+            <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/contact']">Contact Us</a></li>
 
             <li class="divider"></li>
             <!--(click)="closeNavbar()" -->
@@ -62,9 +62,9 @@
           <br>
           <h4 style="color:black; font-size: 20px; font-family: 'Lora', serif; text-align:center; text-decoration:underline;">Description</h4>
 
-          <p style="color:black;font-size: 12px;  font-family: 'Lora', serif; text-align:center;"> {{weatherDescription}}</p>
-          <p style="color:black;font-size: 12px;  font-family: 'Lora', serif; text-align:center;">High| {{temperatureHigh}}</p>
-          <p style="color:black; font-size: 12px; font-family: 'Lora', serif; text-align:center;">Low| {{temperatureLow}}</p>
+          <p  style="color:black;font-size: 12px;  font-family: 'Lora', serif; text-align:center;"> {{weatherDescription}}</p>
+          <p  style="color:black;font-size: 12px;  font-family: 'Lora', serif; text-align:center;">High| {{temperatureHigh}}</p>
+          <p  style="color:black; font-size: 12px; font-family: 'Lora', serif; text-align:center;">Low| {{temperatureLow}}</p>
         </div>
 
 
@@ -72,12 +72,12 @@
         <div *ngIf="removeWeatherQuickly && authservice.loggedIn() ">
 
           <div class="text-center" [ngClass]="{'weatherinfo2': weatherInfo, 'weatherinfo3hidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfo':weatherInfoHidden && !weatherInfo3Hidden,'weatherinfoparagraph':weatherInfo2}"
-            style="position:absolute; border:2px solid #ddd; width:100px; ">
+               style="position:absolute; border:2px solid #ddd; width:100px; ">
 
             <p [ngClass]="{'weatherinfotitlehidden':weatherInfo3Hidden && !weatherInfoHidden,'weatherinfotitle':weatherInfo2}" style="color:white; font-family: 'Lora', serif; left:12px;">DESCRIPTION</p>
             <br>
             <p [ngClass]="{'weatherinfoparagraphhidden':weatherInfo3Hidden && !weatherInfoHidden, 'weatherinfoparagraph2':weatherInfo2}"
-              style="color:white; font-family: 'Lora', serif; left: 14px;">{{weatherDescription}}</p><!---->
+                style="color:white; font-family: 'Lora', serif; left: 14px;">{{weatherDescription}}</p><!---->
               
           </div>
         </div>
