@@ -29,7 +29,7 @@ export class AuthService {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('routes/authenticate', user, { headers: headers })
+    return this.http.post('http://localhost:3000/routes/authenticate', user, { headers: headers })
       .map(res => {
         let result = res.json();
 

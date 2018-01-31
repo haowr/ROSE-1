@@ -85,7 +85,7 @@ transition:1s;
 
 }
 .weatherinfo3hidden{
-top:138px;
+top:176px;
 left:240px;
 height:0px;
     position:absolute; 
@@ -121,7 +121,7 @@ position:absolute;
 transition:1s;
 }
 .weatherinfoparagraph{
-top:138px;
+top:176px;
 position:absolute;
 left:240px;
 height:100px;
