@@ -32,7 +32,6 @@ export class InventoryComponent implements OnInit {
   orderedOct: number=0;
   orderedNov: number=0;
   orderedDec: number=0;
-  costJan:number=0;
   costFeb:number=0;
   costMar:number=0;
   costApr:number=0;
@@ -105,179 +104,7 @@ export class InventoryComponent implements OnInit {
       productcode: this.productcode
 
     }
-
-    this.clientservice.getSubContractor(this.location).subscribe(data=>{
-
-        console.log(data)
-        if(this.supplier == "topline"){
-
-           // this.toplineInventoryArray = data.subcontractor.
-           for(let z=0; z< data.subcontractor.topline.length ; z++){
-
-              if( data.subcontractor.topline[z].productcode == this.productcode){
-
-                  this.costNow      =   data.subcontractor.topline[z].ordered * data.subcontractor.topline[z].price
-                  this.costJan      =   data.subcontractor.topline[z].orderedjan * data.subcontractor.topline[z].price
-                  this.costFeb      =   data.subcontractor.topline[z].orderedfeb * data.subcontractor.topline[z].price
-                  this.costMar      =   data.subcontractor.topline[z].orderedmar * data.subcontractor.topline[z].price
-                  this.costApr      =   data.subcontractor.topline[z].orderedapr * data.subcontractor.topline[z].price
-                  this.costMay      =   data.subcontractor.topline[z].orderedmay * data.subcontractor.topline[z].price
-                  this.costLove     =   data.subcontractor.topline[z].orderedjul * data.subcontractor.topline[z].price
-                  this.costJuly     =   data.subcontractor.topline[z].orderedjul * data.subcontractor.topline[z].price
-                  this.costAug      =   data.subcontractor.topline[z].orderedaug * data.subcontractor.topline[z].price
-                  this.costSept     =   data.subcontractor.topline[z].orderedsept* data.subcontractor.topline[z].price
-                  this.costOct      =   data.subcontractor.topline[z].orderedoct * data.subcontractor.topline[z].price
-                  this.costNov      =   data.subcontractor.topline[z].orderednov * data.subcontractor.topline[z].price
-                  this.costDec      =   data.subcontractor.topline[z].ordereddec * data.subcontractor.topline[z].price
-                
-                  this.ordered      =   data.subcontractor.topline[z].ordered
-                  this.orderedJan   =   data.subcontractor.topline[z].orderedjan
-                  this.orderedFeb   =   data.subcontractor.topline[z].orderedfeb
-                  this.orderedMar   =   data.subcontractor.topline[z].orderedmar
-                  this.orderedApr   =   data.subcontractor.topline[z].orderedapr
-                  this.orderedMay   =   data.subcontractor.topline[z].orderedmay
-                  this.orderedLove  =   data.subcontractor.topline[z].orderedjun
-                  this.orderedJuly  =   data.subcontractor.topline[z].orderedjul
-                  this.orderedAug   =   data.subcontractor.topline[z].orderedaug
-                  this.orderedSept  =   data.subcontractor.topline[z].orderedsept
-                  this.orderedOct   =   data.subcontractor.topline[z].orderedoct
-                  this.orderedNov   =   data.subcontractor.topline[z].orderednov
-                  this.orderedDec   =   data.subcontractor.topline[z].ordereddec
-
-
-
-              }
-
-           }
-
-           this.chartData = [
-
-                    { data: [this.ordered, this.orderedJan, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
-                             this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
-                             ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.costNow,this.costJan, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
-                            this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
-
-                     ];
-
-        }
-        if(this.supplier == "wesclean"){
-
-
-          
-           // this.wescleanInventoryArray = data.subcontractor.
-           for(let z=0; z< data.subcontractor.wesclean.length ; z++){
-
-              if( data.subcontractor.wesclean[z].productcode == this.productcode){
-
-                  this.costNow      =   data.subcontractor.wesclean[z].ordered * data.subcontractor.wesclean[z].price
-                  this.costJan      =   data.subcontractor.wesclean[z].orderedjan * data.subcontractor.wesclean[z].price
-                  this.costFeb      =   data.subcontractor.wesclean[z].orderedfeb * data.subcontractor.wesclean[z].price
-                  this.costMar      =   data.subcontractor.wesclean[z].orderedmar * data.subcontractor.wesclean[z].price
-                  this.costApr      =   data.subcontractor.wesclean[z].orderedapr * data.subcontractor.wesclean[z].price
-                  this.costMay      =   data.subcontractor.wesclean[z].orderedmay * data.subcontractor.wesclean[z].price
-                  this.costLove     =   data.subcontractor.wesclean[z].orderedjul * data.subcontractor.wesclean[z].price
-                  this.costJuly     =   data.subcontractor.wesclean[z].orderedjul * data.subcontractor.wesclean[z].price
-                  this.costAug      =   data.subcontractor.wesclean[z].orderedaug * data.subcontractor.wesclean[z].price
-                  this.costSept     =   data.subcontractor.wesclean[z].orderedsept* data.subcontractor.wesclean[z].price
-                  this.costOct      =   data.subcontractor.wesclean[z].orderedoct * data.subcontractor.wesclean[z].price
-                  this.costNov      =   data.subcontractor.wesclean[z].orderednov * data.subcontractor.wesclean[z].price
-                  this.costDec      =   data.subcontractor.wesclean[z].ordereddec * data.subcontractor.wesclean[z].price
-                
-                  this.ordered      =   data.subcontractor.wesclean[z].ordered
-                  this.orderedJan   =   data.subcontractor.wesclean[z].orderedjan
-                  this.orderedFeb   =   data.subcontractor.wesclean[z].orderedfeb
-                  this.orderedMar   =   data.subcontractor.wesclean[z].orderedmar
-                  this.orderedApr   =   data.subcontractor.wesclean[z].orderedapr
-                  this.orderedMay   =   data.subcontractor.wesclean[z].orderedmay
-                  this.orderedLove  =   data.subcontractor.wesclean[z].orderedjun
-                  this.orderedJuly  =   data.subcontractor.wesclean[z].orderedjul
-                  this.orderedAug   =   data.subcontractor.wesclean[z].orderedaug
-                  this.orderedSept  =   data.subcontractor.wesclean[z].orderedsept
-                  this.orderedOct   =   data.subcontractor.wesclean[z].orderedoct
-                  this.orderedNov   =   data.subcontractor.wesclean[z].orderednov
-                  this.orderedDec   =   data.subcontractor.wesclean[z].ordereddec
-
-
-
-              }
-
-           }
-
-           this.chartData = [
-
-                    { data: [this.ordered, this.orderedJan, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
-                             this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
-                             ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.costNow,this.costJan, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
-                            this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
-
-                     ];
-
-
-
-        }
-        if(this.supplier == "veritivcanada"){
-
-
-          
-           // this.veritivcanadaInventoryArray = data.subcontractor.
-           for(let z=0; z< data.subcontractor.veritivcanada.length ; z++){
-
-              if( data.subcontractor.veritivcanada[z].productcode == this.productcode){
-
-                  this.costNow      =   data.subcontractor.veritivcanada[z].ordered * data.subcontractor.veritivcanada[z].price
-                  this.costJan      =   data.subcontractor.veritivcanada[z].orderedjan * data.subcontractor.veritivcanada[z].price
-                  this.costFeb      =   data.subcontractor.veritivcanada[z].orderedfeb * data.subcontractor.veritivcanada[z].price
-                  this.costMar      =   data.subcontractor.veritivcanada[z].orderedmar * data.subcontractor.veritivcanada[z].price
-                  this.costApr      =   data.subcontractor.veritivcanada[z].orderedapr * data.subcontractor.veritivcanada[z].price
-                  this.costMay      =   data.subcontractor.veritivcanada[z].orderedmay * data.subcontractor.veritivcanada[z].price
-                  this.costLove     =   data.subcontractor.veritivcanada[z].orderedjul * data.subcontractor.veritivcanada[z].price
-                  this.costJuly     =   data.subcontractor.veritivcanada[z].orderedjul * data.subcontractor.veritivcanada[z].price
-                  this.costAug      =   data.subcontractor.veritivcanada[z].orderedaug * data.subcontractor.veritivcanada[z].price
-                  this.costSept     =   data.subcontractor.veritivcanada[z].orderedsept* data.subcontractor.veritivcanada[z].price
-                  this.costOct      =   data.subcontractor.veritivcanada[z].orderedoct * data.subcontractor.veritivcanada[z].price
-                  this.costNov      =   data.subcontractor.veritivcanada[z].orderednov * data.subcontractor.veritivcanada[z].price
-                  this.costDec      =   data.subcontractor.veritivcanada[z].ordereddec * data.subcontractor.veritivcanada[z].price
-                
-                  this.ordered      =   data.subcontractor.veritivcanada[z].ordered
-                  this.orderedJan   =   data.subcontractor.veritivcanada[z].orderedjan
-                  this.orderedFeb   =   data.subcontractor.veritivcanada[z].orderedfeb
-                  this.orderedMar   =   data.subcontractor.veritivcanada[z].orderedmar
-                  this.orderedApr   =   data.subcontractor.veritivcanada[z].orderedapr
-                  this.orderedMay   =   data.subcontractor.veritivcanada[z].orderedmay
-                  this.orderedLove  =   data.subcontractor.veritivcanada[z].orderedjun
-                  this.orderedJuly  =   data.subcontractor.veritivcanada[z].orderedjul
-                  this.orderedAug   =   data.subcontractor.veritivcanada[z].orderedaug
-                  this.orderedSept  =   data.subcontractor.veritivcanada[z].orderedsept
-                  this.orderedOct   =   data.subcontractor.veritivcanada[z].orderedoct
-                  this.orderedNov   =   data.subcontractor.veritivcanada[z].orderednov
-                  this.orderedDec   =   data.subcontractor.veritivcanada[z].ordereddec
-
-
-
-              }
-
-           }
-
-           this.chartData = [
-
-                    { data: [this.ordered, this.orderedJan, this.orderedFeb, this.orderedMar,this.orderedApr, this.orderedMay, 
-                             this.orderedLove, this.orderedJuly, this.orderedAug, this.orderedSept, this.orderedOct
-                             ,this.orderedNov,this.orderedDec], label: this.productcode },
-                    { data: [this.costNow,this.costJan, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
-                            this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
-
-                     ];
-
-
-
-        }
-
-
-    })
-
- /*   this.clientservice.getClients().subscribe(data => {
+    this.clientservice.getClients().subscribe(data => {
 
       console.log(data);
       console.log(this.location);
@@ -320,7 +147,7 @@ export class InventoryComponent implements OnInit {
                   this.toplineInventoryArray[i].orderedoct= 0
                   this.toplineInventoryArray[i].orderednov = 0
                   this.toplineInventoryArray[i].ordereddec = 0*/
-             /*   console.log("this should run next");
+                console.log("this should run next");
 
                 if (this.toplineInventoryArray[i].productcode == this.productcode) {
                   console.log("productcodes");
@@ -467,7 +294,7 @@ export class InventoryComponent implements OnInit {
                   this.wescleanInventoryArray[i].orderedoct= 0
                   this.wescleanInventoryArray[i].orderednov = 0
                   this.wescleanInventoryArray[i].ordereddec = 12*/
-              /*    console.log(this.wescleanInventoryArray);
+                  console.log(this.wescleanInventoryArray);
                 if (this.wescleanInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.wescleanInventoryArray[i].ordered * this.wescleanInventoryArray[i].price;
@@ -599,7 +426,7 @@ export class InventoryComponent implements OnInit {
                   this.veritivCanadaInventoryArray[i].orderednov = 0
                   this.veritivCanadaInventoryArray[i].ordereddec = 0*/
                   
-             /*   if (this.veritivCanadaInventoryArray[i].productcode == this.productcode) {
+                if (this.veritivCanadaInventoryArray[i].productcode == this.productcode) {
 
                   //this.cost = this.veritivCanadaInventoryArray[i].ordered * this.veritivCanadaInventoryArray[i].price;
                   //this.cost = Number(this.cost.toFixed(2));
@@ -658,6 +485,9 @@ export class InventoryComponent implements OnInit {
                              ,this.orderedNov,this.orderedDec], label: this.productcode },
                     { data: [this.costNow,this.cost, this.costFeb, this.costMar, this.costApr, this.costMay, this.costLove, 
                             this.costJuly, this.costAug,this.costSept,this.costOct,this.costNov,this.costDec], label: "$" }
+
+
+                    //{ data: [this.ordered, 0, 0, 0], label: this.location }
                      ];
                   console.log(this.chartData[0]["data"]);
                   console.log(this.chartLabels);
@@ -702,7 +532,7 @@ export class InventoryComponent implements OnInit {
       console.log(this.wescleanInventoryArray);
       console.log(this.veritivCanadaInventoryArray);
 
-    })*/
+    })
     /*this.clientservice.getSingleSubcontractorForInventory(individualReq).subscribe(subcontractor => {
       console.log(subcontractor);
       console.log(subcontractor.subcontractor[0]);

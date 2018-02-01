@@ -87,7 +87,7 @@ router.post('/updatesubcontractorinventory', (req,res)=>{
     }
         if(req.body.inventory == "wesclean"){
 
-        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ wesclean: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ wesclean: req.body.wesclean}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err) throw err;
@@ -105,7 +105,7 @@ router.post('/updatesubcontractorinventory', (req,res)=>{
     }
         if(req.body.inventory == "veritivcanada"){
 
-        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ veritivcanada: req.body.topline}}, {new:true}, (err,subcontractor)=>{
+        SubCon.findOneAndUpdate({name: req.body.name}, {$set:{ veritivcanada: req.body.veritivcanada}}, {new:true}, (err,subcontractor)=>{
 
 
             if(err) throw err;
@@ -2430,7 +2430,7 @@ router.post('/register/newsubcontractor', function (req, res) {
 })
 //ADD NEW CLIENT
 
-router.post('/register/newclient', function (req, res) {
+router.post('/newclient', function (req, res) {
 
 
     console.log(req.body);
