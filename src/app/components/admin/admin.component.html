@@ -36,7 +36,7 @@
       
       <th>User</th>
       <th>Type</th>
-      <th>Edit Status</th>
+      
       <th>Remove</th>
     </tr>
   </thead>
@@ -46,7 +46,6 @@
       <td>{{user.userType}}</td>
       <td>   <button (click)="removeUser(user.userType,'User',user._id)"class = "form-control">Remove</button>
       </td>
-      <td> <button (click)="editUserType(user.userType,'Admin',user._id)"class = "form-control">Admin</button></td>
     </tr>
     
   </tbody>
