@@ -86,7 +86,7 @@ setTimeout(()=>{
 
   }
   editUserType(currenttype, type, id) {
-this.arrayOfAdmins = []
+this.arrayOfAdmins = [];
     console.log(type)
     console.log(id)
     console.log(this.arrayOfAdmins.length)
@@ -124,7 +124,7 @@ this.arrayOfAdmins = []
       })
 
     }
-   else if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
+    if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
 
 
       this.authservice.editUserType(usertype).subscribe(data => {
