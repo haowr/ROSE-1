@@ -86,7 +86,7 @@ setTimeout(()=>{
 
   }
   editUserType(currenttype, type, id) {
-this.arrayOfAdmins = [];
+//this.arrayOfAdmins = [];
     console.log(type)
     console.log(id)
     console.log(this.arrayOfAdmins.length)
@@ -123,7 +123,21 @@ this.arrayOfAdmins = [];
 
       })
 
+    }    else{
+    if(this.arrayOfAdmins[0]._id == id){
+
+
+    this.thereMustBeOneAdmin =true;
+        setTimeout(()=>{
+  
+  
+          this.thereMustBeOneAdmin=false;
+        },2000)
     }
+    
+  
+  
+      }
     if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
 
 
@@ -150,21 +164,7 @@ this.arrayOfAdmins = [];
         })
       })
     }
-    else{
-    if(this.arrayOfAdmins[0]._id == id){
 
-
-    this.thereMustBeOneAdmin =true;
-        setTimeout(()=>{
-  
-  
-          this.thereMustBeOneAdmin=false;
-        },2000)
-    }
-    
-  
-  
-      }
   
   }
 
