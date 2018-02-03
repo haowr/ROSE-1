@@ -86,7 +86,7 @@ setTimeout(()=>{
 
   }
   editUserType(currenttype, type, id) {
-
+this.arrayOfAdmins = []
     console.log(type)
     console.log(id)
     console.log(this.arrayOfAdmins.length)
