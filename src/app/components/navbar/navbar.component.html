@@ -50,7 +50,7 @@
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['register', 'newclient']">Add Client</a></li>
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/edit']">Edit Client</a></li>
             <li class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/remove']">Remove Client</a></li>
-            <li *ngIf="authservice.userType='Admin'" class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/management']">Admin</a></li>
+            <li *ngIf="authservice.userType=='Admin'" class="animated fadeIn"><a (click)="closeNavbar()" href="javascript:void(0);" [routerLink]="['/management']">Admin</a></li>
 
           </ul>
         </li>
