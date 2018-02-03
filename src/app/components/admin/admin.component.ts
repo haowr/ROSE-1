@@ -124,7 +124,7 @@ this.arrayOfAdmins = []
       })
 
     }
-    if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
+   else if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
 
 
       this.authservice.editUserType(usertype).subscribe(data => {

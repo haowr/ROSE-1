@@ -5843,7 +5843,8 @@ router.post('/register', (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
         username: req.body.username, 
-        password: req.body.password
+        password: req.body.password,
+        userType: req.body.userType
     });
 
     User.addUser(newUser, (err, user) => {

@@ -27,6 +27,7 @@ const UserSchema = mongoose.Schema({
     },
       userType:{
           type:String,
+          
         
       },
   
