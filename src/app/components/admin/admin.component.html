@@ -25,7 +25,11 @@
     
   </tbody>
 </table>
-<div *ngIf="thereMustBeOneAdmin"class = "well well-sm form-control text-center">
+<div *ngIf="editLoading" class = "well well-sm text-center">
+    <i style ="font-size:22px;"class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+
+</div>
+<div *ngIf="thereMustBeOneAdmin"class = "well well-sm  text-center">
     <h3>There Must Be At Least One Admin...</h3>
 </div>
 </form>
@@ -50,6 +54,10 @@
     
   </tbody>
 </table>
+<div *ngIf="editLoading" class = "well well-sm text-center">
+    <i style ="font-size:22px;"class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+
+</div>
 <div *ngIf="cannotRemoveAdmin"class = "well well-sm form-control text-center">
     <h3>Cannot Remove Admin. Either Change This User to a, "User", type or select another User... </h3>
 </div>
