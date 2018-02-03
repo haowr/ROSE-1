@@ -232,7 +232,7 @@ export class LocationComponent implements OnInit {
   }
   ngOnInit() {
 
-
+    console.log(this.month)
     this.chartData = [
 
       { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
@@ -317,7 +317,8 @@ export class LocationComponent implements OnInit {
         this.inventory = data.subcontractor.veritivcanada
 
         this.curexp = data.subcontractor.expcur,
-          this.expjan = data.subcontractor.expjan
+          this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+        this.expjan = data.subcontractor.expjan
         this.expfeb = data.subcontractor.expfeb
         this.expmar = data.subcontractor.expmar
         this.expapr = data.subcontractor.expapr
@@ -332,8 +333,8 @@ export class LocationComponent implements OnInit {
 
         if (data.subcontractor.date == this.month) {
 
-
-
+          console.log("Inventory Up To Date..")
+          //document.getElementById("openModalButton").click();
         } else {
 
           let subContractorToBeUpdated = {
@@ -349,7 +350,7 @@ export class LocationComponent implements OnInit {
           }
           if (this.month == 1) {
             //data.subcontractor.ordereddec = data.subcontractor.ordered;
-
+            document.getElementById("openModalButton").click();
             for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
               data.subcontractor.topline[z].ordereddec = this.toplineInventoryArray[z].ordered
@@ -374,14 +375,48 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
 
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
+
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+                this.chartData = [
+
+                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                ];
+
+                this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+              })
 
             })
 
@@ -389,6 +424,7 @@ export class LocationComponent implements OnInit {
           if (this.month == 2) {
 
 
+            console.log(this.month)
             for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
               data.subcontractor.topline[z].orderedjan = this.toplineInventoryArray[z].ordered
@@ -409,17 +445,56 @@ export class LocationComponent implements OnInit {
 
             }
 
+            console.log(this.totalCostThisMonth)
             data.subcontractor.date = 2
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
-
+            console.log(subContractorToBeUpdated)
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
+
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+                this.chartData = [
+
+                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                ];
+
+                this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+                document.getElementById("openModalButton").click();
+              })
+              console.log(data)
 
 
             })
@@ -427,8 +502,8 @@ export class LocationComponent implements OnInit {
 
           }
           if (this.month == 3) {
-
-
+            document.getElementById("openModalButton").click();
+            console.log(this.toplineInventoryArray);
 
             for (let z = 0; z < data.subcontractor.topline.length; z++) {
 
@@ -454,14 +529,49 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
-
+            console.log(subContractorToBeUpdated)
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              console.log(data)
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
 
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
+
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+                this.chartData = [
+
+                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                ];
+
+                this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+              })
 
             })
 
@@ -493,14 +603,48 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+                this.chartData = [
+
+                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                ];
+
+                this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+              })
 
             })
 
@@ -532,13 +676,48 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+                this.chartData = [
+
+                  { data: [this.curexp, this.expjan, this.expfeb, this.expmar, this.expapr, this.expmay, this.expjun, this.expjul, this.expaug, this.expsept, this.expoct, this.expnov, this.expdec], label: "Expenditures/Month" }
+
+
+                ];
+
+                this.chartLabels = ['Current', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+              })
 
 
             })
@@ -571,14 +750,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
             })
 
@@ -610,14 +814,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
             })
 
@@ -649,14 +878,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
             })
           }
@@ -687,14 +941,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
 
             })
@@ -727,13 +1006,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
+
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
             })
 
@@ -765,13 +1070,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
+
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
 
             })
 
@@ -803,14 +1134,39 @@ export class LocationComponent implements OnInit {
             subContractorToBeUpdated.name = data.subcontractor.name
             subContractorToBeUpdated.month = this.month
             subContractorToBeUpdated.date = data.subcontractor.date
-            subContractorToBeUpdated.oldordered = this.curexp;
+            subContractorToBeUpdated.oldordered = data.subcontractor.totalexpenditures;
             subContractorToBeUpdated.topline = data.subcontractor.topline
             subContractorToBeUpdated.wesclean = data.subcontractor.wesclean
             subContractorToBeUpdated.veritivcanada = data.subcontractor.veritivcanada
 
             this.clientservice.updateSubContractor(subContractorToBeUpdated).subscribe(data => {
 
+              this.clientservice.getSubContractor(this.location).subscribe(data => {
+                document.getElementById("openModalButton").click();
+                this.singleSubContractorsArray.push(data.subcontractor)
+                this.subContractorName = data.subcontractor.name
+                this.subContractorContactName = data.subcontractor.contactname
+                this.subContractorContactEmail = data.subcontractor.contactemail
+                this.subContractorContactPhone = data.subcontractor.contactphone;
+                this.toplineInventoryArray = data.subcontractor.topline
+                this.wescleanInventoryArray = data.subcontractor.wesclean
+                this.inventory = data.subcontractor.veritivcanada
 
+                this.curexp = data.subcontractor.expcur,
+                  this.totalCostThisMonth = data.subcontractor.totalexpenditures;
+                this.expjan = data.subcontractor.expjan
+                this.expfeb = data.subcontractor.expfeb
+                this.expmar = data.subcontractor.expmar
+                this.expapr = data.subcontractor.expapr
+                this.expmay = data.subcontractor.expmay
+                this.expjun = data.subcontractor.expjun
+                this.expjul = data.subcontractor.expjul
+                this.expaug = data.subcontractor.expaug
+                this.expsept = data.subcontractor.expsep
+                this.expoct = data.subcontractor.expoct
+                this.expnov = data.subcontractor.expnov
+                this.expdec = data.subcontractor.expdec
+              })
             })
 
           }
@@ -1023,106 +1379,106 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
-        
-    if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+        if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+          this.expenditureDangerWarning = true;
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+        }
+        if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = true;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+        }
+        if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = true
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+        }
+        if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = true;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+        }
+        if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = true;
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+        }
+        if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-    }
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = true;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+        }
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+        if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = true;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+        }
+        if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = true;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+
+
+        }
 
 
         let totalExpenditureUpdater = {
@@ -1195,118 +1551,118 @@ export class LocationComponent implements OnInit {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
-   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = true;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = true;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = true
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = true;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = true;
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = true;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
+            }
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = true;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
-    if(this.totalCostThisMonth < 2000){
+            }
+            if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = true;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+            }
+            if (this.totalCostThisMonth < 2000) {
+
+              this.expenditureDangerWarning = false;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
+
+
+            }
 
 
           }
@@ -1382,118 +1738,118 @@ export class LocationComponent implements OnInit {
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
 
-   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = true;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = true;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = true
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = true;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = true;
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = true;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
+            }
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = true;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
-    if(this.totalCostThisMonth < 2000){
+            }
+            if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = true;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+            }
+            if (this.totalCostThisMonth < 2000) {
+
+              this.expenditureDangerWarning = false;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
+
+
+            }
 
           }
           let totalExpenditureUpdater = {
@@ -1571,118 +1927,118 @@ export class LocationComponent implements OnInit {
 
             this.totalCostThisMonth = Number((this.totalCostThisMonth - price).toFixed(2));
 
-   if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = true;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = true;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = true
+              this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = true;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = true;
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+            }
+            if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = true;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
+            }
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+            if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = true;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
-    if(this.totalCostThisMonth < 2000){
+            }
+            if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+              this.expenditureDangerWarning = false
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = true;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false
+              this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+            }
+            if (this.totalCostThisMonth < 2000) {
+
+              this.expenditureDangerWarning = false;
+              this.expenditureDangerWarningMobile = false;
+              this.expenditureDangerWarningMobileSmall = false;
+              this.expenditureDangerWarningMobileSmaller = false;
+              this.expenditureDangerWarningMobileSmallest = false;
+              this.expenditureDangerWarningMobileMedium = false;
+              this.expenditureDangerWarningMobileSamsung = false;
+              this.expenditureDangerWarningMobileIphoneX = false;
+
+
+            }
 
           }
           let totalExpenditureUpdater = {
@@ -1754,105 +2110,105 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
- if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+        if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = true;
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = true;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = true
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = true;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = true;
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = true;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
+        }
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+        if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = true;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+        }
+        if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = true;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+
+
+        }
 
         let totalExpenditureUpdater = {
 
@@ -1919,105 +2275,105 @@ export class LocationComponent implements OnInit {
         }
 
         this.totalCostThisMonth = Number((this.totalCostThisMonth + price).toFixed(2));
- if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
+        if (window.innerWidth > 1020 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = true;
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = true;
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 1020 && window.innerWidth > 364 && document.documentElement.clientWidth != 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = true;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = true;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 532 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = true
-      this.expenditureDangerWarningMobileIphoneX = false;
-      this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = true
+          this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarningMobileSamsung = false;
 
-    }
-    if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth == 360 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = true;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = true;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
-    if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth == 375 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = true;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = true;
 
-    }
-    if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
+        }
+        if (window.innerWidth < 359 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = true;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false;
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = true;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false;
+          this.expenditureDangerWarningMobileIphoneX = false;
 
-    }
+        }
 
-    if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
+        if (window.innerWidth < 293 && this.totalCostThisMonth >= 2000) {
 
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = true;
-      this.expenditureDangerWarningMobileSmallest = false;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
-
-
-    }
-    if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
-
-      this.expenditureDangerWarning = false
-      this.expenditureDangerWarningMobile = false;
-      this.expenditureDangerWarningMobileSmall = false;
-      this.expenditureDangerWarningMobileSmaller = false;
-      this.expenditureDangerWarningMobileSmallest = true;
-      this.expenditureDangerWarningMobileMedium = false;
-      this.expenditureDangerWarningMobileSamsung = false
-      this.expenditureDangerWarningMobileIphoneX = false;
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = true;
+          this.expenditureDangerWarningMobileSmallest = false;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
 
 
-    }
+        }
+        if (window.innerWidth < 244 && this.totalCostThisMonth >= 2000) {
+
+          this.expenditureDangerWarning = false
+          this.expenditureDangerWarningMobile = false;
+          this.expenditureDangerWarningMobileSmall = false;
+          this.expenditureDangerWarningMobileSmaller = false;
+          this.expenditureDangerWarningMobileSmallest = true;
+          this.expenditureDangerWarningMobileMedium = false;
+          this.expenditureDangerWarningMobileSamsung = false
+          this.expenditureDangerWarningMobileIphoneX = false;
+
+
+        }
         let totalExpenditureUpdater = {
           name: this.location,
           totalexpenditures: this.totalCostThisMonth

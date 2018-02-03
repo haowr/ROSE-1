@@ -825,7 +825,7 @@ router.post('/updatesubcontractor', (req, res) => {
     if (req.body.date == 2) {
         console.log("i'm here")
 
-        console.log(req.body)
+        console.log(req.body.oldordered)
         SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expjan: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
@@ -845,6 +845,7 @@ router.post('/updatesubcontractor', (req, res) => {
     }
     if (req.body.date == 3) {
 
+        console.log(req.body.oldordered)
         SubCon.findOneAndUpdate({ name: req.body.name }, { $set: { expfeb: req.body.oldordered, date: req.body.date, topline: req.body.topline, wesclean: req.body.wesclean, veritivcanada: req.body.veritivcanada } }, { new: true }, (err, subcontractor) => {
 
 
