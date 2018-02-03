@@ -144,11 +144,11 @@ export class AdminComponent implements OnInit {
 
     }
     if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
-
+this.editLoading = true;
       this.authservice.editUserType(usertype).subscribe(data => {
 
         console.log(data);
-        this.editLoading = false;
+        
         this.authservice.getUsers().subscribe(data => {
           this.arrayOfAdmins = [];
 
