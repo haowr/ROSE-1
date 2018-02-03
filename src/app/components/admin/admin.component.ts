@@ -7,7 +7,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AdminComponent implements OnInit {
   usersArray: object[] = [];
-  arrayOfAdmins: object[] = [];
+  arrayOfAdmins = [
+
+    {_id:""}
+  ];
   thereMustBeOneAdmin: boolean;
   cannotRemoveAdmin:boolean = false;
   constructor(private authservice: AuthService) { }
