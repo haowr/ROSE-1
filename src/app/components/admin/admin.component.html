@@ -1,0 +1,28 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<form >
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      
+      <th>User</th>
+      <th>Type</th>
+      <th>Edit Status</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of usersArray; let i = index">
+    <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.userType}}</td>
+      <td>   <button (click)="editUserType('User',user._id)"class = "form-control">User</button>
+      </td>
+      <td> <button (click)="editUserType('Admin',user._id)"class = "form-control">Admin</button></td>
+    </tr>
+    
+  </tbody>
+</table>
+</form>

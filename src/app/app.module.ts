@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard} from './guards/admin.guard';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts/ng2-charts';   
@@ -31,6 +32,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ServiceComponent } from './components/service/service.component';
 import { EmploymentComponent } from './components/employment/employment.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const appRoutes: Routes = [
 
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
   { path: 'clients/:client/:location/:supplier/:productcode', component: InventoryComponent,canActivate:[AuthGuard]},
   { path: 'register/newclient', component: NewclientComponent,canActivate:[AuthGuard]},
   { path: 'remove', component: RemoveclientComponent,canActivate:[AuthGuard]},
-  { path: 'edit', component: EditclientComponent, canActivate:[AuthGuard]}
+  { path: 'edit', component: EditclientComponent, canActivate:[AuthGuard]},
+  { path: 'management', component: AdminComponent}
 
 ]
 
@@ -78,7 +81,8 @@ const appRoutes: Routes = [
     AboutComponent,
     EmploymentComponent,
     ContactComponent,
-    ServiceComponent
+    ServiceComponent,
+    AdminComponent
     
   ],
   imports: [

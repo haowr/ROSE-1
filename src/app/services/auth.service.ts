@@ -20,16 +20,31 @@ export class AuthService {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('routes/register', user, { headers: headers })
+    return this.http.post('http://localhost:3000/routes/register', user, { headers: headers })
       .map(res => res.json());
 
+  }
+  getUsers(){
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/routes/users',{headers:headers})
+    .map(res => res.json())
+
+  }
+  editUserType(userinfo){
+
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/routes/editusertype', userinfo,{headers:headers})
+    .map(res => res.json())
   }
   authenticateUser(user) {
 
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('routes/authenticate', user, { headers: headers })
+    return this.http.post('http://localhost:3000/routes/authenticate', user, { headers: headers })
       .map(res => {
         let result = res.json();
 
@@ -64,6 +79,7 @@ export class AuthService {
   }
   checkIfLoggedIn() {
 
+    console.log(this.userName)
     if (localStorage.getItem('user') && localStorage.getItem('id_token')) {
 
       let userObject = JSON.parse(localStorage.getItem('user'));
@@ -73,7 +89,7 @@ export class AuthService {
 
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.put('routes/getusername/' + userObject, { headers: headers })
+      return this.http.put('http://localhost:3000/routes/getusername/' + userObject, { headers: headers })
         .map(res =>
 
           res.json());
@@ -114,7 +130,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('routes/getclients', { headers: headers })
+    return this.http.get('http://localhost:3000/routes/getclients', { headers: headers })
       .map(res =>
         res.json());
   }
@@ -124,7 +140,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('routes/getclients', { headers: headers })
+    return this.http.get('http://localhost:3000/routes/getclients', { headers: headers })
       .map(res => {
       
         this.userName = res[0].data.name;

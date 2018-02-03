@@ -48,6 +48,41 @@ var client = nodemailer.createTransport({
     }
 });
 
+router.post('/editusertype', (req,res)=>{
+console.log(req.body.id)
+console.log(req.body.type)
+    User.findOneAndUpdate({_id:req.body.id}, {$set:{userType: req.body.type}},{new:true}, (err, user)=>{
+
+        if (err) throw err;
+        if(!user){
+
+            res.json({success: false, message: "User not found..."})
+
+        }else{
+            res.json({success: true, message: "User type changed..", user:user})
+        }
+
+    })
+
+})
+router.get('/users', (req,res)=>{
+
+    User.find({}, (err,users)=>{
+
+        if(err) throw err;
+        if(!users){
+
+            res.json({success: false, message:"No Users Found.."})
+
+        }else{
+
+            res.json({success: true, message: "Users Found..", users:users});
+
+        }
+
+    })
+
+})
 router.post('/sendemail', (req,res)=>{
 
 console.log(req.body)
