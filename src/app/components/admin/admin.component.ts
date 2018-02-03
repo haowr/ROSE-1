@@ -51,7 +51,7 @@ export class AdminComponent implements OnInit {
     if (currenttype !== "Admin") {
       this.editLoading = true;
       this.authservice.removeUser(usertype).subscribe(data => {
-        this.editLoading = false;
+        
 
         console.log(data)
         this.authservice.getUsers().subscribe(data => {
@@ -59,6 +59,7 @@ export class AdminComponent implements OnInit {
 
           console.log(data)
           this.usersArray = data.users;
+          this.editLoading = false;
           for (let i = 0; i < data.users.length; i++) {
 
             if (data.users[i].userType == "Admin") {
@@ -104,12 +105,13 @@ export class AdminComponent implements OnInit {
       this.authservice.editUserType(usertype).subscribe(data => {
 
         console.log(data);
-        this.editLoading = false;
+      
         this.authservice.getUsers().subscribe(data => {
           this.arrayOfAdmins = [];
 
           console.log(data)
           this.usersArray = data.users;
+          this.editLoading = false;
           for (let i = 0; i < data.users.length; i++) {
 
             if (data.users[i].userType == "Admin") {
@@ -143,7 +145,6 @@ export class AdminComponent implements OnInit {
     }
     if (type == "Admin" && this.arrayOfAdmins.length >= 0) {
 
-      this.editLoading = true;
       this.authservice.editUserType(usertype).subscribe(data => {
 
         console.log(data);
@@ -153,6 +154,7 @@ export class AdminComponent implements OnInit {
 
           console.log(data)
           this.usersArray = data.users;
+          this.editLoading = false;
           for (let i = 0; i < data.users.length; i++) {
 
             if (data.users[i].userType == "Admin") {
