@@ -54,7 +54,7 @@ const appRoutes: Routes = [
   { path: 'register/newclient', component: NewclientComponent,canActivate:[AuthGuard]},
   { path: 'remove', component: RemoveclientComponent,canActivate:[AuthGuard]},
   { path: 'edit', component: EditclientComponent, canActivate:[AuthGuard]},
-  { path: 'management', component: AdminComponent}
+  { path: 'management', component: AdminComponent, canActivate:[AdminGuard]}
 
 ]
 
@@ -93,7 +93,7 @@ const appRoutes: Routes = [
     ChartsModule
     ],
 
-  providers: [DataService, ValidateService, AuthService,ClientService, AuthGuard, WeatherService],
+  providers: [DataService, ValidateService, AuthService,ClientService, AuthGuard, WeatherService,AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

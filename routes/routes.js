@@ -48,9 +48,27 @@ var client = nodemailer.createTransport({
     }
 });
 
+router.post('/removeuser',(req,res)=>{
+
+    User.findOneAndRemove({_id:req.body.id}, (err,users)=>{
+
+        if(err) throw err;
+        if(!users){
+
+            res.json({success: false, message: "User not found..."})
+
+        }else{
+            res.json({success: true, message: "User Found And Removed...",users:users})
+        }
+
+    }
+    )
+
+})
 router.post('/editusertype', (req,res)=>{
 console.log(req.body.id)
 console.log(req.body.type)
+
     User.findOneAndUpdate({_id:req.body.id}, {$set:{userType: req.body.type}},{new:true}, (err, user)=>{
 
         if (err) throw err;
@@ -63,6 +81,9 @@ console.log(req.body.type)
         }
 
     })
+
+
+
 
 })
 router.get('/users', (req,res)=>{
@@ -5865,7 +5886,9 @@ router.post('/authenticate', function (req, res) {
                             id: user._id,
                             name: user.name,
                             username: user.username,
-                            user: user.email
+                            user: user.email,
+                            userType:user.userType
+                            
                         }
                     });
                 } else {
