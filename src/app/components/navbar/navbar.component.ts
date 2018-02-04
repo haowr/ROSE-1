@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   userName: string;
   username: any;
   location: string;
-
+  userObject:object = {};
   pendingRequest: boolean = false;
   logOutSuccessful: boolean = false;
   loggedIn: boolean = true;
@@ -180,6 +180,14 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+    if(localStorage.getItem('user') && localStorage.getItem('id_token')){
+
+
+      this.userObject = JSON.parse(localStorage.getItem('user'));
+
+
+    }
+
 
 
     this.weatherservice.getWeather().subscribe(data => {
@@ -197,6 +205,8 @@ export class NavbarComponent implements OnInit {
     this.authservice.userSubscribable.subscribe(value => {
 
       this.username = value;
+      console.log("Value "+value)
+     
 
     });
 

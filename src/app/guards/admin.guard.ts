@@ -9,7 +9,9 @@ export class AdminGuard implements CanActivate {
   constructor(public authservice:AuthService, private router: Router){}
   canActivate(
    ) {
-    if(this.authservice.loggedIn() && this.authservice.userType == "Admin"){
+        let userObject = JSON.parse(localStorage.getItem('user'))
+  console.log(userObject)
+    if(this.authservice.loggedIn() && userObject.userType == "Admin"){
 
 
     return true;
@@ -21,7 +23,7 @@ export class AdminGuard implements CanActivate {
     }
   }
   ngOnInit(){
-  
-  console.log(this.authservice.user)
+   let userObject = JSON.parse(localStorage.getItem('user'))
+  console.log(userObject)
 }
 }

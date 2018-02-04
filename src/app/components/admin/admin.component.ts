@@ -17,8 +17,12 @@ export class AdminComponent implements OnInit {
   constructor(private authservice: AuthService) { }
 
   ngOnInit() {
+  
+    this.authservice.userTypeSubscribable.subscribe(value=>{
 
+      console.log(value)
 
+    })  
     this.authservice.getUsers().subscribe(data => {
       this.arrayOfAdmins = [];
 
