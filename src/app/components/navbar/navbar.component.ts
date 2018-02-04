@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
   temperatureNow: string = ""
   logoutSuccessMsg: string = "You Have Been Succcessfully Logged Out...";
   userName: string;
+  userType:string;
   username: any;
   location: string;
   userObject:object = {};
@@ -209,6 +210,13 @@ export class NavbarComponent implements OnInit {
      
 
     });
+    this.authservice.userTypeSubscribable.subscribe(value=>{
+
+console.log("Value "+value)
+    this.userType = value;
+
+
+    })
 
 
     if (document.documentElement.clientWidth > 1080) { //
