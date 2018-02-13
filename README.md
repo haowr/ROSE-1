@@ -1,6 +1,7 @@
 # ROSE INVENTORY SYSTEM 
 
-## View @ http://rseinvntry.herokuapp.com/
+## View @ http://rseinvntry.herokuapp.com/ 
+## Test User (Username: Neo Password:88888)
 
 ## (Updated With Pictures!)
 
