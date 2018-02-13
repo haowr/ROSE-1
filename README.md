@@ -2,7 +2,7 @@
 
 ## View @ http://rseinvntry.herokuapp.com/ 
 ## Test User (Username: Neo Password:88888)
-
+# Please do not remove "Test" client.
 ## (Updated With Pictures!)
 
 ## (Added Admin Page:Feb. 04. 2018)
