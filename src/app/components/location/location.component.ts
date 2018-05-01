@@ -34,12 +34,12 @@ export class LocationComponent implements OnInit {
 
   storenumberArray: string[];
   subcontractorArray: Object[];
-  subcontractorObject={
+  subcontractorObject = {
 
-    name:"",
-    contactname:"",
-    contactphone:"",
-    emailaddress:""
+    name: "",
+    contactname: "",
+    contactphone: "",
+    emailaddress: ""
 
   }
   chartOptions = {
@@ -187,10 +187,7 @@ export class LocationComponent implements OnInit {
                   console.log(this.singleSubContractorsArray[i]);
                   console.log(i);
                   console.log("Inventory is still in service")
-                  //console.log(document.getElementById);
-                  // document.getElementById("openModalButton").click();
-                  // document.getElementById("openModalButton").click();
-                  //OPEN MODAL
+
 
 
 
@@ -198,7 +195,7 @@ export class LocationComponent implements OnInit {
                 }
                 console.log(this.singleSubContractorsArray[i].date)
                 console.log(this.month);
-                if (this.singleSubContractorsArray[i].date != this.month ) {
+                if (this.singleSubContractorsArray[i].date != this.month) {
                   console.log("should");
                   console.log("Time to take inventory out of servie");
                   this.singleSubContractorsArray[i].date = this.month;
@@ -210,21 +207,21 @@ export class LocationComponent implements OnInit {
 
                     if (this.month == 1) {
 
-                      this.singleSubContractorsArray[i].wesclean[z].orderedjan = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].ordereddec = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
                     }
                     if (this.month == 2) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedfeb = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedjan = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
                     }
                     if (this.month == 3) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedmar = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedfeb = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
@@ -232,21 +229,21 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 4) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedapr = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedmar = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
                     }
                     if (this.month == 5) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedmay = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedapr = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
                     }
                     if (this.month == 6) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedjun = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedmay = this.singleSubContractorsArray[i].wesclean[z].ordered;
 
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
@@ -254,7 +251,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 7) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedjul = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedjun = this.singleSubContractorsArray[i].wesclean[z].ordered;
 
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
@@ -262,14 +259,14 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 8) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedaug = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedjul = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
                     }
                     if (this.month == 9) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedsept = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedaug = this.singleSubContractorsArray[i].wesclean[z].ordered;
 
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
@@ -277,7 +274,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 10) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderedoct = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedsept = this.singleSubContractorsArray[i].wesclean[z].ordered;
 
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
@@ -285,7 +282,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 11) {
-                      this.singleSubContractorsArray[i].wesclean[z].orderednov = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderedoct = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
@@ -293,9 +290,9 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 12) {
-                      this.singleSubContractorsArray[i].wesclean[z].ordereddec = this.singleSubContractorsArray[i].wesclean[z].ordered;
+                      this.singleSubContractorsArray[i].wesclean[z].orderednov = this.singleSubContractorsArray[i].wesclean[z].ordered;
                       this.singleSubContractorsArray[i].wesclean[z].ordered = 0;
-                      
+
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].wesclean[z].ordereddec);
 
@@ -311,65 +308,65 @@ export class LocationComponent implements OnInit {
 
                     if (this.month == 1) {
 
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjan = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].ordereddec = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 2) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedfeb = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjan = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 3) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedmar = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedfeb = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
 
                     }
                     if (this.month == 4) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedapr = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedmar = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 5) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedmay = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedapr = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 6) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjun = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedmay = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
 
                     }
                     if (this.month == 7) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjul = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjun = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
 
                     }
                     if (this.month == 8) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedaug = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedjul = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 9) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedsept = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedaug = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 10) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderedoct = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedsept = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 11) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].orderednov = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderedoct = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
 
                     }
                     if (this.month == 12) {
-                      this.singleSubContractorsArray[i].veritivcanada[z].ordereddec = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
+                      this.singleSubContractorsArray[i].veritivcanada[z].orderednov = this.singleSubContractorsArray[i].veritivcanada[z].ordered;
                       this.singleSubContractorsArray[i].veritivcanada[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].veritivcanada[z].ordereddec);
@@ -383,21 +380,21 @@ export class LocationComponent implements OnInit {
 
                     if (this.month == 1) {
 
-                      this.singleSubContractorsArray[i].topline[z].orderedjan = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].ordereddec = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
 
                     }
                     if (this.month == 2) {
-                      this.singleSubContractorsArray[i].topline[z].orderedfeb = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedjan = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
 
                     }
                     if (this.month == 3) {
-                      this.singleSubContractorsArray[i].topline[z].orderedmar = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedfeb = this.singleSubContractorsArray[i].topline[z].ordered;
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
@@ -405,21 +402,21 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 4) {
-                      this.singleSubContractorsArray[i].topline[z].orderedapr = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedmar = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
 
                     }
                     if (this.month == 5) {
-                      this.singleSubContractorsArray[i].topline[z].orderedmay = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedapr = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
 
                     }
                     if (this.month == 6) {
-                      this.singleSubContractorsArray[i].topline[z].orderedjun = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedmay = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
@@ -427,7 +424,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 7) {
-                      this.singleSubContractorsArray[i].topline[z].orderedjul = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedjun = this.singleSubContractorsArray[i].topline[z].ordered;
 
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
@@ -436,7 +433,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 8) {
-                      this.singleSubContractorsArray[i].topline[z].orderedaug = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedjul = this.singleSubContractorsArray[i].topline[z].ordered;
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
@@ -444,7 +441,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 9) {
-                      this.singleSubContractorsArray[i].topline[z].orderedsept = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedaug = this.singleSubContractorsArray[i].topline[z].ordered;
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
@@ -452,7 +449,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 10) {
-                      this.singleSubContractorsArray[i].topline[z].orderedoct = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedsept = this.singleSubContractorsArray[i].topline[z].ordered;
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
@@ -460,7 +457,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 11) {
-                      this.singleSubContractorsArray[i].topline[z].orderednov = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderedoct = this.singleSubContractorsArray[i].topline[z].ordered;
 
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here");
@@ -468,7 +465,7 @@ export class LocationComponent implements OnInit {
 
                     }
                     if (this.month == 12) {
-                      this.singleSubContractorsArray[i].topline[z].ordereddec = this.singleSubContractorsArray[i].topline[z].ordered;
+                      this.singleSubContractorsArray[i].topline[z].orderednov = this.singleSubContractorsArray[i].topline[z].ordered;
                       this.singleSubContractorsArray[i].topline[z].ordered = 0;
                       console.log("we're here" + this.month);
                       console.log(this.singleSubContractorsArray[i].topline[z].ordereddec);
@@ -508,13 +505,6 @@ export class LocationComponent implements OnInit {
 
 
           }
-
-          //for (let i = 0; i < data.clients.length; i++) {
-          // for (let j = 0; j < data.clients[i].subcontractors.length; j++) {
-
-          //  this.arrayOfSubContractors.push(data.clients[i].subcontractors[j]);
-
-          //}
 
 
 
